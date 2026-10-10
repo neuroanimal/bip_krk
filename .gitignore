@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# PyInstaller build output (rebuildable from bip_krk.spec)
+build/
+dist/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Deliberately NOT ignored: data/, snapshots/ and reports/.
+# The project follows a "collect data once" principle and old job postings
+# disappear from the BIP site, so the accumulated dataset cannot be re-fetched.
+# It is public-institution data (employer names and office addresses from job
+# adverts), it weighs under a megabyte, and losing it would mean losing history.
+
+# Raw conversation logs with the AI assistant. Kept on disk on purpose — they are
+# the record of how this project was built — but never published: they contain
+# unfiltered discussion, including remarks unrelated to the code.
+session.jsonl
+transcript.md

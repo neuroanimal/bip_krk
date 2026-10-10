@@ -1,0 +1,26 @@
+# Konfiguracja Pylint dla projektu bip_krk (scraper ofert pracy BIP Kraków).
+#
+# Wyłączenia są świadome i udokumentowane:
+# - invalid-name: nazwy skryptów zaczynają się od cyfry (1_, 2_, ...),
+#   co jest celową konwencją numeracji kolejnych etapów potoku i nie da
+#   się jej pogodzić ze snake_case dla nazwy modułu.
+# - too-many-locals: funkcje main() koordynują cały etap potoku i z natury
+#   mają wiele zmiennych lokalnych (sesja, dataset, liczniki, snapshot).
+# - duplicate-code: bloki argparse oraz szkielet main() są celowo podobne
+#   między skryptami, aby zachować spójny interfejs wiersza poleceń.
+
+[MAIN]
+# Nie traktuj nazw plików zaczynających się od cyfry jako błędu.
+# (obsługiwane też przez disable=invalid-name poniżej)
+
+[MESSAGES CONTROL]
+disable=
+    invalid-name,
+    too-many-locals,
+    too-many-branches,
+    too-many-statements,
+    duplicate-code
+
+[FORMAT]
+# Dopuszczamy nieco dłuższe linie (długie adresy URL i polskie komunikaty).
+max-line-length=110
