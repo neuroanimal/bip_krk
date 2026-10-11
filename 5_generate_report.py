@@ -83,6 +83,80 @@ def parse_deadline_to_date(deadline: Optional[str]) -> Optional[date]:
         return None
 
 
+def parse_iso_date(value: Optional[str]) -> Optional[date]:
+    """Wyłuskuje datę (bez czasu) z łańcucha ISO 8601.
+
+    Pola ``first_seen``/``last_seen`` mają postać '2026-09-22T15:58:21+02:00'.
+    Do liczenia "ile dni temu" wystarczy część z datą (pierwsze 10 znaków).
+
+    Args:
+        value: łańcuch ISO 8601 albo None.
+
+    Returns:
+        Obiekt :class:`datetime.date` albo None.
+    """
+    if not value or len(value) < 10:
+        return None
+    return parse_deadline_to_date(value[:10])
+
+
+def days_since(seen: Optional[date]) -> Optional[int]:
+    """Liczy, ile dni temu (względem dziś) wystąpiła data.
+
+    Args:
+        seen: data pierwszego zaobserwowania albo None.
+
+    Returns:
+        Liczbę dni (0 = dzisiaj) albo None, gdy brak daty.
+    """
+    if seen is None:
+        return None
+    return (date.today() - seen).days
+
+
+def freshness_label(days_ago: Optional[int], is_new: bool) -> str:
+    """Buduje czytelny opis świeżości oferty.
+
+    Dla ofert "nowych/nieoglądanych" (pojawiły się od ostatniego raportu)
+    dodaje prefiks "NOWE:". Dla pozostałych podaje samo "N dni temu".
+
+    Args:
+        days_ago: ile dni temu pojawiła się oferta (0 = dzisiaj).
+        is_new: czy oferta jest nowa/nieoglądana od ostatniego raportu.
+
+    Returns:
+        Tekst świeżości (np. "NOWE: dzisiaj", "NOWE: 1 dzień temu",
+        "2 dni temu", "pojawienie: brak danych").
+    """
+    if days_ago is None:
+        return "data pojawienia: brak danych"
+    # Fragment "N dni temu" z poprawną polską odmianą.
+    if days_ago == 0:
+        when = "dzisiaj"
+    elif days_ago == 1:
+        when = "1 dzień temu"
+    else:
+        when = f"{days_ago} dni temu"
+    return f"NOWE: {when}" if is_new else when
+
+
+def freshness_class(days_ago: Optional[int], is_new: bool) -> str:
+    """Zwraca klasę CSS znacznika świeżości oferty.
+
+    Args:
+        days_ago: ile dni temu pojawiła się oferta.
+        is_new: czy oferta jest nowa/nieoglądana.
+
+    Returns:
+        Klasę CSS: 'fresh-new' (nowa), 'fresh-recent' (≤7 dni), 'fresh-old'.
+    """
+    if is_new:
+        return "fresh-new"
+    if days_ago is not None and days_ago <= 7:
+        return "fresh-recent"
+    return "fresh-old"
+
+
 def classify_category(raw_category: Optional[str]) -> Tuple[str, int]:
     """Mapuje surową kategorię jednostki na ładną etykietę i priorytet.
 
@@ -174,16 +248,22 @@ def summarize_body(body_text: Optional[str], max_chars: int = 600) -> str:
 def enrich_offers(
     offers: List[Dict[str, object]],
     units: Dict[str, dict],
+    last_report_at: Optional[date] = None,
 ) -> List[Dict[str, object]]:
-    """Wzbogaca oferty o kategorię jednostki i dane pilności.
+    """Wzbogaca oferty o kategorię jednostki, pilność i świeżość.
 
     Args:
         offers: lista rekordów ofert.
         units: rekordy jednostek z units.json (dla kategorii).
+        last_report_at: data ostatniego wygenerowanego raportu. Oferta jest
+            uznawana za "nową/nieoglądaną", gdy jej first_seen jest nowszy
+            niż ten znacznik. Gdy None (pierwszy raport) — nowe są oferty
+            widziane dzisiaj.
 
     Returns:
-        Nową listę ofert z dodanymi polami: category_label, category_priority,
-        deadline_date, days_left, urgency.
+        Nową listę ofert z polami: category_label, category_priority,
+        deadline_date, days_left, urgency, first_seen_date, days_ago,
+        is_new, freshness, freshness_cls.
     """
     enriched: List[Dict[str, object]] = []
     for offer in offers:
@@ -194,34 +274,64 @@ def enrich_offers(
         deadline_date = parse_deadline_to_date(offer.get("deadline"))
         days_left = days_until(deadline_date)
 
+        # Świeżość: kiedy pierwszy raz zobaczyliśmy ofertę.
+        first_seen = parse_iso_date(offer.get("first_seen"))
+        days_ago = days_since(first_seen)
+        if first_seen is None:
+            is_new = False
+        elif last_report_at is None:
+            # Pierwszy raport — za nowe uznajemy oferty widziane dzisiaj.
+            is_new = days_ago == 0
+        else:
+            # Nowe = pojawiły się po ostatnim raporcie (jeszcze nieoglądane).
+            is_new = first_seen > last_report_at
+
         item = dict(offer)
         item["category_label"] = label
         item["category_priority"] = priority
         item["deadline_date"] = deadline_date
         item["days_left"] = days_left
         item["urgency"] = urgency_class(days_left)
+        item["first_seen_date"] = first_seen
+        item["days_ago"] = days_ago
+        item["is_new"] = is_new
+        item["freshness"] = freshness_label(days_ago, is_new)
+        item["freshness_cls"] = freshness_class(days_ago, is_new)
         enriched.append(item)
     return enriched
 
 
-def sort_key(offer: Dict[str, object]) -> Tuple[int, int, str]:
-    """Klucz sortowania: najpierw priorytet kategorii, potem pilność.
+def sort_key(offer: Dict[str, object]) -> Tuple[int, int, int, str]:
+    """Klucz sortowania wewnątrz kategorii.
 
-    W obrębie kategorii oferty z bliższym terminem idą wyżej. Oferty bez
-    terminu trafiają na koniec kategorii (traktowane jako najmniej pilne).
+    Kolejność:
+    1. NOWE/nieoglądane oferty na górze (is_new),
+    2. wśród nowych — od najnowszej (najmniejsze days_ago pierwsze),
+    3. pozostałe — wg pilności (najbliższy termin pierwszy),
+    4. tytuł (stabilizacja).
 
     Args:
         offer: wzbogacony rekord oferty.
 
     Returns:
-        Krotkę sortującą (priorytet kategorii, dni do terminu, tytuł).
+        Krotkę sortującą.
     """
-    priority = int(offer.get("category_priority", DEFAULT_PRIORITY))
-    days_left = offer.get("days_left")
-    # Brak terminu -> bardzo duża liczba, aby wylądował na końcu.
-    days_sort = days_left if isinstance(days_left, int) else 10_000
+    is_new = bool(offer.get("is_new"))
+    # NOWE pierwsze: klucz 0 dla nowych, 1 dla reszty.
+    new_rank = 0 if is_new else 1
+
+    if is_new:
+        # Wśród nowych: od najnowszej (days_ago rosnąco: 0, 1, 2...).
+        days_ago = offer.get("days_ago")
+        secondary = days_ago if isinstance(days_ago, int) else 10_000
+    else:
+        # Wśród pozostałych: wg pilności (najbliższy termin pierwszy).
+        days_left = offer.get("days_left")
+        secondary = days_left if isinstance(days_left, int) else 10_000
+
     title = str(offer.get("title") or "")
-    return (priority, days_sort, title)
+    priority = int(offer.get("category_priority", DEFAULT_PRIORITY))
+    return (priority, new_rank, secondary, title)
 
 
 def group_by_category(
@@ -294,8 +404,9 @@ def build_markdown(
     lines.append("")
     lines.append(f"Liczba ofert w raporcie: **{total}**")
     lines.append("")
-    lines.append("Oferty pogrupowane po kategorii; wewnątrz — od "
-                 "najpilniejszych (najbliższy termin składania).")
+    lines.append("Oferty pogrupowane po kategorii; wewnątrz — NOWE "
+                 "(nieoglądane) na górze od najnowszych, potem reszta wg "
+                 "pilności (najbliższy termin składania).")
     lines.append("")
 
     for label, offers in grouped:
@@ -307,9 +418,12 @@ def build_markdown(
             ref = offer.get("ref_number") or "brak"
             detail_url = offer.get("detail_url") or ""
 
-            lines.append(f"### {title}")
+            # Prefiks NOWE przy tytule dla ofert nieoglądanych.
+            new_prefix = "🆕 " if offer.get("is_new") else ""
+            lines.append(f"### {new_prefix}{title}")
             lines.append("")
             lines.append(f"- Jednostka: {unit_name}")
+            lines.append(f"- Pojawiło się: **{offer.get('freshness')}**")
             lines.append(f"- Termin składania: **{deadline_label(offer)}**")
             lines.append(f"- Nr referencyjny: {ref}")
             if detail_url:
@@ -408,6 +522,20 @@ h2.category {
 .badge.soon { background: var(--soon); }
 .badge.ok { background: var(--ok); }
 .badge.unknown { background: var(--unknown); }
+/* Znacznik świeżości oferty (kiedy się pojawiła). */
+.fresh {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .78em; font-weight: 700; margin-left: .4em;
+}
+.fresh-new { background: #16a34a; color: #fff; }        /* NOWE — zielony */
+.fresh-recent { background: #d1fae5; color: #065f46; }  /* ≤7 dni */
+.fresh-old { background: #eceff1; color: #607d8b; }     /* starsze */
+/* Wyróżnienie karty nowej oferty. */
+.offer.is-new {
+    border-left-width: 8px;
+    box-shadow: 0 2px 8px rgba(22,163,74,.18);
+    background: #f6fff9;
+}
 .meta { color: var(--muted); font-size: .9em; margin: .2em 0 .5em; }
 .desc {
     white-space: pre-wrap;
@@ -464,13 +592,18 @@ def build_html(
 
     parts.append("<div class='wrap'>")
 
-    # Legenda kolorów pilności.
+    # Legenda kolorów pilności oraz świeżości.
     parts.append(
         "<div class='legend'>"
+        "<strong>Termin:</strong> "
         "<span><i class='dot urgent'></i>≤ 3 dni</span>"
         "<span><i class='dot soon'></i>≤ 7 dni</span>"
         "<span><i class='dot ok'></i>&gt; 7 dni</span>"
         "<span><i class='dot unknown'></i>termin nieznany</span>"
+        " &nbsp;|&nbsp; <strong>Świeżość:</strong> "
+        "<span class='fresh fresh-new'>NOWE (nieoglądane)</span> "
+        "<span class='fresh fresh-recent'>≤ 7 dni</span> "
+        "<span class='fresh fresh-old'>starsze</span>"
         "</div>"
     )
 
@@ -499,9 +632,15 @@ def build_html(
             else:
                 badge_text = "termin ?"
 
-            parts.append(f"<div class='offer {esc(urgency)}'>")
+            # Znacznik świeżości (kiedy oferta się pojawiła).
+            fresh_cls = str(offer.get("freshness_cls", "fresh-old"))
+            fresh_text = str(offer.get("freshness", ""))
+            is_new_cls = " is-new" if offer.get("is_new") else ""
+
+            parts.append(f"<div class='offer {esc(urgency)}{is_new_cls}'>")
             parts.append(
                 f"<h3>{esc(offer.get('title') or '(bez tytułu)')}"
+                f"<span class='fresh {esc(fresh_cls)}'>{esc(fresh_text)}</span>"
                 f"<span class='badge {esc(urgency)}'>{esc(badge_text)}</span>"
                 "</h3>"
             )
@@ -560,6 +699,16 @@ def main() -> int:
         "--all", action="store_true",
         help="Ujmij wszystkie oferty (domyślnie tylko aktualne trwające).",
     )
+    parser.add_argument(
+        "--sample", type=int, default=None, metavar="N",
+        help="Tryb próbny: ogranicz raport do N ofert (szybka weryfikacja "
+             "prezentacji na istniejących danych).",
+    )
+    parser.add_argument(
+        "--mark-seen", action="store_true",
+        help="Zapisz znacznik 'oferty oglądane' (last_report_at) po "
+             "wygenerowaniu — kolejny raport nie oznaczy ich jako NOWE.",
+    )
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
@@ -575,19 +724,34 @@ def main() -> int:
     details_ds = bc.load_dataset(bc.OFFER_DETAILS_DATASET)
     units_ds = bc.load_dataset(bc.UNITS_DATASET)
 
+    # Znacznik ostatniego raportu — służy do odróżnienia ofert NOWYCH
+    # (nieoglądanych) od już prezentowanych. Zapisany w meta ofert.
+    last_report_at = parse_iso_date(
+        offers_ds.get("meta", {}).get("last_report_at")
+    )
+
     # Wybór ofert do raportu.
     selected = []
     for offer in offers_ds["records"].values():
         if args.all or is_current(offer):
             selected.append(offer)
 
-    # Wzbogacamy o kategorię i pilność, sortujemy, grupujemy.
-    enriched = enrich_offers(selected, units_ds["records"])
+    # Wzbogacamy o kategorię, pilność i świeżość, sortujemy, grupujemy.
+    enriched = enrich_offers(selected, units_ds["records"], last_report_at)
     enriched.sort(key=sort_key)
+
+    # Tryb próbny: ograniczamy liczbę ofert do szybkiej weryfikacji wyglądu.
+    if args.sample is not None:
+        enriched = enriched[: args.sample]
+        logging.info("Tryb próbny: ograniczono raport do %d ofert.",
+                     len(enriched))
+
     grouped = group_by_category(enriched)
 
+    new_count = sum(1 for o in enriched if o.get("is_new"))
     logging.info(
-        "Ofert w raporcie: %d, kategorii: %d.", len(enriched), len(grouped),
+        "Ofert w raporcie: %d (w tym NOWYCH: %d), kategorii: %d.",
+        len(enriched), new_count, len(grouped),
     )
 
     markdown = build_markdown(grouped, details_ds["records"], len(enriched))
@@ -599,6 +763,14 @@ def main() -> int:
 
     md_path.write_text(markdown, encoding="utf-8")
     html_path.write_text(html, encoding="utf-8")
+
+    # Oznaczamy oferty jako "oglądane" dopiero na wyraźne życzenie
+    # (--mark-seen), żeby tryb próbny ani podgląd nie "zużyły" statusu NOWE.
+    if args.mark_seen and not args.sample:
+        offers_ds.setdefault("meta", {})["last_report_at"] = bc.now_iso()
+        bc.save_dataset(bc.OFFERS_DATASET, offers_ds)
+        logging.info("Zapisano znacznik last_report_at (oferty oznaczone "
+                     "jako oglądane).")
 
     logging.info("Zapisano raport Markdown: %s", md_path)
     logging.info("Zapisano raport HTML: %s", html_path)

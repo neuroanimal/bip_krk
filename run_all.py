@@ -11,6 +11,7 @@ Uruchomienie (Windows i Linux identycznie):
 
     python run_all.py
     python run_all.py --verbose
+    python run_all.py --sample 15   # tryb próbny: tylko 15 jednostek, szybko
 """
 
 from __future__ import annotations
@@ -20,6 +21,7 @@ import logging
 import subprocess
 import sys
 from pathlib import Path
+from typing import List, Optional
 
 import bip_common as bc
 
@@ -33,7 +35,32 @@ PIPELINE = [
 ]
 
 
-def run_step(script: str, verbose: bool) -> int:
+def sample_args(script: str, sample: int) -> List[str]:
+    """Zwraca argumenty trybu próbnego dla danego etapu potoku.
+
+    Tryb próbny ma dać szybki pełny przebieg na małej próbce, aby zweryfikować
+    działanie bez czekania na ~400 żądań. Etapy 2/3/4 ograniczamy przez
+    ``--limit`` (liczba jednostek/ofert), etap 5 przez ``--sample`` (liczba
+    ofert w raporcie). Etap 1 (lista jednostek) jest szybki i pobiera całość,
+    aby kategorie były kompletne.
+
+    Args:
+        script: nazwa pliku etapu.
+        sample: rozmiar próbki.
+
+    Returns:
+        Listę dodatkowych argumentów wiersza poleceń dla etapu.
+    """
+    if script in ("2_fetch_praca_links.py", "3_fetch_offers.py",
+                  "4_fetch_offer_details.py"):
+        return ["--limit", str(sample)]
+    if script == "5_generate_report.py":
+        return ["--sample", str(sample)]
+    return []
+
+
+def run_step(script: str, verbose: bool,
+             sample: Optional[int] = None) -> int:
     """Uruchamia pojedynczy skrypt potoku jako podproces.
 
     Używamy ``sys.executable``, aby na Windows i Linux uruchomić dokładnie
@@ -42,6 +69,7 @@ def run_step(script: str, verbose: bool) -> int:
     Args:
         script: nazwa pliku skryptu do uruchomienia.
         verbose: gdy True, przekazuje flagę --verbose do skryptu.
+        sample: rozmiar próbki trybu próbnego (None = pełny przebieg).
 
     Returns:
         Kod wyjścia podprocesu.
@@ -50,6 +78,8 @@ def run_step(script: str, verbose: bool) -> int:
     command = [sys.executable, str(script_path)]
     if verbose:
         command.append("--verbose")
+    if sample is not None:
+        command.extend(sample_args(script, sample))
     logging.info("=== Uruchamiam: %s ===", script)
     result = subprocess.run(command, check=False)
     return result.returncode
@@ -65,13 +95,22 @@ def main() -> int:
         description="Uruchamia cały potok scrapujący (skrypty 1-5).",
     )
     parser.add_argument("--verbose", action="store_true", help="Logi DEBUG.")
+    parser.add_argument(
+        "--sample", type=int, default=None, metavar="N",
+        help="Tryb próbny: przetwarzaj tylko N jednostek/ofert (szybka "
+             "weryfikacja całego potoku bez pełnego pobierania).",
+    )
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
     bc.ensure_dirs()
 
+    if args.sample is not None:
+        logging.info("TRYB PRÓBNY: próbka = %d (szybki przebieg).",
+                     args.sample)
+
     for script in PIPELINE:
-        code = run_step(script, args.verbose)
+        code = run_step(script, args.verbose, args.sample)
         if code != 0:
             logging.error("Etap %s zakończył się błędem (kod %d) — przerywam.",
                           script, code)
