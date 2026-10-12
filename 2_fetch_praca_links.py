@@ -153,6 +153,7 @@ def main() -> int:
     found = 0
     missing = 0
     failures = 0  # nieudane pobrania (notowane w failures.json)
+    fixed_from_archive = 0  # martwy link zastąpiony wariantem z archiwum
 
     for index, key in enumerate(keys, start=1):
         unit = units_ds["records"][key]
@@ -161,23 +162,58 @@ def main() -> int:
         logging.info("[%d/%d] %s (%s)", index, len(keys), name[:40], url)
 
         html, reason = bc.fetch_with_reason(session, url)
+        alt_used = None  # adres z archiwum, jeśli trzeba go było użyć
         if html is None:
             # Nie udało się pobrać — NOTUJEMY to trwale (nic nie ginie po
             # cichu). Typowy przypadek: BIP przeniósł jednostkę do archiwum,
             # ale zostawił martwy link na liście aktualnej.
+            #
+            # ZABEZPIECZENIE: jeśli ta jednostka ma w datasecie wskazany
+            # duplikat archiwalny (pole duplicate_of ze skryptu 1), próbujemy
+            # linku z archiwum — często to on jest tym działającym.
+            alt_keys = unit.get("duplicate_of") or []
+            for alt_key in alt_keys:
+                alt_record = units_ds["records"].get(alt_key) or {}
+                alt_url = alt_record.get("url")
+                if not alt_url:
+                    continue
+                logging.info("  martwy link — próbuję wariantu z archiwum: %s",
+                             alt_url)
+                html, alt_reason = bc.fetch_with_reason(session, alt_url)
+                if html is not None:
+                    alt_used = alt_url
+                    break
+                logging.debug("  wariant %s też zawiódł (%s)",
+                              alt_url, alt_reason)
+
+            if html is None:
+                bc.record_failure(
+                    stage="2_praca_links",
+                    key=key,
+                    url=url,
+                    reason=reason or "fetch_failed",
+                    detail=f"jednostka: {name}",
+                )
+                failures += 1
+                continue
+
+            # Udało się przez link z archiwum — notujemy, że link na liście
+            # aktualnej jest martwy, i zapisujemy działający adres.
             bc.record_failure(
                 stage="2_praca_links",
                 key=key,
                 url=url,
-                reason=reason or "fetch_failed",
-                detail=f"jednostka: {name}",
+                reason="dead_link_fixed_from_archive",
+                detail=(f"jednostka: {name}; link z listy aktualnej nie "
+                        f"działa ({reason}), użyto archiwalnego: {alt_used}"),
             )
-            failures += 1
-            continue
-        # Pobranie się udało — jeśli wcześniej notowaliśmy błąd, zamykamy go.
-        for past_reason in ("fetch_failed", "http_404", "timeout",
-                            "empty_response"):
-            bc.clear_failure("2_praca_links", key, past_reason)
+            fixed_from_archive += 1
+            url = alt_used  # dalej pracujemy na działającym adresie
+        else:
+            # Pobranie się udało — jeśli wcześniej notowaliśmy błąd, zamykamy.
+            for past_reason in ("fetch_failed", "http_404", "timeout",
+                                "empty_response"):
+                bc.clear_failure("2_praca_links", key, past_reason)
 
         praca_url = find_praca_link(html)
         has_link = praca_url is not None
@@ -198,10 +234,15 @@ def main() -> int:
         fields = {
             "unit_key": key,
             "unit_name": name,
+            # unit_url to adres, który FAKTYCZNIE zadziałał — gdy link z
+            # listy aktualnej był martwy, jest tu adres z archiwum.
             "unit_url": url,
             "has_praca_link": has_link,
             # Gdy brak linku — jawnie zapisujemy None (adnotacja o braku).
             "praca_url": praca_url,
+            # Znacznik, że adres pochodzi z wariantu archiwalnego (link na
+            # liście aktualnej BIP jest martwy).
+            "url_from_archive": alt_used is not None,
         }
         bc.upsert_record(records, key=key, fields=fields, seen_now=seen_now)
         seen_keys.append(key)
@@ -229,11 +270,13 @@ def main() -> int:
 
     logging.info(
         "Gotowe. Z linkiem 'PRACA - NOWE': %d, bez linku: %d, "
-        "nieudanych pobrań: %d, świeżo wygaszonych: %d. Dataset: %s",
-        found, missing, failures, deactivated, bc.PRACA_LINKS_DATASET,
+        "nieudanych pobrań: %d, naprawionych z archiwum: %d, "
+        "świeżo wygaszonych: %d. Dataset: %s",
+        found, missing, failures, fixed_from_archive, deactivated,
+        bc.PRACA_LINKS_DATASET,
     )
-    if failures:
-        logging.warning("Nieudane pobrania zanotowano w: %s",
+    if failures or fixed_from_archive:
+        logging.warning("Szczegóły niepowodzeń/napraw: %s",
                         bc.FAILURES_DATASET)
     return 0
 

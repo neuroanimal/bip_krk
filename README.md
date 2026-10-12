@@ -33,17 +33,76 @@ Jednostki są linkowane dwojako: bezpośrednio (`?bip_id=28`) lub „ładnym”
 slugiem (`/GUP`, który przekierowuje na właściwy `bip_id`). Oba warianty są
 obsługiwane.
 
-## Potok (pipeline) — 5 etapów
+## Potok (pipeline) — etapy
 
 | Skrypt | Rola | Wejście | Wyjście |
 |--------|------|---------|---------|
-| `1_fetch_units.py` | Lista jednostek MJO — **aktualne** (strona główna) i **archiwalne** („Archiwum BIP MJO”), z datami dostępności/wygaśnięcia | strona listy jednostek | `data/units.json` |
-| `2_fetch_praca_links.py` | Dla każdej jednostki znajduje link **„PRACA - NOWE”**; brak linku odnotowuje jawnie (`has_praca_link: false`) | `data/units.json` | `data/praca_links.json` |
-| `3_fetch_offers.py` | Pobiera oferty z sekcji strony pracy: `NABORY TRWAJĄCE` (aktualne), `ZAKOŃCZONO PRZYJMOWANIE ZGŁOSZEŃ`, `NABORY ZAKOŃCZONE` — z linkami do szczegółów, nr ref. i terminem | `data/praca_links.json` | `data/offers.json` |
-| `4_fetch_offer_details.py` | Wchodzi w szczegóły ofert, w których **nabór jest wciąż aktualny** (status trwający + termin nieprzeterminowany) i pobiera pełną treść oraz odnośniki | `data/offers.json` | `data/offer_details.json` |
-| `5_generate_report.py` | Generuje raport (Markdown + HTML) z opisem ofert i linkami do szczegółów; **grupuje po kategorii** (Kultura i Sztuka na górze), a wewnątrz **sortuje po pilności** (najbliższy termin pierwszy); HTML jest kolorowy, z oznaczeniem pilności | datasety ofert i szczegółów | `reports/raport_praca_*.md` i `.html` |
+| `1_fetch_units.py` | Lista jednostek MJO — **aktualne** (strona główna) i **archiwalne** („Archiwum BIP MJO”), z kategoriami i datami dostępności/wygaśnięcia. Wykrywa **podejrzane duplikaty** (ta sama jednostka aktywna i archiwalna → możliwy martwy link) | strona listy jednostek | `data/units.json` |
+| `2_fetch_praca_links.py` | Dla każdej jednostki znajduje link **„PRACA - NOWE”**; brak linku odnotowuje jawnie. Gdy link z listy aktualnej jest **martwy (404)**, automatycznie próbuje wariantu z archiwum i zapisuje działający adres | `data/units.json` | `data/praca_links.json` |
+| `3_fetch_offers.py` | Oferty ze stron poszczególnych jednostek (ścieżka zapasowa — wolna, ~400 żądań) | `data/praca_links.json` | `data/offers.json` |
+| **`3b_fetch_offers_global.py`** | **Szybka ścieżka**: wszystkie nabory z jednej globalnej strony BIP (`?dok_id=104362`) — ~435 ofert w ~2 s | globalna lista naborów | `data/offers.json` |
+| `src_nuzle.py` | Źródło zewnętrzne: nuzle.pl (Kraków, bez ofert nauczycielskich) | nuzle.pl | `data/offers.json` |
+| `src_ofertypracy_edu.py` | Źródło zewnętrzne: ofertypracy.edu.pl przez Inertia API (Kraków, typ „Pracownik niepedagogiczny”) | API portalu | `data/offers.json` |
+| `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
+| `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
+| `report_html.py` | Moduł prezentacji HTML (styl, skrypt trackingu, budowa dokumentu) | — | — |
 
-Orchestrator `run_all.py` uruchamia wszystkie etapy po kolei.
+Orchestrator `run_all.py` uruchamia wszystkie etapy po kolei. Źródła
+zewnętrzne (`src_*`) są **opcjonalne** — ich awaria nie przerywa potoku.
+
+## Znaczniki świeżości i tracking klikania
+
+Raport pokazuje przy każdej ofercie, **kiedy się pojawiła**:
+
+- **„NOWE: dzisiaj” / „NOWE: 1 dzień temu”** (zielony) — oferta pojawiła się
+  po ostatnim raporcie i nie była jeszcze otwierana,
+- **„5 dni temu”** (szary) — oferta już prezentowana/oglądana.
+
+NOWE są sortowane **na górze każdej kategorii**, od najnowszej.
+
+Kliknięcie w link oferty zapisuje ją jako **oglądaną** (localStorage
+przeglądarki — raport jest plikiem offline, bez serwera). Taka karta zostaje
+wygaszona z przekreślonym tytułem i znacznikiem „oglądane <data>”. W pasku
+narzędzi są: licznik nieprzejrzanych, „Oznacz wszystkie jako przejrzane”,
+„Eksportuj stan (clicks.json)” i „Wyczyść historię”.
+
+Znacznik „oglądane” z pliku `data/clicks.json` (eksport z raportu) wpływa
+na oznaczanie NOWE — oferta raz otwarta przestaje być nowa.
+
+## Diagnostyka — nic nie ginie po cichu
+
+Każde nieudane pobranie, brak oczekiwanego elementu i niedopasowanie rekordu
+jest notowane w `data/failures.json` (etap, klucz, URL, powód, licznik
+powtórzeń, `first_seen`/`last_seen`, `resolved`). Raport HTML ma zwijaną
+sekcję **„Diagnostyka pobierania”** z tymi zgłoszeniami.
+
+Najważniejsze powody:
+
+| Powód | Znaczenie |
+|-------|-----------|
+| `dead_link_fixed_from_archive` | Link z listy aktualnej BIP był martwy; użyto działającego adresu z archiwum |
+| `possible_stale_link` | Ta sama jednostka występuje jako aktywna i archiwalna — link aktualny może być martwy |
+| `unit_in_current_and_archive` | Jednostka wpisana w obu listach (możliwa trwająca migracja) |
+| `http_404`, `timeout`, `empty_response` | Strona nie odpowiada |
+| `no_praca_link` | Jednostka bez zakładki „PRACA - NOWE” |
+| `unit_not_matched` | Oferta z globalnej listy bez dopasowanej jednostki (lista jednostek nieaktualna) |
+
+**Potwierdzony przypadek:** `slug:PK133` i `slug:SP137` z listy aktualnej BIP
+zwracają **404**, a działające adresy (`?bip_id=371`, `?bip_id=54`) są w
+archiwum — wraz z zakładką „PRACA - NOWE”. Skrypt 2 odzyskuje je automatycznie.
+
+## Tryb próbny
+
+Pełny przebieg obchodzi ~400 stron jednostek (~45 min). Tryb próbny daje
+szybką weryfikację (ok. **30 s**):
+
+```
+python run_all.py --sample 8          # cały potok na próbce
+python 5_generate_report.py --sample 20   # tylko raport z istniejących danych
+```
+
+Tryb próbny **nie wygasza** rekordów (nieodwiedzone jednostki nie są
+„zniknięte”) i nie zużywa statusu NOWE.
 
 ## Uruchomienie
 

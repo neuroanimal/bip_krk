@@ -211,16 +211,30 @@ def main() -> int:
 
     seen_keys: List[str] = []
     fetched = 0
+    failed = 0  # nieudane pobrania szczegółów (notowane w failures.json)
 
     for index, (key, offer) in enumerate(targets, start=1):
         detail_url = offer["detail_url"]
         title = offer.get("title", "")
         logging.info("[%d/%d] %s", index, len(targets), title[:50])
 
-        html = bc.fetch(session, detail_url)
+        html, reason = bc.fetch_with_reason(session, detail_url)
         if html is None:
-            logging.warning("Pominięto (błąd pobierania): %s", key)
+            # Notujemy trwale — nie gubimy informacji, że szczegółów tej
+            # oferty nie udało się pobrać (np. ogłoszenie już zdjęte).
+            bc.record_failure(
+                stage="4_offer_details",
+                key=key,
+                url=detail_url,
+                reason=reason or "fetch_failed",
+                detail=f"oferta: {title[:80]}",
+            )
+            failed += 1
             continue
+        # Pobranie udane — zamykamy ewentualny wcześniejszy wpis o błędzie.
+        for past_reason in ("fetch_failed", "http_404", "timeout",
+                            "empty_response"):
+            bc.clear_failure("4_offer_details", key, past_reason)
 
         details = extract_details(html)
         fetched += 1
@@ -253,9 +267,12 @@ def main() -> int:
     bc.save_dataset(bc.OFFER_DETAILS_DATASET, dataset)
 
     logging.info(
-        "Gotowe. Pobrano szczegóły %d ofert. Dataset: %s",
-        fetched, bc.OFFER_DETAILS_DATASET,
+        "Gotowe. Pobrano szczegóły %d ofert (nieudanych: %d). Dataset: %s",
+        fetched, failed, bc.OFFER_DETAILS_DATASET,
     )
+    if failed:
+        logging.warning("Nieudane pobrania szczegółów zanotowano w: %s",
+                        bc.FAILURES_DATASET)
     return 0
 
 

@@ -173,6 +173,78 @@ def parse_units_from_html(html: str, source: str) -> List[Dict[str, str]]:
     return units
 
 
+def normalize_unit_name(name: str) -> str:
+    """Normalizuje nazwę jednostki do porównywania między listami.
+
+    Usuwa skrót w nawiasie, nadmiar białych znaków, znaki interpunkcyjne
+    i ujednolica wielkość liter — tak aby "ZBK - Zarząd Budynków Komunalnych
+    w Krakowie" i "Zarząd Budynków Komunalnych w Krakowie" dały ten sam wynik.
+
+    Args:
+        name: nazwa jednostki.
+
+    Returns:
+        Znormalizowaną nazwę (pusta, gdy brak nazwy).
+    """
+    if not name:
+        return ""
+    text = re.sub(r"\([^)]*\)", " ", name)       # skrót w nawiasie
+    text = re.sub(r"^[A-ZĄĆĘŁŃÓŚŹŻ0-9]{2,10}\s*[-–]\s*", "", text.strip())
+    text = re.sub(r"[„”\"'.,;:]", " ", text)
+    return re.sub(r"\s+", " ", text).strip().lower()
+
+
+def detect_stale_duplicates(records: Dict[str, dict]) -> int:
+    """Wykrywa jednostki występujące pod DWOMA różnymi kluczami.
+
+    Rozwiązuje realny problem BIP: po przeniesieniu jednostki do archiwum
+    bywa, że w archiwum pojawia się NOWY link (np. inny ``bip_id``), a STARY
+    link zostaje na liście aktualnej i prowadzi już nikąd. Oba warianty mają
+    różne klucze (``bip_id:471`` vs ``slug:XYZ``), więc dotąd nic ich nie
+    kojarzyło — stara jednostka zostawała "aktywna" z martwym linkiem.
+
+    Tutaj porównujemy znormalizowane NAZWY. Gdy ta sama nazwa występuje raz
+    jako aktywna (lista bieżąca) i raz jako archiwalna, oznaczamy aktywny
+    rekord polem ``possible_stale_link`` i notujemy to w dzienniku
+    niepowodzeń, aby dało się zweryfikować, który link jest właściwy.
+
+    Args:
+        records: wszystkie rekordy jednostek (modyfikowane w miejscu).
+
+    Returns:
+        Liczbę wykrytych podejrzanych duplikatów.
+    """
+    by_name: Dict[str, List[str]] = {}
+    for key, record in records.items():
+        name = normalize_unit_name(str(record.get("name") or ""))
+        if name:
+            by_name.setdefault(name, []).append(key)
+
+    flagged = 0
+    for name, keys in by_name.items():
+        if len(keys) < 2:
+            continue
+        active = [k for k in keys if records[k].get("active")]
+        archived = [k for k in keys if not records[k].get("active")]
+        # Interesuje nas sytuacja: jest wariant aktywny ORAZ archiwalny.
+        if not active or not archived:
+            continue
+        for key in active:
+            records[key]["possible_stale_link"] = True
+            records[key]["duplicate_of"] = archived
+            bc.record_failure(
+                stage="1_units",
+                key=key,
+                url=str(records[key].get("url") or ""),
+                reason="possible_stale_link",
+                detail=(f"nazwa '{name}' występuje też w archiwum jako "
+                        f"{', '.join(archived)} — stary link na liście "
+                        f"aktualnej może być martwy"),
+            )
+            flagged += 1
+    return flagged
+
+
 def find_archive_url(html: str) -> str:
     """Znajduje adres dokumentu "Archiwum BIP MJO" na stronie głównej.
 
@@ -290,6 +362,19 @@ def main() -> int:
     archived_new = 0
     for unit in archive_units:
         if unit["key"] in current_keys:
+            # Ta sama jednostka (ten sam klucz) jest i na liście aktualnej,
+            # i w archiwum. BIP zdarza się zostawiać wpis w obu miejscach —
+            # notujemy to, bo może oznaczać trwającą migrację jednostki.
+            record = records.get(unit["key"])
+            if record is not None:
+                record["in_both_lists"] = True
+            bc.record_failure(
+                stage="1_units",
+                key=unit["key"],
+                url=unit["url"],
+                reason="unit_in_current_and_archive",
+                detail=f"jednostka: {unit['name']}",
+            )
             continue  # jest też na aktualnej liście -> pozostaje aktywna
         existing = records.get(unit["key"])
         if existing is None:
@@ -312,15 +397,25 @@ def main() -> int:
             rec["inactive_since"] = seen_now
             archived_new += 1
 
+    # Wykrycie jednostek występujących pod dwoma kluczami (stary link na
+    # liście aktualnej + nowy w archiwum) — zabezpieczenie przed martwymi
+    # linkami, które BIP zostawia po przeniesieniu jednostki.
+    stale = detect_stale_duplicates(records)
+
     bc.save_dataset(bc.UNITS_DATASET, dataset)
 
     total_active = sum(1 for r in records.values() if r.get("active"))
     logging.info(
         "Gotowe. Rekordów łącznie: %d (aktywnych: %d, świeżo wygaszonych: "
-        "%d, nowych archiwalnych: %d). Dataset: %s",
+        "%d, nowych archiwalnych: %d).",
         len(records), total_active, deactivated, archived_new,
-        bc.UNITS_DATASET,
     )
+    if stale:
+        logging.warning(
+            "Podejrzanych duplikatów (możliwy martwy link na liście "
+            "aktualnej): %d — szczegóły w %s", stale, bc.FAILURES_DATASET,
+        )
+    logging.info("Dataset: %s", bc.UNITS_DATASET)
     return 0
 
 

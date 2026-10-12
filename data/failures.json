@@ -1,18 +1,117 @@
 {
   "meta": {
-    "created": "2026-10-12T00:50:08+02:00",
-    "updated": "2026-10-12T10:57:14+02:00"
+    "created": "2026-10-12T11:37:33+02:00",
+    "updated": "2026-10-12T11:37:33+02:00"
   },
   "records": {
-    "2_praca_links|bip_id:1|no_praca_link": {
-      "stage": "2_praca_links",
+    "1_units|bip_id:1|unit_in_current_and_archive": {
+      "stage": "1_units",
       "key": "bip_id:1",
       "url": "https://www.bip.krakow.pl/?bip_id=1",
-      "reason": "no_praca_link",
+      "reason": "unit_in_current_and_archive",
       "detail": "jednostka: Miasto Kraków",
-      "first_seen": "2026-10-12T00:50:08+02:00",
-      "last_seen": "2026-10-12T10:57:14+02:00",
-      "count": 2,
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|slug:deklaracja_dostepnosci|unit_in_current_and_archive": {
+      "stage": "1_units",
+      "key": "slug:deklaracja_dostepnosci",
+      "url": "https://www.bip.krakow.pl/deklaracja_dostepnosci",
+      "reason": "unit_in_current_and_archive",
+      "detail": "jednostka: Deklaracja dostępności",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|slug:bip|unit_in_current_and_archive": {
+      "stage": "1_units",
+      "key": "slug:bip",
+      "url": "https://www.gov.pl/bip",
+      "reason": "unit_in_current_and_archive",
+      "detail": "jednostka: Biuletyn Informacji Publicznej",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|slug:PK133|possible_stale_link": {
+      "stage": "1_units",
+      "key": "slug:PK133",
+      "url": "https://www.bip.krakow.pl/PK133",
+      "reason": "possible_stale_link",
+      "detail": "nazwa 'przedszkole nr 133' występuje też w archiwum jako bip_id:371 — stary link na liście aktualnej może być martwy",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|slug:SPD10|possible_stale_link": {
+      "stage": "1_units",
+      "key": "slug:SPD10",
+      "url": "https://www.bip.krakow.pl/SPD10",
+      "reason": "possible_stale_link",
+      "detail": "nazwa 'szkoła podstawowa nr 10' występuje też w archiwum jako bip_id:145, bip_id:598 — stary link na liście aktualnej może być martwy",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|slug:SP137|possible_stale_link": {
+      "stage": "1_units",
+      "key": "slug:SP137",
+      "url": "https://www.bip.krakow.pl/SP137",
+      "reason": "possible_stale_link",
+      "detail": "nazwa 'szkoła podstawowa nr 137' występuje też w archiwum jako bip_id:54 — stary link na liście aktualnej może być martwy",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|bip_id:642|possible_stale_link": {
+      "stage": "1_units",
+      "key": "bip_id:642",
+      "url": "https://www.bip.krakow.pl/?bip_id=642",
+      "reason": "possible_stale_link",
+      "detail": "nazwa 'zespół szkół ogólnokształcących nr 1' występuje też w archiwum jako bip_id:537 — stary link na liście aktualnej może być martwy",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|bip_id:548|possible_stale_link": {
+      "stage": "1_units",
+      "key": "bip_id:548",
+      "url": "https://www.bip.krakow.pl/?bip_id=548",
+      "reason": "possible_stale_link",
+      "detail": "nazwa 'zespół szkół ogólnokształcących nr 2' występuje też w archiwum jako bip_id:212 — stary link na liście aktualnej może być martwy",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|slug:KFK|possible_stale_link": {
+      "stage": "1_units",
+      "key": "slug:KFK",
+      "url": "https://www.bip.krakow.pl/KFK",
+      "reason": "possible_stale_link",
+      "detail": "nazwa 'krakowskie forum kultury' występuje też w archiwum jako bip_id:465 — stary link na liście aktualnej może być martwy",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "1_units|slug:CKPD|possible_stale_link": {
+      "stage": "1_units",
+      "key": "slug:CKPD",
+      "url": "https://www.bip.krakow.pl/CKPD",
+      "reason": "possible_stale_link",
+      "detail": "nazwa 'centrum kultury podgórza' występuje też w archiwum jako bip_id:470 — stary link na liście aktualnej może być martwy",
+      "first_seen": "2026-10-12T11:37:33+02:00",
+      "last_seen": "2026-10-12T11:37:33+02:00",
+      "count": 1,
       "resolved": false
     }
   }
