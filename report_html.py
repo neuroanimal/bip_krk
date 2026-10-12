@@ -187,6 +187,24 @@ a { color: #0645ad; text-decoration: none; }
 a:hover { text-decoration: underline; }
 .links { font-size: .88em; margin-top: .4em; }
 .links ul { margin: .3em 0 0; padding-left: 1.2em; }
+/* Sekcja "dopasowane do profilu" — wyróżniona, na samej górze raportu. */
+.profile-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #fffbeb 100%);
+    border: 2px solid #f59e0b; border-radius: 10px;
+    padding: .9em 1.1em; margin: 1em 0 1.4em;
+}
+.profile-box h2 {
+    margin: 0 0 .2em; font-size: 1.2em; color: #b45309;
+    background: none; border: none; padding: 0;
+}
+.profile-box .hint { color: #78716c; font-size: .88em; margin: 0 0 .6em; }
+.profile-tags { font-size: .8em; color: #92400e; margin-top: .3em; }
+.match {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .75em; font-weight: 700; margin-left: .4em;
+    background: #f59e0b; color: #fff;
+}
+.match.weak { background: #fcd34d; color: #78350f; }
 /* Sekcja diagnostyczna (co się nie pobrało) — zwinięta, nie rozprasza. */
 .failures {
     background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
@@ -381,6 +399,184 @@ def build_failures_section(failures: Dict[str, dict]) -> str:
     return "\n".join(parts)
 
 
+def build_offer_card(offer: Dict[str, object],
+                     details: Dict[str, Dict[str, object]]) -> str:
+    """Buduje kartę HTML jednej oferty.
+
+    Wydzielone z :func:`build_html`, bo ta sama karta jest używana w dwóch
+    miejscach: w sekcji "dopasowane do profilu" na górze raportu oraz
+    w zwykłym grupowaniu po kategoriach.
+
+    Args:
+        offer: wzbogacony rekord oferty (kategoria, pilność, świeżość,
+            dopasowanie do profilu).
+        details: mapa klucz oferty -> szczegóły (dla opisu i odnośników).
+
+    Returns:
+        Fragment HTML z kartą oferty.
+    """
+    def esc(value: object) -> str:
+        """Escapuje tekst do HTML."""
+        return html_lib.escape(str(value if value is not None else ""))
+
+    parts: List[str] = []
+    urgency = str(offer.get("urgency", "unknown"))
+    detail_url = offer.get("detail_url") or ""
+    key = f"nab:{offer['nab_id']}" if offer.get("nab_id") else None
+    det = details.get(key) if key else None
+    body = det.get("body_text") if det else None
+
+    # Etykieta znaczka pilności.
+    days = offer.get("days_left")
+    if isinstance(days, int) and days >= 0:
+        badge_text = f"za {days} dni" if days > 1 else (
+            "dziś" if days == 0 else "jutro")
+    elif isinstance(days, int):
+        badge_text = "po terminie"
+    else:
+        badge_text = "termin ?"
+
+    # Znacznik świeżości (kiedy oferta się pojawiła).
+    fresh_cls = str(offer.get("freshness_cls", "fresh-old"))
+    fresh_text = str(offer.get("freshness", ""))
+    is_new_cls = " is-new" if offer.get("is_new") else ""
+
+    # Atrybut data-nab pozwala skryptowi trackingu rozpoznać ofertę
+    # i zapamiętać jej kliknięcie w localStorage przeglądarki.
+    nab_attr = esc(offer.get("nab_id") or "")
+    # Znaczek dopasowania do profilu (kultura/sztuka/grafika).
+    level = str(offer.get("profile_level") or "none")
+    if level == "strong":
+        match_badge = "<span class='match'>DLA CIEBIE</span>"
+    elif level == "weak":
+        match_badge = "<span class='match weak'>może pasować</span>"
+    else:
+        match_badge = ""
+    parts.append(
+        f"<div class='offer {esc(urgency)}{is_new_cls}' "
+        f"data-nab='{nab_attr}'>"
+    )
+    parts.append(
+        f"<h3>{esc(offer.get('title') or '(bez tytułu)')}"
+        f"<span class='fresh {esc(fresh_cls)}'>{esc(fresh_text)}</span>"
+        f"<span class='badge {esc(urgency)}'>{esc(badge_text)}</span>"
+        f"{match_badge}"
+        "</h3>"
+    )
+    parts.append("<div class='meta'>")
+    parts.append(f"{esc(offer.get('unit_name') or '')} · ")
+    parts.append(
+        f"Termin: <strong>{esc(deadline_label(offer))}</strong> · "
+    )
+    parts.append(f"Nr ref.: {esc(offer.get('ref_number') or 'brak')}")
+    # Źródło oferty — BIP, nuzle czy portal oświatowy.
+    source_labels = {
+        "bip_global": "BIP (lista globalna)",
+        "bip_unit": "BIP (strona jednostki)",
+        "nuzle": "nuzle.pl",
+        "ofertypracy_edu": "ofertypracy.edu.pl",
+    }
+    source = str(offer.get("source") or "")
+    if source:
+        parts.append(
+            f" · Źródło: {esc(source_labels.get(source, source))}"
+        )
+    parts.append("</div>")
+    if detail_url:
+        parts.append(
+            f"<div class='meta'>Szczegóły: "
+            f"<a href='{esc(detail_url)}' target='_blank'>"
+            f"{esc(detail_url)}</a></div>"
+        )
+    parts.append(
+        f"<div class='desc'>{esc(summarize_body(body))}</div>"
+    )
+    # Obszary dopasowania do profilu (dlaczego ta oferta pasuje).
+    tags = offer.get("profile_tags") or []
+    if tags and level != "none":
+        parts.append(
+            f"<div class='profile-tags'>Pasuje do: "
+            f"{esc(', '.join(str(t) for t in tags))}</div>"
+        )
+    if det and det.get("links"):
+        doc_links = [
+            lnk for lnk in det["links"]
+            if lnk.get("text") and len(lnk["text"]) > 3
+        ][:10]
+        if doc_links:
+            parts.append("<div class='links'>Odnośniki w ogłoszeniu:"
+                         "<ul>")
+            for lnk in doc_links:
+                parts.append(
+                    f"<li><a href='{esc(lnk['url'])}' target='_blank'>"
+                    f"{esc(lnk['text'])}</a></li>"
+                )
+            parts.append("</ul></div>")
+    parts.append("</div>")
+    return "\n".join(parts)
+
+
+def build_profile_section(
+    offers: List[Dict[str, object]],
+    details: Dict[str, Dict[str, object]],
+) -> str:
+    """Buduje wyróżnioną sekcję „dopasowane do profilu” na górze raportu.
+
+    Powstała w odpowiedzi na realny problem: wśród kilkuset ofert z BIP
+    i portali tonęły te naprawdę trafne (kultura, sztuka, grafika, animacja),
+    przez co raport wyglądał jakby zawierał „głównie administrację i
+    sprzątanie”. Tutaj zbieramy oferty z wynikiem dopasowania i pokazujemy
+    je NA SAMEJ GÓRZE, posortowane po trafności.
+
+    Pokazujemy tylko oferty AKTUALNE (termin nieprzeterminowany) — stare
+    trafienia byłyby tylko szumem.
+
+    Args:
+        offers: wszystkie wzbogacone oferty raportu.
+        details: mapa klucz oferty -> szczegóły.
+
+    Returns:
+        Fragment HTML sekcji (pusty, gdy nie ma dopasowań).
+    """
+    matched = [
+        offer for offer in offers
+        if str(offer.get("profile_level") or "none") in ("strong", "weak")
+    ]
+    if not matched:
+        return ""
+
+    # Najpierw mocne dopasowania, potem wg trafności, a przy równej — wg
+    # pilności terminu (bliższy termin wyżej).
+    def sort_key(offer: Dict[str, object]) -> Tuple[int, int, int]:
+        """Klucz sortowania dopasowanych ofert."""
+        strong = 0 if offer.get("profile_level") == "strong" else 1
+        score = -int(offer.get("profile_score") or 0)
+        days = offer.get("days_left")
+        urgency = days if isinstance(days, int) else 10_000
+        return (strong, score, urgency)
+
+    matched.sort(key=sort_key)
+
+    strong_count = sum(1 for o in matched if o.get("profile_level") == "strong")
+
+    parts: List[str] = ["<div class='profile-box'>"]
+    parts.append(
+        f"<h2>Dopasowane do profilu — {len(matched)} "
+        f"{'oferta' if len(matched) == 1 else 'ofert'} "
+        f"(mocnych trafień: {strong_count})</h2>"
+    )
+    parts.append(
+        "<p class='hint'>Kultura i sztuka, grafika i design, animacja "
+        "kultury, warsztaty, edukacja muzealna i kulturalna. Pominięte "
+        "stanowiska jawnie spoza profilu (sprzątanie, ochrona, księgowość, "
+        "IT, nauczyciel przedmiotu).</p>"
+    )
+    for offer in matched:
+        parts.append(build_offer_card(offer, details))
+    parts.append("</div>")
+    return "\n".join(parts)
+
+
 def build_html(
     grouped: List[Tuple[str, List[Dict[str, object]]]],
     details: Dict[str, Dict[str, object]],
@@ -453,89 +649,22 @@ def build_html(
     if total == 0:
         parts.append("<p>Brak ofert spełniających kryteria.</p>")
 
+    # Sekcja "dopasowane do profilu" — NA GÓRZE, przed kategoriami, bo to
+    # ona jest właściwym celem raportu. Zbieramy oferty ze wszystkich grup.
+    all_offers: List[Dict[str, object]] = []
+    for _label, offers_in_group in grouped:
+        all_offers.extend(offers_in_group)
+    profile_section = build_profile_section(all_offers, details)
+    if profile_section:
+        parts.append(profile_section)
+
     for label, offers in grouped:
         parts.append(
             f"<h2 class='category'>{esc(label)} "
             f"<span class='count'>({len(offers)})</span></h2>"
         )
         for offer in offers:
-            urgency = str(offer.get("urgency", "unknown"))
-            detail_url = offer.get("detail_url") or ""
-            key = f"nab:{offer['nab_id']}" if offer.get("nab_id") else None
-            det = details.get(key) if key else None
-            body = det.get("body_text") if det else None
-
-            # Etykieta znaczka pilności.
-            days = offer.get("days_left")
-            if isinstance(days, int) and days >= 0:
-                badge_text = f"za {days} dni" if days > 1 else (
-                    "dziś" if days == 0 else "jutro")
-            elif isinstance(days, int):
-                badge_text = "po terminie"
-            else:
-                badge_text = "termin ?"
-
-            # Znacznik świeżości (kiedy oferta się pojawiła).
-            fresh_cls = str(offer.get("freshness_cls", "fresh-old"))
-            fresh_text = str(offer.get("freshness", ""))
-            is_new_cls = " is-new" if offer.get("is_new") else ""
-
-            # Atrybut data-nab pozwala skryptowi trackingu rozpoznać ofertę
-            # i zapamiętać jej kliknięcie w localStorage przeglądarki.
-            nab_attr = esc(offer.get("nab_id") or "")
-            parts.append(
-                f"<div class='offer {esc(urgency)}{is_new_cls}' "
-                f"data-nab='{nab_attr}'>"
-            )
-            parts.append(
-                f"<h3>{esc(offer.get('title') or '(bez tytułu)')}"
-                f"<span class='fresh {esc(fresh_cls)}'>{esc(fresh_text)}</span>"
-                f"<span class='badge {esc(urgency)}'>{esc(badge_text)}</span>"
-                "</h3>"
-            )
-            parts.append("<div class='meta'>")
-            parts.append(f"{esc(offer.get('unit_name') or '')} · ")
-            parts.append(
-                f"Termin: <strong>{esc(deadline_label(offer))}</strong> · "
-            )
-            parts.append(f"Nr ref.: {esc(offer.get('ref_number') or 'brak')}")
-            # Źródło oferty — BIP, nuzle czy portal oświatowy.
-            source_labels = {
-                "bip_global": "BIP (lista globalna)",
-                "bip_unit": "BIP (strona jednostki)",
-                "nuzle": "nuzle.pl",
-                "ofertypracy_edu": "ofertypracy.edu.pl",
-            }
-            source = str(offer.get("source") or "")
-            if source:
-                parts.append(
-                    f" · Źródło: {esc(source_labels.get(source, source))}"
-                )
-            parts.append("</div>")
-            if detail_url:
-                parts.append(
-                    f"<div class='meta'>Szczegóły: "
-                    f"<a href='{esc(detail_url)}' target='_blank'>"
-                    f"{esc(detail_url)}</a></div>"
-                )
-            parts.append(
-                f"<div class='desc'>{esc(summarize_body(body))}</div>"
-            )
-            if det and det.get("links"):
-                doc_links = [
-                    lnk for lnk in det["links"]
-                    if lnk.get("text") and len(lnk["text"]) > 3
-                ][:10]
-                if doc_links:
-                    parts.append("<div class='links'>Odnośniki w ogłoszeniu:"
-                                 "<ul>")
-                    for lnk in doc_links:
-                        parts.append(
-                            f"<li><a href='{esc(lnk['url'])}' target='_blank'>"
-                            f"{esc(lnk['text'])}</a></li>"
-                        )
-                    parts.append("</ul></div>")
-            parts.append("</div>")
+            parts.append(build_offer_card(offer, details))
 
     parts.append("</div>")  # .wrap
 

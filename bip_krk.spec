@@ -18,9 +18,13 @@ block_cipher = None
 # ładowane dynamicznie z dysku (importlib), a nie zwykłym importem.
 stage_files = [
     ('bip_common.py', '.'),
+    ('report_html.py', '.'),          # moduł prezentacji HTML (wymagany przez etap 5)
     ('1_fetch_units.py', '.'),
     ('2_fetch_praca_links.py', '.'),
     ('3_fetch_offers.py', '.'),
+    ('3b_fetch_offers_global.py', '.'),   # szybka ścieżka: globalna lista naborów
+    ('src_nuzle.py', '.'),                # źródło zewnętrzne: nuzle.pl
+    ('src_ofertypracy_edu.py', '.'),      # źródło zewnętrzne: ofertypracy.edu.pl
     ('4_fetch_offer_details.py', '.'),
     ('5_generate_report.py', '.'),
 ]
@@ -35,6 +39,9 @@ a = Analysis(
         'requests',
         'bs4',
         'bip_common',
+        # report_html jest importowany przez etap 5 zwykłym importem
+        # (nie przez importlib), więc PyInstaller musi o nim wiedzieć.
+        'report_html',
     ],
     hookspath=[],
     hooksconfig={},

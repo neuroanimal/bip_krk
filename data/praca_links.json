@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-09-22T15:55:01+02:00",
-    "updated": "2026-10-12T10:57:19+02:00"
+    "updated": "2026-10-12T12:12:54+02:00"
   },
   "records": {
     "bip_id:1": {
@@ -11,9 +11,10 @@
       "has_praca_link": false,
       "praca_url": null,
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-12T10:57:12+02:00",
+      "last_seen": "2026-10-12T12:12:49+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "url_from_archive": false
     },
     "slug:ZBK": {
       "unit_key": "slug:ZBK",
@@ -22,9 +23,10 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=32&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-12T10:57:12+02:00",
+      "last_seen": "2026-10-12T12:12:49+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "url_from_archive": false
     },
     "slug:ZCK": {
       "unit_key": "slug:ZCK",
@@ -33,9 +35,10 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=489&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-12T10:57:12+02:00",
+      "last_seen": "2026-10-12T12:12:49+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "url_from_archive": false
     },
     "slug:ZDMK": {
       "unit_key": "slug:ZDMK",
@@ -44,9 +47,10 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=511&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-12T10:57:12+02:00",
+      "last_seen": "2026-10-12T12:12:49+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "url_from_archive": false
     },
     "bip_id:512": {
       "unit_key": "bip_id:512",
@@ -55,9 +59,10 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=512&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-12T10:57:12+02:00",
+      "last_seen": "2026-10-12T12:12:49+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "url_from_archive": false
     },
     "bip_id:582": {
       "unit_key": "bip_id:582",
@@ -66,9 +71,10 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=582&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-12T10:57:12+02:00",
+      "last_seen": "2026-10-12T12:12:49+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "url_from_archive": false
     },
     "bip_id:627": {
       "unit_key": "bip_id:627",

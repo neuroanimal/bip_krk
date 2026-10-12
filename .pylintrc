@@ -8,14 +8,22 @@
 #   mają wiele zmiennych lokalnych (sesja, dataset, liczniki, snapshot).
 # - duplicate-code: bloki argparse oraz szkielet main() są celowo podobne
 #   między skryptami, aby zachować spójny interfejs wiersza poleceń.
+# - wrong-import-position: w run_report.py (punkt wejścia .exe) import
+#   własnych modułów MUSI nastąpić po dopisaniu katalogu modułów do
+#   sys.path — inaczej w spakowanym .exe nie znalazłby bip_common /
+#   report_html. To wymóg PyInstallera, nie kwestia stylu.
 
 [MAIN]
 # Nie traktuj nazw plików zaczynających się od cyfry jako błędu.
 # (obsługiwane też przez disable=invalid-name poniżej)
+# bip_krk.spec to plik konfiguracyjny PyInstallera, nie moduł Pythona —
+# PyInstaller wstrzykuje do niego Analysis/PYZ/EXE w czasie budowania.
+ignore-paths=^bip_krk\.spec$
 
 [MESSAGES CONTROL]
 disable=
     invalid-name,
+    wrong-import-position,
     too-many-locals,
     too-many-branches,
     too-many-statements,

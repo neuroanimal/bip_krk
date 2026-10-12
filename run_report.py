@@ -30,16 +30,36 @@ from pathlib import Path
 from types import ModuleType
 from typing import List, Optional
 
-import bip_common as bc
+# Katalog z modułami projektu musi być na ścieżce importu PRZED pierwszym
+# importem własnych modułów. W spakowanym .exe (PyInstaller onefile) pliki
+# źródłowe lądują w katalogu tymczasowym ``sys._MEIPASS``, a moduły etapów
+# są dołączone jako dane (``datas`` w .spec), więc nie trafiają tam
+# automatycznie. Bez tego etap 5 nie zaimportuje ``report_html``.
+_HERE = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
+if str(_HERE) not in sys.path:
+    sys.path.insert(0, str(_HERE))
 
-# Kolejność etapów potoku (nazwy plików bez rozszerzenia użyjemy do importu).
+import bip_common as bc  # noqa: E402  (po ustawieniu sys.path)
+
+# Kolejność etapów potoku (ta sama co w run_all.py).
+#
+# 3b (globalna lista naborów BIP) daje komplet ofert jednym żądaniem;
+# etapy 2 i 3 chodzą po stronach jednostek i wychwytują te, które publikują
+# nabory wyłącznie u siebie. src_* to źródła poza BIP.
 PIPELINE_MODULES = [
     "1_fetch_units",
     "2_fetch_praca_links",
     "3_fetch_offers",
+    "3b_fetch_offers_global",
+    "src_nuzle",
+    "src_ofertypracy_edu",
     "4_fetch_offer_details",
     "5_generate_report",
 ]
+
+# Etapy, których niepowodzenie NIE przerywa potoku — zewnętrzny portal może
+# być chwilowo niedostępny, a raport ma powstać na danych z BIP.
+OPTIONAL_MODULES = {"src_nuzle", "src_ofertypracy_edu"}
 
 
 def _base_dir() -> Path:
@@ -61,6 +81,12 @@ def _base_dir() -> Path:
 def load_stage(module_name: str) -> ModuleType:
     """Ładuje moduł etapu potoku po nazwie pliku (obsługuje nazwy z cyfrą).
 
+    Przed załadowaniem upewniamy się, że katalog z modułami jest w
+    ``sys.path``. Jest to konieczne w spakowanym .exe: etap 5 importuje
+    ``report_html`` ZWYKŁYM importem, a moduły etapów są dołączone jako
+    pliki danych (``datas`` w .spec), więc nie trafiają automatycznie na
+    ścieżkę importu.
+
     Args:
         module_name: nazwa modułu bez rozszerzenia (np. '1_fetch_units').
 
@@ -70,7 +96,12 @@ def load_stage(module_name: str) -> ModuleType:
     Raises:
         ImportError: gdy pliku modułu nie da się znaleźć lub załadować.
     """
-    path = _base_dir() / f"{module_name}.py"
+    base = _base_dir()
+    base_str = str(base)
+    if base_str not in sys.path:
+        sys.path.insert(0, base_str)
+
+    path = base / f"{module_name}.py"
     spec = importlib.util.spec_from_file_location(module_name, path)
     if spec is None or spec.loader is None:
         raise ImportError(f"Nie można załadować modułu: {path}")
@@ -109,13 +140,26 @@ def main() -> int:
     original_argv = sys.argv
     for module_name in PIPELINE_MODULES:
         logging.info("=== Etap: %s ===", module_name)
-        module = load_stage(module_name)
         sys.argv = [f"{module_name}.py"]  # brak dodatkowych flag
+        code = 1
         try:
+            module = load_stage(module_name)
             code = module.main()
+        except Exception as error:  # pylint: disable=broad-exception-caught
+            # Wyjątek w etapie opcjonalnym (np. zmiana API portalu) nie może
+            # przerwać całego raportu — logujemy i idziemy dalej.
+            logging.error("Etap %s zgłosił wyjątek: %s: %s",
+                          module_name, type(error).__name__, error)
         finally:
             sys.argv = original_argv
+
         if code != 0:
+            if module_name in OPTIONAL_MODULES:
+                logging.warning(
+                    "Etap opcjonalny %s nie powiódł się (kod %d) — "
+                    "kontynuuję potok.", module_name, code,
+                )
+                continue
             logging.error("Etap %s zwrócił błąd (kod %d) — przerywam.",
                           module_name, code)
             _pause_on_exit()

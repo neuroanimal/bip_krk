@@ -134,15 +134,23 @@ Przydatne opcje (do testów i sterowania zakresem):
 
 ```
 bip_krk/
-├── bip_common.py            # wspólne: HTTP z retry, ścieżki, JSON, active/inactive
+├── bip_common.py            # wspólne: HTTP z retry+powody błędów, ścieżki,
+│                            #   JSON, active/inactive, dziennik niepowodzeń
+├── report_html.py           # prezentacja HTML: styl, tracking klikania, build_html
 ├── 1_fetch_units.py
 ├── 2_fetch_praca_links.py
 ├── 3_fetch_offers.py
+├── 3b_fetch_offers_global.py    # szybka ścieżka (cała lista naborów BIP)
+├── src_nuzle.py                 # źródło: nuzle.pl
+├── src_ofertypracy_edu.py       # źródło: ofertypracy.edu.pl
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py
-├── run_all.py               # orchestrator całego potoku
+├── run_all.py               # orchestrator całego potoku (--sample dla próbki)
+├── run_report.py            # punkt wejścia .exe (potok + otwarcie raportu)
+├── bip_krk.spec             # konfiguracja PyInstaller
+├── build_exe.bat            # budowanie .exe (Windows)
 ├── .pylintrc                # konfiguracja lintera (10.00/10)
-├── data/                    # „żywe” datasety (aktualizowany stan wiedzy)
+├── data/                    # „żywe” datasety + failures.json, clicks.json
 ├── snapshots/               # surowe zrzuty z timestampem (historia „collect once”)
 └── reports/                 # wygenerowane raporty (.md + .html)
 ```

@@ -38,6 +38,7 @@ from datetime import date
 from typing import Dict, List, Optional, Tuple
 
 import bip_common as bc
+from profile_match import score_offer
 from report_html import build_html, deadline_label, summarize_body
 
 # Priorytet kategorii — im niższa liczba, tym wyżej w raporcie. Dopasowanie
@@ -302,6 +303,14 @@ def enrich_offers(
         item["clicked"] = is_clicked
         item["freshness"] = freshness_label(days_ago, is_new)
         item["freshness_cls"] = freshness_class(days_ago, is_new)
+        # Dopasowanie do profilu zawodowego (kultura, sztuka, grafika) —
+        # pozwala wydzielić w raporcie sekcję "dopasowane do profilu",
+        # żeby trafne oferty nie tonęły wśród kilkuset pozostałych.
+        item.update(score_offer(
+            str(offer.get("title") or ""),
+            str(offer.get("raw_text") or ""),
+            str(offer.get("unit_name") or ""),
+        ))
         enriched.append(item)
     return enriched
 
