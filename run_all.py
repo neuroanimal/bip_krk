@@ -26,13 +26,28 @@ from typing import List, Optional
 import bip_common as bc
 
 # Kolejność etapów potoku. Każdy zależy od wyniku poprzedniego.
+#
+# 3b (globalna lista naborów BIP) zastępuje w praktyce chodzenie po stronach
+# jednostek: jedno żądanie daje wszystkie ~435 naborów. Etapy 2 i 3
+# (per jednostka) pozostają, bo wychwytują jednostki publikujące wyłącznie
+# u siebie — ale są wolne (~400 żądań), więc w trybie próbnym są ograniczane.
+#
+# src_* to dodatkowe źródła poza BIP (filtr: Kraków, bez ofert
+# nauczycielskich). Ich błędy nie przerywają potoku — są tylko uzupełnieniem.
 PIPELINE = [
     "1_fetch_units.py",
     "2_fetch_praca_links.py",
     "3_fetch_offers.py",
+    "3b_fetch_offers_global.py",
+    "src_nuzle.py",
+    "src_ofertypracy_edu.py",
     "4_fetch_offer_details.py",
     "5_generate_report.py",
 ]
+
+# Etapy opcjonalne — ich niepowodzenie nie przerywa całego potoku
+# (zewnętrzny portal może być chwilowo niedostępny).
+OPTIONAL_STEPS = {"src_nuzle.py", "src_ofertypracy_edu.py"}
 
 
 def sample_args(script: str, sample: int) -> List[str]:
@@ -56,6 +71,9 @@ def sample_args(script: str, sample: int) -> List[str]:
         return ["--limit", str(sample)]
     if script == "5_generate_report.py":
         return ["--sample", str(sample)]
+    # Źródła zewnętrzne: nuzle pobiera jedną stronę (bez paginacji w URL),
+    # więc w trybie próbnym nic nie trzeba ograniczać; portal oświatowy
+    # filtruje po Krakowie i tak. 3b to jedno żądanie — zostawiamy w całości.
     return []
 
 
@@ -112,6 +130,14 @@ def main() -> int:
     for script in PIPELINE:
         code = run_step(script, args.verbose, args.sample)
         if code != 0:
+            if script in OPTIONAL_STEPS:
+                # Zewnętrzne źródło zawiodło — notujemy i idziemy dalej,
+                # bo BIP (główne źródło) jest niezależny od tych portali.
+                logging.warning(
+                    "Etap opcjonalny %s zakończył się błędem (kod %d) — "
+                    "kontynuuję potok.", script, code,
+                )
+                continue
             logging.error("Etap %s zakończył się błędem (kod %d) — przerywam.",
                           script, code)
             return code

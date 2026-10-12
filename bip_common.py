@@ -86,6 +86,13 @@ PRACA_LINKS_DATASET = DATA_DIR / "praca_links.json"    # skrypt 2
 OFFERS_DATASET = DATA_DIR / "offers.json"              # skrypt 3
 OFFER_DETAILS_DATASET = DATA_DIR / "offer_details.json"  # skrypt 4
 
+# Stan "klikniętych/oglądanych" ofert — tracking klikania z raportu HTML.
+# Raport jest statycznym plikiem otwieranym lokalnie (bez serwera), więc
+# kliknięcia zapisuje przeglądarka w localStorage. Ten plik służy do
+# zaimportowania tego stanu z powrotem do datasetu (eksport z raportu),
+# aby informacja "to już oglądałem" przetrwała regenerację raportu.
+CLICKS_DATASET = DATA_DIR / "clicks.json"
+
 # Dziennik niepowodzeń pobierania/parsowania — wspólny dla wszystkich etapów.
 # Zasada: nic nie ginie po cichu. Każde nieudane pobranie (404, timeout,
 # pusta strona), brak oczekiwanego elementu albo niedopasowanie rekordu jest
@@ -455,3 +462,26 @@ def fetch_with_reason(session: requests.Session,
         time.sleep(wait)
 
     return None, last_reason or "unknown_error"
+
+
+def load_json(path: Path) -> Optional[Any]:
+    """Wczytuje dowolny plik JSON; zwraca None, gdy pliku nie ma.
+
+    Odmiana :func:`load_dataset` dla plików, które nie mają struktury
+    meta/records — np. ``clicks.json`` wyeksportowany z raportu HTML.
+
+    Args:
+        path: ścieżka do pliku JSON.
+
+    Returns:
+        Zdeserializowane dane albo None, gdy plik nie istnieje lub jest
+        uszkodzony.
+    """
+    if not path.exists():
+        return None
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            return json.load(handle)
+    except (json.JSONDecodeError, OSError) as error:
+        logging.warning("Nie udało się wczytać %s: %s", path, error)
+        return None

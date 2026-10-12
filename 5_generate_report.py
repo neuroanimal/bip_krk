@@ -58,6 +58,9 @@ CATEGORY_PRIORITY: List[Tuple[str, str, int]] = [
     ("bezpiecz", "Porządek publiczny i bezpieczeństwo", 6),
     ("spółk", "Spółki miejskie", 7),
     ("inne", "Inne podmioty", 8),
+    # Kategorie z zewnętrznych źródeł (podpowiedź z pola category_hint).
+    ("oświata", "Oświata — stanowiska niepedagogiczne", 2),
+    ("komercyjne", "Oferty komercyjne (poza BIP)", 9),
 ]
 
 # Priorytet i etykieta dla kategorii nierozpoznanej.
@@ -210,6 +213,10 @@ def urgency_class(days: Optional[int]) -> str:
 def is_current(offer: Dict[str, object]) -> bool:
     """Czy oferta jest aktualna (trwający, aktywny, termin nieprzeterminowany).
 
+    Oferty z zewnętrznych źródeł (nuzle.pl) nie podają terminu składania —
+    dla nich decyduje sam fakt, że ogłoszenie jest nadal obecne na portalu
+    (``active``). Nie odrzucamy ich tylko dlatego, że nie znamy terminu.
+
     Args:
         offer: rekord oferty.
 
@@ -249,6 +256,7 @@ def enrich_offers(
     offers: List[Dict[str, object]],
     units: Dict[str, dict],
     last_report_at: Optional[date] = None,
+    clicked_ids: Optional[set] = None,
 ) -> List[Dict[str, object]]:
     """Wzbogaca oferty o kategorię jednostki, pilność i świeżość.
 
@@ -259,16 +267,24 @@ def enrich_offers(
             uznawana za "nową/nieoglądaną", gdy jej first_seen jest nowszy
             niż ten znacznik. Gdy None (pierwszy raport) — nowe są oferty
             widziane dzisiaj.
+        clicked_ids: zbiór nab_id ofert już KLIKNIĘTYCH przez użytkownika
+            (tracking z raportu). Kliknięta oferta nie jest "nowa", bo
+            użytkownik ją widział.
 
     Returns:
         Nową listę ofert z polami: category_label, category_priority,
         deadline_date, days_left, urgency, first_seen_date, days_ago,
-        is_new, freshness, freshness_cls.
+        is_new, clicked, freshness, freshness_cls.
     """
+    clicked_ids = clicked_ids or set()
     enriched: List[Dict[str, object]] = []
     for offer in offers:
         unit = units.get(offer.get("unit_key") or "", {})
         raw_category = unit.get("category")
+        # Oferty z zewnętrznych źródeł (nuzle, ofertypracy.edu.pl) nie mają
+        # jednostki z BIP, więc kategorię bierzemy z podpowiedzi źródła.
+        if not raw_category:
+            raw_category = offer.get("category_hint")
         label, priority = classify_category(raw_category)
 
         deadline_date = parse_deadline_to_date(offer.get("deadline"))
@@ -277,7 +293,12 @@ def enrich_offers(
         # Świeżość: kiedy pierwszy raz zobaczyliśmy ofertę.
         first_seen = parse_iso_date(offer.get("first_seen"))
         days_ago = days_since(first_seen)
-        if first_seen is None:
+        is_clicked = str(offer.get("nab_id") or "") in clicked_ids
+
+        if is_clicked:
+            # Oferta już otwarta przez użytkownika — nie jest nowa.
+            is_new = False
+        elif first_seen is None:
             is_new = False
         elif last_report_at is None:
             # Pierwszy raport — za nowe uznajemy oferty widziane dzisiaj.
@@ -295,6 +316,7 @@ def enrich_offers(
         item["first_seen_date"] = first_seen
         item["days_ago"] = days_ago
         item["is_new"] = is_new
+        item["clicked"] = is_clicked
         item["freshness"] = freshness_label(days_ago, is_new)
         item["freshness_cls"] = freshness_class(days_ago, is_new)
         enriched.append(item)
@@ -536,6 +558,30 @@ h2.category {
     box-shadow: 0 2px 8px rgba(22,163,74,.18);
     background: #f6fff9;
 }
+/* Oferta już KLIKNIĘTA (otwarta wcześniej) — wygaszona, by nie rozpraszała.
+   Stan trzymany w localStorage przeglądarki (raport jest plikiem offline). */
+.offer.clicked {
+    opacity: .55;
+    background: #f7f7f8;
+}
+.offer.clicked h3 { text-decoration: line-through; text-decoration-thickness: 1px; }
+.seen-mark {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .75em; font-weight: 600; margin-left: .4em;
+    background: #455a64; color: #fff;
+}
+/* Pasek narzędzi trackingu (licznik + akcje). */
+.toolbar {
+    display: flex; flex-wrap: wrap; gap: .6em; align-items: center;
+    background: #fff; border: 1px solid #dde3e8; border-radius: 8px;
+    padding: .6em .8em; margin: .8em 0; font-size: .9em;
+}
+.toolbar button {
+    font: inherit; cursor: pointer; border: 1px solid #b0bec5;
+    background: #eceff1; border-radius: 6px; padding: .3em .7em;
+}
+.toolbar button:hover { background: #cfd8dc; }
+.toolbar .counter { font-weight: 700; color: var(--accent); }
 .meta { color: var(--muted); font-size: .9em; margin: .2em 0 .5em; }
 .desc {
     white-space: pre-wrap;
@@ -551,6 +597,129 @@ a:hover { text-decoration: underline; }
 .links { font-size: .88em; margin-top: .4em; }
 .links ul { margin: .3em 0 0; padding-left: 1.2em; }
 footer { text-align: center; color: var(--muted); font-size: .82em; padding: 2em 0; }
+"""
+
+
+# Skrypt trackingu klikania wstawiany do raportu HTML.
+#
+# Raport jest statycznym plikiem otwieranym z dysku (file://), bez serwera,
+# więc kliknięcia nie mogą być wysłane do backendu. Zapisujemy je w
+# localStorage przeglądarki pod kluczem BIP_KRK_CLICKED jako mapę
+# { "<nab_id>": "<data ISO kliknięcia>" }. Dzięki temu:
+#  * oferta raz otwarta jest wizualnie wygaszona (łatwo odróżnić "widziane"
+#    od "jeszcze nieoglądanych") i to działa także w kolejnych raportach,
+#  * licznik pokazuje, ile ofert zostało jeszcze nieprzejrzanych,
+#  * przycisk "Eksportuj" pozwala pobrać stan do pliku clicks.json, który
+#    można wczytać do datasetu (skrypt importujący), aby informacja
+#    przetrwała zmianę przeglądarki/komputera.
+HTML_TRACKING_SCRIPT = """
+<script>
+(function () {
+  "use strict";
+  var STORE_KEY = "BIP_KRK_CLICKED";
+
+  function loadClicked() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }
+    catch (e) { return {}; }
+  }
+  function saveClicked(map) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(map)); }
+    catch (e) { /* brak localStorage (tryb prywatny) — tracking nieaktywny */ }
+  }
+
+  var clicked = loadClicked();
+
+  function markCard(card, when) {
+    if (card.classList.contains("clicked")) { return; }
+    card.classList.add("clicked");
+    var head = card.querySelector("h3");
+    if (head && !head.querySelector(".seen-mark")) {
+      var mark = document.createElement("span");
+      mark.className = "seen-mark";
+      mark.textContent = "oglądane" + (when ? " " + when.slice(0, 10) : "");
+      head.appendChild(mark);
+    }
+  }
+
+  function refreshCounter() {
+    var cards = document.querySelectorAll(".offer");
+    var seen = document.querySelectorAll(".offer.clicked").length;
+    var el = document.getElementById("counter");
+    if (el) {
+      el.textContent = (cards.length - seen) + " / " + cards.length +
+        " nieprzejrzanych";
+    }
+  }
+
+  // Oznacz karty już klikniętych ofert (stan z poprzednich sesji).
+  document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+    var id = card.getAttribute("data-nab");
+    if (clicked[id]) { markCard(card, clicked[id]); }
+  });
+
+  // Rejestruj kliknięcie w link szczegółów oferty.
+  document.querySelectorAll(".offer[data-nab] a[href]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var card = a.closest(".offer[data-nab]");
+      if (!card) { return; }
+      var id = card.getAttribute("data-nab");
+      if (!clicked[id]) {
+        clicked[id] = new Date().toISOString();
+        saveClicked(clicked);
+      }
+      markCard(card, clicked[id]);
+      refreshCounter();
+    });
+  });
+
+  // Przycisk: oznacz wszystkie jako przejrzane.
+  var markAll = document.getElementById("mark-all");
+  if (markAll) {
+    markAll.addEventListener("click", function () {
+      document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+        var id = card.getAttribute("data-nab");
+        if (!clicked[id]) { clicked[id] = new Date().toISOString(); }
+        markCard(card, clicked[id]);
+      });
+      saveClicked(clicked);
+      refreshCounter();
+    });
+  }
+
+  // Przycisk: wyczyść historię klikania.
+  var clearBtn = document.getElementById("clear-seen");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function () {
+      if (!confirm("Wyczyścić historię oglądanych ofert?")) { return; }
+      clicked = {};
+      saveClicked(clicked);
+      document.querySelectorAll(".offer.clicked").forEach(function (card) {
+        card.classList.remove("clicked");
+        var m = card.querySelector(".seen-mark");
+        if (m) { m.remove(); }
+      });
+      refreshCounter();
+    });
+  }
+
+  // Przycisk: eksport stanu do pliku clicks.json (do wczytania w datasecie).
+  var exportBtn = document.getElementById("export-seen");
+  if (exportBtn) {
+    exportBtn.addEventListener("click", function () {
+      var payload = JSON.stringify({ clicked: clicked }, null, 2);
+      var blob = new Blob([payload], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "clicks.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  refreshCounter();
+})();
+</script>
 """
 
 
@@ -607,6 +776,20 @@ def build_html(
         "</div>"
     )
 
+    # Pasek narzędzi trackingu klikania (działa lokalnie, bez serwera).
+    parts.append(
+        "<div class='toolbar'>"
+        "<span class='counter' id='counter'>—</span>"
+        "<button type='button' id='mark-all'>Oznacz wszystkie jako "
+        "przejrzane</button>"
+        "<button type='button' id='export-seen'>Eksportuj stan "
+        "(clicks.json)</button>"
+        "<button type='button' id='clear-seen'>Wyczyść historię</button>"
+        "<span class='meta'>Kliknięte oferty są wygaszane i pamiętane "
+        "w tej przeglądarce.</span>"
+        "</div>"
+    )
+
     if total == 0:
         parts.append("<p>Brak ofert spełniających kryteria.</p>")
 
@@ -637,7 +820,13 @@ def build_html(
             fresh_text = str(offer.get("freshness", ""))
             is_new_cls = " is-new" if offer.get("is_new") else ""
 
-            parts.append(f"<div class='offer {esc(urgency)}{is_new_cls}'>")
+            # Atrybut data-nab pozwala skryptowi trackingu rozpoznać ofertę
+            # i zapamiętać jej kliknięcie w localStorage przeglądarki.
+            nab_attr = esc(offer.get("nab_id") or "")
+            parts.append(
+                f"<div class='offer {esc(urgency)}{is_new_cls}' "
+                f"data-nab='{nab_attr}'>"
+            )
             parts.append(
                 f"<h3>{esc(offer.get('title') or '(bez tytułu)')}"
                 f"<span class='fresh {esc(fresh_cls)}'>{esc(fresh_text)}</span>"
@@ -650,6 +839,18 @@ def build_html(
                 f"Termin: <strong>{esc(deadline_label(offer))}</strong> · "
             )
             parts.append(f"Nr ref.: {esc(offer.get('ref_number') or 'brak')}")
+            # Źródło oferty — BIP, nuzle czy portal oświatowy.
+            source_labels = {
+                "bip_global": "BIP (lista globalna)",
+                "bip_unit": "BIP (strona jednostki)",
+                "nuzle": "nuzle.pl",
+                "ofertypracy_edu": "ofertypracy.edu.pl",
+            }
+            source = str(offer.get("source") or "")
+            if source:
+                parts.append(
+                    f" · Źródło: {esc(source_labels.get(source, source))}"
+                )
             parts.append("</div>")
             if detail_url:
                 parts.append(
@@ -681,6 +882,8 @@ def build_html(
         "<footer>Źródło danych: Biuletyn Informacji Publicznej Miasta "
         "Krakowa · raport wygenerowany automatycznie</footer>"
     )
+    # Skrypt trackingu klikania — na końcu, gdy karty są już w dokumencie.
+    parts.append(HTML_TRACKING_SCRIPT)
     parts.append("</body></html>")
     return "\n".join(parts)
 
@@ -730,6 +933,15 @@ def main() -> int:
         offers_ds.get("meta", {}).get("last_report_at")
     )
 
+    # Stan klikniętych ofert (tracking z raportu HTML, wyeksportowany do
+    # data/clicks.json). Oferta kliknięta nie jest już "nowa", nawet jeśli
+    # pojawiła się po ostatnim raporcie — użytkownik ją widział.
+    clicks = bc.load_json(bc.CLICKS_DATASET) or {}
+    clicked_ids = set((clicks.get("clicked") or {}).keys())
+    if clicked_ids:
+        logging.info("Wczytano stan klikania: %d ofert już oglądanych.",
+                     len(clicked_ids))
+
     # Wybór ofert do raportu.
     selected = []
     for offer in offers_ds["records"].values():
@@ -737,7 +949,8 @@ def main() -> int:
             selected.append(offer)
 
     # Wzbogacamy o kategorię, pilność i świeżość, sortujemy, grupujemy.
-    enriched = enrich_offers(selected, units_ds["records"], last_report_at)
+    enriched = enrich_offers(selected, units_ds["records"], last_report_at,
+                             clicked_ids)
     enriched.sort(key=sort_key)
 
     # Tryb próbny: ograniczamy liczbę ofert do szybkiej weryfikacji wyglądu.

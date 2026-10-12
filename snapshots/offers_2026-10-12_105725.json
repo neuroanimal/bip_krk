@@ -1,0 +1,623 @@
+{
+  "fetched_at": "2026-10-12T10:57:19+02:00",
+  "pages": [
+    {
+      "unit_key": "slug:ZBK",
+      "unit_name": "ZBK - Zarząd Budynków Komunalnych w Krakowie",
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=32&dok_id=104362",
+      "sections": {
+        "trwajacy": "empty",
+        "zakonczono_przyjmowanie": "empty",
+        "zakonczony": 3
+      },
+      "offers": [
+        {
+          "nab_id": "16033",
+          "status": "zakonczony",
+          "title": "STANOWISKO URZĘDNICZE W REFERACIE WINDYKACJI LOKALI UŻYTKOWYCH I EGZEKUCJI",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=32&sub_dok_id=104362&nab_id=16033&MODE=nab&ACT=info",
+          "raw_text": "STANOWISKO URZĘDNICZE W REFERACIE WINDYKACJI LOKALI UŻYTKOWYCH I EGZEKUCJI Zarząd Budynków Komunalnych w Krakowie (ZBK) (nr ref. ZBK_FU-15/26, składanie ofert do dnia 2026-08-17)",
+          "ref_number": "ZBK_FU-15/26",
+          "deadline": "2026-08-17"
+        },
+        {
+          "nab_id": "15940",
+          "status": "zakonczony",
+          "title": "STANOWISKO URZĘDNICZE W REFERACIE ROZLICZEŃ NIERUCHOMOŚCI",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=32&sub_dok_id=104362&nab_id=15940&MODE=nab&ACT=info",
+          "raw_text": "STANOWISKO URZĘDNICZE W REFERACIE ROZLICZEŃ NIERUCHOMOŚCI Zarząd Budynków Komunalnych w Krakowie (ZBK) (nr ref. ZBK_FN-14/26, składanie ofert do dnia 2026-08-13)",
+          "ref_number": "ZBK_FN-14/26",
+          "deadline": "2026-08-13"
+        },
+        {
+          "nab_id": "15895",
+          "status": "zakonczony",
+          "title": "STANOWISKO URZĘDNICZE W REFERACIE ZAMÓWIEŃ PUBLICZNYCH I UMÓW",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=32&sub_dok_id=104362&nab_id=15895&MODE=nab&ACT=info",
+          "raw_text": "STANOWISKO URZĘDNICZE W REFERACIE ZAMÓWIEŃ PUBLICZNYCH I UMÓW Zarząd Budynków Komunalnych w Krakowie (ZBK) (nr ref. ZBK_NZ-13/26, składanie ofert do dnia 2026-07-20)",
+          "ref_number": "ZBK_NZ-13/26",
+          "deadline": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "unit_key": "slug:ZCK",
+      "unit_name": "ZCK - Zarząd Cmentarzy Komunalnych w Krakowie",
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=489&dok_id=104362",
+      "sections": {
+        "trwajacy": 1,
+        "zakonczono_przyjmowanie": 1,
+        "zakonczony": 7
+      },
+      "offers": [
+        {
+          "nab_id": "16537",
+          "status": "trwajacy",
+          "title": "Specjalista w Dziale Budżetu i Windykacji",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=16537&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Budżetu i Windykacji Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-16/2026, składanie ofert do dnia 2026-10-19)",
+          "ref_number": "ZCK-16/2026",
+          "deadline": "2026-10-19"
+        },
+        {
+          "nab_id": "16211",
+          "status": "zakonczono_przyjmowanie",
+          "title": "Specjalista w Dziale Obsługi Rejonu Rakowice",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=16211&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Obsługi Rejonu Rakowice Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-14/2026, składanie ofert do dnia 2026-09-08)",
+          "ref_number": "ZCK-14/2026",
+          "deadline": "2026-09-08"
+        },
+        {
+          "nab_id": "16214",
+          "status": "zakonczony",
+          "title": "Specjalista w Dziale Administracji",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=16214&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Administracji Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-15/2026, składanie ofert do dnia 2026-09-10)",
+          "ref_number": "ZCK-15/2026",
+          "deadline": "2026-09-10"
+        },
+        {
+          "nab_id": "16178",
+          "status": "zakonczony",
+          "title": "Starszy Inspektor w Dziale Budżetu i Windykacji",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=16178&MODE=nab&ACT=info",
+          "raw_text": "Starszy Inspektor w Dziale Budżetu i Windykacji Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-13/2026, składanie ofert do dnia 2026-09-08)",
+          "ref_number": "ZCK-13/2026",
+          "deadline": "2026-09-08"
+        },
+        {
+          "nab_id": "16172",
+          "status": "zakonczony",
+          "title": "Główny Specjalista w Dziale Zamówień Publicznych",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=16172&MODE=nab&ACT=info",
+          "raw_text": "Główny Specjalista w Dziale Zamówień Publicznych Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-12/2026, składanie ofert do dnia 2026-09-04)",
+          "ref_number": "ZCK-12/2026",
+          "deadline": "2026-09-04"
+        },
+        {
+          "nab_id": "15949",
+          "status": "zakonczony",
+          "title": "Kierownik Działu Zamówień Publicznych",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=15949&MODE=nab&ACT=info",
+          "raw_text": "Kierownik Działu Zamówień Publicznych Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-11/2026, składanie ofert do dnia 2026-07-30)",
+          "ref_number": "ZCK-11/2026",
+          "deadline": "2026-07-30"
+        },
+        {
+          "nab_id": "15916",
+          "status": "zakonczony",
+          "title": "Główny Specjalista w Dziale Infrastruktury",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=15916&MODE=nab&ACT=info",
+          "raw_text": "Główny Specjalista w Dziale Infrastruktury Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-10/2026, składanie ofert do dnia 2026-07-28)",
+          "ref_number": "ZCK-10/2026",
+          "deadline": "2026-07-28"
+        },
+        {
+          "nab_id": "15796",
+          "status": "zakonczony",
+          "title": "Specjalista w Dziale Budżetu i Windykacji",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=15796&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Budżetu i Windykacji Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-9/2026, składanie ofert do dnia 2026-07-13)",
+          "ref_number": "ZCK-9/2026",
+          "deadline": "2026-07-13"
+        },
+        {
+          "nab_id": "15736",
+          "status": "zakonczony",
+          "title": "Specjalista w Dziale Obsługi Cmentarza Prądnik Czerwony",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=15736&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Obsługi Cmentarza Prądnik Czerwony Zarząd Cmentarzy Komunalnych w Krakowie (ZCK) (nr ref. ZCK-8/2026, składanie ofert do dnia 2026-07-01)",
+          "ref_number": "ZCK-8/2026",
+          "deadline": "2026-07-01"
+        }
+      ]
+    },
+    {
+      "unit_key": "slug:ZDMK",
+      "unit_name": "ZDMK - Zarząd Dróg Miasta Krakowa",
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=511&dok_id=104362",
+      "sections": {
+        "trwajacy": 4,
+        "zakonczono_przyjmowanie": 3,
+        "zakonczony": 8
+      },
+      "offers": [
+        {
+          "nab_id": "16549",
+          "status": "trwajacy",
+          "title": "Inspektor nadzoru/Inspektorka nadzoru w Dziale Realizacji Inwestycji - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16549&MODE=nab&ACT=info",
+          "raw_text": "Inspektor nadzoru/Inspektorka nadzoru w Dziale Realizacji Inwestycji - 1 etat Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-28/2026, składanie ofert do dnia 2026-10-30)",
+          "ref_number": "ZDMK-28/2026",
+          "deadline": "2026-10-30"
+        },
+        {
+          "nab_id": "16552",
+          "status": "trwajacy",
+          "title": "Kontroler Ruchu / Kontrolerka Ruchu w Centrum Sterowania Ruchem - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16552&MODE=nab&ACT=info",
+          "raw_text": "Kontroler Ruchu / Kontrolerka Ruchu w Centrum Sterowania Ruchem - 1 etat Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-29/2026, składanie ofert do dnia 2026-10-14)",
+          "ref_number": "ZDMK-29/2026",
+          "deadline": "2026-10-14"
+        },
+        {
+          "nab_id": "16484",
+          "status": "trwajacy",
+          "title": "Podinspektor/Podinspektorka, Inspektor/Inspektorka w Dziale Warunków i Uzgodnień -- ZASTĘPSTWO NA CZAS USPRAWIEDLIWIONEJ NIEOBECNOŚCI PRACOWNIKA",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16484&MODE=nab&ACT=info",
+          "raw_text": "Podinspektor/Podinspektorka, Inspektor/Inspektorka w Dziale Warunków i Uzgodnień -- ZASTĘPSTWO NA CZAS USPRAWIEDLIWIONEJ NIEOBECNOŚCI PRACOWNIKA Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-26/2026, składanie ofert do dnia 2026-10-12)",
+          "ref_number": "ZDMK-26/2026",
+          "deadline": "2026-10-12"
+        },
+        {
+          "nab_id": "16490",
+          "status": "trwajacy",
+          "title": "Podinspektor/Podinspektorka, Inspektor/Inspektorka w Dziale Realizacji Umów Inwestorskich",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16490&MODE=nab&ACT=info",
+          "raw_text": "Podinspektor/Podinspektorka, Inspektor/Inspektorka w Dziale Realizacji Umów Inwestorskich Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-27/2026, składanie ofert do dnia 2026-10-12)",
+          "ref_number": "ZDMK-27/2026",
+          "deadline": "2026-10-12"
+        },
+        {
+          "nab_id": "16379",
+          "status": "zakonczono_przyjmowanie",
+          "title": "PODINSPEKTOR/PODINSPEKTORKA, INSPEKTOR/INSPEKTORKA W DZIALE OCHRONY POSIADANIA - ZASTĘPSTWO NA CZAS USPRAWIEDLIWIONEJ NIEOBECNOŚCI PRACOWNIKA",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16379&MODE=nab&ACT=info",
+          "raw_text": "PODINSPEKTOR/PODINSPEKTORKA, INSPEKTOR/INSPEKTORKA W DZIALE OCHRONY POSIADANIA - ZASTĘPSTWO NA CZAS USPRAWIEDLIWIONEJ NIEOBECNOŚCI PRACOWNIKA Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-24/2026, składanie ofert do dnia 2026-10-09)",
+          "ref_number": "ZDMK-24/2026",
+          "deadline": "2026-10-09"
+        },
+        {
+          "nab_id": "14509",
+          "status": "zakonczono_przyjmowanie",
+          "title": "Kontroler/Kontrolerka Obszaru Płatnego Parkowania - 3 etaty",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=14509&MODE=nab&ACT=info",
+          "raw_text": "Kontroler/Kontrolerka Obszaru Płatnego Parkowania - 3 etaty Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-3/2026, składanie ofert do dnia 2026-09-30)",
+          "ref_number": "ZDMK-3/2026",
+          "deadline": "2026-09-30"
+        },
+        {
+          "nab_id": "16376",
+          "status": "zakonczono_przyjmowanie",
+          "title": "PODINSPEKTOR/PODINSPEKTORKA, INSPEKTOR/INSPEKTORKA W DZIALE WARUNKÓW I UZGODNIEŃ - ZASTĘPSTWO NA CZAS USPRAWIEDLIWIONEJ NIEOBECNOŚCI PRACOWNIKA",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16376&MODE=nab&ACT=info",
+          "raw_text": "PODINSPEKTOR/PODINSPEKTORKA, INSPEKTOR/INSPEKTORKA W DZIALE WARUNKÓW I UZGODNIEŃ - ZASTĘPSTWO NA CZAS USPRAWIEDLIWIONEJ NIEOBECNOŚCI PRACOWNIKA Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-23/2026, składanie ofert do dnia 2026-09-25)",
+          "ref_number": "ZDMK-23/2026",
+          "deadline": "2026-09-25"
+        },
+        {
+          "nab_id": "16424",
+          "status": "zakonczony",
+          "title": "Kontroler Ruchu w Centrum Sterowania Ruchem - 5 etatów",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16424&MODE=nab&ACT=info",
+          "raw_text": "Kontroler Ruchu w Centrum Sterowania Ruchem - 5 etatów Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-25/2026, składanie ofert do dnia 2026-09-28)",
+          "ref_number": "ZDMK-25/2026",
+          "deadline": "2026-09-28"
+        },
+        {
+          "nab_id": "16199",
+          "status": "zakonczony",
+          "title": "Podinspektor/Podinspektorka, Inspektor/Inspektorka w Dziale Warunków i Uzgodnień  - ZASTĘPSTWO NA CZAS USPRAWIEDLIWIONEJ NIEOBECNOŚCI PRACOWNIKA",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16199&MODE=nab&ACT=info",
+          "raw_text": "Podinspektor/Podinspektorka, Inspektor/Inspektorka w Dziale Warunków i Uzgodnień - ZASTĘPSTWO NA CZAS USPRAWIEDLIWIONEJ NIEOBECNOŚCI PRACOWNIKA Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-22/2026, składanie ofert do dnia 2026-09-07)",
+          "ref_number": "ZDMK-22/2026",
+          "deadline": "2026-09-07"
+        },
+        {
+          "nab_id": "16006",
+          "status": "zakonczony",
+          "title": "Inspektor nadzoru/Inspektorka nadzoru w Dziale Realizacji Inwestycji - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16006&MODE=nab&ACT=info",
+          "raw_text": "Inspektor nadzoru/Inspektorka nadzoru w Dziale Realizacji Inwestycji - 1 etat Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-19/2026, składanie ofert do dnia 2026-08-31)",
+          "ref_number": "ZDMK-19/2026",
+          "deadline": "2026-08-31"
+        },
+        {
+          "nab_id": "16009",
+          "status": "zakonczony",
+          "title": "Inspektor/Inspektorka w Dziale Umów Inwestorskich - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16009&MODE=nab&ACT=info",
+          "raw_text": "Inspektor/Inspektorka w Dziale Umów Inwestorskich - 1 etat Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-20/2026, składanie ofert do dnia 2026-08-31)",
+          "ref_number": "ZDMK-20/2026",
+          "deadline": "2026-08-31"
+        },
+        {
+          "nab_id": "16096",
+          "status": "zakonczony",
+          "title": "Specjalista/Specjalistka, Starszy Specjalista/Starsza Specjalistka w Dziale Utrzymania Dróg",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=16096&MODE=nab&ACT=info",
+          "raw_text": "Specjalista/Specjalistka, Starszy Specjalista/Starsza Specjalistka w Dziale Utrzymania Dróg Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. ZDMK-21/2026, składanie ofert do dnia 2026-08-31)",
+          "ref_number": "ZDMK-21/2026",
+          "deadline": "2026-08-31"
+        },
+        {
+          "nab_id": "15898",
+          "status": "zakonczony",
+          "title": "Podinspektor/Podinspektorka, Inspektor/Inspektorka, Specjalista/Specjalistka w Dziale Przygotowania Infrastruktury Rowerowej i Pieszej",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=15898&MODE=nab&ACT=info",
+          "raw_text": "Podinspektor/Podinspektorka, Inspektor/Inspektorka, Specjalista/Specjalistka w Dziale Przygotowania Infrastruktury Rowerowej i Pieszej Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. nr ref. ZDMK-18/2026, składanie ofert do dnia 2026-07-31)",
+          "ref_number": "nr ref. ZDMK-18/2026",
+          "deadline": "2026-07-31"
+        },
+        {
+          "nab_id": "15847",
+          "status": "zakonczony",
+          "title": "Podinspektor/Podinspektorka, Inspektor/Inspektorka, Specjalista/Specjalistka w Dziale Przygotowania Inwestycji Ogólnomiejskich",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=15847&MODE=nab&ACT=info",
+          "raw_text": "Podinspektor/Podinspektorka, Inspektor/Inspektorka, Specjalista/Specjalistka w Dziale Przygotowania Inwestycji Ogólnomiejskich Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. nr ref. ZDMK-17/2026, składanie ofert do dnia 2026-07-17)",
+          "ref_number": "nr ref. ZDMK-17/2026",
+          "deadline": "2026-07-17"
+        },
+        {
+          "nab_id": "15727",
+          "status": "zakonczony",
+          "title": "Podinspektor/Podinspektorka, Inspektor/Inspektorka w Dziale Kontroli Robót Budowlanych i Awarii - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=511&sub_dok_id=104362&nab_id=15727&MODE=nab&ACT=info",
+          "raw_text": "Podinspektor/Podinspektorka, Inspektor/Inspektorka w Dziale Kontroli Robót Budowlanych i Awarii - 1 etat Zarząd Dróg Miasta Krakowa (ZDMK) (nr ref. nr ref. ZDMK-16/2026, składanie ofert do dnia 2026-07-02)",
+          "ref_number": "nr ref. ZDMK-16/2026",
+          "deadline": "2026-07-02"
+        }
+      ]
+    },
+    {
+      "unit_key": "bip_id:512",
+      "unit_name": "ZIS - Zarząd Infrastruktury Sportowej w Krakowie",
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=512&dok_id=104362",
+      "sections": {
+        "trwajacy": 2,
+        "zakonczono_przyjmowanie": "empty",
+        "zakonczony": 6
+      },
+      "offers": [
+        {
+          "nab_id": "16457",
+          "status": "trwajacy",
+          "title": "Specjalista w Dziale Zarządzania Nieruchomościami w Zespole Zarządzania Obiektami Sportowymi",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=512&sub_dok_id=104362&nab_id=16457&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Zarządzania Nieruchomościami w Zespole Zarządzania Obiektami Sportowymi Zarząd Infrastruktury Sportowej w Krakowie (ZIS) (nr ref. 21/2026, składanie ofert do dnia 2026-10-16)",
+          "ref_number": "21/2026",
+          "deadline": "2026-10-16"
+        },
+        {
+          "nab_id": "16528",
+          "status": "trwajacy",
+          "title": "Zastępca Kierownika Technicznego Obiektu  w Dziale Zarządzania Nieruchomościami",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=512&sub_dok_id=104362&nab_id=16528&MODE=nab&ACT=info",
+          "raw_text": "Zastępca Kierownika Technicznego Obiektu w Dziale Zarządzania Nieruchomościami Zarząd Infrastruktury Sportowej w Krakowie (ZIS) (nr ref. 22/2026, składanie ofert do dnia 2026-10-16)",
+          "ref_number": "22/2026",
+          "deadline": "2026-10-16"
+        },
+        {
+          "nab_id": "16394",
+          "status": "zakonczony",
+          "title": "Specjalista w Dziale Marketingu i Organizacji Imprez Sportowych",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=512&sub_dok_id=104362&nab_id=16394&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Marketingu i Organizacji Imprez Sportowych Zarząd Infrastruktury Sportowej w Krakowie (ZIS) (nr ref. 20/2026, składanie ofert do dnia 2026-09-21)",
+          "ref_number": "20/2026",
+          "deadline": "2026-09-21"
+        },
+        {
+          "nab_id": "16256",
+          "status": "zakonczony",
+          "title": "Inspektor Nadzoru Inwestorskiego w Dziale Realizacji Inwestycji",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=512&sub_dok_id=104362&nab_id=16256&MODE=nab&ACT=info",
+          "raw_text": "Inspektor Nadzoru Inwestorskiego w Dziale Realizacji Inwestycji Zarząd Infrastruktury Sportowej w Krakowie (ZIS) (nr ref. 19/2026, składanie ofert do dnia 2026-09-07)",
+          "ref_number": "19/2026",
+          "deadline": "2026-09-07"
+        },
+        {
+          "nab_id": "16229",
+          "status": "zakonczony",
+          "title": "Specjalista w Dziale Finansowo - Księgowym",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=512&sub_dok_id=104362&nab_id=16229&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Finansowo - Księgowym Zarząd Infrastruktury Sportowej w Krakowie (ZIS) (nr ref. 17/2026, składanie ofert do dnia 2026-09-04)",
+          "ref_number": "17/2026",
+          "deadline": "2026-09-04"
+        },
+        {
+          "nab_id": "16232",
+          "status": "zakonczony",
+          "title": "Specjalista w Dziale Zarządzania Nieruchomościami – Zespół Zarządzania Obiektami Sportowymi",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=512&sub_dok_id=104362&nab_id=16232&MODE=nab&ACT=info",
+          "raw_text": "Specjalista w Dziale Zarządzania Nieruchomościami – Zespół Zarządzania Obiektami Sportowymi Zarząd Infrastruktury Sportowej w Krakowie (ZIS) (nr ref. 18/2026, składanie ofert do dnia 2026-09-04)",
+          "ref_number": "18/2026",
+          "deadline": "2026-09-04"
+        },
+        {
+          "nab_id": "15673",
+          "status": "zakonczony",
+          "title": "Inspektor Nadzoru Inwestorskiego w Dziale Realizacji Inwestycji",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=512&sub_dok_id=104362&nab_id=15673&MODE=nab&ACT=info",
+          "raw_text": "Inspektor Nadzoru Inwestorskiego w Dziale Realizacji Inwestycji Zarząd Infrastruktury Sportowej w Krakowie (ZIS) (nr ref. 15/2026, składanie ofert do dnia 2026-07-31)",
+          "ref_number": "15/2026",
+          "deadline": "2026-07-31"
+        },
+        {
+          "nab_id": "15742",
+          "status": "zakonczony",
+          "title": "Kierownik Działu Sponsoringu i Pozyskiwania Funduszy",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=512&sub_dok_id=104362&nab_id=15742&MODE=nab&ACT=info",
+          "raw_text": "Kierownik Działu Sponsoringu i Pozyskiwania Funduszy Zarząd Infrastruktury Sportowej w Krakowie (ZIS) (nr ref. 16/2026, składanie ofert do dnia 2026-07-20)",
+          "ref_number": "16/2026",
+          "deadline": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "unit_key": "bip_id:582",
+      "unit_name": "ZIM - Zarząd Inwestycji Miejskich w Krakowie",
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=582&dok_id=104362",
+      "sections": {
+        "trwajacy": "empty",
+        "zakonczono_przyjmowanie": 2,
+        "zakonczony": 1
+      },
+      "offers": [
+        {
+          "nab_id": "16358",
+          "status": "zakonczono_przyjmowanie",
+          "title": "STARSZA/Y  SPECJALISTKA/SPECJALISTA W DZIALE INWESTYCJI  KUBATUROWYCH",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=582&sub_dok_id=104362&nab_id=16358&MODE=nab&ACT=info",
+          "raw_text": "STARSZA/Y SPECJALISTKA/SPECJALISTA W DZIALE INWESTYCJI KUBATUROWYCH ZARZĄD INWESTYCJI MIEJSKICH W KRAKOWIE (ZIM) (nr ref. 9-ZIM-2026, składanie ofert do dnia 2026-09-30)",
+          "ref_number": "9-ZIM-2026",
+          "deadline": "2026-09-30"
+        },
+        {
+          "nab_id": "16370",
+          "status": "zakonczono_przyjmowanie",
+          "title": "STARSZA/Y  SPECJALISTKA/SPECJALISTA W DZIALE INWESTYCJI  KUBATUROWYCH -JEDNOSTKA REALIZUJĄCA PROJEKT PN.INWESTYCJE UŻYTECZNOŚCI PUBLICZNEJ",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=582&sub_dok_id=104362&nab_id=16370&MODE=nab&ACT=info",
+          "raw_text": "STARSZA/Y SPECJALISTKA/SPECJALISTA W DZIALE INWESTYCJI KUBATUROWYCH -JEDNOSTKA REALIZUJĄCA PROJEKT PN.INWESTYCJE UŻYTECZNOŚCI PUBLICZNEJ ZARZĄD INWESTYCJI MIEJSKICH W KRAKOWIE (ZIM) (nr ref. 10-ZIM-2026, składanie ofert do dnia 2026-09-30)",
+          "ref_number": "10-ZIM-2026",
+          "deadline": "2026-09-30"
+        },
+        {
+          "nab_id": "16397",
+          "status": "zakonczony",
+          "title": "STARSZA/Y  SPECJALISTKA/SPECJALISTA W DZIALE INWESTYCJI INFRASTRUKTURY TECHNICZNEJ",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=582&sub_dok_id=104362&nab_id=16397&MODE=nab&ACT=info",
+          "raw_text": "STARSZA/Y SPECJALISTKA/SPECJALISTA W DZIALE INWESTYCJI INFRASTRUKTURY TECHNICZNEJ ZARZĄD INWESTYCJI MIEJSKICH W KRAKOWIE (ZIM) (nr ref. 11-ZIM-2026, składanie ofert do dnia 2026-09-30)",
+          "ref_number": "11-ZIM-2026",
+          "deadline": "2026-09-30"
+        }
+      ]
+    },
+    {
+      "unit_key": "bip_id:627",
+      "unit_name": "ZIW - Zarząd Infrastruktury Wodnej",
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=627",
+      "sections": {
+        "trwajacy": 1,
+        "zakonczono_przyjmowanie": 1,
+        "zakonczony": 5
+      },
+      "offers": [
+        {
+          "nab_id": "16510",
+          "status": "trwajacy",
+          "title": "PODINSPEKTOR/KA W DZIALE GOSPODARCZYM",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=627&sub_dok_id=104362&nab_id=16510&MODE=nab&ACT=info",
+          "raw_text": "PODINSPEKTOR/KA W DZIALE GOSPODARCZYM Zarząd Infrastruktury Wodnej w Krakowie (ZIW) (nr ref. ZIW/20-26, składanie ofert do dnia 2026-10-12)",
+          "ref_number": "ZIW/20-26",
+          "deadline": "2026-10-12"
+        },
+        {
+          "nab_id": "16454",
+          "status": "zakonczono_przyjmowanie",
+          "title": "INSPEKTOR/INSPEKTORKA W DZIALE UZGODNIEŃ I WARUNKÓW",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=627&sub_dok_id=104362&nab_id=16454&MODE=nab&ACT=info",
+          "raw_text": "INSPEKTOR/INSPEKTORKA W DZIALE UZGODNIEŃ I WARUNKÓW Zarząd Infrastruktury Wodnej w Krakowie (ZIW) (nr ref. ZIW/19-26, składanie ofert do dnia 2026-10-07)",
+          "ref_number": "ZIW/19-26",
+          "deadline": "2026-10-07"
+        },
+        {
+          "nab_id": "16415",
+          "status": "zakonczony",
+          "title": "PODINSPEKTOR/KA W DZIALE ZAMÓWIEŃ PUBLICZNYCH",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=627&sub_dok_id=104362&nab_id=16415&MODE=nab&ACT=info",
+          "raw_text": "PODINSPEKTOR/KA W DZIALE ZAMÓWIEŃ PUBLICZNYCH Zarząd Infrastruktury Wodnej w Krakowie (ZIW) (nr ref. ZIW/18-26, składanie ofert do dnia 2026-09-28)",
+          "ref_number": "ZIW/18-26",
+          "deadline": "2026-09-28"
+        },
+        {
+          "nab_id": "16337",
+          "status": "zakonczony",
+          "title": "GŁÓWNY SPECJALISTA/SPECJALISTKA W DZIALE KSIEGOWOŚCI",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=627&sub_dok_id=104362&nab_id=16337&MODE=nab&ACT=info",
+          "raw_text": "GŁÓWNY SPECJALISTA/SPECJALISTKA W DZIALE KSIEGOWOŚCI Zarząd Infrastruktury Wodnej w Krakowie (ZIW) (nr ref. ZIW/17-26, składanie ofert do dnia 2026-09-14)",
+          "ref_number": "ZIW/17-26",
+          "deadline": "2026-09-14"
+        },
+        {
+          "nab_id": "16202",
+          "status": "zakonczony",
+          "title": "INSPEKTOR/INSPEKTORKA W DZIALE POZYSKIWANIA FUNDUSZY I REALIZACJI PROJEKTÓW",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=627&sub_dok_id=104362&nab_id=16202&MODE=nab&ACT=info",
+          "raw_text": "INSPEKTOR/INSPEKTORKA W DZIALE POZYSKIWANIA FUNDUSZY I REALIZACJI PROJEKTÓW Zarząd Infrastruktury Wodnej w Krakowie (ZIW) (nr ref. ZIW/15-26, składanie ofert do dnia 2026-09-11)",
+          "ref_number": "ZIW/15-26",
+          "deadline": "2026-09-11"
+        },
+        {
+          "nab_id": "16205",
+          "status": "zakonczony",
+          "title": "KIEROWNIK/KIEROWNICZKA DZIAŁU GOSPODARCZEGO",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=627&sub_dok_id=104362&nab_id=16205&MODE=nab&ACT=info",
+          "raw_text": "KIEROWNIK/KIEROWNICZKA DZIAŁU GOSPODARCZEGO Zarząd Infrastruktury Wodnej w Krakowie (ZIW) (nr ref. ZIW/16-26, składanie ofert do dnia 2026-09-04)",
+          "ref_number": "ZIW/16-26",
+          "deadline": "2026-09-04"
+        },
+        {
+          "nab_id": "15883",
+          "status": "zakonczony",
+          "title": "INSPEKTOR/INSPEKTORKA W DZIALE KSIEGOWOŚCI",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=627&sub_dok_id=104362&nab_id=15883&MODE=nab&ACT=info",
+          "raw_text": "INSPEKTOR/INSPEKTORKA W DZIALE KSIEGOWOŚCI Zarząd Infrastruktury Wodnej w Krakowie (ZIW) (nr ref. ZIW/14-26, składanie ofert do dnia 2026-07-24)",
+          "ref_number": "ZIW/14-26",
+          "deadline": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "unit_key": "bip_id:616",
+      "unit_name": "ZTP - Zarząd Transportu Publicznego w Krakowie",
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=616&dok_id=104362",
+      "sections": {
+        "trwajacy": "empty",
+        "zakonczono_przyjmowanie": 2,
+        "zakonczony": 5
+      },
+      "offers": [
+        {
+          "nab_id": "16475",
+          "status": "zakonczono_przyjmowanie",
+          "title": "Starszy specjalista/(tka), Starszy Inspektor/(ka) w Dziale Kadr i Płac – 2 etaty",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=616&sub_dok_id=104362&nab_id=16475&MODE=nab&ACT=info",
+          "raw_text": "Starszy specjalista/(tka), Starszy Inspektor/(ka) w Dziale Kadr i Płac – 2 etaty Zarząd Transportu Publicznego w Krakowie (ZTP) (nr ref. ZTP 14 - 26, składanie ofert do dnia 2026-10-09)",
+          "ref_number": "ZTP 14 - 26",
+          "deadline": "2026-10-09"
+        },
+        {
+          "nab_id": "16364",
+          "status": "zakonczono_przyjmowanie",
+          "title": "Kierownik(-czka) Działu Inwestycji Budowlanych i Nieruchomości - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=616&sub_dok_id=104362&nab_id=16364&MODE=nab&ACT=info",
+          "raw_text": "Kierownik(-czka) Działu Inwestycji Budowlanych i Nieruchomości - 1 etat Zarząd Transportu Publicznego w Krakowie (ZTP) (nr ref. ZTP 13 - 26, składanie ofert do dnia 2026-09-20)",
+          "ref_number": "ZTP 13 - 26",
+          "deadline": "2026-09-20"
+        },
+        {
+          "nab_id": "16283",
+          "status": "zakonczony",
+          "title": "Pomoc administracyjno-biurowa w Dziale Kontroli Biletów - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=616&sub_dok_id=104362&nab_id=16283&MODE=nab&ACT=info",
+          "raw_text": "Pomoc administracyjno-biurowa w Dziale Kontroli Biletów - 1 etat Zarząd Transportu Publicznego w Krakowie (ZTP) (nr ref. ZTP 12 - 2026, składanie ofert do dnia 2026-09-08)",
+          "ref_number": "ZTP 12 - 2026",
+          "deadline": "2026-09-08"
+        },
+        {
+          "nab_id": "16253",
+          "status": "zakonczony",
+          "title": "Podinspektor(ka) w Dziale Kontroli Biletów - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=616&sub_dok_id=104362&nab_id=16253&MODE=nab&ACT=info",
+          "raw_text": "Podinspektor(ka) w Dziale Kontroli Biletów - 1 etat Zarząd Transportu Publicznego w Krakowie (ZTP) (nr ref. ZTP 11- 2026, składanie ofert do dnia 2026-09-06)",
+          "ref_number": "ZTP 11- 2026",
+          "deadline": "2026-09-06"
+        },
+        {
+          "nab_id": "16181",
+          "status": "zakonczony",
+          "title": "Informatyk / Informatyczka w Dziale Teleinformatyki - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=616&sub_dok_id=104362&nab_id=16181&MODE=nab&ACT=info",
+          "raw_text": "Informatyk / Informatyczka w Dziale Teleinformatyki - 1 etat Zarząd Transportu Publicznego w Krakowie (ZTP) (nr ref. ZTP 10 - 2026, składanie ofert do dnia 2026-08-30)",
+          "ref_number": "ZTP 10 - 2026",
+          "deadline": "2026-08-30"
+        },
+        {
+          "nab_id": "16112",
+          "status": "zakonczony",
+          "title": "Kierownik / Kierowniczka w Dziale Inwestycji Budowlanych i Nieruchomości  - 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=616&sub_dok_id=104362&nab_id=16112&MODE=nab&ACT=info",
+          "raw_text": "Kierownik / Kierowniczka w Dziale Inwestycji Budowlanych i Nieruchomości - 1 etat Zarząd Transportu Publicznego w Krakowie (ZTP) (nr ref. ZTP 9 - 26, składanie ofert do dnia 2026-08-21)",
+          "ref_number": "ZTP 9 - 26",
+          "deadline": "2026-08-21"
+        },
+        {
+          "nab_id": "16093",
+          "status": "zakonczony",
+          "title": "Podinspektor(ka) / Inspektor(ka) w Dziale Kontroli Biletów – 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=616&sub_dok_id=104362&nab_id=16093&MODE=nab&ACT=info",
+          "raw_text": "Podinspektor(ka) / Inspektor(ka) w Dziale Kontroli Biletów – 1 etat Zarząd Transportu Publicznego w Krakowie (ZTP) (nr ref. ZTP 8 - 26, składanie ofert do dnia 2026-08-17)",
+          "ref_number": "ZTP 8 - 26",
+          "deadline": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "unit_key": "bip_id:567",
+      "unit_name": "ZZM - Zarząd Zieleni Miejskiej w Krakowie",
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=567&dok_id=104362",
+      "sections": {
+        "trwajacy": "empty",
+        "zakonczono_przyjmowanie": 1,
+        "zakonczony": 5
+      },
+      "offers": [
+        {
+          "nab_id": "16495",
+          "status": "zakonczono_przyjmowanie",
+          "title": "wolne stanowisko urzędnicze   w Wydziale Administracyjno- Kancelaryjnym– 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=567&sub_dok_id=104362&nab_id=16495&MODE=nab&ACT=info",
+          "raw_text": "wolne stanowisko urzędnicze w Wydziale Administracyjno- Kancelaryjnym– 1 etat ZZM (ZZM) (nr ref. (Nr. ref. 19 -ZZM-2026), składanie ofert do dnia 2026-10-11)",
+          "ref_number": "(Nr. ref. 19 -ZZM-2026",
+          "deadline": "2026-10-11"
+        },
+        {
+          "nab_id": "16367",
+          "status": "zakonczony",
+          "title": "wolne stanowisko urzędnicze   w Zespole Organizacyjnym – 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=567&sub_dok_id=104362&nab_id=16367&MODE=nab&ACT=info",
+          "raw_text": "wolne stanowisko urzędnicze w Zespole Organizacyjnym – 1 etat ZZM (ZZM) (nr ref. (18-ZZM-2026), składanie ofert do dnia 2026-09-18)",
+          "ref_number": "(18-ZZM-2026",
+          "deadline": "2026-09-18"
+        },
+        {
+          "nab_id": "16057",
+          "status": "zakonczony",
+          "title": "wolne stanowisko urzędnicze   w Zespole Oficera ds. Drzew– 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=567&sub_dok_id=104362&nab_id=16057&MODE=nab&ACT=info",
+          "raw_text": "wolne stanowisko urzędnicze w Zespole Oficera ds. Drzew– 1 etat ZZM (ZZM) (nr ref. (17-ZZM-2026), składanie ofert do dnia 2026-08-16)",
+          "ref_number": "(17-ZZM-2026",
+          "deadline": "2026-08-16"
+        },
+        {
+          "nab_id": "15829",
+          "status": "zakonczony",
+          "title": "na wolne stanowisko urzędnicze   w Zespole Projektów Budżetu Obywatelskiego – 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=567&sub_dok_id=104362&nab_id=15829&MODE=nab&ACT=info",
+          "raw_text": "na wolne stanowisko urzędnicze w Zespole Projektów Budżetu Obywatelskiego – 1 etat ZZM (ZZM) (nr ref. (14-ZZM-2026), składanie ofert do dnia 2026-07-12)",
+          "ref_number": "(14-ZZM-2026",
+          "deadline": "2026-07-12"
+        },
+        {
+          "nab_id": "15832",
+          "status": "zakonczony",
+          "title": "na wolne stanowisko urzędnicze   w Wydziale Administracyjno- Kancelaryjnym– 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=567&sub_dok_id=104362&nab_id=15832&MODE=nab&ACT=info",
+          "raw_text": "na wolne stanowisko urzędnicze w Wydziale Administracyjno- Kancelaryjnym– 1 etat ZZM (ZZM) (nr ref. (15-ZZM-2026), składanie ofert do dnia 2026-07-12)",
+          "ref_number": "(15-ZZM-2026",
+          "deadline": "2026-07-12"
+        },
+        {
+          "nab_id": "15835",
+          "status": "zakonczony",
+          "title": "na wolne stanowisko urzędnicze   w Zespole Oficera ds. Drzew– 1 etat",
+          "detail_url": "https://www.bip.krakow.pl/?bip_id=567&sub_dok_id=104362&nab_id=15835&MODE=nab&ACT=info",
+          "raw_text": "na wolne stanowisko urzędnicze w Zespole Oficera ds. Drzew– 1 etat ZZM (ZZM) (nr ref. (16-ZZM-2026), składanie ofert do dnia 2026-07-12)",
+          "ref_number": "(16-ZZM-2026",
+          "deadline": "2026-07-12"
+        }
+      ]
+    }
+  ]
+}
