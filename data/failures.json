@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "created": "2026-10-12T00:50:08+02:00",
+    "updated": "2026-10-12T00:50:08+02:00"
+  },
+  "records": {
+    "2_praca_links|bip_id:1|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:1",
+      "url": "https://www.bip.krakow.pl/?bip_id=1",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Miasto Kraków",
+      "first_seen": "2026-10-12T00:50:08+02:00",
+      "last_seen": "2026-10-12T00:50:08+02:00",
+      "count": 1,
+      "resolved": false
+    }
+  }
+}

@@ -29,7 +29,7 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, Optional
+from typing import Any, Dict, Iterable, Optional, Tuple
 from urllib.parse import urljoin
 
 import requests
@@ -85,6 +85,14 @@ UNITS_DATASET = DATA_DIR / "units.json"                # skrypt 1
 PRACA_LINKS_DATASET = DATA_DIR / "praca_links.json"    # skrypt 2
 OFFERS_DATASET = DATA_DIR / "offers.json"              # skrypt 3
 OFFER_DETAILS_DATASET = DATA_DIR / "offer_details.json"  # skrypt 4
+
+# Dziennik niepowodzeń pobierania/parsowania — wspólny dla wszystkich etapów.
+# Zasada: nic nie ginie po cichu. Każde nieudane pobranie (404, timeout,
+# pusta strona), brak oczekiwanego elementu albo niedopasowanie rekordu jest
+# tu notowane z datą, etapem, adresem i powodem. Dzięki temu widać np. martwe
+# linki, które BIP zostawił na liście aktualnej po przeniesieniu jednostki
+# do archiwum.
+FAILURES_DATASET = DATA_DIR / "failures.json"
 
 # Nagłówek User-Agent — serwis odpowiada poprawnie na "przeglądarkowy" UA.
 USER_AGENT = (
@@ -327,3 +335,123 @@ def deactivate_missing(
             deactivated += 1
             logging.info("Oznaczono jako nieaktywny (wygasł): %s", key)
     return deactivated
+
+
+def record_failure(stage: str, key: str, url: str, reason: str,
+                   detail: str = "") -> None:
+    """Notuje niepowodzenie pobierania/parsowania w dzienniku failures.json.
+
+    Zasada: **nic nie ginie po cichu**. Wcześniej nieudane pobrania były tylko
+    logowane ostrzeżeniem i porzucane, więc po przebiegu nie było śladu, czego
+    nie udało się pobrać. Teraz każde takie zdarzenie jest zapisywane trwale,
+    z licznikiem powtórzeń — co pozwala wychwycić systematyczne problemy, np.
+    martwy link pozostawiony przez BIP na liście aktualnej po przeniesieniu
+    jednostki do archiwum.
+
+    Rekordy są kumulowane po kluczu ``stage|key|reason``: powtórzenie tego
+    samego problemu zwiększa licznik i aktualizuje ``last_seen`` zamiast
+    tworzyć duplikat.
+
+    Args:
+        stage: etap potoku (np. '2_praca_links', '3b_global').
+        key: klucz rekordu, którego dotyczy problem (np. 'bip_id:474').
+        url: adres, który zawiódł.
+        reason: krótki kod powodu ('fetch_failed', 'no_praca_link',
+            'unit_not_matched', 'parse_empty').
+        detail: dodatkowy opis (opcjonalny).
+    """
+    data = load_dataset(FAILURES_DATASET)
+    records = data["records"]
+    now = now_iso()
+    record_key = f"{stage}|{key}|{reason}"
+
+    existing = records.get(record_key)
+    if existing is None:
+        records[record_key] = {
+            "stage": stage,
+            "key": key,
+            "url": url,
+            "reason": reason,
+            "detail": detail,
+            "first_seen": now,
+            "last_seen": now,
+            "count": 1,
+            "resolved": False,
+        }
+    else:
+        existing["last_seen"] = now
+        existing["count"] = int(existing.get("count", 0)) + 1
+        existing["url"] = url
+        if detail:
+            existing["detail"] = detail
+        existing["resolved"] = False
+
+    save_dataset(FAILURES_DATASET, data)
+    logging.warning("[NIEPOWODZENIE %s] %s (%s) — %s", stage, key, reason, url)
+
+
+def clear_failure(stage: str, key: str, reason: str) -> None:
+    """Oznacza wcześniejsze niepowodzenie jako rozwiązane (gdy już działa).
+
+    Nie usuwamy rekordu — zachowujemy historię problemu, ustawiając
+    ``resolved: true``. Dzięki temu widać, że coś było zepsute i zostało
+    naprawione (np. BIP poprawił link).
+
+    Args:
+        stage: etap potoku.
+        key: klucz rekordu.
+        reason: kod powodu.
+    """
+    data = load_dataset(FAILURES_DATASET)
+    record_key = f"{stage}|{key}|{reason}"
+    record = data["records"].get(record_key)
+    if record is not None and not record.get("resolved"):
+        record["resolved"] = True
+        record["resolved_at"] = now_iso()
+        save_dataset(FAILURES_DATASET, data)
+        logging.info("[NAPRAWIONE %s] %s (%s)", stage, key, reason)
+
+
+def fetch_with_reason(session: requests.Session,
+                      url: str) -> Tuple[Optional[str], Optional[str]]:
+    """Pobiera stronę, zwracając treść ORAZ powód niepowodzenia.
+
+    Odmiana :func:`fetch`, która pozwala wywołującemu zanotować konkretny
+    powód błędu (kod HTTP, timeout, pusta odpowiedź) w dzienniku niepowodzeń.
+
+    Args:
+        session: sesja HTTP.
+        url: adres (pełny lub względny).
+
+    Returns:
+        Krotkę (treść, powód). Przy sukcesie powód jest None; przy błędzie
+        treść jest None, a powód opisuje przyczynę (np. 'http_404').
+    """
+    full_url = urljoin(BASE_URL, url)
+    last_reason: Optional[str] = None
+
+    for attempt in range(1, HTTP_RETRIES + 1):
+        try:
+            response = session.get(full_url, timeout=HTTP_TIMEOUT)
+            if response.status_code >= 400:
+                last_reason = f"http_{response.status_code}"
+                # Błędy 4xx (np. 404) nie mają sensu ponawiać.
+                if 400 <= response.status_code < 500:
+                    return None, last_reason
+                raise requests.HTTPError(last_reason)
+            response.encoding = response.apparent_encoding or "utf-8"
+            text = response.text
+            time.sleep(POLITE_DELAY)
+            if not text or not text.strip():
+                return None, "empty_response"
+            return text, None
+        except requests.Timeout:
+            last_reason = "timeout"
+        except requests.RequestException as error:
+            last_reason = last_reason or f"request_error:{type(error).__name__}"
+        wait = HTTP_RETRY_BACKOFF * attempt
+        logging.warning("Próba %d/%d nieudana dla %s (%s) — ponawiam za %.1fs",
+                        attempt, HTTP_RETRIES, full_url, last_reason, wait)
+        time.sleep(wait)
+
+    return None, last_reason or "unknown_error"

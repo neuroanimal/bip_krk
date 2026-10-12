@@ -152,6 +152,7 @@ def main() -> int:
     seen_keys: List[str] = []
     found = 0
     missing = 0
+    failures = 0  # nieudane pobrania (notowane w failures.json)
 
     for index, key in enumerate(keys, start=1):
         unit = units_ds["records"][key]
@@ -159,11 +160,24 @@ def main() -> int:
         name = unit.get("name", "")
         logging.info("[%d/%d] %s (%s)", index, len(keys), name[:40], url)
 
-        html = bc.fetch(session, url)
+        html, reason = bc.fetch_with_reason(session, url)
         if html is None:
-            # Nie udało się pobrać — nie mieszamy w statusie, pomijamy.
-            logging.warning("Pominięto (błąd pobierania): %s", key)
+            # Nie udało się pobrać — NOTUJEMY to trwale (nic nie ginie po
+            # cichu). Typowy przypadek: BIP przeniósł jednostkę do archiwum,
+            # ale zostawił martwy link na liście aktualnej.
+            bc.record_failure(
+                stage="2_praca_links",
+                key=key,
+                url=url,
+                reason=reason or "fetch_failed",
+                detail=f"jednostka: {name}",
+            )
+            failures += 1
             continue
+        # Pobranie się udało — jeśli wcześniej notowaliśmy błąd, zamykamy go.
+        for past_reason in ("fetch_failed", "http_404", "timeout",
+                            "empty_response"):
+            bc.clear_failure("2_praca_links", key, past_reason)
 
         praca_url = find_praca_link(html)
         has_link = praca_url is not None
@@ -171,6 +185,15 @@ def main() -> int:
             found += 1
         else:
             missing += 1
+            # Brak linku PRACA to nie błąd pobrania, ale warto wiedzieć,
+            # które jednostki go nie mają (np. zmiana szablonu strony).
+            bc.record_failure(
+                stage="2_praca_links",
+                key=key,
+                url=url,
+                reason="no_praca_link",
+                detail=f"jednostka: {name}",
+            )
 
         fields = {
             "unit_key": key,
@@ -186,7 +209,17 @@ def main() -> int:
 
     # Deaktywacja jednostek, których w tym przebiegu nie odwiedzono
     # (np. wypadły z listy). Rekord zostaje z datą wygaśnięcia.
-    deactivated = bc.deactivate_missing(records, seen_keys, seen_now)
+    #
+    # UWAGA: deaktywujemy WYŁĄCZNIE przy pełnym przebiegu. Gdy użyto --limit
+    # (tryb próbny), nieodwiedzone jednostki nie są "zniknięte" — po prostu
+    # ich nie sprawdzaliśmy. Wygaszanie ich zafałszowałoby dane (jeden test
+    # z --limit 6 wygasił 54 poprawne rekordy).
+    if args.limit is None:
+        deactivated = bc.deactivate_missing(records, seen_keys, seen_now)
+    else:
+        deactivated = 0
+        logging.info("Tryb z --limit: pomijam deaktywację nieodwiedzonych "
+                     "jednostek (ochrona danych).")
 
     bc.save_snapshot("praca_links", {
         "fetched_at": seen_now,
@@ -196,9 +229,12 @@ def main() -> int:
 
     logging.info(
         "Gotowe. Z linkiem 'PRACA - NOWE': %d, bez linku: %d, "
-        "świeżo wygaszonych: %d. Dataset: %s",
-        found, missing, deactivated, bc.PRACA_LINKS_DATASET,
+        "nieudanych pobrań: %d, świeżo wygaszonych: %d. Dataset: %s",
+        found, missing, failures, deactivated, bc.PRACA_LINKS_DATASET,
     )
+    if failures:
+        logging.warning("Nieudane pobrania zanotowano w: %s",
+                        bc.FAILURES_DATASET)
     return 0
 
 

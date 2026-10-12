@@ -256,12 +256,31 @@ def main() -> int:
                 "ref_number": offer["ref_number"],
                 "deadline": offer["deadline"],
                 "raw_text": offer["raw_text"],
+                # Źródło pozwala rozdzielić oferty ze stron jednostek od
+                # ofert z globalnej listy BIP (skrypt 3b) i innych portali.
+                "source": "bip_unit",
             }
             bc.upsert_record(records, key=key, fields=fields, seen_now=seen_now)
             seen_keys.append(key)
 
     # Oferty, których już nie widać na stronach -> nieaktywne (z datą).
-    deactivated = bc.deactivate_missing(records, seen_keys, seen_now)
+    #
+    # UWAGA: tylko przy pełnym przebiegu. Z --limit nie odwiedziliśmy
+    # wszystkich stron, więc brak oferty nie znaczy, że zniknęła.
+    # Dodatkowo nie ruszamy ofert z innych źródeł (np. globalnej listy BIP),
+    # bo ten skrypt widzi tylko oferty ze stron per-jednostka.
+    if args.limit is None:
+        own_keys = {
+            key for key, rec in records.items()
+            if rec.get("source") in (None, "bip_unit")
+        }
+        deactivated = bc.deactivate_missing(
+            {k: records[k] for k in own_keys}, seen_keys, seen_now,
+        )
+    else:
+        deactivated = 0
+        logging.info("Tryb z --limit: pomijam deaktywację ofert "
+                     "(ochrona danych).")
 
     bc.save_snapshot("offers", {"fetched_at": seen_now, "pages": snapshot_rows})
     bc.save_dataset(bc.OFFERS_DATASET, dataset)
