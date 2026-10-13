@@ -43,6 +43,8 @@ obsługiwane.
 | **`3b_fetch_offers_global.py`** | **Szybka ścieżka**: wszystkie nabory z jednej globalnej strony BIP (`?dok_id=104362`) — ~435 ofert w ~2 s | globalna lista naborów | `data/offers.json` |
 | `src_nuzle.py` | Źródło zewnętrzne: nuzle.pl (Kraków, bez ofert nauczycielskich) | nuzle.pl | `data/offers.json` |
 | `src_ofertypracy_edu.py` | Źródło zewnętrzne: ofertypracy.edu.pl przez Inertia API (Kraków, typ „Pracownik niepedagogiczny”) | API portalu | `data/offers.json` |
+| `src_kultura_instytucje.py` | Źródło zewnętrzne: **instytucje kultury poza BIP miasta** (Muzeum Narodowe, Teatr Słowackiego, Cricoteka) — BIP Krakowa obejmuje tylko jednostki miejskie | strony instytucji | `data/offers.json` |
+| `profile_match.py` | Ocena dopasowania oferty do profilu (kultura, sztuka, grafika, animacja, edukacja kulturalna) | — | — |
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
 | `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
 | `report_html.py` | Moduł prezentacji HTML (styl, skrypt trackingu, budowa dokumentu) | — | — |
@@ -68,6 +70,41 @@ narzędzi są: licznik nieprzejrzanych, „Oznacz wszystkie jako przejrzane”,
 
 Znacznik „oglądane” z pliku `data/clicks.json` (eksport z raportu) wpływa
 na oznaczanie NOWE — oferta raz otwarta przestaje być nowa.
+
+## Dopasowanie do profilu — sekcja „Dla Ciebie”
+
+Wśród kilkuset ofert trafne tonęły, więc raport wyglądał, jakby zawierał
+„głównie administrację i sprzątanie”. Dlatego **na samej górze raportu** jest
+wyróżniona sekcja z ofertami dopasowanymi do profilu:
+
+- kultura i sztuka (malarstwo, grafika warsztatowa),
+- grafika komputerowa, graphic design, DTP,
+- animacja kultury, warsztaty dla wszystkich grup wiekowych,
+- edukacja muzealna/kulturalna, pedagogika,
+- konserwacja i opieka nad zbiorami.
+
+Odznaka **DLA CIEBIE** = mocne trafienie (słowo kluczowe w tytule),
+**może pasować** = trafienie słabsze. Pod kartą widać, do czego pasuje.
+Jawnie pominięte: sprzątanie, ochrona, kierowca, księgowość, IT, zawody
+medyczne, nauczyciel przedmiotu.
+
+Zwijana lista **„Niedawno zamknięte oferty z profilu”** pokazuje trafienia,
+których termin minął (do 60 dni) — nie da się już aplikować, ale podpowiadają,
+jakie stanowiska i w jakich instytucjach realnie się pojawiają.
+
+### Pułapki językowe, które trzeba było obsłużyć
+
+- **„grafik”** to po polsku zarówno zawód, jak i harmonogram pracy. Lista
+  fraz zawiodła (złapała „Tancerkę w klubie”, bo w opisie było „decydować
+  o swoim grafiku”), więc znaczenie rozstrzygamy **kontekstowo** — w oknie
+  ±45 znaków szukamy słów typu *elastyczn, swoim, zmianow, godzin*.
+- **nazwa instytucji** myliła dopasowanie: „Poradnia Psychologiczno-
+  **Pedagogiczna**” powodowała trafienia dla „LEKARZ PSYCHIATRA” i
+  „Referent”. Takie frazy typu placówki są usuwane przed oceną.
+- **obszary rdzeniowe vs wspierające**: sama nazwa „muzeum” w opisie nie
+  kwalifikuje oferty — wymagane jest trafienie w obszarze rdzeniowym
+  (grafika, sztuka, animacja, edukacja kulturalna, konserwacja). Bez tego
+  podziału dopasowań było 96 zamiast 27, z czego wiele błędnych.
 
 ## Diagnostyka — nic nie ginie po cichu
 
@@ -143,6 +180,8 @@ bip_krk/
 ├── 3b_fetch_offers_global.py    # szybka ścieżka (cała lista naborów BIP)
 ├── src_nuzle.py                 # źródło: nuzle.pl
 ├── src_ofertypracy_edu.py       # źródło: ofertypracy.edu.pl
+├── src_kultura_instytucje.py    # źródło: instytucje kultury poza BIP
+├── profile_match.py             # dopasowanie do profilu zawodowego
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py
 ├── run_all.py               # orchestrator całego potoku (--sample dla próbki)

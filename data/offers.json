@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-09-22T15:58:21+02:00",
-    "updated": "2026-10-12T18:45:39+02:00"
+    "updated": "2026-10-13T09:47:23+02:00"
   },
   "records": {
     "nab:16033": {
@@ -7665,14 +7665,14 @@
       "detail_url": "https://www.nuzle.pl/tancerka-w-klubie-krakow,g4673763",
       "ref_number": null,
       "deadline": null,
-      "published": "2026-10-12",
+      "published": "2026-10-13",
       "raw_text": "Szukasz pracy, w której możesz dobrze zarabiać, rozwijać się, wyglądać olśniewająco i samodzielnie decydować o swoim grafiku? ZAROBKI OD 15 000 DO 40 000 ZŁ– regularne wypłaty Oficjalne zatrudnienie – umowa zlecenie Mieszkanie blisko klubu.. więcej...",
       "source": "nuzle",
       "portal_new": true,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7689,11 +7689,11 @@
       "published": "2026-10-12",
       "raw_text": "Idylla Massage, ul. Floriańska 26, ścisłe centrum Krakowa, zaprasza Panie z całej Polski i Panów ( tylko z Krakowa lub okolic ) do pracy przy masażu relaksacyjnym . Poprzestajemy tylko na masażu. Doświadczenie mile widziane Szukamy osób.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": true,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7752,11 +7752,11 @@
       "published": "2026-10-12",
       "raw_text": "Firma sprzątająca Lanua Contractor działająca jako Agencja Pracy Tymczasowej (nr certyfikatu 12850) zatrudni osoby do pracy przy sprzątaniu sal chorych, pomieszczeń socjalnych, korytarzy, mycia, dezynfekcji na obiekcie szpitala Miejsce.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7773,11 +7773,11 @@
       "published": "2026-10-12",
       "raw_text": "Firma o ugruntowanej pozycji na rynku poszukuje pracownika do Skawiny, na stanowisko: Specjalista/ka Techniczny/na ds. Automatyki, Elektroniki i Elektryki. Szukamy wszechstronnej osoby z techniczną smykałką – prawdziwej „złotej rączki” – która.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7799,8 +7799,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-56880912": {
       "nab_id": "nuzle-56880912",
@@ -7820,8 +7820,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-47596417": {
       "nab_id": "nuzle-47596417",
@@ -7836,11 +7836,11 @@
       "published": "2026-10-12",
       "raw_text": "PRACA DODATKOWA DLA UCZNIÓW I STUDENTÓW - ELASTYCZNY GRAFIK ORAZ BONUSY NA START!!! STUDIUJESZ I SZUKASZ PRACY DODATKOWEJ? ZOSTAŃ KIEROWCĄ NASZEJ FLOTY! Chcesz dorobić po zajęciach albo tylko w weekendy? U nas sam decydujesz, kiedy pracujesz... więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7857,11 +7857,11 @@
       "published": "2026-10-12",
       "raw_text": "Kierowca Free Now, Uber, Bolt na terenie Krakowa Jesteśmy firmą flotową współpracującą z trzema największymi aplikacjami: UBER, BOLT oraz FREE NOW, a więc sam decydujesz z której aplikacji chcesz korzystać. Konta na 3 aplikacjach dają Ci większe.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7878,11 +7878,11 @@
       "published": "2026-10-12",
       "raw_text": "T&T People and Work Group od 2015 roku odpowiada na potrzeby Klientów w obszarze usług zarządzania zasobami ludzkimi, oferując kompleksową organizację procesu zatrudnienia pracowników, m.in z Ukrainy, Nepalu, Mołdawii, Białorusi,.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7899,11 +7899,11 @@
       "published": "2026-10-12",
       "raw_text": "Jeśli posiadasz orzeczenie o stopniu niepełnosprawności dołącz do naszego zespołu! Poszukujemy pracowników na stanowisko: Młodszy/sza Operator/ka Linii Produkcyjnej Miejsce pracy: Skawina W naszej Firmie jest miejsce dla osób nie posiadających.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7920,11 +7920,11 @@
       "published": "2026-10-12",
       "raw_text": "Poszukujemy pracowników na stanowisko: Młodszy/a Operator/ka Linii Produkcji Miejsce pracy: Skawina W naszej Firmie jest miejsce dla osób nie posiadających doświadczenia, ale chcących uczyć się i zdobywać nowe doświadczenia. Zależy nam na.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7941,11 +7941,11 @@
       "published": "2026-10-12",
       "raw_text": "SZUKASZ PRACY? MASZ ORZECZENIE O STOPNIU NIEPEŁNOSPRAWNOŚCI? Szukamy Ciebie! Zatrudnimy osoby na stanowisko: Młodszy/a Operator/ka Linii Produkcyjnej Miejsce pracy: Skawina W naszej Firmie jest miejsce dla osób nie posiadających doświadczenia,.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7966,7 +7966,7 @@
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -7983,11 +7983,11 @@
       "published": "2026-10-12",
       "raw_text": "Lavoro Due Sp. z o.o. poszukuje kandydata/tki do Skawiny na stanowisko: KOORDYNATOR/KA KONTRAKTU Oferujemy: • zatrudnienie w oparciu o umowę o pracę w pełnym wymiarze godzin • niezbędne narzędzia pracy • profesjonalne wdrożenie w obowiązki i.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8008,7 +8008,7 @@
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8029,7 +8029,7 @@
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8046,11 +8046,11 @@
       "published": "2026-10-12",
       "raw_text": "T&T People and Work Group od 2015 roku odpowiada na potrzeby Klientów w obszarze usług zarządzania zasobami ludzkimi, oferując między innymi kompleksową organizację procesu zatrudniania pracowników. Specjalista /Młodszy Specjalista ds... więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8067,11 +8067,11 @@
       "published": "2026-10-12",
       "raw_text": "Firma o ugruntowanej pozycji na rynku poszukuje pracownika na stanowisko: Operator/ka do strefy jakości Poszukujemy kandydata do młodego zespołu, do strefy jakości na demontaż. - automatyki przemysłowej - elektroniki użytkowej - instalacji i.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8088,11 +8088,11 @@
       "published": "2026-10-12",
       "raw_text": "HR Work Force (KRAZ 6474) jest doświadczoną i dynamicznie rozwijającą się agencją na rynku pośrednictwa pracy. Nasza firma świadczy profesjonalne usługi w zakresie Pracy Tymczasowej i rekrutacji specjalistycznej. Dla naszego Klienta- lidera z.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8114,8 +8114,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71491347": {
       "nab_id": "nuzle-71491347",
@@ -8135,8 +8135,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71479425": {
       "nab_id": "nuzle-71479425",
@@ -8156,8 +8156,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71456372": {
       "nab_id": "nuzle-71456372",
@@ -8177,8 +8177,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-27603311": {
       "nab_id": "nuzle-27603311",
@@ -8197,7 +8197,7 @@
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8214,11 +8214,11 @@
       "published": "2026-10-12",
       "raw_text": "Prestiżowy lokal w centrum KRAKOWA, poszukuje atrakcyjnych, pewnych siebie dziewczyn na stanowiska tancerek i hostess! Nic się nie martw, dla osób spoza KRAKOWA mamy zakwaterowanie! Oferujemy: Bardzo atrakcyjne zarobki w formie tygodniówek.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8240,8 +8240,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71505846": {
       "nab_id": "nuzle-71505846",
@@ -8261,8 +8261,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71495400": {
       "nab_id": "nuzle-71495400",
@@ -8282,8 +8282,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71463680": {
       "nab_id": "nuzle-71463680",
@@ -8303,8 +8303,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71454004": {
       "nab_id": "nuzle-71454004",
@@ -8324,8 +8324,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71448924": {
       "nab_id": "nuzle-71448924",
@@ -8345,8 +8345,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71443033": {
       "nab_id": "nuzle-71443033",
@@ -8366,8 +8366,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71427383": {
       "nab_id": "nuzle-71427383",
@@ -8387,8 +8387,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71422447": {
       "nab_id": "nuzle-71422447",
@@ -8408,8 +8408,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71420046": {
       "nab_id": "nuzle-71420046",
@@ -8429,8 +8429,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71399187": {
       "nab_id": "nuzle-71399187",
@@ -8450,8 +8450,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71382988": {
       "nab_id": "nuzle-71382988",
@@ -8471,8 +8471,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71382991": {
       "nab_id": "nuzle-71382991",
@@ -8492,8 +8492,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71380181": {
       "nab_id": "nuzle-71380181",
@@ -8571,11 +8571,11 @@
       "published": "2026-10-12",
       "raw_text": "HOSTESSA wysokie wynagrodzenie Szukamy pewnych siebie, uśmiechniętych i otwartych dziewczyn do pracy na stanowisko hostessy/tancerki klubowej w samym centrum Krakowa. Chcesz rozpocząć pracę jako hostessa lub tancerka , ale nie masz w tym.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8597,8 +8597,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71507013": {
       "nab_id": "nuzle-71507013",
@@ -8639,8 +8639,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71505487": {
       "nab_id": "nuzle-71505487",
@@ -8744,8 +8744,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-70470805": {
       "nab_id": "nuzle-70470805",
@@ -8765,8 +8765,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:49:01+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-70408939": {
       "nab_id": "nuzle-70408939",
@@ -8807,8 +8807,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T10:57:29+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71488401": {
       "nab_id": "nuzle-71488401",
@@ -8844,11 +8844,11 @@
       "published": "2026-10-12",
       "raw_text": "Opis: Katolickie Liceum Montessori w Krakowie zatrudni pracownika gospodarczego na 3/4 etatu, w wymiarze 6h dziennie od godziny 12-18 od poniedziałku do piątku. Poszukujemy zaangażowanej i odpowiedzialnej osoby, która dołączy do naszego zespołu.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T12:13:04+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -8870,8 +8870,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T12:13:04+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71509749": {
       "nab_id": "nuzle-71509749",
@@ -8891,8 +8891,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T12:13:04+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "kult-slowacki-specjalista_ds_ksiegowosci_i_finansow.docx": {
       "nab_id": "kult-slowacki-specjalista_ds_ksiegowosci_i_finansow.docx",
@@ -9154,11 +9154,11 @@
       "published": "2026-10-12",
       "raw_text": "Praca w soboty Nazywam się Joanna Worotyńska, jestem psychologiem oraz psychoterapeutką, absolwentką Krakowskiego Centrum Psychodynamicznego. Poszukujemy obecnie do naszego kameralnego zespołu psychoterapeutów osób dorosłych, którzy chcą.. więcej...",
       "source": "nuzle",
-      "portal_new": true,
+      "portal_new": false,
       "portal_urgent": false,
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T18:45:30+02:00",
-      "last_seen": "2026-10-12T18:45:30+02:00",
+      "last_seen": "2026-10-13T09:47:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -9180,8 +9180,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T18:45:30+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71513215": {
       "nab_id": "nuzle-71513215",
@@ -9201,8 +9201,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T18:45:30+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71512438": {
       "nab_id": "nuzle-71512438",
@@ -9222,8 +9222,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T18:45:30+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71512026": {
       "nab_id": "nuzle-71512026",
@@ -9243,8 +9243,8 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T18:45:30+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
     },
     "nuzle-71512050": {
       "nab_id": "nuzle-71512050",
@@ -9264,8 +9264,29 @@
       "category_hint": "Oferty komercyjne (nuzle)",
       "first_seen": "2026-10-12T18:45:30+02:00",
       "last_seen": "2026-10-12T18:45:30+02:00",
-      "active": true,
-      "inactive_since": null
+      "active": false,
+      "inactive_since": "2026-10-13T09:45:29+02:00"
+    },
+    "nuzle-70649835": {
+      "nab_id": "nuzle-70649835",
+      "unit_key": null,
+      "unit_name": "Kraków",
+      "praca_url": "https://www.nuzle.pl/krakow.html",
+      "status": "trwajacy",
+      "title": "HOSTESSA - elastyczny grafik, wypłaty co tydzień",
+      "detail_url": "https://www.nuzle.pl/hostessa-elastyczny-grafik-wyplaty-co-tydzien-krakow,g4456810",
+      "ref_number": null,
+      "deadline": null,
+      "published": "2026-08-07",
+      "raw_text": "Poszukujemy komunikatywnych i energicznych dziewczyn na stanowisko hostessy. Praca w energicznym, zgranym zespole - idealna dla osób lubiących kontakt z ludźmi. Obowiązuje elegancki strój: sukienka lub komplet spódniczka + top oraz buty na.. więcej...",
+      "source": "nuzle",
+      "portal_new": false,
+      "portal_urgent": false,
+      "category_hint": "Oferty komercyjne (nuzle)",
+      "first_seen": "2026-10-13T09:45:29+02:00",
+      "last_seen": "2026-10-13T09:45:29+02:00",
+      "active": false,
+      "inactive_since": "2026-10-13T09:47:23+02:00"
     }
   }
 }

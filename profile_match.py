@@ -84,6 +84,9 @@ EXCLUDE_KEYWORDS: Tuple[str, ...] = (
     "hydraulik", "elektryk", "konserwator techniczn", "ślusarz",
     "robotnik", "pracownik fizyczn", "magazynier", "kasjer",
     "nauczyciel", "wychowawca",
+    # Zawody medyczne — bywały łapane przez nazwę placówki (poradnie).
+    "lekarz", "lekarka", "psychiatra", "psycholog kliniczn", "logopeda",
+    "terapeut", "rehabilitant", "fizjoterapeut",
 )
 
 # Obszary RDZENIOWE — tylko one mogą samodzielnie zakwalifikować ofertę.
@@ -118,6 +121,30 @@ SCHEDULE_CONTEXT_WORDS: Tuple[str, ...] = (
 
 # Ile znaków wokół słowa „grafik” sprawdzamy w poszukiwaniu kontekstu.
 SCHEDULE_CONTEXT_WINDOW = 45
+
+# Nazwy instytucji, w których słowo „pedagogiczn” jest częścią TYPU placówki,
+# a nie opisem stanowiska. Bez tego do wyników wchodziły oferty typu
+# „LEKARZ/LEKARKA PSYCHIATRA” czy „Referent” z Poradni
+# Psychologiczno-Pedagogicznej — trafiały przez nazwę pracodawcy.
+INSTITUTION_NOISE: Tuple[str, ...] = (
+    "psychologiczno-pedagogiczn",
+    "psychologiczno pedagogiczn",
+    "poradni pedagogiczn",
+)
+
+
+def _strip_institution_noise(text: str) -> str:
+    """Usuwa nazwy typu placówki, które myliłyby dopasowanie do profilu.
+
+    Args:
+        text: znormalizowany tekst (zwykle nazwa jednostki + opis).
+
+    Returns:
+        Tekst bez fraz oznaczających typ placówki.
+    """
+    for phrase in INSTITUTION_NOISE:
+        text = text.replace(phrase, " ")
+    return text
 
 
 def _strip_schedule_meanings(text: str) -> str:
@@ -174,7 +201,9 @@ def score_offer(title: str, description: str = "",
         profile_level ('strong' / 'weak' / 'none'), profile_excluded (bool).
     """
     title_norm = _strip_schedule_meanings(_normalize(title))
-    body_norm = _strip_schedule_meanings(_normalize(f"{description} {unit_name}"))
+    body_norm = _strip_institution_noise(
+        _strip_schedule_meanings(_normalize(f"{description} {unit_name}"))
+    )
 
     score = 0
     tags: List[str] = []

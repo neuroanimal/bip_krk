@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-10-12T11:37:33+02:00",
-    "updated": "2026-10-12T18:45:39+02:00"
+    "updated": "2026-10-13T09:45:29+02:00"
   },
   "records": {
     "1_units|bip_id:1|unit_in_current_and_archive": {
@@ -146,6 +146,39 @@
       "first_seen": "2026-10-12T18:34:07+02:00",
       "last_seen": "2026-10-12T18:45:39+02:00",
       "count": 3,
+      "resolved": false
+    },
+    "src_nuzle|cat_plastyk|http_404": {
+      "stage": "src_nuzle",
+      "key": "cat_plastyk",
+      "url": "https://www.nuzle.pl/krakow,plastyk.html",
+      "reason": "http_404",
+      "detail": "kategoria: plastyk",
+      "first_seen": "2026-10-13T09:45:29+02:00",
+      "last_seen": "2026-10-13T09:45:29+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "src_nuzle|cat_animator kultury|http_404": {
+      "stage": "src_nuzle",
+      "key": "cat_animator kultury",
+      "url": "https://www.nuzle.pl/krakow,animator-kultury.html",
+      "reason": "http_404",
+      "detail": "kategoria: animator kultury",
+      "first_seen": "2026-10-13T09:45:29+02:00",
+      "last_seen": "2026-10-13T09:45:29+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "src_nuzle|cat_instruktor|http_404": {
+      "stage": "src_nuzle",
+      "key": "cat_instruktor",
+      "url": "https://www.nuzle.pl/krakow,instruktor.html",
+      "reason": "http_404",
+      "detail": "kategoria: instruktor",
+      "first_seen": "2026-10-13T09:45:29+02:00",
+      "last_seen": "2026-10-13T09:45:29+02:00",
+      "count": 1,
       "resolved": false
     }
   }

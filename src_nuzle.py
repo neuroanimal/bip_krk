@@ -47,7 +47,7 @@ from __future__ import annotations
 import argparse
 import logging
 import re
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from bs4 import BeautifulSoup
 
@@ -72,6 +72,27 @@ TEACHER_KEYWORDS = (
 
 # Data publikacji ukryta w <span class="hide">YYYY-MM-DD</span>.
 DATE_RE = re.compile(r"\b(\d{4}-\d{2}-\d{2})\b")
+
+# Rozpoznanie PRAWDZIWEJ oferty: adres pojedynczego ogłoszenia na nuzle ma
+# na końcu identyfikator w formacie ",gNNNNNNN", np.
+#   /tancerka-w-klubie-krakow,g4673763
+# Natomiast adresy typu "/krakow,grafik.html" to STRONY KATEGORII
+# („Praca Grafik Kraków – 16 ofert”), nie ogłoszenia. Bez tego filtru do
+# datasetu wchodziły karty „Grafik”/„Wykładowca”/„Dentysta” prowadzące do
+# listy wyników, co wyglądało jak oferta, a ofertą nie było.
+OFFER_URL_RE = re.compile(r",g\d+(?:[/?#]|$)")
+
+# Strony kategorii nuzle, które są ISTOTNE dla profilu (kultura, sztuka,
+# grafika). Z nich pobieramy dodatkowe ogłoszenia, bo lista ogólna dla
+# Krakowa pokazuje przekrój wszystkich branż i trafienia z profilu w niej
+# tonęły. Format: (etykieta, adres).
+PROFILE_CATEGORY_URLS: Tuple[Tuple[str, str], ...] = (
+    ("grafik", "https://www.nuzle.pl/krakow,grafik.html"),
+    ("grafik komputerowy", "https://www.nuzle.pl/krakow,grafik-komputerowy.html"),
+    ("plastyk", "https://www.nuzle.pl/krakow,plastyk.html"),
+    ("animator kultury", "https://www.nuzle.pl/krakow,animator-kultury.html"),
+    ("instruktor", "https://www.nuzle.pl/krakow,instruktor.html"),
+)
 
 
 def is_teacher_offer(title: str, description: str) -> bool:
@@ -110,6 +131,10 @@ def parse_offers(html: str) -> List[Dict[str, Any]]:
             continue
         title = anchor.get_text(strip=True)
         if not title:
+            continue
+        # Pomijamy linki do STRON KATEGORII — to nie ogłoszenia (patrz
+        # komentarz przy OFFER_URL_RE).
+        if not OFFER_URL_RE.search(anchor["href"]):
             continue
 
         # Opis oferty (skrócony na liście).
@@ -195,6 +220,11 @@ def main() -> int:
         "--keep-teachers", action="store_true",
         help="Nie odfiltrowuj ofert nauczycielskich/pedagogicznych.",
     )
+    parser.add_argument(
+        "--skip-categories", action="store_true",
+        help="Pomiń pobieranie kategorii profilowych (grafik, plastyk, "
+             "animator kultury) — tylko lista ogólna dla Krakowa.",
+    )
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
@@ -219,6 +249,23 @@ def main() -> int:
         if not page_offers:
             break
         all_offers.extend(page_offers)
+
+    # Strony kategorii istotnych dla profilu (grafika, plastyka, animacja).
+    # Lista ogólna dla Krakowa to przekrój wszystkich branż, w którym
+    # trafienia z profilu tonęły — tu pobieramy je celowanymi zapytaniami.
+    if not args.skip_categories:
+        for label, cat_url in PROFILE_CATEGORY_URLS:
+            logging.info("Kategoria profilowa '%s': %s", label, cat_url)
+            html, reason = bc.fetch_with_reason(session, cat_url)
+            if html is None:
+                bc.record_failure(stage="src_nuzle", key=f"cat_{label}",
+                                  url=cat_url,
+                                  reason=reason or "fetch_failed",
+                                  detail=f"kategoria: {label}")
+                continue
+            cat_offers = parse_offers(html)
+            logging.info("  ofert w kategorii: %d", len(cat_offers))
+            all_offers.extend(cat_offers)
 
     # Deduplikacja po identyfikatorze oferty (strony mogą się nakładać).
     unique: Dict[str, Dict[str, Any]] = {}
