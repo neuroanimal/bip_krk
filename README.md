@@ -43,7 +43,8 @@ obsługiwane.
 | **`3b_fetch_offers_global.py`** | **Szybka ścieżka**: wszystkie nabory z jednej globalnej strony BIP (`?dok_id=104362`) — ~435 ofert w ~2 s | globalna lista naborów | `data/offers.json` |
 | `src_nuzle.py` | Źródło zewnętrzne: nuzle.pl (Kraków, bez ofert nauczycielskich) | nuzle.pl | `data/offers.json` |
 | `src_ofertypracy_edu.py` | Źródło zewnętrzne: ofertypracy.edu.pl przez Inertia API (Kraków, typ „Pracownik niepedagogiczny”) | API portalu | `data/offers.json` |
-| `src_kultura_instytucje.py` | Źródło zewnętrzne: **instytucje kultury poza BIP miasta** (Muzeum Narodowe, Teatr Słowackiego, Cricoteka) — BIP Krakowa obejmuje tylko jednostki miejskie | strony instytucji | `data/offers.json` |
+| `src_kultura_instytucje.py` | Źródło zewnętrzne: **instytucje kultury poza BIP miasta** (Muzeum Narodowe, Zamek Królewski na Wawelu, Teatr Słowackiego, Cricoteka, Wojewódzka Biblioteka Publiczna) — BIP Krakowa obejmuje tylko jednostki miejskie | strony instytucji | `data/offers.json` |
+| `check_institution.py` | Narzędzie badawcze: sprawdza, czy kandydat ma scrapowalną stronę pracy (próbuje `/praca`, `/kariera`, `/oferty-pracy`…) — używane PRZED dodaniem do listy źródeł | adres instytucji | wydruk diagnostyczny |
 | `profile_match.py` | Ocena dopasowania oferty do profilu (kultura, sztuka, grafika, animacja, edukacja kulturalna) | — | — |
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
 | `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
@@ -181,6 +182,7 @@ bip_krk/
 ├── src_nuzle.py                 # źródło: nuzle.pl
 ├── src_ofertypracy_edu.py       # źródło: ofertypracy.edu.pl
 ├── src_kultura_instytucje.py    # źródło: instytucje kultury poza BIP
+├── check_institution.py         # narzędzie: badanie kandydatów na źródła
 ├── profile_match.py             # dopasowanie do profilu zawodowego
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py

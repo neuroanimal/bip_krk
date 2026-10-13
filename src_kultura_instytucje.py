@@ -52,24 +52,56 @@ from bs4 import BeautifulSoup
 import bip_common as bc
 
 # Lista instytucji: (klucz, nazwa, adres strony z ofertami).
-# Dodanie nowej instytucji = jedna linia tutaj. Zalecenie: najpierw ręcznie
-# sprawdzić, czy strona ma realne oferty (patrz docstring modułu).
+# Dodanie nowej instytucji = jedna linia tutaj. Zalecenie: najpierw sprawdzić
+# kandydata narzędziem ``check_institution.py`` — ono próbuje typowych
+# ścieżek (/praca, /kariera, /oferty-pracy...) i mówi, czy parser widzi tam
+# realne oferty.
+#
+# PUŁAPKI wykryte przy badaniu kandydatów (dlatego nie wystarczy HTTP 200):
+#   stary.pl/kariera        -> „Kariera Artura Ui” (tytuł sztuki Brechta!)
+#   mck.krakow.pl/praca     -> „Praca kobiety nigdy się nie kończy” (wystawa)
+#   opera.krakow.pl/praca   -> strona błędu („Coś nie zagrało...”)
+#   muzeumlotnictwa.pl      -> „Święto Inspektoratu...” (wydarzenie, nie praca)
+# Sprawdzone i puste (strona istnieje, zero ofert): Manggha, Muzeum
+# Etnograficzne, Muzeum Archeologiczne, Muzeum Żup Krakowskich, ASP,
+# Centrum Pendereckiego, Muzeum Auschwitz, Instytut Książki.
 INSTITUTIONS: List[Tuple[str, str, str]] = [
     ("mnk", "Muzeum Narodowe w Krakowie",
      "https://mnk.pl/o-muzeum/praca/oferty-pracy/"),
+    ("wawel", "Zamek Królewski na Wawelu",
+     "https://wawel.krakow.pl/kariera"),
     ("slowacki", "Teatr im. Juliusza Słowackiego w Krakowie",
      "https://teatrwkrakowie.pl/praca"),
     ("cricoteka", "Ośrodek Dokumentacji Sztuki Tadeusza Kantora Cricoteka",
      "https://cricoteka.pl/praca"),
+    # Biblioteka WOJEWÓDZKA — warto odnotować: miejska Biblioteka Kraków
+    # (jest w BIP) nie publikuje tam naborów wcale, a wojewódzka prowadzi
+    # własną listę ofert poza BIP miasta.
+    ("wbp", "Wojewódzka Biblioteka Publiczna w Krakowie",
+     "https://rajska.info/oferty-pracy"),
 ]
 
 # Słowa wskazujące, że tekst linku to oferta pracy (a nie np. wystawa).
+#
+# UWAGA na krótkie rdzenie: „inspektor” dopasowywał się do „Inspektoratu”
+# w nazwie wydarzenia („Święto Inspektoratu Wsparcia Sił Zbrojnych”),
+# dlatego ryzykowne słowa sprawdzamy z granicą wyrazu (patrz JOB_HINTS_RE).
 JOB_HINTS: Tuple[str, ...] = (
     "nabór", "nabor", "oferta pracy", "oferty pracy", "stanowisko",
     "poszukujemy", "zatrudnimy", "rekrutacj", "konkurs na stanowisko",
-    "specjalista", "asystent", "instruktor", "kustosz", "kurator",
-    "pracownik", "koordynator", "referent", "inspektor", "grafik",
+    "specjalista", "specjalistka", "asystent", "instruktor", "kustosz",
+    "kurator", "pracownik", "koordynator", "referent", "grafik",
     "edukator", "animator", "konserwator", "kasjer", "opiekun",
+)
+
+# Słowa wymagające granicy wyrazu — ich rdzeń występuje też w innych,
+# niezwiązanych z pracą wyrazach (inspektorat, kuratorium, animacja).
+JOB_HINTS_STRICT: Tuple[str, ...] = (
+    "inspektor", "kurator", "animator",
+)
+JOB_HINTS_STRICT_RE = re.compile(
+    r"\b(" + "|".join(JOB_HINTS_STRICT) + r")(a|ka|em|ki|zie|rze)?\b",
+    re.IGNORECASE,
 )
 
 # Data po polsku, np. "29 września 2026" — częsta na stronach instytucji.
@@ -133,11 +165,18 @@ def clean_title(text: str) -> str:
     # Ujednolicenie przedrostka naboru.
     result = re.sub(r"^\s*nabór na\s+stanowisko:?\s*", "", result,
                     flags=re.IGNORECASE)
+    # Usuń rozszerzenie pliku — część instytucji linkuje wprost do PDF-a
+    # z ogłoszeniem, więc tekst linku kończy się na ".pdf"/".docx".
+    result = re.sub(r"\.(pdf|docx?|odt)\s*$", "", result, flags=re.IGNORECASE)
     return re.sub(r"\s+", " ", result).strip(" -–:·|")
 
 
 def looks_like_job(text: str) -> bool:
     """Ocenia, czy tekst linku wygląda na ofertę pracy.
+
+    Słowa z :data:`JOB_HINTS` dopasowujemy po rdzeniu, ale te z
+    :data:`JOB_HINTS_STRICT` — z granicą wyrazu, bo ich rdzeń pojawia się
+    w wyrazach niezwiązanych z pracą („Inspektoratu”, „kuratorium”).
 
     Args:
         text: tekst linku.
@@ -146,7 +185,12 @@ def looks_like_job(text: str) -> bool:
         True, gdy tekst zawiera słowo wskazujące na ofertę pracy.
     """
     lowered = text.lower()
-    return any(hint in lowered for hint in JOB_HINTS)
+    # Najpierw słowa bezpieczne (dłuższe, jednoznaczne).
+    safe_hints = tuple(h for h in JOB_HINTS if h not in JOB_HINTS_STRICT)
+    if any(hint in lowered for hint in safe_hints):
+        return True
+    # Potem ryzykowne — tylko z granicą wyrazu.
+    return bool(JOB_HINTS_STRICT_RE.search(lowered))
 
 
 def parse_institution_page(html: str, page_url: str) -> List[Dict[str, Any]]:
