@@ -41,13 +41,15 @@ PIPELINE = [
     "3b_fetch_offers_global.py",
     "src_nuzle.py",
     "src_ofertypracy_edu.py",
+    "src_kultura_instytucje.py",
     "4_fetch_offer_details.py",
     "5_generate_report.py",
 ]
 
 # Etapy opcjonalne — ich niepowodzenie nie przerywa całego potoku
 # (zewnętrzny portal może być chwilowo niedostępny).
-OPTIONAL_STEPS = {"src_nuzle.py", "src_ofertypracy_edu.py"}
+OPTIONAL_STEPS = {"src_nuzle.py", "src_ofertypracy_edu.py",
+                  "src_kultura_instytucje.py"}
 
 
 def sample_args(script: str, sample: int) -> List[str]:

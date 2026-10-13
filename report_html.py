@@ -205,6 +205,12 @@ a:hover { text-decoration: underline; }
     background: #f59e0b; color: #fff;
 }
 .match.weak { background: #fcd34d; color: #78350f; }
+/* Zwijana lista niedawno zamkniętych trafień z profilu. */
+.closed-matches { margin-top: .8em; }
+.closed-matches summary {
+    cursor: pointer; font-weight: 600; color: #92400e; font-size: .92em;
+}
+.closed-matches .offer { opacity: .75; }
 /* Sekcja diagnostyczna (co się nie pobrało) — zwinięta, nie rozprasza. */
 .failures {
     background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
@@ -519,6 +525,7 @@ def build_offer_card(offer: Dict[str, object],
 def build_profile_section(
     offers: List[Dict[str, object]],
     details: Dict[str, Dict[str, object]],
+    recent_closed: Optional[List[Dict[str, object]]] = None,
 ) -> str:
     """Buduje wyróżnioną sekcję „dopasowane do profilu” na górze raportu.
 
@@ -528,12 +535,17 @@ def build_profile_section(
     sprzątanie”. Tutaj zbieramy oferty z wynikiem dopasowania i pokazujemy
     je NA SAMEJ GÓRZE, posortowane po trafności.
 
-    Pokazujemy tylko oferty AKTUALNE (termin nieprzeterminowany) — stare
-    trafienia byłyby tylko szumem.
+    Dodatkowo, w zwijanej liście, pokazujemy **niedawno zamknięte** trafienia
+    z profilu. Nie da się już na nie aplikować, ale mają wartość
+    orientacyjną: pokazują, jakie stanowiska w tym profilu realnie się
+    pojawiają i w jakich instytucjach — co pomaga ocenić, gdzie warto
+    pilnować ogłoszeń.
 
     Args:
-        offers: wszystkie wzbogacone oferty raportu.
+        offers: wszystkie wzbogacone oferty raportu (aktualne).
         details: mapa klucz oferty -> szczegóły.
+        recent_closed: opcjonalna lista dopasowanych ofert już zamkniętych
+            (do zwijanej sekcji orientacyjnej).
 
     Returns:
         Fragment HTML sekcji (pusty, gdy nie ma dopasowań).
@@ -542,7 +554,7 @@ def build_profile_section(
         offer for offer in offers
         if str(offer.get("profile_level") or "none") in ("strong", "weak")
     ]
-    if not matched:
+    if not matched and not recent_closed:
         return ""
 
     # Najpierw mocne dopasowania, potem wg trafności, a przy równej — wg
@@ -573,6 +585,20 @@ def build_profile_section(
     )
     for offer in matched:
         parts.append(build_offer_card(offer, details))
+
+    # Niedawno zamknięte trafienia — wartość orientacyjna (jakie stanowiska
+    # w tym profilu się pojawiają i gdzie). Zwinięte, by nie rozpraszały.
+    if recent_closed:
+        parts.append("<details class='closed-matches'>")
+        parts.append(
+            f"<summary>Niedawno zamknięte oferty z profilu — "
+            f"{len(recent_closed)} (podpowiedź, gdzie warto pilnować "
+            "ogłoszeń)</summary>"
+        )
+        for offer in recent_closed:
+            parts.append(build_offer_card(offer, details))
+        parts.append("</details>")
+
     parts.append("</div>")
     return "\n".join(parts)
 
@@ -582,6 +608,7 @@ def build_html(
     details: Dict[str, Dict[str, object]],
     total: int,
     failures: Optional[Dict[str, dict]] = None,
+    recent_closed: Optional[List[Dict[str, object]]] = None,
 ) -> str:
     """Buduje kolorowy, estetyczny raport HTML pogrupowany po kategoriach.
 
@@ -654,7 +681,7 @@ def build_html(
     all_offers: List[Dict[str, object]] = []
     for _label, offers_in_group in grouped:
         all_offers.extend(offers_in_group)
-    profile_section = build_profile_section(all_offers, details)
+    profile_section = build_profile_section(all_offers, details, recent_closed)
     if profile_section:
         parts.append(profile_section)
 

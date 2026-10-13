@@ -68,6 +68,12 @@ CATEGORY_PRIORITY: List[Tuple[str, str, int]] = [
 DEFAULT_PRIORITY = 99
 DEFAULT_LABEL = "Pozostałe"
 
+# Polityka sekcji „niedawno zamknięte trafienia z profilu”:
+# ile dni po terminie oferta jest jeszcze warta pokazania (orientacyjnie)
+# i ile takich pozycji maksymalnie wypisać, żeby nie zalać raportu.
+CLOSED_MATCH_MAX_DAYS = 60
+CLOSED_MATCH_LIMIT = 12
+
 
 def parse_deadline_to_date(deadline: Optional[str]) -> Optional[date]:
     """Zamienia 'YYYY-MM-DD' na obiekt daty (lub None).
@@ -446,6 +452,59 @@ def build_markdown(
 
 
 # Arkusz stylów raportu HTML — kolory kategorii i pilności, karty ofert.
+def collect_recent_closed_matches(
+    all_records: Dict[str, dict],
+    units: Dict[str, dict],
+    clicked_ids: set,
+    shown_keys: set,
+) -> List[Dict[str, object]]:
+    """Zbiera niedawno zamknięte oferty pasujące do profilu.
+
+    Po co: raport domyślnie pokazuje tylko oferty aktualne, więc trafienia
+    z profilu, których termin minął, znikają bez śladu. A one mają wartość
+    orientacyjną — pokazują, jakie stanowiska w tym profilu się pojawiają
+    i w jakich instytucjach, co podpowiada, gdzie pilnować ogłoszeń.
+
+    Bierzemy oferty, które: pasują do profilu, NIE są już w raporcie
+    (bo po terminie), a ich termin minął nie dawniej niż
+    :data:`CLOSED_MATCH_MAX_DAYS` dni.
+
+    Args:
+        all_records: wszystkie rekordy ofert z datasetu.
+        units: rekordy jednostek (dla kategorii).
+        clicked_ids: zbiór nab_id ofert już klikniętych.
+        shown_keys: nab_id ofert już pokazanych w raporcie (pomijamy je).
+
+    Returns:
+        Listę wzbogaconych ofert, od najświeżej zamkniętych.
+    """
+    today = date.today()
+    candidates: List[Tuple[int, Dict[str, object]]] = []
+
+    for record in all_records.values():
+        if str(record.get("nab_id")) in shown_keys:
+            continue
+        deadline = parse_deadline_to_date(record.get("deadline"))
+        if deadline is None or deadline >= today:
+            continue  # bez terminu albo jeszcze aktualna
+        days_past = (today - deadline).days
+        if days_past > CLOSED_MATCH_MAX_DAYS:
+            continue
+        match = score_offer(
+            str(record.get("title") or ""),
+            str(record.get("raw_text") or ""),
+            str(record.get("unit_name") or ""),
+        )
+        if match["profile_level"] == "none":
+            continue
+        candidates.append((days_past, record))
+
+    candidates.sort(key=lambda pair: pair[0])
+    selected = [record for _days, record in candidates[:CLOSED_MATCH_LIMIT]]
+    # Wzbogacamy tak samo jak oferty raportu, aby karty wyglądały spójnie.
+    return enrich_offers(selected, units, None, clicked_ids)
+
+
 def main() -> int:
     """Punkt wejścia skryptu 5.
 
@@ -528,8 +587,21 @@ def main() -> int:
     markdown = build_markdown(grouped, details_ds["records"], len(enriched))
     # Dziennik niepowodzeń — sekcja diagnostyczna w raporcie HTML.
     failures_ds = bc.load_dataset(bc.FAILURES_DATASET)
+
+    # Niedawno zamknięte trafienia z profilu — wartość orientacyjna: pokazują,
+    # jakie stanowiska w tym profilu realnie się pojawiają i w jakich
+    # instytucjach. Bierzemy oferty NIE ujęte w raporcie (bo po terminie),
+    # które pasują do profilu i pojawiły się w ostatnich tygodniach.
+    recent_closed = collect_recent_closed_matches(
+        offers_ds["records"], units_ds["records"], clicked_ids,
+        shown_keys={str(o.get("nab_id")) for o in enriched},
+    )
+    if recent_closed:
+        logging.info("Niedawno zamkniętych trafień z profilu: %d",
+                     len(recent_closed))
+
     html = build_html(grouped, details_ds["records"], len(enriched),
-                      failures_ds.get("records"))
+                      failures_ds.get("records"), recent_closed)
 
     stamp = bc.timestamp_str()
     md_path = bc.REPORTS_DIR / f"raport_praca_{stamp}.md"

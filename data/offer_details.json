@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-09-22T15:58:30+02:00",
-    "updated": "2026-10-12T12:13:11+02:00"
+    "updated": "2026-10-12T18:45:49+02:00"
   },
   "records": {
     "nab:14509": {
@@ -457,7 +457,7 @@
         }
       ],
       "first_seen": "2026-10-12T10:57:31+02:00",
-      "last_seen": "2026-10-12T12:13:06+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -492,7 +492,7 @@
         }
       ],
       "first_seen": "2026-10-12T10:57:31+02:00",
-      "last_seen": "2026-10-12T12:13:06+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -523,7 +523,7 @@
         }
       ],
       "first_seen": "2026-10-12T10:57:31+02:00",
-      "last_seen": "2026-10-12T12:13:06+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -554,7 +554,7 @@
         }
       ],
       "first_seen": "2026-10-12T10:57:31+02:00",
-      "last_seen": "2026-10-12T12:13:06+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -601,7 +601,7 @@
         }
       ],
       "first_seen": "2026-10-12T10:57:31+02:00",
-      "last_seen": "2026-10-12T12:13:06+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -632,7 +632,7 @@
         }
       ],
       "first_seen": "2026-10-12T10:57:31+02:00",
-      "last_seen": "2026-10-12T12:13:06+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -663,7 +663,7 @@
         }
       ],
       "first_seen": "2026-10-12T10:57:31+02:00",
-      "last_seen": "2026-10-12T10:57:31+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -702,7 +702,93 @@
         }
       ],
       "first_seen": "2026-10-12T10:57:31+02:00",
-      "last_seen": "2026-10-12T10:57:31+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
+      "active": true,
+      "inactive_since": null
+    },
+    "nab:16537": {
+      "nab_id": "16537",
+      "unit_key": "bip_id:489",
+      "unit_name": "ZCK - Zarząd Cmentarzy Komunalnych w Krakowie",
+      "title": "Specjalista w Dziale Budżetu i Windykacji",
+      "status": "trwajacy",
+      "deadline": "2026-10-19",
+      "ref_number": "ZCK-16/2026",
+      "detail_url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=16537&MODE=nab&ACT=info",
+      "heading": "Praca w jednostce",
+      "body_text": "Strona Podmiotowa\nPraca w jednostce\n﻿\nZARZĄD CMENTARZY KOMUNALNYCH W KRAKOWIE\nDYREKTOR OGŁASZA NABÓR\nNA WOLNE STANOWISKO\nSPECJALISTA W DZIALE BUDŻETU I WINDYKACJI (kobieta lub mężczyzna)\n(NR REF. ZCK-16/2026)\n1. Wymagania formalne\nposiadanie obywatelstwa polskiego,\nposiadanie pełnej zdolności do czynności prawnych,\nkorzystanie z pełni praw publicznych,\nnieskazanie prawomocnym wyrokiem za umyślne przestępstwo ścigane z oskarżenia publicznego lub umyślne przestępstwo skarbowe,\nposiadanie nieposzlakowanej opinii,\nwykształcenie: wyższe lub średnie,\nstaż pracy/ doświadczenie zawodowe:\nprzy wyższym wykształceniu - co najmniej 1 rok stażu pracy w obszarze finansów lub rachunkowości budżetowej;\nprzy średnim wykształceniu - co najmniej 3 lata stażu pracy w obszarze finansów lub rachunkowości budżetowej.\n2. Wymagania dodatkowe\nZnajomość przepisów prawa:\nUstawa z dnia 8 marca 1990 r. o samorządzie gminnym,\nUstawa z dnia 21 listopada 2008 r. o pracownikach samorządowych,\nUstawa z dnia 10 maja 2018 r. o ochronie danych osobowych,\nUstawa z dnia 27 sierpnia 2009 r. o finansach publicznych,\nUstawa z dnia 29 września 1994 r. o rachunkowości,\nUstawa z dnia 17 grudnia 2004 r. o odpowiedzialności za naruszenie dyscypliny finansów publicznych,\nRozporządzenie Ministra Finansów i Gospodarki z dnia 20 kwietnia 2026 r. w sprawie szczegółowej klasyfikacji dochodów, wydatków, przychodów i rozchodów oraz środków pochodzących ze źródeł zagranicznych,\nRozporządzenie Ministra Finansów z dnia 2 marca 2010 r. w sprawie szczegółowej klasyfikacji dochodów, wydatków, przychodów i rozchodów oraz środków pochodzących ze źródeł zagranicznych (t.j. Dz. U. z 2022 r. poz. 513 z późn. zm.),\nRozporządzenie Ministra Rozwoju i Finansów z dnia 13 września 2017 r. w sprawie rachunkowości oraz planów kont dla budżetu państwa, budżetów jednostek samorządu terytorialnego, jednostek budżetowych, samorządowych zakładów budżetowych, państwowych funduszy celowych oraz państwowych jednostek budżetowych mających siedzibę poza granicami Rzeczypospolitej Polskiej,\nRozporządzenie Ministra Finansów z dnia 29 stycznia 2025 r. w sprawie sprawozdawczości budżetowej\nUmiejętności zawodowe: umiejętność stosowania prawa finansów publicznych, umiejętność planowania i realizacji budżetu jednostki sektora finansów publicznych, umiejętność monitorowania zaangażowania środków budżetowych, biegła obsługa komputera w środowisku Windows, dobra znajomość pakietu Microsoft Office, umiejętność sprawnego wyszukiwania, przetwarzania i analizowania danych, umiejętność pracy z elektronicznym obiegiem dokumentów oraz systemami informatycznymi wspomagającymi zarządzanie finansami i budżetem.\nZnajomość:\nznajomość zasad ewidencjonowania, weryfikacji oraz publikacji danych o umowach w Centralnym Rejestrze Umów (CRU),\nznajomość zasad budżetowania wykorzystywanych w jednostkach sektora finansów publicznych,\nprogramu Microsoft Word w zakresie tworzenia i edycji dokumentów, tabel, zestawień oraz korespondencji urzędowej,\nprogramu Microsoft Excel w zakresie tworzenia arkuszy kalkulacyjnych, stosowania formuł i funkcji, filtrowania i sortowania danych, przygotowywania zestawień oraz analiz finansowych,\nprogramu Microsoft Outlook w zakresie obsługi poczty elektronicznej i organizacji pracy,\nprogramu Microsoft PowerPoint w zakresie przygotowywania prezentacji i materiałów informacyjnych,\nzasad archiwizacji i elektronicznego przechowywania dokumentów.\nPredyspozycje osobowościowe: skrupulatność, dokładność i terminowość w wykonywaniu powierzonych zadań, odpowiedzialność za realizowane obowiązki, dobra organizacja pracy własnej oraz umiejętność ustalania priorytetów, komunikatywność i umiejętność współpracy z pracownikami różnych komórek organizacyjnych, odporność na stres oraz opanowanie w sytuacjach wymagających szybkiej reakcji, rzetelność, obowiązkowość i zaangażowanie w wykonywaną pracę, zachowanie poufności, wysokich standardów etycznych i profesjonalizmu, gotowość do poszerzania wiedzy i podnoszenia kwalifikacji zawodowych.\n3. Zakres obowiązków\nprzygotowywanie projektów zadań budżetowych rocznych i wieloletnich (przedsięwzięć);\nprognozowanie i analiza warunków ekonomicznych dla realizacji zadań budżetowych ZCK;\nudział w opracowywaniu projektu Wieloletniej Prognozy Finansowej i budżetu Miasta Krakowa w zakresie dotyczącym ZCK oraz przygotowywanie danych do planu finansowego zadań bieżących i inwestycyjnych ZCK;\nmonitorowanie dysponowania środkami finansowymi ZCK określonymi w budżecie zadań bieżących i inwestycyjnych oraz proponowanie zmian budżetowych przy współpracy w tym zakresie z pozostałymi komórkami organizacyjnymi ZCK;\nanaliza zgodności realizacji zadań z przyjętym planem na dany rok budżetowy (w tym klasyfikacją budżetową), obowiązującym WPF (zgłaszanie zagrożeń, problemów itp.);\nbieżąca analiza wykonania finansowego na zadaniach budżetowych ZCK;\nprzygotowywanie wniosków do UMK dotyczących zmian w budżecie Miasta Krakowa oraz WPF;\nsporządzanie sprawozdań z realizowanych zadań budżetowych ZCK;\nwspółdziałanie z UMK i innymi jednostkami budżetowymi w zakresie realizacji zadań i przedsięwzięć określonych w budżecie Miasta Krakowa i Wieloletniej Prognozie Finansowej;\nuzgadnianie wydatków oraz wysokości zaangażowania z komórkami organizacyjnymi ZCK w ramach ich kompetencji;\nprowadzenie rozliczeń finansowych zadań budżetowych ZCK;\nprowadzenie wewnętrznej ewidencji zaangażowania i wydatków, w tym prowadzenie rejestru umów i zleceń;\nmonitorowanie realizacji zadań rocznych i wieloletnich (przedsięwzięć) ujętych w budżecie Miasta Krakowa;\ndokonywanie bieżącej ewidencji planu finansowego wydatków budżetowych oraz poziomu zaangażowania środków budżetowych na kontach pozabilansowych;\nobsługa podsystemu STRADOM w zakresie dotyczącym zadań bieżących ZCK;\nprowadzenie, monitorowanie i koordynowanie działań windykacyjnych należności przysługujących ZCK, a w szczególności:\nmonitorowanie płatności wynikających z zawieranych umów;\nścisła współpraca z Działem Księgowo–Finansowym w zakresie kontroli należności;\nścisła, bieżąca współpraca w zakresie windykacji z właściwymi komórkami organizacyjnymi ZCK i z Zespołem Prawnym;\nprowadzenie działań windykacji polubownej poprzez monitorowanie stanu zadłużenia oraz systematyczne przypominanie dłużnikowi o konieczności spłaty należności;\nw przypadku bezskutecznej windykacji polubownej przekazywanie do Zespołu Prawnego kompletu dokumentacji niezbędnej do wytoczenia powództwa o zapłatę;\ninformowanie Zespołu Prawnego o spłatach całości lub części należności przez dłużnika, w stosunku do którego wszczęto postępowanie egzekucyjne;\ngromadzenie danych niezbędnych do skutecznego prowadzenia postępowania windykacyjnego;\nprowadzenie rejestru dłużników.\n4. Warunki pracy i płacy:\nwymiar czasu pracy – pełny etat,\nproponowane wynagrodzenie: wynagrodzenie zasadnicze\n(7000,00 – 7500,00 zł brutto)\n+\ndodatek za wieloletnią pracę\nw zależności od posiadanego stażu pracy w przedziale od 5% do 20% wynagrodzenia zasadniczego,\nmożliwość otrzymania innych składników wynagrodzenia zgodnie z regulaminem wynagradzania:\nnagrody kwartalne, nagrody jubileuszowe, dodatek specjalny, odprawa emerytalna/rentowa\n,\ndodatkowe wynagrodzenie roczne (tzw.\n„trzynastka”\n),\nmożliwość dofinansowania z ZFŚS: do wypoczynku zorganizowanego dla dzieci i młodzieży, do wypoczynku organizowanego we własnym zakresie, do działalności kulturalno-oświatowej lub sportowo-rekreacyjnej oraz finansowanie świadczeń świątecznych i mikołajkowych,\nmożliwość dofinansowania do zakupu okularów i soczewek korekcyjnych,\nmożliwość zakupu na preferencyjnych warunkach ubezpieczenia na życie, opieki medycznej dla pracownika,\nmożliwość uzyskania dofinansowania do nauki na studiach wyższych oraz kursów podnoszących kwalifikacje zawodowe,\nosoby podejmujące po raz pierwszy pracę na stanowisku urzędniczym w jednostce samorządowej w trakcie zawartej umowy o pracę na okres nie dłuższy niż 6 miesięcy, odbywają służbę przygotowawczą, która kończy się egzaminem. Pozytywny wynik egzaminu jest warunkiem dalszego zatrudnienia.\ngodziny pracy 7:30 – 15:30\npraca biurowa – pracownik porusza się drogami komunikacyjnymi wewnątrz budynku: korytarze, klatki schodowe, schody, przejścia.\n5. Wymagane dokumenty:\nkwestionariusz osobowy dla osoby ubiegającej się o zatrudnienie,\nkserokopia dokumentu potwierdzającego wymagane wykształcenie oraz wymagane uprawnienia,\nkserokopia świadectw pracy lub innych dokumentów potwierdzających wymagany staż pracy/ doświadczenie zawodowe, a w przypadku pozostawania w zatrudnieniu zaświadczenie lub inny dokument wskazujący okres zatrudnienia oraz rodzaj zajmowanego stanowiska,\noświadczenie kandydata:\no posiadaniu obywatelstwa polskiego.\no posiadaniu pełnej zdolności do czynności prawnych oraz korzystaniu z pełni praw publicznych,\no posiadaniu nieposzlakowanej opinii,\no niekaralności za umyślne przestępstwo ścigane z oskarżenia publicznego lub umyślne przestępstwo skarbowe - osobie, której zostanie przedstawiona propozycja zatrudnienia będzie zobowiązana do przedstawienia oryginału aktualnego „Zapytania o udzielenie informacji o osobie” z Krajowego Rejestru Karnego.\noświadczenie kandydata wraz z klauzulą informacyjną administratora,\ndotyczące przetwarzania danych osobowych do celów naboru na stanowisko Specjalista w Dziale Budżetu i Windykacji.\nkopia dokumentu potwierdzającego niepełnosprawność – w przypadku kandydatów, którzy zamierzają skorzystać z pierwszeństwa w zatrudnieniu w przypadku, gdy znajdą się w gronie najlepszych kandydatów.\n6. Termin i miejsce składania dokumentów:\nWymagane dokumenty aplikacyjne należy złożyć w zamkniętej kopercie z dopiskiem „Nabór na stanowisko – Specjalista w Dziale Budżetu i Windykacji” na Dzienniku Podawczym ZCK przy ul. Rakowickiej 26 lub wysłać za pośrednictwem poczty na adres:\nZarząd Cmentarzy Komunalnych w Krakowie\nul. Rakowicka 26, 31–510 Kraków\nTermin składania ofert upływa w dniu\n19 października 2026 r.\nDecyduje data wpływu do Zarządu Cmentarzy Komunalnych w Krakowie.\nDokumenty aplikacyjne złożone lub nadesłane po upływie terminu nie będą rozpatrywane.\n7. Ilość etatów\n1 etat\nProcedura zgłoszeń wewnętrznych naruszeń prawa i podejmowania działań następczych w Zarządzie Cmentarzy Komunalnych w Krakowie.\nKlauzula informacyjna o zasadach przetwarzania danych osobowych sygnalisty.\nInformacje dodatkowe\nPokaż metkę",
+      "extracted_fields": {
+        "wymiar_czasu_pracy": "proponowane wynagrodzenie: wynagrodzenie zasadnicze",
+        "wynagrodzenie": "wynagrodzenie zasadnicze",
+        "termin_skladania": "19 października 2026 r."
+      },
+      "links": [
+        {
+          "text": "Strona Podmiotowa",
+          "url": "https://www.bip.krakow.pl/?bip_id=489"
+        },
+        {
+          "text": "kwestionariusz osobowy dla osoby ubiegającej się o zatrudnienie,",
+          "url": "https://www.bip.krakow.pl/zalaczniki/dokumenty/n/542698/karta"
+        },
+        {
+          "text": "oświadczenie kandydata wraz z klauzulą informacyjną administratora,",
+          "url": "https://www.bip.krakow.pl/zalaczniki/dokumenty/n/542701/karta"
+        },
+        {
+          "text": "Procedura zgłoszeń wewnętrznych naruszeń prawa i podejmowania działań następczych w Zarządzie Cmentarzy Komunalnych w Krakowie.",
+          "url": "https://www.bip.krakow.pl/zalaczniki/dokumenty/n/568459/karta"
+        },
+        {
+          "text": "Klauzula informacyjna o zasadach przetwarzania danych osobowych sygnalisty.",
+          "url": "https://www.bip.krakow.pl/zalaczniki/dokumenty/n/568462/karta"
+        },
+        {
+          "text": "Informacje dodatkowe",
+          "url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=16537&MODE=nab&ACT=dodatkowe"
+        },
+        {
+          "text": "Pokaż metkę",
+          "url": "https://www.bip.krakow.pl/?bip_id=489&sub_dok_id=104362&nab_id=16537&MODE=nab&ACT=info&metka=1"
+        }
+      ],
+      "first_seen": "2026-10-12T18:45:40+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
+      "active": true,
+      "inactive_since": null
+    },
+    "nab:16409": {
+      "nab_id": "16409",
+      "unit_key": "slug:DPSKR",
+      "unit_name": "Dom Pomocy Społecznej ul.Krakowska 55",
+      "title": "PIELĘGNIARKA/PIELĘGNIARZ",
+      "status": "trwajacy",
+      "deadline": "2026-10-17",
+      "ref_number": "DPSKR-17/2026",
+      "detail_url": "https://www.bip.krakow.pl/?bip_id=300&sub_dok_id=104362&nab_id=16409&MODE=nab&ACT=info",
+      "heading": "Praca w jednostce",
+      "body_text": "Strona Podmiotowa\nPraca w jednostce\n﻿\nDOM POMOCY SPOŁECZNEJ W KRAKOWIE, UL. KRAKOWSKA 55\nDYREKTOR OGŁASZA NABÓR\nNA WOLNE STANOWISKO PIELĘGNIARKA/PIELĘGNIARZ\n(NR REF. DPSKR-17/2026)\nWymiar czasu pracy: pełny etat\nWykształcenie: zgodne z przepisami\nPraca w równoważnym systemie czasu pracy od 7:00 do 19:00, 19:00 do 7:00.\nMiejsce wykonywania pracy: Dom Pomocy Społecznej w Krakowie, ul. Krakowska 55.\nWynagrodzenie:\nwynagrodzenie zasadnicze 6 964,00  zł,\ndodatek stażowy uzależniony od udokumentowanych poprzednich okresów zatrudnienia kandydatki/kandydata w wymiarze od 5 do 20% wynagrodzenia zasadniczego,\ndodatek motywacyjny w kwocie 1 000 zł brutto na etat, przyznawany na zasadach określonych w części V załącznika do uchwały Nr 62 Rady Ministrów z dnia 19 czerwca 2024 r. (M.P. z dnia 24.06.2024 r., poz. 505), w sprawie ustanowienia rządowego programu „Dofinansowanie wynagrodzeń pracowników jednostek organizacyjnych pomocy społecznej w postaci dodatku motywacyjnego na lata 2024–2027”,\ndodatek za pracę w godzinach nocnych w wymiarze uzależnionym od ilości przepracowanych w godzin w porze nocnej,\nnagroda Dyrektora – uznaniowa nagroda kwartalna uzależniona do efektywności pracy pracownika,\ndodatkowe wynagrodzenie roczne dla pracowników jednostek sfery budżetowej tzw. trzynastka,\nnagroda jubileuszowa na zasadach określonych w ustawie o pracownikach samorządowych,\nodprawa emerytalna na zasadach określonych w ustawie o pracownikach samorządowych.\nCV prosimy składać mailowo na adres:\nkadry@dpskrakowska.krakow.pl\nlub na adres jednostki: Dom Pomocy Społecznej w Krakowie ul. Krakowska 55, 31-066 Kraków.\nDyrektor Domu Pomocy Społecznej\nw Krakowie, ul. Krakowska 55\nAnna Szczepka\nPokaż metkę",
+      "extracted_fields": {
+        "wymiar_czasu_pracy": "pełny etat",
+        "wynagrodzenie": "wynagrodzenie zasadnicze 6 964,00  zł,",
+        "termin_skladania": null
+      },
+      "links": [
+        {
+          "text": "Strona Podmiotowa",
+          "url": "https://www.bip.krakow.pl/?bip_id=300"
+        },
+        {
+          "text": "kadry@dpskrakowska.krakow.pl",
+          "url": "mailto:kadry@dpskrakowska.krakow.pl"
+        },
+        {
+          "text": "Pokaż metkę",
+          "url": "https://www.bip.krakow.pl/?bip_id=300&sub_dok_id=104362&nab_id=16409&MODE=nab&ACT=info&metka=1"
+        }
+      ],
+      "first_seen": "2026-10-12T18:45:40+02:00",
+      "last_seen": "2026-10-12T18:45:40+02:00",
       "active": true,
       "inactive_since": null
     }

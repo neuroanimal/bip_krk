@@ -1,0 +1,85 @@
+{
+  "fetched_at": "2026-10-12T18:45:09+02:00",
+  "rows": [
+    {
+      "unit_key": "bip_id:1",
+      "unit_name": "Miasto Kraków",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=1",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZBK",
+      "unit_name": "ZBK - Zarząd Budynków Komunalnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/ZBK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=32&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZCK",
+      "unit_name": "ZCK - Zarząd Cmentarzy Komunalnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/ZCK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=489&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZDMK",
+      "unit_name": "ZDMK - Zarząd Dróg Miasta Krakowa",
+      "unit_url": "https://www.bip.krakow.pl/ZDMK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=511&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:512",
+      "unit_name": "ZIS - Zarząd Infrastruktury Sportowej w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=512",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=512&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:582",
+      "unit_name": "ZIM - Zarząd Inwestycji Miejskich w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=582",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=582&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:627",
+      "unit_name": "ZIW - Zarząd Infrastruktury Wodnej",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=627",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=627",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:616",
+      "unit_name": "ZTP - Zarząd Transportu Publicznego w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=616",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=616&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:567",
+      "unit_name": "ZZM - Zarząd Zieleni Miejskiej w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=567",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=567&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MOPS",
+      "unit_name": "MOPS - Miejski Ośrodek Pomocy Społecznej w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/MOPS",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=30&dok_id=104362",
+      "url_from_archive": false
+    }
+  ]
+}

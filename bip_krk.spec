@@ -25,6 +25,8 @@ stage_files = [
     ('3b_fetch_offers_global.py', '.'),   # szybka ścieżka: globalna lista naborów
     ('src_nuzle.py', '.'),                # źródło zewnętrzne: nuzle.pl
     ('src_ofertypracy_edu.py', '.'),      # źródło zewnętrzne: ofertypracy.edu.pl
+    ('src_kultura_instytucje.py', '.'),  # instytucje kultury poza BIP miasta
+    ('profile_match.py', '.'),            # dopasowanie do profilu zawodowego
     ('4_fetch_offer_details.py', '.'),
     ('5_generate_report.py', '.'),
 ]
@@ -42,6 +44,7 @@ a = Analysis(
         # report_html jest importowany przez etap 5 zwykłym importem
         # (nie przez importlib), więc PyInstaller musi o nim wiedzieć.
         'report_html',
+        'profile_match',
     ],
     hookspath=[],
     hooksconfig={},
