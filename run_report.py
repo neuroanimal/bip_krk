@@ -54,6 +54,7 @@ PIPELINE_MODULES = [
     "src_nuzle",
     "src_ofertypracy_edu",
     "src_kultura_instytucje",
+    "src_nofluffjobs",
     "4_fetch_offer_details",
     "5_generate_report",
 ]
@@ -61,7 +62,7 @@ PIPELINE_MODULES = [
 # Etapy, których niepowodzenie NIE przerywa potoku — zewnętrzny portal może
 # być chwilowo niedostępny, a raport ma powstać na danych z BIP.
 OPTIONAL_MODULES = {"src_nuzle", "src_ofertypracy_edu",
-                    "src_kultura_instytucje"}
+                    "src_kultura_instytucje", "src_nofluffjobs"}
 
 
 def _base_dir() -> Path:

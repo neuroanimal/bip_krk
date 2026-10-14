@@ -32,7 +32,9 @@ if errorlevel 1 (
 
 echo.
 echo === Buduje plik wykonywalny (PyInstaller, onefile) ===
-%PY% -m PyInstaller --clean --noconfirm bip_krk.spec
+:: --clean wymusza pelne przebudowanie (wolne). Dodaj je tylko,
+:: gdy build zachowuje sie dziwnie po zmianach w .spec.
+%PY% -m PyInstaller --noconfirm bip_krk.spec
 if errorlevel 1 (
     echo.
     echo [BLAD] Budowanie .exe nie powiodlo sie.
