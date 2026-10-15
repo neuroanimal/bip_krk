@@ -44,6 +44,7 @@ PIPELINE = [
     "src_kultura_instytucje.py",
     "src_nofluffjobs.py",
     "src_cbop.py",
+    "src_remote_intl.py",
     "4_fetch_offer_details.py",
     "5_generate_report.py",
 ]
@@ -52,7 +53,7 @@ PIPELINE = [
 # (zewnętrzny portal może być chwilowo niedostępny).
 OPTIONAL_STEPS = {"src_nuzle.py", "src_ofertypracy_edu.py",
                   "src_kultura_instytucje.py", "src_nofluffjobs.py",
-                  "src_cbop.py"}
+                  "src_cbop.py", "src_remote_intl.py"}
 
 
 def sample_args(script: str, sample: int) -> List[str]:

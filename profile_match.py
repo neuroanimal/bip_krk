@@ -40,11 +40,21 @@ PROFILE_KEYWORDS: List[Tuple[str, int, Tuple[str, ...]]] = [
         "grafik", "graficz", "graphic design", "dtp", "projektant",
         "projektowanie graficzne", "skład komputerowy", "ilustrator",
         "ilustracj", "typograf", "identyfikacj wizualn",
+        # Odpowiedniki angielskie — potrzebne dla ofert zagranicznych
+        # (źródło src_remote_intl). Celowo NIE dodajemy "ux", "ui",
+        # "product design" ani "game design": to pokrewne, ale inne
+        # specjalizacje (produkt cyfrowy), nie grafika warsztatowa/DTP.
+        "graphic designer", "visual design", "art direct",
+        "illustration", "illustrator", "typography", "brand design",
+        "desktop publishing", "prepress",
     )),
     ("sztuka / plastyka", 5, (
         "plastyk", "malarstw", "malarsk", "rysunk", "rysunek", "akwarel",
         "artystyczn", "artyst", "sztuk", "rzeźb", "druk artystyczn",
         "grafika warsztatow", "serigraf", "linoryt", "akwafort",
+        # Angielskie odpowiedniki.
+        "fine art", "painting", "watercolor", "watercolour",
+        "printmaking", "screen print", "etching",
     )),
     ("animacja kultury / warsztaty", 5, (
         "animator kultury", "animacj kultury", "animator", "warsztat",
@@ -56,6 +66,11 @@ PROFILE_KEYWORDS: List[Tuple[str, int, Tuple[str, ...]]] = [
         "edukacj artystyczn", "edukacj plastyczn", "pedagog",
         "asystent muzealn", "asystentka muzealn", "przewodnik muzealn",
         "lekcje muzealn",
+        # Angielskie odpowiedniki — „education designer”, „course
+        # writer” i podobne łączą dydaktykę z projektowaniem, co pokrywa
+        # się z jej doświadczeniem w prowadzeniu warsztatów.
+        "museum educat", "art educat", "education designer",
+        "workshop facilitat", "teaching artist",
     )),
     ("instytucja kultury / muzeum / galeria", 3, (
         "muzeum", "muzealn", "galeri", "kurator", "wystaw",

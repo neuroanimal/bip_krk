@@ -46,6 +46,7 @@ obsługiwane.
 | `src_kultura_instytucje.py` | Źródło zewnętrzne: **instytucje kultury poza BIP miasta** (Muzeum Narodowe, Zamek Królewski na Wawelu, Teatr Słowackiego, Cricoteka, Wojewódzka Biblioteka Publiczna) — BIP Krakowa obejmuje tylko jednostki miejskie | strony instytucji | `data/offers.json` |
 | `src_nofluffjobs.py` | Źródło zewnętrzne: nofluffjobs.com — **oferty dla grafika/designera** w Krakowie (luka, której nie pokrywa BIP ani nuzle) | API portalu | `data/offers.json` |
 | **`src_cbop.py`** | Źródło zewnętrzne: **CBOP — oficjalna rządowa baza urzędów pracy** (oferty.praca.gov.pl). Obejmuje pracodawców nieobecnych w BIP, m.in. **ASP w Krakowie** | API portalu (odkryte) | `data/offers.json` |
+| `src_remote_intl.py` | Źródło zewnętrzne: **zagraniczne oferty zdalne dostępne z Polski** — role kreatywne otwarte na „Europe/EMEA/Worldwide” albo wymieniające Kraków/Polskę | RSS + API | `data/offers.json` |
 | `check_institution.py` | Narzędzie badawcze: sprawdza, czy kandydat ma scrapowalną stronę pracy (próbuje `/praca`, `/kariera`, `/oferty-pracy`…) — używane PRZED dodaniem do listy źródeł | adres instytucji | wydruk diagnostyczny |
 | `profile_match.py` | Ocena dopasowania oferty do profilu (kultura, sztuka, grafika, animacja, edukacja kulturalna) | — | — |
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
@@ -146,6 +147,33 @@ i czytając przechwycone adresy; nazwy pól filtra pochodzą z leniwie
 `miejscowosci` psujące odpowiedź, stronicowanie tylko przez query string)
 są opisane w docstringu `src_cbop.py`.
 
+## Oferty zagraniczne — Kraków stacjonarnie lub Polska zdalnie
+
+Osobne badanie (2026-10-15). Zagraniczne firmy rekrutują na stanowiska
+kreatywne zdalnie i Polska mieści się w ich zasięgu — ale **prawie nigdy
+nie wymieniają jej wprost**, tylko piszą „Europe”, „EMEA” albo „Anywhere
+in the World”. Dlatego oferta wchodzi do raportu, gdy jest rolą kreatywną
+**oraz** albo wymienia Kraków/Polskę (`Kraków, Krakow, Cracow, Cracovia,
+Poland, Polska, Polen, Polonia`), albo ma lokalizację otwartą na Europę.
+Powód dopasowania widać w nazwie pracodawcy („otwarte: EMEA”).
+
+| Portal | Wynik |
+|--------|-------|
+| **weworkremotely.com** (RSS design) | ✅ **dodany — najczystsze źródło**: 30 ofert, wszystkie faktycznie designerskie, pole `region` wprost podaje zasięg |
+| **remoteok.com** (API) | ✅ **dodany** — ~100 ofert; parametr `?tags=design` jest ignorowany, więc role filtrujemy sami |
+| `remotive.com` | ❌ darmowe API **ignoruje `category=design`** i zwraca stałą próbkę 15 ofert bez ani jednej z kategorii Design (pierwsza to „Remote Office Assistant”). Slug `design` jest poprawny — potwierdzony w `/api/remote-jobs/categories` — więc to limit darmowego planu |
+| **EURES** (oficjalny portal UE) | ❌ API działa (`POST /eures/api/jv-searchengine/public/jv-search/search`, kod NUTS `PL21` = Małopolskie), ale na 79 ofert dla „graphic designer” w Polsce tylko **2 były obcojęzyczne**, a jedyna obcojęzyczna z Krakowem to niemiecka oferta sprzedażowa. Przyczyna: EURES agreguje krajowe urzędy pracy, więc duplikuje CBOP |
+| `behance.net/joblist` | ❌ 403 |
+| `dribbble.com/jobs` | ❌ odpowiada 200, ale bez API — wymagałby parsowania zmiennego HTML |
+
+**Ograniczenia tego źródła, o których trzeba wiedzieć:** to firmy
+komercyjne, często współpraca B2B zamiast umowy o pracę — więc bez
+stabilności budżetówki. Wymagany biegły angielski, także pisany. Przewaga
+ofert dotyczy designu produktowego i UX, nie grafiki warsztatowej — dlatego
+`profile_match` celowo **nie** uznaje „UX/Product/Game Designer” za
+dopasowanie, a uznaje „Graphic Designer”, „Brand Design” i „Education
+Designer”.
+
 ## Diagnostyka — nic nie ginie po cichu
 
 Każde nieudane pobranie, brak oczekiwanego elementu i niedopasowanie rekordu
@@ -223,6 +251,7 @@ bip_krk/
 ├── src_kultura_instytucje.py    # źródło: instytucje kultury poza BIP
 ├── src_nofluffjobs.py           # źródło: oferty dla grafika/designera
 ├── src_cbop.py                  # źródło: CBOP (oficjalna baza urzędów pracy)
+├── src_remote_intl.py           # źródło: zagraniczne oferty zdalne
 ├── check_institution.py         # narzędzie: badanie kandydatów na źródła
 ├── profile_match.py             # dopasowanie do profilu zawodowego
 ├── 4_fetch_offer_details.py

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang='pl'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Raport ofert pracy — BIP Kraków</title>
+<style>
+:root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --ink: #1f2933;
+    --muted: #647380;
+    --accent: #7b2d8e;
+    --urgent: #d32f2f;
+    --soon: #ef6c00;
+    --ok: #2e7d32;
+    --unknown: #607d8b;
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.55;
+}
+header {
+    background: linear-gradient(135deg, #7b2d8e 0%, #3a1c71 100%);
+    color: #fff;
+    padding: 1.6em 1.2em;
+}
+header h1 { margin: 0 0 .3em; font-size: 1.7em; }
+header .meta { opacity: .9; font-size: .92em; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 1.2em; }
+.legend { margin: 1em 0; font-size: .88em; color: var(--muted); }
+.legend span { display: inline-block; margin-right: 1em; }
+.dot {
+    display: inline-block; width: .8em; height: .8em; border-radius: 50%;
+    margin-right: .35em; vertical-align: middle;
+}
+.dot.urgent { background: var(--urgent); }
+.dot.soon { background: var(--soon); }
+.dot.ok { background: var(--ok); }
+.dot.unknown { background: var(--unknown); }
+h2.category {
+    margin: 1.6em 0 .6em;
+    padding: .45em .7em;
+    border-radius: 8px;
+    background: #ece2f3;
+    color: var(--accent);
+    border-left: 6px solid var(--accent);
+    font-size: 1.25em;
+}
+.count { color: var(--muted); font-weight: normal; font-size: .8em; }
+.offer {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 1em 1.1em;
+    margin: .8em 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    border-left: 6px solid var(--unknown);
+}
+.offer.urgent { border-left-color: var(--urgent); }
+.offer.soon { border-left-color: var(--soon); }
+.offer.ok { border-left-color: var(--ok); }
+.offer h3 { margin: 0 0 .3em; font-size: 1.1em; }
+.badge {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .78em; font-weight: 600; color: #fff; margin-left: .4em;
+}
+.badge.urgent { background: var(--urgent); }
+.badge.soon { background: var(--soon); }
+.badge.ok { background: var(--ok); }
+.badge.unknown { background: var(--unknown); }
+/* Znacznik świeżości oferty (kiedy się pojawiła). */
+.fresh {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .78em; font-weight: 700; margin-left: .4em;
+}
+.fresh-new { background: #16a34a; color: #fff; }        /* NOWE — zielony */
+.fresh-recent { background: #d1fae5; color: #065f46; }  /* ≤7 dni */
+.fresh-old { background: #eceff1; color: #607d8b; }     /* starsze */
+/* Wyróżnienie karty nowej oferty. */
+.offer.is-new {
+    border-left-width: 8px;
+    box-shadow: 0 2px 8px rgba(22,163,74,.18);
+    background: #f6fff9;
+}
+/* Oferta już KLIKNIĘTA (otwarta wcześniej) — wygaszona, by nie rozpraszała.
+   Stan trzymany w localStorage przeglądarki (raport jest plikiem offline). */
+.offer.clicked {
+    opacity: .55;
+    background: #f7f7f8;
+}
+.offer.clicked h3 { text-decoration: line-through; text-decoration-thickness: 1px; }
+.seen-mark {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .75em; font-weight: 600; margin-left: .4em;
+    background: #455a64; color: #fff;
+}
+/* Pasek narzędzi trackingu (licznik + akcje). */
+.toolbar {
+    display: flex; flex-wrap: wrap; gap: .6em; align-items: center;
+    background: #fff; border: 1px solid #dde3e8; border-radius: 8px;
+    padding: .6em .8em; margin: .8em 0; font-size: .9em;
+}
+.toolbar button {
+    font: inherit; cursor: pointer; border: 1px solid #b0bec5;
+    background: #eceff1; border-radius: 6px; padding: .3em .7em;
+}
+.toolbar button:hover { background: #cfd8dc; }
+.toolbar .counter { font-weight: 700; color: var(--accent); }
+.meta { color: var(--muted); font-size: .9em; margin: .2em 0 .5em; }
+.desc {
+    white-space: pre-wrap;
+    background: #fafbfc;
+    border-left: 3px solid #d7dee5;
+    padding: .6em .8em;
+    border-radius: 4px;
+    margin: .5em 0;
+    font-size: .93em;
+}
+a { color: #0645ad; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.links { font-size: .88em; margin-top: .4em; }
+.links ul { margin: .3em 0 0; padding-left: 1.2em; }
+/* Sekcja "dopasowane do profilu" — wyróżniona, na samej górze raportu. */
+.profile-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #fffbeb 100%);
+    border: 2px solid #f59e0b; border-radius: 10px;
+    padding: .9em 1.1em; margin: 1em 0 1.4em;
+}
+.profile-box h2 {
+    margin: 0 0 .2em; font-size: 1.2em; color: #b45309;
+    background: none; border: none; padding: 0;
+}
+.profile-box .hint { color: #78716c; font-size: .88em; margin: 0 0 .6em; }
+.profile-tags { font-size: .8em; color: #92400e; margin-top: .3em; }
+.match {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .75em; font-weight: 700; margin-left: .4em;
+    background: #f59e0b; color: #fff;
+}
+.match.weak { background: #fcd34d; color: #78350f; }
+/* Zwijana lista niedawno zamkniętych trafień z profilu. */
+.closed-matches { margin-top: .8em; }
+.closed-matches summary {
+    cursor: pointer; font-weight: 600; color: #92400e; font-size: .92em;
+}
+.closed-matches .offer { opacity: .75; }
+/* Sekcja diagnostyczna (co się nie pobrało) — zwinięta, nie rozprasza. */
+.failures {
+    background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+    padding: .6em .9em; margin: 1.2em 0; font-size: .88em;
+}
+.failures summary { cursor: pointer; font-weight: 600; color: #b26a00; }
+.failures ul { margin: .2em 0 .8em; padding-left: 1.3em; }
+footer { text-align: center; color: var(--muted); font-size: .82em; padding: 2em 0; }
+</style></head><body>
+<header><div class='wrap'>
+<h1>Raport ofert pracy — BIP Kraków</h1>
+<div class='meta'>Wygenerowano: 2026-10-15T11:21:31+02:00 · ofert w raporcie: <strong>8</strong></div>
+</div></header>
+<div class='wrap'>
+<div class='legend'><strong>Termin:</strong> <span><i class='dot urgent'></i>≤ 3 dni</span><span><i class='dot soon'></i>≤ 7 dni</span><span><i class='dot ok'></i>&gt; 7 dni</span><span><i class='dot unknown'></i>termin nieznany</span> &nbsp;|&nbsp; <strong>Świeżość:</strong> <span class='fresh fresh-new'>NOWE (nieoglądane)</span> <span class='fresh fresh-recent'>≤ 7 dni</span> <span class='fresh fresh-old'>starsze</span></div>
+<div class='toolbar'><span class='counter' id='counter'>—</span><button type='button' id='mark-all'>Oznacz wszystkie jako przejrzane</button><button type='button' id='export-seen'>Eksportuj stan (clicks.json)</button><button type='button' id='clear-seen'>Wyczyść historię</button><span class='meta'>Kliknięte oferty są wygaszane i pamiętane w tej przeglądarce.</span></div>
+<div class='profile-box'>
+<h2>Dopasowane do profilu — 2 ofert (mocnych trafień: 2)</h2>
+<p class='hint'>Kultura i sztuka, grafika i design, animacja kultury, warsztaty, edukacja muzealna i kulturalna. Pominięte stanowiska jawnie spoza profilu (sprzątanie, ochrona, księgowość, IT, nauczyciel przedmiotu).</p>
+<div class='offer urgent' data-nab='16442'>
+<h3>Asystent/Asystentka muzealna w Fabryce Emalia Oskara Schindlera<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>dziś</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Muzeum Historyczne Miasta Krakowa · 
+Termin: <strong>2026-10-15 (dziś!)</strong> · 
+Nr ref.: MHK-01/11/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16442&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16442&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer unknown' data-nab='kult-wawel-edukator-edukatorka'>
+<h3>Edukator / Edukatorka<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Zamek Królewski na Wawelu · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://wawel.krakow.pl/oferta/edukator-edukatorka' target='_blank'>https://wawel.krakow.pl/oferta/edukator-edukatorka</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna</div>
+</div>
+<details class='closed-matches'>
+<summary>Niedawno zamknięte oferty z profilu — 7 (podpowiedź, gdzie warto pilnować ogłoszeń)</summary>
+<div class='offer urgent' data-nab='16400'>
+<h3>Stanowisko urzędnicze - Archiwista<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>po terminie</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Centrum Kształcenia Zawodowego i Ustawicznego · 
+Termin: <strong>2026-09-25 (termin minął)</strong> · 
+Nr ref.: CKZIU
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=625&amp;sub_dok_id=104362&amp;nab_id=16400&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=625&amp;sub_dok_id=104362&amp;nab_id=16400&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: konserwacja / zbiory</div>
+</div>
+<div class='offer urgent' data-nab='16142'>
+<h3>Instruktor/Instruktorka organizujący/a działalność w Klubie Mirage<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Ośrodek Kultury Kraków - Nowa Huta · 
+Termin: <strong>2026-09-11 (termin minął)</strong> · 
+Nr ref.: DKP.1100.6.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=466&amp;sub_dok_id=104362&amp;nab_id=16142&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=466&amp;sub_dok_id=104362&amp;nab_id=16142&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16133'>
+<h3>Osoba do prowadzenia szkolnej składnicy akt (archiwistka/archiwista)<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>po terminie</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Zespół Szkół Chemicznych · 
+Termin: <strong>2026-08-25 (termin minął)</strong> · 
+Nr ref.: ZSCh.110.4.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=271&amp;sub_dok_id=104362&amp;nab_id=16133&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=271&amp;sub_dok_id=104362&amp;nab_id=16133&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: konserwacja / zbiory</div>
+</div>
+<div class='offer urgent' data-nab='16078'>
+<h3>specjalista/ka ds. obsługi zwiedzających<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Galeria Sztuki Współczesnej „Bunkier Sztuki” · 
+Termin: <strong>2026-08-24 (termin minął)</strong> · 
+Nr ref.: 2026/08/1
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=318&amp;sub_dok_id=104362&amp;nab_id=16078&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=318&amp;sub_dok_id=104362&amp;nab_id=16078&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16145'>
+<h3>Instruktor/instruktorka d.s.imprez<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Centrum Kultury „Dworek Białoprądnicki” · 
+Termin: <strong>2026-08-17 (termin minął)</strong> · 
+Nr ref.: CKDB-1/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=469&amp;sub_dok_id=104362&amp;nab_id=16145&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=469&amp;sub_dok_id=104362&amp;nab_id=16145&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16003'>
+<h3>ORGANIZATOR/ORGANIZATORKA<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Centrum Kultury Podgórza · 
+Termin: <strong>2026-08-17 (termin minął)</strong> · 
+Nr ref.: IP.110.11.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=655&amp;sub_dok_id=104362&amp;nab_id=16003&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=655&amp;sub_dok_id=104362&amp;nab_id=16003&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16148'>
+<h3>Instruktor/ka ds. organizacji zajęć oraz prowadzenia wybranych zajęć<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Centrum Kultury „Dworek Białoprądnicki” · 
+Termin: <strong>2026-08-16 (termin minął)</strong> · 
+Nr ref.: CKDB-2/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=469&amp;sub_dok_id=104362&amp;nab_id=16148&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=469&amp;sub_dok_id=104362&amp;nab_id=16148&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+</details>
+</div>
+<h2 class='category'>Kultura i Sztuka <span class='count'>(8)</span></h2>
+<div class='offer urgent' data-nab='16442'>
+<h3>Asystent/Asystentka muzealna w Fabryce Emalia Oskara Schindlera<span class='fresh fresh-recent'>3 dni temu</span><span class='badge urgent'>dziś</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Muzeum Historyczne Miasta Krakowa · 
+Termin: <strong>2026-10-15 (dziś!)</strong> · 
+Nr ref.: MHK-01/11/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16442&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16442&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer soon' data-nab='16430'>
+<h3>Starszy asystent/asystentka konserwatorska w Pracowni Konserwacji Tkanin<span class='fresh fresh-recent'>3 dni temu</span><span class='badge soon'>za 5 dni</span></h3>
+<div class='meta'>
+Muzeum Historyczne Miasta Krakowa · 
+Termin: <strong>2026-10-20 (za 5 dni)</strong> · 
+Nr ref.: MHK-01/10/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16430&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16430&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+MUZEUM HISTORYCZNE MIASTA KRAKOWA
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO STARSZY ASYSTENT/ASYSTENTKA KONSERWATORSKA W PRACOWNI KONSERWACJI TKANIN
+(NR REF. MHK-01/10/2026)
+1. Wymagania formalne
+dyplom ukończenia studiów pierwszego stopnia związanych z zakresem gromadzonych w muzeum zbiorów (preferowane  Studia Konserwacji i Restauracji Dzieł Sztuki ze specjalizacją Konserwator Tkanin) i 3 lata stażu pracy w wykonywanej specjalności lub
+dyplom ukończenia studiów drugiego stopnia  lub jednolitych studiów magisterskich związanych z zakresem gromadzonych w …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=27' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://system.erecruiter.pl/FormTemplates/RecruitmentForm.aspx?WebID=33f9040d1d44411f9d8365c72fc211f2 ' target='_blank'>https://system.erecruiter.pl/FormTemplates/RecruitmentForm.aspx?WebID=33f9040d1d44411f9d8365c72fc211f2</a></li>
+<li><a href='https://muzeumkrakowa.pl/procedura-zgloszen-wewnetrznych-w-muzeum-krakowa' target='_blank'>https://muzeumkrakowa.pl/procedura-zgloszen-wewnetrznych-w-muzeum-krakowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16430&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16576'>
+<h3>Specjalista/specjalistka/koordynator/ koordynatorka w Biurze Programowym<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 16 dni</span></h3>
+<div class='meta'>
+Instytut Kultury Willa Decjusza · 
+Termin: <strong>2026-10-31 (za 16 dni)</strong> · 
+Nr ref.: IKWD2026/10/1
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=617&amp;sub_dok_id=104362&amp;nab_id=16576&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=617&amp;sub_dok_id=104362&amp;nab_id=16576&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer ok' data-nab='16507'>
+<h3>Główna Księgowa/Główny Księgowy<span class='fresh fresh-recent'>3 dni temu</span><span class='badge ok'>za 46 dni</span></h3>
+<div class='meta'>
+Orkiestra Sinfonietta Cracovia · 
+Termin: <strong>2026-11-30 (za 46 dni)</strong> · 
+Nr ref.: SC-7/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=488&amp;sub_dok_id=104362&amp;nab_id=16507&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=488&amp;sub_dok_id=104362&amp;nab_id=16507&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DYREKTOR
+ORKIESTRY STOŁECZNEGO KRÓLEWSKIEGO MIASTA KRAKOWA &quot;SINFONIETTA CRACOVIA&quot;
+OGŁASZA NABÓR
+NA WOLNE STANOWISKO
+GŁÓWNA KSIĘGOWA/GŁÓWNY KSIĘGOWY
+(NR REF. SC-7/2026)
+1. Wymagania formalne:
+Zgodnie z art. 54, ust. 1 i 2 Ustawy z dnia 27 sierpnia 2009 r., o finansach publicznych (Dz.U. 2022 poz. 1634 ze zm.) do udziału w naborze mogą przystąpić osoby spełniające następujące wymagania:
+1. posiadanie obywatelstwa państwa członkowskiego Unii Europejskiej, Konfederacji Szwajcarskiej albo państwa członkowskiego Europejskiego Porozumienia o Wolnym Handlu (EFTA) …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=488' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=488&amp;sub_dok_id=104362&amp;nab_id=16507&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer unknown' data-nab='kult-mnk-asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich'>
+<h3>Asystent/-ka / Adiunkt/-ka w Bibliotece Czartoryskich<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Muzeum Narodowe w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://mnk.pl/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/' target='_blank'>https://mnk.pl/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-wbp-dzial-administracji-pracownik-gospodarczy.pdf'>
+<h3>Dział Administracji - pracownik gospodarczy<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Wojewódzka Biblioteka Publiczna w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://rajska.info/system/files/8795/dzial-administracji-pracownik-gospodarczy.pdf' target='_blank'>https://rajska.info/system/files/8795/dzial-administracji-pracownik-gospodarczy.pdf</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-wawel-edukator-edukatorka'>
+<h3>Edukator / Edukatorka<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Zamek Królewski na Wawelu · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://wawel.krakow.pl/oferta/edukator-edukatorka' target='_blank'>https://wawel.krakow.pl/oferta/edukator-edukatorka</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer unknown' data-nab='nfj-game-economy-designer-bluebinary-krakow-1'>
+<h3>Game Economy Designer<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+BLUEBINARY (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/game-economy-designer-bluebinary-krakow-1' target='_blank'>https://nofluffjobs.com/job/game-economy-designer-bluebinary-krakow-1</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+</div>
+<div class='wrap'>
+<details class='failures'>
+<summary>Diagnostyka pobierania — 14 zgłoszeń (kliknij, aby rozwinąć)</summary>
+<p class='meta'><strong>http_404</strong> (3)</p><ul>
+<li>cat_plastyk — <a href='https://www.nuzle.pl/krakow,plastyk.html' target='_blank'>link</a> <span class='meta'>kategoria: plastyk</span></li>
+<li>cat_animator kultury — <a href='https://www.nuzle.pl/krakow,animator-kultury.html' target='_blank'>link</a> <span class='meta'>kategoria: animator kultury</span></li>
+<li>cat_instruktor — <a href='https://www.nuzle.pl/krakow,instruktor.html' target='_blank'>link</a> <span class='meta'>kategoria: instruktor</span></li>
+</ul>
+<p class='meta'><strong>no_offers_parsed</strong> (1)</p><ul>
+<li>cricoteka — <a href='https://cricoteka.pl/praca' target='_blank'>link</a> <span class='meta'>Ośrodek Dokumentacji Sztuki Tadeusza Kantora Cricoteka — zero trafień parsera</span></li>
+</ul>
+<p class='meta'><strong>possible_stale_link</strong> (7)</p><ul>
+<li>slug:PK133 — <a href='https://www.bip.krakow.pl/PK133' target='_blank'>link</a> <span class='meta'>nazwa &#x27;przedszkole nr 133&#x27; występuje też w archiwum jako bip_id:371 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:SPD10 — <a href='https://www.bip.krakow.pl/SPD10' target='_blank'>link</a> <span class='meta'>nazwa &#x27;szkoła podstawowa nr 10&#x27; występuje też w archiwum jako bip_id:145, bip_id:598 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:SP137 — <a href='https://www.bip.krakow.pl/SP137' target='_blank'>link</a> <span class='meta'>nazwa &#x27;szkoła podstawowa nr 137&#x27; występuje też w archiwum jako bip_id:54 — stary link na liście aktualnej może być martwy</span></li>
+<li>bip_id:642 — <a href='https://www.bip.krakow.pl/?bip_id=642' target='_blank'>link</a> <span class='meta'>nazwa &#x27;zespół szkół ogólnokształcących nr 1&#x27; występuje też w archiwum jako bip_id:537 — stary link na liście aktualnej może być martwy</span></li>
+<li>bip_id:548 — <a href='https://www.bip.krakow.pl/?bip_id=548' target='_blank'>link</a> <span class='meta'>nazwa &#x27;zespół szkół ogólnokształcących nr 2&#x27; występuje też w archiwum jako bip_id:212 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:KFK — <a href='https://www.bip.krakow.pl/KFK' target='_blank'>link</a> <span class='meta'>nazwa &#x27;krakowskie forum kultury&#x27; występuje też w archiwum jako bip_id:465 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:CKPD — <a href='https://www.bip.krakow.pl/CKPD' target='_blank'>link</a> <span class='meta'>nazwa &#x27;centrum kultury podgórza&#x27; występuje też w archiwum jako bip_id:470 — stary link na liście aktualnej może być martwy</span></li>
+</ul>
+<p class='meta'><strong>unit_in_current_and_archive</strong> (3)</p><ul>
+<li>bip_id:1 — <a href='https://www.bip.krakow.pl/?bip_id=1' target='_blank'>link</a> <span class='meta'>jednostka: Miasto Kraków</span></li>
+<li>slug:deklaracja_dostepnosci — <a href='https://www.bip.krakow.pl/deklaracja_dostepnosci' target='_blank'>link</a> <span class='meta'>jednostka: Deklaracja dostępności</span></li>
+<li>slug:bip — <a href='https://www.gov.pl/bip' target='_blank'>link</a> <span class='meta'>jednostka: Biuletyn Informacji Publicznej</span></li>
+</ul>
+</details>
+</div>
+<footer>Źródło danych: Biuletyn Informacji Publicznej Miasta Krakowa · raport wygenerowany automatycznie</footer>
+
+<script>
+(function () {
+  "use strict";
+  var STORE_KEY = "BIP_KRK_CLICKED";
+
+  function loadClicked() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }
+    catch (e) { return {}; }
+  }
+  function saveClicked(map) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(map)); }
+    catch (e) { /* brak localStorage (tryb prywatny) — tracking nieaktywny */ }
+  }
+
+  var clicked = loadClicked();
+
+  function markCard(card, when) {
+    if (card.classList.contains("clicked")) { return; }
+    card.classList.add("clicked");
+    var head = card.querySelector("h3");
+    if (head && !head.querySelector(".seen-mark")) {
+      var mark = document.createElement("span");
+      mark.className = "seen-mark";
+      mark.textContent = "oglądane" + (when ? " " + when.slice(0, 10) : "");
+      head.appendChild(mark);
+    }
+  }
+
+  function refreshCounter() {
+    var cards = document.querySelectorAll(".offer");
+    var seen = document.querySelectorAll(".offer.clicked").length;
+    var el = document.getElementById("counter");
+    if (el) {
+      el.textContent = (cards.length - seen) + " / " + cards.length +
+        " nieprzejrzanych";
+    }
+  }
+
+  // Oznacz karty już klikniętych ofert (stan z poprzednich sesji).
+  document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+    var id = card.getAttribute("data-nab");
+    if (clicked[id]) { markCard(card, clicked[id]); }
+  });
+
+  // Rejestruj kliknięcie w link szczegółów oferty.
+  document.querySelectorAll(".offer[data-nab] a[href]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var card = a.closest(".offer[data-nab]");
+      if (!card) { return; }
+      var id = card.getAttribute("data-nab");
+      if (!clicked[id]) {
+        clicked[id] = new Date().toISOString();
+        saveClicked(clicked);
+      }
+      markCard(card, clicked[id]);
+      refreshCounter();
+    });
+  });
+
+  // Przycisk: oznacz wszystkie jako przejrzane.
+  var markAll = document.getElementById("mark-all");
+  if (markAll) {
+    markAll.addEventListener("click", function () {
+      document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+        var id = card.getAttribute("data-nab");
+        if (!clicked[id]) { clicked[id] = new Date().toISOString(); }
+        markCard(card, clicked[id]);
+      });
+      saveClicked(clicked);
+      refreshCounter();
+    });
+  }
+
+  // Przycisk: wyczyść historię klikania.
+  var clearBtn = document.getElementById("clear-seen");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function () {
+      if (!confirm("Wyczyścić historię oglądanych ofert?")) { return; }
+      clicked = {};
+      saveClicked(clicked);
+      document.querySelectorAll(".offer.clicked").forEach(function (card) {
+        card.classList.remove("clicked");
+        var m = card.querySelector(".seen-mark");
+        if (m) { m.remove(); }
+      });
+      refreshCounter();
+    });
+  }
+
+  // Przycisk: eksport stanu do pliku clicks.json (do wczytania w datasecie).
+  var exportBtn = document.getElementById("export-seen");
+  if (exportBtn) {
+    exportBtn.addEventListener("click", function () {
+      var payload = JSON.stringify({ clicked: clicked }, null, 2);
+      var blob = new Blob([payload], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "clicks.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  refreshCounter();
+})();
+</script>
+
+</body></html>

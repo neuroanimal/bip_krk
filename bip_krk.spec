@@ -28,6 +28,7 @@ stage_files = [
     ('src_kultura_instytucje.py', '.'),  # instytucje kultury poza BIP miasta
     ('src_nofluffjobs.py', '.'),          # oferty projektowe/graficzne (Kraków)
     ('src_cbop.py', '.'),                 # CBOP: oficjalna baza urzędów pracy
+    ('src_remote_intl.py', '.'),          # zagraniczne oferty zdalne z Polski
     ('profile_match.py', '.'),            # dopasowanie do profilu zawodowego
     ('4_fetch_offer_details.py', '.'),
     ('5_generate_report.py', '.'),
