@@ -1,0 +1,11 @@
+{
+  "fetched_at": "2026-10-15T10:01:49+02:00",
+  "filters": {
+    "voivodeship_id": "12",
+    "county_id": "1261",
+    "employee_type_id": "4"
+  },
+  "total_fetched": 0,
+  "kept": 0,
+  "offers": []
+}

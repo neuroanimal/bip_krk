@@ -87,6 +87,25 @@ EXCLUDE_KEYWORDS: Tuple[str, ...] = (
     # Zawody medyczne — bywały łapane przez nazwę placówki (poradnie).
     "lekarz", "lekarka", "psychiatra", "psycholog kliniczn", "logopeda",
     "terapeut", "rehabilitant", "fizjoterapeut",
+    # Zawody budowlane/produkcyjne — wchodziły przez słowo „warsztat”
+    # („Zbrojarz WARSZTATOWY”, „Zbrojarz-warsztat”), które w profilu
+    # oznacza warsztaty twórcze, a nie warsztat produkcyjny.
+    "zbrojarz", "spawacz", "slusarz", "tokarz", "stolarz", "mechanik",
+    "monter", "operator maszyn",
+)
+
+# Oferty WIARYGODNE, ale wymagające odrębnych kwalifikacji — degradujemy je
+# do „może pasować”, zamiast wykluczać albo promować.
+#
+# Powód: „Instruktor terapii zajęciowej” w Warsztacie Terapii Zajęciowej to
+# realnie praca dla kogoś, kto prowadzi zajęcia plastyczne — a więc
+# sensowna propozycja. Ale wymaga kursu terapii zajęciowej, więc nie może
+# stać w jednym rzędzie z „GRAFIK/GRAFICZKA” czy ofertą ASP i nosić
+# odznaki „DLA CIEBIE”. Decyzję o aplikowaniu zostawiamy człowiekowi,
+# tylko porządkujemy kolejność.
+DEMOTE_KEYWORDS: Tuple[str, ...] = (
+    "terapii zajeciowej", "terapia zajeciowa", "terapii zajęciowej",
+    "terapia zajęciowa", "oligofrenopedagog",
 )
 
 # Obszary RDZENIOWE — tylko one mogą samodzielnie zakwalifikować ofertę.
@@ -106,6 +125,27 @@ CORE_AREAS: Tuple[str, ...] = (
 # Progi interpretacji wyniku.
 SCORE_STRONG = 8   # mocne dopasowanie (co najmniej dwa trafne obszary)
 SCORE_WEAK = 3     # słabe, ale warte pokazania
+
+# Pracodawcy JEDNOZNACZNIE artystyczni/kulturalni. Ich obecność pozwala
+# uznać ofertę za mocne trafienie nawet wtedy, gdy sam tytuł jest ogólny.
+#
+# Przypadek, który to wymusił: „Asystent/asystentka w grupie pracowników
+# badawczo-dydaktycznych” w **Akademii Sztuk Pięknych im. Jana Matejki**
+# (Katedra grafiki, od 5600 zł). Tytuł nie zawiera żadnego słowa z profilu,
+# więc reguła „mocne wymaga trafienia rdzeniowego w tytule” degradowała
+# najlepszą ofertę w całym raporcie do „może pasować”.
+#
+# UWAGA na różnicę wobec wcześniejszego błędu: tu wymieniamy konkretne,
+# niedwuznaczne instytucje sztuki. Nie wystarcza TYP placówki — to właśnie
+# ogólne „Poradnia Psychologiczno-Pedagogiczna” generowało trafienia dla
+# „LEKARZ PSYCHIATRA” (patrz INSTITUTION_NOISE).
+ARTS_EMPLOYERS: Tuple[str, ...] = (
+    "akademia sztuk pieknych", "akademia sztuk pięknych",
+    "muzeum narodowe", "zamek krolewski", "zamek królewski",
+    "teatr", "filharmonia", "opera", "galeria sztuki",
+    "dom kultury", "osrodek kultury", "ośrodek kultury",
+    "centrum kultury", "cricoteka", "muzeum historyczne",
+)
 
 # PUŁAPKA JĘZYKOWA: po polsku "grafik" to zarówno zawód (grafik komputerowy),
 # jak i harmonogram pracy ("elastyczny grafik", "decydować o swoim grafiku").
@@ -230,15 +270,25 @@ def score_offer(title: str, description: str = "",
     if excluded:
         score -= 10
 
+    # Degradacja: oferta jest wiarygodna, ale wymaga odrębnych kwalifikacji
+    # (patrz DEMOTE_KEYWORDS). Nie usuwamy jej — tylko nie pozwalamy jej
+    # nosić odznaki „DLA CIEBIE” na równi z ofertą wprost z profilu.
+    demoted = any(pattern in title_norm or pattern in body_norm
+                  for pattern in DEMOTE_KEYWORDS)
+
     # Kwalifikacja: musi być trafienie w obszarze RDZENIOWYM. Trafienie
     # wyłącznie w obszarze wspierającym (np. sama nazwa "muzeum" w opisie)
     # nie czyni oferty dopasowaną do profilu.
+    arts_employer = any(name in _normalize(unit_name)
+                        for name in ARTS_EMPLOYERS)
     if excluded or not core_anywhere or score < SCORE_WEAK:
         level = "none"
-    elif score >= SCORE_STRONG and core_in_title:
+    elif (score >= SCORE_STRONG and not demoted
+          and (core_in_title or arts_employer)):
         # Mocne dopasowanie wymaga trafienia rdzeniowego w TYTULE — to
         # odróżnia "GRAFIK/GRAFICZKA" od oferty, która tylko wspomina
-        # projektowanie w opisie obowiązków.
+        # projektowanie w opisie obowiązków. Wyjątkiem jest jednoznacznie
+        # artystyczny pracodawca (ARTS_EMPLOYERS), np. ASP.
         level = "strong"
     else:
         level = "weak"

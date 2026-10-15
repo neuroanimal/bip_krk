@@ -45,6 +45,7 @@ obsługiwane.
 | `src_ofertypracy_edu.py` | Źródło zewnętrzne: ofertypracy.edu.pl przez Inertia API (Kraków, typ „Pracownik niepedagogiczny”) | API portalu | `data/offers.json` |
 | `src_kultura_instytucje.py` | Źródło zewnętrzne: **instytucje kultury poza BIP miasta** (Muzeum Narodowe, Zamek Królewski na Wawelu, Teatr Słowackiego, Cricoteka, Wojewódzka Biblioteka Publiczna) — BIP Krakowa obejmuje tylko jednostki miejskie | strony instytucji | `data/offers.json` |
 | `src_nofluffjobs.py` | Źródło zewnętrzne: nofluffjobs.com — **oferty dla grafika/designera** w Krakowie (luka, której nie pokrywa BIP ani nuzle) | API portalu | `data/offers.json` |
+| **`src_cbop.py`** | Źródło zewnętrzne: **CBOP — oficjalna rządowa baza urzędów pracy** (oferty.praca.gov.pl). Obejmuje pracodawców nieobecnych w BIP, m.in. **ASP w Krakowie** | API portalu (odkryte) | `data/offers.json` |
 | `check_institution.py` | Narzędzie badawcze: sprawdza, czy kandydat ma scrapowalną stronę pracy (próbuje `/praca`, `/kariera`, `/oferty-pracy`…) — używane PRZED dodaniem do listy źródeł | adres instytucji | wydruk diagnostyczny |
 | `profile_match.py` | Ocena dopasowania oferty do profilu (kultura, sztuka, grafika, animacja, edukacja kulturalna) | — | — |
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
@@ -115,6 +116,7 @@ nie ma. Wnioski warto znać, zanim ktoś spróbuje dodać kolejny portal:
 
 | Portal | Wynik |
 |--------|-------|
+| **oferty.praca.gov.pl (CBOP)** | ✅ **dodany — najlepsze źródło poza BIP**: 13 ofert w Małopolsce, w tym „Grafik/czka”, „Grafik komputerowy”, „Plastyk”, oraz **asystent w Katedrze grafiki ASP** (5600 zł). Oficjalna baza wszystkich urzędów pracy (17,5 tys. ofert w kraju) |
 | **nofluffjobs.com** | ✅ **dodany** — 8 ofert UX + „Social Media Graphic Designer” w Krakowie, czyste API JSON |
 | `pracuj.pl`, `olx.pl` | ❌ Cloudflare blokuje **wszystko**, także `robots.txt` i `sitemap.xml` (403) |
 | `jooble.org`, `indeed.pl`, `useme.com` | ❌ 403 |
@@ -124,11 +126,25 @@ nie ma. Wnioski warto znać, zanim ktoś spróbuje dodać kolejny portal:
 | `justjoin.it` | ❌ 503 |
 | `rocketjobs.pl` | ❌ renderowanie po stronie klienta, brak `__NEXT_DATA__` |
 
-**Wniosek:** rynek ofert dla grafików jest głównie na portalach zablokowanych
-(pracuj.pl, OLX) i w grupach na Facebooku, których nie da się czytać
-automatycznie. Dla profilu „kultura + budżetówka” pokrycie BIP + instytucje
-kultury jest jednak właściwe — ogłoszenia typu „GRAFIK/GRAFICZKA” pojawiają
-się w BIP (trafiło się w Teatrze Groteska) i raport je wyłapuje.
+**Wniosek:** komercyjny rynek ofert dla grafików jest na portalach
+zablokowanych (pracuj.pl, OLX) i w grupach na Facebooku — tam trzeba szukać
+ręcznie albo ustawić alert e-mail na pracuj.pl. Natomiast dla profilu
+„kultura + budżetówka” pokrycie jest teraz dobre: **CBOP** (urzędy pracy,
+w tym ASP), BIP miasta, instytucje kultury.
+
+### Dlaczego CBOP okazał się najcenniejszy
+
+To oficjalna baza wszystkich powiatowych urzędów pracy. Dowód wartości:
+oferta **asystenta w grupie badawczo-dydaktycznej w Katedrze grafiki ASP**
+(od 5600 zł) — a strona `asp.krakow.pl/praca` była przy badaniu **pusta**,
+bo ASP ogłasza się przez CBOP, nie u siebie.
+
+API nie jest publicznie opisane. Endpoint (`/portal-api/v3/`) udało się
+znaleźć, uruchamiając portal w headless Chrome z `--log-net-log`
+i czytając przechwycone adresy; nazwy pól filtra pochodzą z leniwie
+ładowanego modułu `chunk-GKCIW4KD.js`. Szczegóły i pułapki (pole
+`miejscowosci` psujące odpowiedź, stronicowanie tylko przez query string)
+są opisane w docstringu `src_cbop.py`.
 
 ## Diagnostyka — nic nie ginie po cichu
 
@@ -206,6 +222,7 @@ bip_krk/
 ├── src_ofertypracy_edu.py       # źródło: ofertypracy.edu.pl
 ├── src_kultura_instytucje.py    # źródło: instytucje kultury poza BIP
 ├── src_nofluffjobs.py           # źródło: oferty dla grafika/designera
+├── src_cbop.py                  # źródło: CBOP (oficjalna baza urzędów pracy)
 ├── check_institution.py         # narzędzie: badanie kandydatów na źródła
 ├── profile_match.py             # dopasowanie do profilu zawodowego
 ├── 4_fetch_offer_details.py

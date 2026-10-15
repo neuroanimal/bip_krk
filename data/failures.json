@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-10-12T11:37:33+02:00",
-    "updated": "2026-10-14T23:44:54+02:00"
+    "updated": "2026-10-15T10:02:10+02:00"
   },
   "records": {
     "1_units|bip_id:1|unit_in_current_and_archive": {
@@ -11,8 +11,8 @@
       "reason": "unit_in_current_and_archive",
       "detail": "jednostka: Miasto Kraków",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|slug:deklaracja_dostepnosci|unit_in_current_and_archive": {
@@ -22,8 +22,8 @@
       "reason": "unit_in_current_and_archive",
       "detail": "jednostka: Deklaracja dostępności",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|slug:bip|unit_in_current_and_archive": {
@@ -33,8 +33,8 @@
       "reason": "unit_in_current_and_archive",
       "detail": "jednostka: Biuletyn Informacji Publicznej",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|slug:PK133|possible_stale_link": {
@@ -44,8 +44,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'przedszkole nr 133' występuje też w archiwum jako bip_id:371 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|slug:SPD10|possible_stale_link": {
@@ -55,8 +55,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'szkoła podstawowa nr 10' występuje też w archiwum jako bip_id:145, bip_id:598 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|slug:SP137|possible_stale_link": {
@@ -66,8 +66,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'szkoła podstawowa nr 137' występuje też w archiwum jako bip_id:54 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|bip_id:642|possible_stale_link": {
@@ -77,8 +77,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'zespół szkół ogólnokształcących nr 1' występuje też w archiwum jako bip_id:537 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|bip_id:548|possible_stale_link": {
@@ -88,8 +88,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'zespół szkół ogólnokształcących nr 2' występuje też w archiwum jako bip_id:212 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|slug:KFK|possible_stale_link": {
@@ -99,8 +99,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'krakowskie forum kultury' występuje też w archiwum jako bip_id:465 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "1_units|slug:CKPD|possible_stale_link": {
@@ -110,8 +110,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'centrum kultury podgórza' występuje też w archiwum jako bip_id:470 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-14T23:44:22+02:00",
-      "count": 5,
+      "last_seen": "2026-10-15T10:01:29+02:00",
+      "count": 6,
       "resolved": false
     },
     "2_praca_links|bip_id:1|no_praca_link": {
@@ -121,8 +121,8 @@
       "reason": "no_praca_link",
       "detail": "jednostka: Miasto Kraków",
       "first_seen": "2026-10-12T12:12:50+02:00",
-      "last_seen": "2026-10-14T23:44:24+02:00",
-      "count": 4,
+      "last_seen": "2026-10-15T10:01:30+02:00",
+      "count": 5,
       "resolved": false
     },
     "src_kultura|mnk|no_offers_parsed": {
@@ -144,8 +144,8 @@
       "reason": "no_offers_parsed",
       "detail": "Ośrodek Dokumentacji Sztuki Tadeusza Kantora Cricoteka — zero trafień parsera",
       "first_seen": "2026-10-12T18:34:07+02:00",
-      "last_seen": "2026-10-14T23:44:54+02:00",
-      "count": 6,
+      "last_seen": "2026-10-15T10:02:10+02:00",
+      "count": 7,
       "resolved": false
     },
     "src_nuzle|cat_plastyk|http_404": {
@@ -155,8 +155,8 @@
       "reason": "http_404",
       "detail": "kategoria: plastyk",
       "first_seen": "2026-10-13T09:45:29+02:00",
-      "last_seen": "2026-10-14T23:44:43+02:00",
-      "count": 3,
+      "last_seen": "2026-10-15T10:01:47+02:00",
+      "count": 4,
       "resolved": false
     },
     "src_nuzle|cat_animator kultury|http_404": {
@@ -166,8 +166,8 @@
       "reason": "http_404",
       "detail": "kategoria: animator kultury",
       "first_seen": "2026-10-13T09:45:29+02:00",
-      "last_seen": "2026-10-14T23:44:43+02:00",
-      "count": 3,
+      "last_seen": "2026-10-15T10:01:47+02:00",
+      "count": 4,
       "resolved": false
     },
     "src_nuzle|cat_instruktor|http_404": {
@@ -177,8 +177,8 @@
       "reason": "http_404",
       "detail": "kategoria: instruktor",
       "first_seen": "2026-10-13T09:45:29+02:00",
-      "last_seen": "2026-10-14T23:44:44+02:00",
-      "count": 3,
+      "last_seen": "2026-10-15T10:01:47+02:00",
+      "count": 4,
       "resolved": false
     }
   }
