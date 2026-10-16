@@ -44,6 +44,16 @@ ARCHIVE_FALLBACK_URL = "https://www.bip.krakow.pl/?dok_id=134424"
 # Wyrażenie do wyłuskania numeru bip_id z adresu jednostki.
 BIP_ID_RE = re.compile(r"bip_id=(\d+)")
 
+# Slugi i identyfikatory, które NIE są jednostkami MJO, choć wyglądają jak
+# one (patrz komentarz w parse_units_from_html).
+NON_UNIT_SLUGS = frozenset({
+    "bip", "deklaracja_dostepnosci", "deklaracja-dostepnosci",
+    "rodo", "kontakt", "mapa_serwisu", "redakcja",
+})
+# Uwaga: extract_bip_id zwraca TEKST, więc wartości muszą być tekstowe —
+# przy liczbach warunek „bip_id in NON_UNIT_BIP_IDS” byłby cicho fałszywy.
+NON_UNIT_BIP_IDS = frozenset({"1"})
+
 
 def extract_bip_id(href: str) -> Optional[str]:
     """Zwraca numer bip_id z adresu URL, jeśli występuje.
@@ -149,6 +159,18 @@ def parse_units_from_html(html: str, source: str) -> List[Dict[str, str]]:
 
         # Interesują nas tylko linki jednostek (bip_id lub slug).
         if bip_id is None and slug is None:
+            continue
+
+        # Odsiewamy podstrony SERWISU, które wyglądają jak jednostka, bo
+        # też mają slug. Wchodziły z nawigacji strony archiwum i potem
+        # zaśmiecały diagnostykę ostrzeżeniami „unit_in_current_and_archive”.
+        # Potwierdzone przypadki: „Biuletyn Informacji Publicznej”
+        # (slug:bip, prowadzi na ZEWNĘTRZNY gov.pl/bip), „Deklaracja
+        # dostępności” (slug:deklaracja_dostepnosci) oraz „Miasto Kraków”
+        # (bip_id=1 — strona główna BIP, nie jednostka MJO). Żadna nie ma
+        # zakładki „PRACA - NOWE”, więc nic nie tracimy; oferty i tak
+        # zbiera etap 3b z globalnej listy naborów.
+        if slug in NON_UNIT_SLUGS or bip_id in NON_UNIT_BIP_IDS:
             continue
 
         # Klucz rekordu: preferujemy bip_id (stabilny), a gdy go brak — slug.

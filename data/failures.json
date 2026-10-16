@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-10-12T11:37:33+02:00",
-    "updated": "2026-10-15T11:22:15+02:00"
+    "updated": "2026-10-16T15:02:59+02:00"
   },
   "records": {
     "1_units|bip_id:1|unit_in_current_and_archive": {
@@ -11,9 +11,10 @@
       "reason": "unit_in_current_and_archive",
       "detail": "jednostka: Miasto Kraków",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-15T11:21:33+02:00",
-      "count": 8,
-      "resolved": false
+      "last_seen": "2026-10-16T14:49:54+02:00",
+      "count": 9,
+      "resolved": true,
+      "resolved_at": "2026-10-16T15:02:59+02:00"
     },
     "1_units|slug:deklaracja_dostepnosci|unit_in_current_and_archive": {
       "stage": "1_units",
@@ -24,7 +25,8 @@
       "first_seen": "2026-10-12T11:37:33+02:00",
       "last_seen": "2026-10-15T11:21:33+02:00",
       "count": 8,
-      "resolved": false
+      "resolved": true,
+      "resolved_at": "2026-10-16T15:02:59+02:00"
     },
     "1_units|slug:bip|unit_in_current_and_archive": {
       "stage": "1_units",
@@ -35,7 +37,8 @@
       "first_seen": "2026-10-12T11:37:33+02:00",
       "last_seen": "2026-10-15T11:21:33+02:00",
       "count": 8,
-      "resolved": false
+      "resolved": true,
+      "resolved_at": "2026-10-16T15:02:59+02:00"
     },
     "1_units|slug:PK133|possible_stale_link": {
       "stage": "1_units",
@@ -44,8 +47,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'przedszkole nr 133' występuje też w archiwum jako bip_id:371 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-15T11:21:33+02:00",
-      "count": 8,
+      "last_seen": "2026-10-16T14:50:34+02:00",
+      "count": 10,
       "resolved": false
     },
     "1_units|slug:SPD10|possible_stale_link": {
@@ -55,9 +58,10 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'szkoła podstawowa nr 10' występuje też w archiwum jako bip_id:145, bip_id:598 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-15T11:21:33+02:00",
-      "count": 8,
-      "resolved": false
+      "last_seen": "2026-10-16T14:50:34+02:00",
+      "count": 10,
+      "resolved": true,
+      "resolved_at": "2026-10-16T14:53:46+02:00"
     },
     "1_units|slug:SP137|possible_stale_link": {
       "stage": "1_units",
@@ -66,8 +70,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'szkoła podstawowa nr 137' występuje też w archiwum jako bip_id:54 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-15T11:21:33+02:00",
-      "count": 8,
+      "last_seen": "2026-10-16T14:50:34+02:00",
+      "count": 10,
       "resolved": false
     },
     "1_units|bip_id:642|possible_stale_link": {
@@ -77,9 +81,10 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'zespół szkół ogólnokształcących nr 1' występuje też w archiwum jako bip_id:537 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-15T11:21:33+02:00",
-      "count": 8,
-      "resolved": false
+      "last_seen": "2026-10-16T14:50:34+02:00",
+      "count": 10,
+      "resolved": true,
+      "resolved_at": "2026-10-16T14:55:06+02:00"
     },
     "1_units|bip_id:548|possible_stale_link": {
       "stage": "1_units",
@@ -88,9 +93,10 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'zespół szkół ogólnokształcących nr 2' występuje też w archiwum jako bip_id:212 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-15T11:21:33+02:00",
-      "count": 8,
-      "resolved": false
+      "last_seen": "2026-10-16T14:50:34+02:00",
+      "count": 10,
+      "resolved": true,
+      "resolved_at": "2026-10-16T14:55:07+02:00"
     },
     "1_units|slug:KFK|possible_stale_link": {
       "stage": "1_units",
@@ -99,9 +105,10 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'krakowskie forum kultury' występuje też w archiwum jako bip_id:465 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-15T11:21:33+02:00",
-      "count": 8,
-      "resolved": false
+      "last_seen": "2026-10-16T14:50:34+02:00",
+      "count": 10,
+      "resolved": true,
+      "resolved_at": "2026-10-16T14:51:56+02:00"
     },
     "1_units|slug:CKPD|possible_stale_link": {
       "stage": "1_units",
@@ -110,9 +117,10 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'centrum kultury podgórza' występuje też w archiwum jako bip_id:470 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-15T11:21:33+02:00",
-      "count": 8,
-      "resolved": false
+      "last_seen": "2026-10-16T14:50:34+02:00",
+      "count": 10,
+      "resolved": true,
+      "resolved_at": "2026-10-16T14:51:56+02:00"
     },
     "2_praca_links|bip_id:1|no_praca_link": {
       "stage": "2_praca_links",
@@ -121,8 +129,8 @@
       "reason": "no_praca_link",
       "detail": "jednostka: Miasto Kraków",
       "first_seen": "2026-10-12T12:12:50+02:00",
-      "last_seen": "2026-10-15T11:21:35+02:00",
-      "count": 7,
+      "last_seen": "2026-10-16T14:52:12+02:00",
+      "count": 9,
       "resolved": false
     },
     "src_kultura|mnk|no_offers_parsed": {
@@ -144,8 +152,8 @@
       "reason": "no_offers_parsed",
       "detail": "Ośrodek Dokumentacji Sztuki Tadeusza Kantora Cricoteka — zero trafień parsera",
       "first_seen": "2026-10-12T18:34:07+02:00",
-      "last_seen": "2026-10-15T11:22:15+02:00",
-      "count": 9,
+      "last_seen": "2026-10-16T15:00:10+02:00",
+      "count": 10,
       "resolved": false
     },
     "src_nuzle|cat_plastyk|http_404": {
@@ -157,7 +165,8 @@
       "first_seen": "2026-10-13T09:45:29+02:00",
       "last_seen": "2026-10-15T11:22:07+02:00",
       "count": 6,
-      "resolved": false
+      "resolved": true,
+      "resolved_at": "2026-10-16T14:47:58+02:00"
     },
     "src_nuzle|cat_animator kultury|http_404": {
       "stage": "src_nuzle",
@@ -168,7 +177,8 @@
       "first_seen": "2026-10-13T09:45:29+02:00",
       "last_seen": "2026-10-15T11:22:08+02:00",
       "count": 6,
-      "resolved": false
+      "resolved": true,
+      "resolved_at": "2026-10-16T14:47:58+02:00"
     },
     "src_nuzle|cat_instruktor|http_404": {
       "stage": "src_nuzle",
@@ -179,6 +189,1294 @@
       "first_seen": "2026-10-13T09:45:29+02:00",
       "last_seen": "2026-10-15T11:22:08+02:00",
       "count": 6,
+      "resolved": true,
+      "resolved_at": "2026-10-16T14:47:58+02:00"
+    },
+    "2_praca_links|slug:PK133|dead_link_fixed_from_archive": {
+      "stage": "2_praca_links",
+      "key": "slug:PK133",
+      "url": "https://www.bip.krakow.pl/PK133",
+      "reason": "dead_link_fixed_from_archive",
+      "detail": "jednostka: Przedszkole nr 133; link z listy aktualnej nie działa (http_404), użyto archiwalnego: https://www.bip.krakow.pl/?bip_id=371",
+      "first_seen": "2026-10-16T14:53:23+02:00",
+      "last_seen": "2026-10-16T14:53:23+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|slug:SP137|dead_link_fixed_from_archive": {
+      "stage": "2_praca_links",
+      "key": "slug:SP137",
+      "url": "https://www.bip.krakow.pl/SP137",
+      "reason": "dead_link_fixed_from_archive",
+      "detail": "jednostka: Szkoła Podstawowa nr 137; link z listy aktualnej nie działa (http_404), użyto archiwalnego: https://www.bip.krakow.pl/?bip_id=54",
+      "first_seen": "2026-10-16T14:54:43+02:00",
+      "last_seen": "2026-10-16T14:54:43+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:631|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:631",
+      "url": "https://www.bip.krakow.pl/?bip_id=631",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkolno-Przedszkolny nr 12",
+      "first_seen": "2026-10-16T14:54:58+02:00",
+      "last_seen": "2026-10-16T14:54:58+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|slug:deklaracja_dostepnosci|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "slug:deklaracja_dostepnosci",
+      "url": "https://www.bip.krakow.pl/deklaracja_dostepnosci",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Deklaracja dostępności",
+      "first_seen": "2026-10-16T14:57:12+02:00",
+      "last_seen": "2026-10-16T14:57:12+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|slug:bip|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "slug:bip",
+      "url": "https://www.gov.pl/bip",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Biuletyn Informacji Publicznej",
+      "first_seen": "2026-10-16T14:57:13+02:00",
+      "last_seen": "2026-10-16T14:57:13+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|slug:uslugi|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "slug:uslugi",
+      "url": "https://www.bip.krakow.pl/uslugi",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Usługi - Załatw sprawę",
+      "first_seen": "2026-10-16T14:57:14+02:00",
+      "last_seen": "2026-10-16T14:57:14+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:295|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:295",
+      "url": "https://www.bip.krakow.pl/?bip_id=295",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Centrum Edukacyjne",
+      "first_seen": "2026-10-16T14:57:15+02:00",
+      "last_seen": "2026-10-16T14:57:15+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:308|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:308",
+      "url": "https://www.bip.krakow.pl/?bip_id=308",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Dom Dziecka Nr 7",
+      "first_seen": "2026-10-16T14:57:17+02:00",
+      "last_seen": "2026-10-16T14:57:17+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:327|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:327",
+      "url": "https://www.bip.krakow.pl/?bip_id=327",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Dom Pomocy Społecznej    ul. Łanowa 43 b",
+      "first_seen": "2026-10-16T14:57:17+02:00",
+      "last_seen": "2026-10-16T14:57:17+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:326|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:326",
+      "url": "https://www.bip.krakow.pl/?bip_id=326",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Dom Pomocy Społecznej im. Antoniego Żychowskiego",
+      "first_seen": "2026-10-16T14:57:18+02:00",
+      "last_seen": "2026-10-16T14:57:18+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:302|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:302",
+      "url": "https://www.bip.krakow.pl/?bip_id=302",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Dom Pomocy Społecznej os. Hutnicze 5",
+      "first_seen": "2026-10-16T14:57:19+02:00",
+      "last_seen": "2026-10-16T14:57:19+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:230|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:230",
+      "url": "https://www.bip.krakow.pl/?bip_id=230",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Dom Pomocy Społecznej os. Sportowe 9",
+      "first_seen": "2026-10-16T14:57:19+02:00",
+      "last_seen": "2026-10-16T14:57:19+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:174|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:174",
+      "url": "https://www.bip.krakow.pl/?bip_id=174",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 1",
+      "first_seen": "2026-10-16T14:57:20+02:00",
+      "last_seen": "2026-10-16T14:57:20+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:181|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:181",
+      "url": "https://www.bip.krakow.pl/?bip_id=181",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 10",
+      "first_seen": "2026-10-16T14:57:21+02:00",
+      "last_seen": "2026-10-16T14:57:21+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:182|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:182",
+      "url": "https://www.bip.krakow.pl/?bip_id=182",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum nr 12 z Oddziałami Integracyjnymi  im. Księdza Kardynała Karola Wojtyły",
+      "first_seen": "2026-10-16T14:57:21+02:00",
+      "last_seen": "2026-10-16T14:57:21+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:183|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:183",
+      "url": "https://www.bip.krakow.pl/?bip_id=183",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 13",
+      "first_seen": "2026-10-16T14:57:22+02:00",
+      "last_seen": "2026-10-16T14:57:22+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:184|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:184",
+      "url": "https://www.bip.krakow.pl/?bip_id=184",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 14",
+      "first_seen": "2026-10-16T14:57:23+02:00",
+      "last_seen": "2026-10-16T14:57:23+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:185|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:185",
+      "url": "https://www.bip.krakow.pl/?bip_id=185",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 16",
+      "first_seen": "2026-10-16T14:57:24+02:00",
+      "last_seen": "2026-10-16T14:57:24+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:186|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:186",
+      "url": "https://www.bip.krakow.pl/?bip_id=186",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 17",
+      "first_seen": "2026-10-16T14:57:24+02:00",
+      "last_seen": "2026-10-16T14:57:24+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:175|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:175",
+      "url": "https://www.bip.krakow.pl/?bip_id=175",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum nr 2",
+      "first_seen": "2026-10-16T14:57:25+02:00",
+      "last_seen": "2026-10-16T14:57:25+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:187|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:187",
+      "url": "https://www.bip.krakow.pl/?bip_id=187",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 20",
+      "first_seen": "2026-10-16T14:57:26+02:00",
+      "last_seen": "2026-10-16T14:57:26+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:85|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:85",
+      "url": "https://www.bip.krakow.pl/?bip_id=85",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 21 im. Tadeusza Boya-Żeleńskiego",
+      "first_seen": "2026-10-16T14:57:26+02:00",
+      "last_seen": "2026-10-16T14:57:26+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:86|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:86",
+      "url": "https://www.bip.krakow.pl/?bip_id=86",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 22",
+      "first_seen": "2026-10-16T14:57:27+02:00",
+      "last_seen": "2026-10-16T14:57:27+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:88|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:88",
+      "url": "https://www.bip.krakow.pl/?bip_id=88",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 24",
+      "first_seen": "2026-10-16T14:57:28+02:00",
+      "last_seen": "2026-10-16T14:57:28+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:89|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:89",
+      "url": "https://www.bip.krakow.pl/?bip_id=89",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 27 im. płka H. Dobrzańskiego",
+      "first_seen": "2026-10-16T14:57:29+02:00",
+      "last_seen": "2026-10-16T14:57:29+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:90|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:90",
+      "url": "https://www.bip.krakow.pl/?bip_id=90",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 28 im. Marszałka Józefa Piłsudskiego",
+      "first_seen": "2026-10-16T14:57:29+02:00",
+      "last_seen": "2026-10-16T14:57:29+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:91|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:91",
+      "url": "https://www.bip.krakow.pl/?bip_id=91",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 29",
+      "first_seen": "2026-10-16T14:57:30+02:00",
+      "last_seen": "2026-10-16T14:57:30+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:176|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:176",
+      "url": "https://www.bip.krakow.pl/?bip_id=176",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 3",
+      "first_seen": "2026-10-16T14:57:31+02:00",
+      "last_seen": "2026-10-16T14:57:31+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:92|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:92",
+      "url": "https://www.bip.krakow.pl/?bip_id=92",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 31",
+      "first_seen": "2026-10-16T14:57:31+02:00",
+      "last_seen": "2026-10-16T14:57:31+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:93|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:93",
+      "url": "https://www.bip.krakow.pl/?bip_id=93",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 34",
+      "first_seen": "2026-10-16T14:57:32+02:00",
+      "last_seen": "2026-10-16T14:57:32+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:94|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:94",
+      "url": "https://www.bip.krakow.pl/?bip_id=94",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 35",
+      "first_seen": "2026-10-16T14:57:33+02:00",
+      "last_seen": "2026-10-16T14:57:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:130|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:130",
+      "url": "https://www.bip.krakow.pl/?bip_id=130",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 37 z Oddziałami Integracyjnymi im. św.M.M.Kolbe",
+      "first_seen": "2026-10-16T14:57:33+02:00",
+      "last_seen": "2026-10-16T14:57:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:131|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:131",
+      "url": "https://www.bip.krakow.pl/?bip_id=131",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 39",
+      "first_seen": "2026-10-16T14:57:34+02:00",
+      "last_seen": "2026-10-16T14:57:34+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:177|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:177",
+      "url": "https://www.bip.krakow.pl/?bip_id=177",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 4",
+      "first_seen": "2026-10-16T14:57:35+02:00",
+      "last_seen": "2026-10-16T14:57:35+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:132|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:132",
+      "url": "https://www.bip.krakow.pl/?bip_id=132",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 41",
+      "first_seen": "2026-10-16T14:57:35+02:00",
+      "last_seen": "2026-10-16T14:57:35+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:133|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:133",
+      "url": "https://www.bip.krakow.pl/?bip_id=133",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum nr 42",
+      "first_seen": "2026-10-16T14:57:36+02:00",
+      "last_seen": "2026-10-16T14:57:36+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:105|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:105",
+      "url": "https://www.bip.krakow.pl/?bip_id=105",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 43 im. Batalionów Chłopskich",
+      "first_seen": "2026-10-16T14:57:37+02:00",
+      "last_seen": "2026-10-16T14:57:37+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:138|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:138",
+      "url": "https://www.bip.krakow.pl/?bip_id=138",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 44",
+      "first_seen": "2026-10-16T14:57:37+02:00",
+      "last_seen": "2026-10-16T14:57:37+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:135|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:135",
+      "url": "https://www.bip.krakow.pl/?bip_id=135",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 45",
+      "first_seen": "2026-10-16T14:57:38+02:00",
+      "last_seen": "2026-10-16T14:57:38+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:136|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:136",
+      "url": "https://www.bip.krakow.pl/?bip_id=136",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 48",
+      "first_seen": "2026-10-16T14:57:39+02:00",
+      "last_seen": "2026-10-16T14:57:39+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:482|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:482",
+      "url": "https://www.bip.krakow.pl/?bip_id=482",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 50",
+      "first_seen": "2026-10-16T14:57:39+02:00",
+      "last_seen": "2026-10-16T14:57:39+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:178|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:178",
+      "url": "https://www.bip.krakow.pl/?bip_id=178",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 6",
+      "first_seen": "2026-10-16T14:57:40+02:00",
+      "last_seen": "2026-10-16T14:57:40+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:179|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:179",
+      "url": "https://www.bip.krakow.pl/?bip_id=179",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum Nr 7",
+      "first_seen": "2026-10-16T14:57:41+02:00",
+      "last_seen": "2026-10-16T14:57:41+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:180|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:180",
+      "url": "https://www.bip.krakow.pl/?bip_id=180",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Gimnazjum nr 9",
+      "first_seen": "2026-10-16T14:57:41+02:00",
+      "last_seen": "2026-10-16T14:57:41+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:29|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:29",
+      "url": "https://www.bip.krakow.pl/?bip_id=29",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Krakowski Zarząd Dróg",
+      "first_seen": "2026-10-16T14:57:43+02:00",
+      "last_seen": "2026-10-16T14:57:43+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:36|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:36",
+      "url": "https://www.bip.krakow.pl/?bip_id=36",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Krakowski Zarząd Komunalny",
+      "first_seen": "2026-10-16T14:57:44+02:00",
+      "last_seen": "2026-10-16T14:57:44+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:474|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:474",
+      "url": "https://www.bip.krakow.pl/?bip_id=474",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Krowoderska Biblioteka Publiczna",
+      "first_seen": "2026-10-16T14:57:45+02:00",
+      "last_seen": "2026-10-16T14:57:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:38|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:38",
+      "url": "https://www.bip.krakow.pl/?bip_id=38",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Miejski Zarząd Baz Danych",
+      "first_seen": "2026-10-16T14:57:46+02:00",
+      "last_seen": "2026-10-16T14:57:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:291|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:291",
+      "url": "https://www.bip.krakow.pl/?bip_id=291",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Międzyszkolny Basen Pływacki os. Kolorowe",
+      "first_seen": "2026-10-16T14:57:46+02:00",
+      "last_seen": "2026-10-16T14:57:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:290|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:290",
+      "url": "https://www.bip.krakow.pl/?bip_id=290",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Międzyszkolny Basen Pływacki ul. F.Nullo",
+      "first_seen": "2026-10-16T14:57:47+02:00",
+      "last_seen": "2026-10-16T14:57:47+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:478|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:478",
+      "url": "https://www.bip.krakow.pl/?bip_id=478",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Międzyszkolny Ośrodek Sportowy Krowodrza",
+      "first_seen": "2026-10-16T14:57:48+02:00",
+      "last_seen": "2026-10-16T14:57:48+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:480|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:480",
+      "url": "https://www.bip.krakow.pl/?bip_id=480",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Międzyszkolny Ośrodek Sportowy Podgórze",
+      "first_seen": "2026-10-16T14:57:49+02:00",
+      "last_seen": "2026-10-16T14:57:49+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:558|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:558",
+      "url": "https://www.bip.krakow.pl/?bip_id=558",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Muzeum PRL-u (w organizacji)",
+      "first_seen": "2026-10-16T14:57:49+02:00",
+      "last_seen": "2026-10-16T14:57:49+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:473|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:473",
+      "url": "https://www.bip.krakow.pl/?bip_id=473",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Nowohucka Biblioteka Publiczna",
+      "first_seen": "2026-10-16T14:57:50+02:00",
+      "last_seen": "2026-10-16T14:57:50+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:42|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:42",
+      "url": "https://www.bip.krakow.pl/?bip_id=42",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Ośrodek Sportu i Rekreacji - Krakowianka",
+      "first_seen": "2026-10-16T14:57:51+02:00",
+      "last_seen": "2026-10-16T14:57:51+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:319|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:319",
+      "url": "https://www.bip.krakow.pl/?bip_id=319",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Placówka Opiekuńczo-Wychowawcza Przyjazny Dom",
+      "first_seen": "2026-10-16T14:57:52+02:00",
+      "last_seen": "2026-10-16T14:57:52+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:472|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:472",
+      "url": "https://www.bip.krakow.pl/?bip_id=472",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Podgórska Biblioteka Publiczna",
+      "first_seen": "2026-10-16T14:57:53+02:00",
+      "last_seen": "2026-10-16T14:57:53+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:444|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:444",
+      "url": "https://www.bip.krakow.pl/?bip_id=444",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Przedszkole Nr 114",
+      "first_seen": "2026-10-16T14:57:53+02:00",
+      "last_seen": "2026-10-16T14:57:53+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:354|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:354",
+      "url": "https://www.bip.krakow.pl/?bip_id=354",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Przedszkole Nr 32",
+      "first_seen": "2026-10-16T14:57:55+02:00",
+      "last_seen": "2026-10-16T14:57:55+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:430|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:430",
+      "url": "https://www.bip.krakow.pl/?bip_id=430",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Przedszkole Nr 55",
+      "first_seen": "2026-10-16T14:57:55+02:00",
+      "last_seen": "2026-10-16T14:57:55+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:383|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:383",
+      "url": "https://www.bip.krakow.pl/?bip_id=383",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Przedszkole Nr 64",
+      "first_seen": "2026-10-16T14:57:56+02:00",
+      "last_seen": "2026-10-16T14:57:56+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:313|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:313",
+      "url": "https://www.bip.krakow.pl/?bip_id=313",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Publiczny Ośrodek Adopcyjno-Opiekuńczy CZOR",
+      "first_seen": "2026-10-16T14:57:57+02:00",
+      "last_seen": "2026-10-16T14:57:57+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:352|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:352",
+      "url": "https://www.bip.krakow.pl/?bip_id=352",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Samorządowe Przedszkole nr 23",
+      "first_seen": "2026-10-16T14:57:58+02:00",
+      "last_seen": "2026-10-16T14:57:58+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:309|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:309",
+      "url": "https://www.bip.krakow.pl/?bip_id=309",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Specjalistyczna Placówka Opiekuńczo-Wychowawcza im. Jana Brzechwy",
+      "first_seen": "2026-10-16T14:57:59+02:00",
+      "last_seen": "2026-10-16T14:57:59+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:320|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:320",
+      "url": "https://www.bip.krakow.pl/?bip_id=320",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Specjalny Ośrodek Szkolno-Wychowawczy dla Dzieci Niesłyszących",
+      "first_seen": "2026-10-16T14:58:00+02:00",
+      "last_seen": "2026-10-16T14:58:00+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:247|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:247",
+      "url": "https://www.bip.krakow.pl/?bip_id=247",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Specjalny Ośrodek Szkolno-Wychowawczy Nr 5",
+      "first_seen": "2026-10-16T14:58:01+02:00",
+      "last_seen": "2026-10-16T14:58:01+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:594|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:594",
+      "url": "https://www.bip.krakow.pl/?bip_id=594",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa 157",
+      "first_seen": "2026-10-16T14:58:02+02:00",
+      "last_seen": "2026-10-16T14:58:02+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:145|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:145",
+      "url": "https://www.bip.krakow.pl/?bip_id=145",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 10",
+      "first_seen": "2026-10-16T14:58:03+02:00",
+      "last_seen": "2026-10-16T14:58:03+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:168|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:168",
+      "url": "https://www.bip.krakow.pl/?bip_id=168",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 109 im. Kornela Makuszyńskiego w Krakowie",
+      "first_seen": "2026-10-16T14:58:33+02:00",
+      "last_seen": "2026-10-16T14:58:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:146|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:146",
+      "url": "https://www.bip.krakow.pl/?bip_id=146",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 11",
+      "first_seen": "2026-10-16T14:58:36+02:00",
+      "last_seen": "2026-10-16T14:58:36+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:116|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:116",
+      "url": "https://www.bip.krakow.pl/?bip_id=116",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 130",
+      "first_seen": "2026-10-16T14:58:37+02:00",
+      "last_seen": "2026-10-16T14:58:37+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:70|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:70",
+      "url": "https://www.bip.krakow.pl/?bip_id=70",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 133",
+      "first_seen": "2026-10-16T14:58:45+02:00",
+      "last_seen": "2026-10-16T14:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:117|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:117",
+      "url": "https://www.bip.krakow.pl/?bip_id=117",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 140",
+      "first_seen": "2026-10-16T14:58:48+02:00",
+      "last_seen": "2026-10-16T14:58:48+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:73|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:73",
+      "url": "https://www.bip.krakow.pl/?bip_id=73",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 147",
+      "first_seen": "2026-10-16T14:58:49+02:00",
+      "last_seen": "2026-10-16T14:58:49+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:173|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:173",
+      "url": "https://www.bip.krakow.pl/?bip_id=173",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 153 im. ks. prof. Józefa Tischnera",
+      "first_seen": "2026-10-16T14:58:50+02:00",
+      "last_seen": "2026-10-16T14:58:50+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:147|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:147",
+      "url": "https://www.bip.krakow.pl/?bip_id=147",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 16",
+      "first_seen": "2026-10-16T14:58:51+02:00",
+      "last_seen": "2026-10-16T14:58:51+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:46|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:46",
+      "url": "https://www.bip.krakow.pl/?bip_id=46",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 24 im. Krakowskiej Straży Pożarnej",
+      "first_seen": "2026-10-16T14:58:53+02:00",
+      "last_seen": "2026-10-16T14:58:53+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:153|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:153",
+      "url": "https://www.bip.krakow.pl/?bip_id=153",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 34 w Krakowie",
+      "first_seen": "2026-10-16T14:58:53+02:00",
+      "last_seen": "2026-10-16T14:58:53+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:57|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:57",
+      "url": "https://www.bip.krakow.pl/?bip_id=57",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 47 im. Stefana Czarnieckiego",
+      "first_seen": "2026-10-16T14:58:54+02:00",
+      "last_seen": "2026-10-16T14:58:54+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:158|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:158",
+      "url": "https://www.bip.krakow.pl/?bip_id=158",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 51",
+      "first_seen": "2026-10-16T14:58:55+02:00",
+      "last_seen": "2026-10-16T14:58:55+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:63|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:63",
+      "url": "https://www.bip.krakow.pl/?bip_id=63",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 66 im. Edwarda Dembowskiego",
+      "first_seen": "2026-10-16T14:59:00+02:00",
+      "last_seen": "2026-10-16T14:59:00+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:163|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:163",
+      "url": "https://www.bip.krakow.pl/?bip_id=163",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Szkoła Podstawowa nr 68",
+      "first_seen": "2026-10-16T14:59:01+02:00",
+      "last_seen": "2026-10-16T14:59:01+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:471|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:471",
+      "url": "https://www.bip.krakow.pl/?bip_id=471",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Śródmiejska Biblioteka Publiczna",
+      "first_seen": "2026-10-16T14:59:01+02:00",
+      "last_seen": "2026-10-16T14:59:01+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:206|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:206",
+      "url": "https://www.bip.krakow.pl/?bip_id=206",
+      "reason": "no_praca_link",
+      "detail": "jednostka: XIV Liceum Ogólnokształcące w Krakowie",
+      "first_seen": "2026-10-16T14:59:07+02:00",
+      "last_seen": "2026-10-16T14:59:07+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:207|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:207",
+      "url": "https://www.bip.krakow.pl/?bip_id=207",
+      "reason": "no_praca_link",
+      "detail": "jednostka: XVI Liceum Ogólnokształcące",
+      "first_seen": "2026-10-16T14:59:10+02:00",
+      "last_seen": "2026-10-16T14:59:10+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:95|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:95",
+      "url": "https://www.bip.krakow.pl/?bip_id=95",
+      "reason": "no_praca_link",
+      "detail": "jednostka: XXIX Liceum Ogólnokształcące",
+      "first_seen": "2026-10-16T14:59:12+02:00",
+      "last_seen": "2026-10-16T14:59:12+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:542|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:542",
+      "url": "https://www.bip.krakow.pl/?bip_id=542",
+      "reason": "no_praca_link",
+      "detail": "jednostka: XXVII Liceum Ogólnokształcące im. dr H. Jordana",
+      "first_seen": "2026-10-16T14:59:13+02:00",
+      "last_seen": "2026-10-16T14:59:13+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:211|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:211",
+      "url": "https://www.bip.krakow.pl/?bip_id=211",
+      "reason": "no_praca_link",
+      "detail": "jednostka: XXXI Liceum Ogólnokształcące",
+      "first_seen": "2026-10-16T14:59:13+02:00",
+      "last_seen": "2026-10-16T14:59:13+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:499|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:499",
+      "url": "https://www.bip.krakow.pl/?bip_id=499",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zarząd Dróg i Transportu",
+      "first_seen": "2026-10-16T14:59:14+02:00",
+      "last_seen": "2026-10-16T14:59:14+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:490|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:490",
+      "url": "https://www.bip.krakow.pl/?bip_id=490",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zarząd Transportu Publicznego",
+      "first_seen": "2026-10-16T14:59:15+02:00",
+      "last_seen": "2026-10-16T14:59:15+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:99|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:99",
+      "url": "https://www.bip.krakow.pl/?bip_id=99",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Ekonomiki Oświaty Kraków-Wschód",
+      "first_seen": "2026-10-16T14:59:16+02:00",
+      "last_seen": "2026-10-16T14:59:16+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:45|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:45",
+      "url": "https://www.bip.krakow.pl/?bip_id=45",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Ekonomiki Oświaty Południe",
+      "first_seen": "2026-10-16T14:59:16+02:00",
+      "last_seen": "2026-10-16T14:59:16+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:311|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:311",
+      "url": "https://www.bip.krakow.pl/?bip_id=311",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Placówek Opiekuńczo-Wychowawczych Nr 2",
+      "first_seen": "2026-10-16T14:59:18+02:00",
+      "last_seen": "2026-10-16T14:59:18+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:263|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:263",
+      "url": "https://www.bip.krakow.pl/?bip_id=263",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ekonomicznych Nr 3",
+      "first_seen": "2026-10-16T14:59:19+02:00",
+      "last_seen": "2026-10-16T14:59:19+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:276|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:276",
+      "url": "https://www.bip.krakow.pl/?bip_id=276",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Odzieżowych i Ekonomicznych",
+      "first_seen": "2026-10-16T14:59:23+02:00",
+      "last_seen": "2026-10-16T14:59:23+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:190|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:190",
+      "url": "https://www.bip.krakow.pl/?bip_id=190",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Integracyjnych nr 1",
+      "first_seen": "2026-10-16T14:59:24+02:00",
+      "last_seen": "2026-10-16T14:59:24+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:76|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:76",
+      "url": "https://www.bip.krakow.pl/?bip_id=76",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Integracyjnych Nr 2",
+      "first_seen": "2026-10-16T14:59:25+02:00",
+      "last_seen": "2026-10-16T14:59:25+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:77|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:77",
+      "url": "https://www.bip.krakow.pl/?bip_id=77",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Integracyjnych Nr 3",
+      "first_seen": "2026-10-16T14:59:26+02:00",
+      "last_seen": "2026-10-16T14:59:26+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:78|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:78",
+      "url": "https://www.bip.krakow.pl/?bip_id=78",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Integracyjnych Nr 4",
+      "first_seen": "2026-10-16T14:59:26+02:00",
+      "last_seen": "2026-10-16T14:59:26+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:126|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:126",
+      "url": "https://www.bip.krakow.pl/?bip_id=126",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Integracyjnych Nr 5",
+      "first_seen": "2026-10-16T14:59:27+02:00",
+      "last_seen": "2026-10-16T14:59:27+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:127|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:127",
+      "url": "https://www.bip.krakow.pl/?bip_id=127",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Integracyjnych Nr 6",
+      "first_seen": "2026-10-16T14:59:28+02:00",
+      "last_seen": "2026-10-16T14:59:28+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:537|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:537",
+      "url": "https://www.bip.krakow.pl/?bip_id=537",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących nr 1",
+      "first_seen": "2026-10-16T14:59:29+02:00",
+      "last_seen": "2026-10-16T14:59:29+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:218|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:218",
+      "url": "https://www.bip.krakow.pl/?bip_id=218",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 10",
+      "first_seen": "2026-10-16T14:59:29+02:00",
+      "last_seen": "2026-10-16T14:59:29+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:80|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:80",
+      "url": "https://www.bip.krakow.pl/?bip_id=80",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 15",
+      "first_seen": "2026-10-16T14:59:32+02:00",
+      "last_seen": "2026-10-16T14:59:32+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:124|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:124",
+      "url": "https://www.bip.krakow.pl/?bip_id=124",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 16",
+      "first_seen": "2026-10-16T14:59:33+02:00",
+      "last_seen": "2026-10-16T14:59:33+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:477|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:477",
+      "url": "https://www.bip.krakow.pl/?bip_id=477",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 17",
+      "first_seen": "2026-10-16T14:59:34+02:00",
+      "last_seen": "2026-10-16T14:59:34+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:212|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:212",
+      "url": "https://www.bip.krakow.pl/?bip_id=212",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 2",
+      "first_seen": "2026-10-16T14:59:35+02:00",
+      "last_seen": "2026-10-16T14:59:35+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:213|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:213",
+      "url": "https://www.bip.krakow.pl/?bip_id=213",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 3",
+      "first_seen": "2026-10-16T14:59:36+02:00",
+      "last_seen": "2026-10-16T14:59:36+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:214|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:214",
+      "url": "https://www.bip.krakow.pl/?bip_id=214",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 4",
+      "first_seen": "2026-10-16T14:59:37+02:00",
+      "last_seen": "2026-10-16T14:59:37+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:189|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:189",
+      "url": "https://www.bip.krakow.pl/?bip_id=189",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących nr 51",
+      "first_seen": "2026-10-16T14:59:39+02:00",
+      "last_seen": "2026-10-16T14:59:39+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:125|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:125",
+      "url": "https://www.bip.krakow.pl/?bip_id=125",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 52",
+      "first_seen": "2026-10-16T14:59:39+02:00",
+      "last_seen": "2026-10-16T14:59:39+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:215|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:215",
+      "url": "https://www.bip.krakow.pl/?bip_id=215",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Nr 6",
+      "first_seen": "2026-10-16T14:59:40+02:00",
+      "last_seen": "2026-10-16T14:59:40+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:128|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:128",
+      "url": "https://www.bip.krakow.pl/?bip_id=128",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Ogólnokształcących Sportowych Nr 1",
+      "first_seen": "2026-10-16T14:59:41+02:00",
+      "last_seen": "2026-10-16T14:59:41+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:195|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:195",
+      "url": "https://www.bip.krakow.pl/?bip_id=195",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Specjalnych Nr 13",
+      "first_seen": "2026-10-16T14:59:41+02:00",
+      "last_seen": "2026-10-16T14:59:41+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:194|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:194",
+      "url": "https://www.bip.krakow.pl/?bip_id=194",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Specjalnych Nr 7",
+      "first_seen": "2026-10-16T14:59:42+02:00",
+      "last_seen": "2026-10-16T14:59:42+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:83|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:83",
+      "url": "https://www.bip.krakow.pl/?bip_id=83",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Specjalnych Nr 9",
+      "first_seen": "2026-10-16T14:59:43+02:00",
+      "last_seen": "2026-10-16T14:59:43+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "2_praca_links|bip_id:286|no_praca_link": {
+      "stage": "2_praca_links",
+      "key": "bip_id:286",
+      "url": "https://www.bip.krakow.pl/?bip_id=286",
+      "reason": "no_praca_link",
+      "detail": "jednostka: Zespół Szkół Zawodowych Nr 1 im. ks. kard. Adama Stefana Sapiehy",
+      "first_seen": "2026-10-16T14:59:44+02:00",
+      "last_seen": "2026-10-16T14:59:44+02:00",
+      "count": 1,
       "resolved": false
     }
   }

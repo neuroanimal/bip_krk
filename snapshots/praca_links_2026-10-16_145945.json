@@ -1,0 +1,4389 @@
+{
+  "fetched_at": "2026-10-16T14:52:11+02:00",
+  "rows": [
+    {
+      "unit_key": "bip_id:1",
+      "unit_name": "Miasto Kraków",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=1",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZBK",
+      "unit_name": "ZBK - Zarząd Budynków Komunalnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/ZBK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=32&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZCK",
+      "unit_name": "ZCK - Zarząd Cmentarzy Komunalnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/ZCK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=489&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZDMK",
+      "unit_name": "ZDMK - Zarząd Dróg Miasta Krakowa",
+      "unit_url": "https://www.bip.krakow.pl/ZDMK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=511&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:512",
+      "unit_name": "ZIS - Zarząd Infrastruktury Sportowej w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=512",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=512&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:582",
+      "unit_name": "ZIM - Zarząd Inwestycji Miejskich w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=582",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=582&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:627",
+      "unit_name": "ZIW - Zarząd Infrastruktury Wodnej",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=627",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=627",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:616",
+      "unit_name": "ZTP - Zarząd Transportu Publicznego w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=616",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=616&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:567",
+      "unit_name": "ZZM - Zarząd Zieleni Miejskiej w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=567",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=567&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MOPS",
+      "unit_name": "MOPS - Miejski Ośrodek Pomocy Społecznej w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/MOPS",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=30&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MCPU",
+      "unit_name": "Miejskie Centrum Profilaktyki Uzależnień w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/MCPU",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=37&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ST",
+      "unit_name": "Straż Miejska Miasta Krakowa",
+      "unit_url": "https://www.bip.krakow.pl/ST",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=33&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK1",
+      "unit_name": "Przedszkole nr 1",
+      "unit_url": "https://www.bip.krakow.pl/PK1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=418&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK2",
+      "unit_name": "Przedszkole nr 2",
+      "unit_url": "https://www.bip.krakow.pl/PK2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=494&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK4",
+      "unit_name": "Przedszkole nr 4",
+      "unit_url": "https://www.bip.krakow.pl/PK4",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=419&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK5",
+      "unit_name": "Przedszkole nr 5",
+      "unit_url": "https://www.bip.krakow.pl/PK5",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=347&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK6",
+      "unit_name": "Przedszkole nr 6",
+      "unit_url": "https://www.bip.krakow.pl/PK6",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=348&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK9",
+      "unit_name": "Przedszkole nr 9",
+      "unit_url": "https://www.bip.krakow.pl/PK9",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=420&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK10",
+      "unit_name": "Przedszkole nr 10",
+      "unit_url": "https://www.bip.krakow.pl/PK10",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=349&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK11",
+      "unit_name": "Przedszkole nr 11",
+      "unit_url": "https://www.bip.krakow.pl/PK11",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=350&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK12",
+      "unit_name": "Przedszkole nr 12",
+      "unit_url": "https://www.bip.krakow.pl/PK12",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=421&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK13",
+      "unit_name": "Przedszkole nr 13",
+      "unit_url": "https://www.bip.krakow.pl/PK13",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=422&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK14",
+      "unit_name": "Przedszkole nr 14",
+      "unit_url": "https://www.bip.krakow.pl/PK14",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=423&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK20",
+      "unit_name": "Przedszkole nr 20",
+      "unit_url": "https://www.bip.krakow.pl/PK20",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=424&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK22",
+      "unit_name": "Przedszkole nr 22",
+      "unit_url": "https://www.bip.krakow.pl/PK22",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=351&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK28",
+      "unit_name": "Przedszkole nr 28",
+      "unit_url": "https://www.bip.krakow.pl/PK28",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=353&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK29",
+      "unit_name": "Przedszkole nr 29",
+      "unit_url": "https://www.bip.krakow.pl/PK29",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=425&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK33",
+      "unit_name": "Przedszkole nr 33",
+      "unit_url": "https://www.bip.krakow.pl/PK33",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=355&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK35",
+      "unit_name": "Przedszkole nr 35",
+      "unit_url": "https://www.bip.krakow.pl/PK35",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=356&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK36",
+      "unit_name": "Przedszkole nr 36",
+      "unit_url": "https://www.bip.krakow.pl/PK36",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=357&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK38",
+      "unit_name": "Przedszkole nr 38",
+      "unit_url": "https://www.bip.krakow.pl/PK38",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=426&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK41",
+      "unit_name": "Przedszkole nr 41",
+      "unit_url": "https://www.bip.krakow.pl/PK41",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=580&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK43",
+      "unit_name": "Przedszkole nr 43",
+      "unit_url": "https://www.bip.krakow.pl/PK43",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=427&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK44",
+      "unit_name": "Przedszkole nr 44",
+      "unit_url": "https://www.bip.krakow.pl/PK44",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=428&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK45",
+      "unit_name": "Przedszkole nr 45",
+      "unit_url": "https://www.bip.krakow.pl/PK45",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=429&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK46",
+      "unit_name": "Przedszkole nr 46",
+      "unit_url": "https://www.bip.krakow.pl/PK46",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=381&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK49",
+      "unit_name": "Przedszkole nr 49",
+      "unit_url": "https://www.bip.krakow.pl/PK49",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=358&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK51",
+      "unit_name": "Przedszkole nr 51",
+      "unit_url": "https://www.bip.krakow.pl/PK51",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=359&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK57",
+      "unit_name": "Przedszkole nr 57",
+      "unit_url": "https://www.bip.krakow.pl/PK57",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=360&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK58",
+      "unit_name": "Przedszkole nr 58",
+      "unit_url": "https://www.bip.krakow.pl/PK58",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=361&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK61",
+      "unit_name": "Przedszkole nr 61",
+      "unit_url": "https://www.bip.krakow.pl/PK61",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=431&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK62",
+      "unit_name": "Przedszkole nr 62",
+      "unit_url": "https://www.bip.krakow.pl/PK62",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=432&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK63",
+      "unit_name": "Przedszkole nr 63",
+      "unit_url": "https://www.bip.krakow.pl/PK63",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=382&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK65",
+      "unit_name": "Przedszkole nr 65",
+      "unit_url": "https://www.bip.krakow.pl/PK65",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=433&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK66",
+      "unit_name": "Przedszkole nr 66",
+      "unit_url": "https://www.bip.krakow.pl/PK66",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=434&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK67",
+      "unit_name": "Przedszkole nr 67",
+      "unit_url": "https://www.bip.krakow.pl/PK67",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=362&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK71",
+      "unit_name": "Przedszkole nr 71",
+      "unit_url": "https://www.bip.krakow.pl/PK71",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=363&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK75",
+      "unit_name": "Przedszkole nr 75",
+      "unit_url": "https://www.bip.krakow.pl/PK75",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=435&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK76",
+      "unit_name": "Przedszkole nr 76",
+      "unit_url": "https://www.bip.krakow.pl/PK76",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=436&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK77",
+      "unit_name": "Przedszkole nr 77",
+      "unit_url": "https://www.bip.krakow.pl/PK77",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=437&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK78",
+      "unit_name": "Przedszkole nr 78",
+      "unit_url": "https://www.bip.krakow.pl/PK78",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=438&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK79",
+      "unit_name": "Przedszkole nr 79",
+      "unit_url": "https://www.bip.krakow.pl/PK79",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=439&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK80",
+      "unit_name": "Przedszkole nr 80",
+      "unit_url": "https://www.bip.krakow.pl/PK80",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=440&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK82",
+      "unit_name": "Przedszkole nr 82",
+      "unit_url": "https://www.bip.krakow.pl/PK82",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=441&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK83",
+      "unit_name": "Przedszkole nr 83",
+      "unit_url": "https://www.bip.krakow.pl/PK83",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=442&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK87",
+      "unit_name": "Przedszkole nr 87",
+      "unit_url": "https://www.bip.krakow.pl/PK87",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=364&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK88",
+      "unit_name": "Przedszkole nr 88",
+      "unit_url": "https://www.bip.krakow.pl/PK88",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=384&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK90",
+      "unit_name": "Przedszkole nr 90",
+      "unit_url": "https://www.bip.krakow.pl/PK90",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=443&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK91",
+      "unit_name": "Przedszkole nr 91",
+      "unit_url": "https://www.bip.krakow.pl/PK91",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=365&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK92",
+      "unit_name": "Przedszkole nr 92",
+      "unit_url": "https://www.bip.krakow.pl/PK92",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=366&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK93",
+      "unit_name": "Przedszkole nr 93",
+      "unit_url": "https://www.bip.krakow.pl/PK93",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=385&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK94",
+      "unit_name": "Przedszkole nr 94",
+      "unit_url": "https://www.bip.krakow.pl/PK94",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=386&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK95",
+      "unit_name": "Przedszkole nr 95",
+      "unit_url": "https://www.bip.krakow.pl/PK95",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=367&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK96",
+      "unit_name": "Przedszkole nr 96",
+      "unit_url": "https://www.bip.krakow.pl/PK96",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=387&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK97",
+      "unit_name": "Przedszkole nr 97",
+      "unit_url": "https://www.bip.krakow.pl/PK97",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=388&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK98",
+      "unit_name": "Przedszkole nr 98",
+      "unit_url": "https://www.bip.krakow.pl/PK98",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=389&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK99",
+      "unit_name": "Przedszkole nr 99",
+      "unit_url": "https://www.bip.krakow.pl/PK99",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=390&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK100",
+      "unit_name": "Przedszkole nr 100",
+      "unit_url": "https://www.bip.krakow.pl/PK100",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=391&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK102",
+      "unit_name": "Przedszkole nr 102",
+      "unit_url": "https://www.bip.krakow.pl/PK102",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=392&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK104",
+      "unit_name": "Przedszkole nr 104",
+      "unit_url": "https://www.bip.krakow.pl/PK104",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=393&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK105",
+      "unit_name": "Przedszkole nr 105",
+      "unit_url": "https://www.bip.krakow.pl/PK105",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=394&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK107",
+      "unit_name": "Przedszkole nr 107",
+      "unit_url": "https://www.bip.krakow.pl/PK107",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=395&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK108",
+      "unit_name": "Przedszkole nr 108",
+      "unit_url": "https://www.bip.krakow.pl/PK108",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=396&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK109",
+      "unit_name": "Przedszkole nr 109",
+      "unit_url": "https://www.bip.krakow.pl/PK109",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=397&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK110",
+      "unit_name": "Przedszkole nr 110",
+      "unit_url": "https://www.bip.krakow.pl/PK110",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=398&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK111",
+      "unit_name": "Przedszkole nr 111",
+      "unit_url": "https://www.bip.krakow.pl/PK111",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=399&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK112",
+      "unit_name": "Przedszkole nr 112",
+      "unit_url": "https://www.bip.krakow.pl/PK112",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=400&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK113",
+      "unit_name": "Przedszkole nr 113",
+      "unit_url": "https://www.bip.krakow.pl/PK113",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=401&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK115",
+      "unit_name": "Przedszkole nr 115",
+      "unit_url": "https://www.bip.krakow.pl/PK115",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=402&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK116",
+      "unit_name": "Przedszkole nr 116",
+      "unit_url": "https://www.bip.krakow.pl/PK116",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=403&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK117",
+      "unit_name": "Przedszkole nr 117",
+      "unit_url": "https://www.bip.krakow.pl/PK117",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=404&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK118",
+      "unit_name": "Przedszkole nr 118",
+      "unit_url": "https://www.bip.krakow.pl/PK118",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=445&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK119",
+      "unit_name": "Przedszkole nr 119",
+      "unit_url": "https://www.bip.krakow.pl/PK119",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=446&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK120",
+      "unit_name": "Przedszkole nr 120",
+      "unit_url": "https://www.bip.krakow.pl/PK120",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=405&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK121",
+      "unit_name": "Przedszkole nr 121",
+      "unit_url": "https://www.bip.krakow.pl/PK121",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=447&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK122",
+      "unit_name": "Przedszkole nr 122",
+      "unit_url": "https://www.bip.krakow.pl/PK122",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=448&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK123",
+      "unit_name": "Przedszkole nr 123",
+      "unit_url": "https://www.bip.krakow.pl/PK123",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=449&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK124",
+      "unit_name": "Przedszkole nr 124",
+      "unit_url": "https://www.bip.krakow.pl/PK124",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=450&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK125",
+      "unit_name": "Przedszkole nr 125",
+      "unit_url": "https://www.bip.krakow.pl/PK125",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=406&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK127",
+      "unit_name": "Przedszkole nr 127",
+      "unit_url": "https://www.bip.krakow.pl/PK127",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=368&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK129",
+      "unit_name": "Przedszkole nr 129",
+      "unit_url": "https://www.bip.krakow.pl/PK129",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=369&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK130",
+      "unit_name": "Przedszkole nr 130",
+      "unit_url": "https://www.bip.krakow.pl/PK130",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=451&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK131",
+      "unit_name": "Przedszkole nr 131",
+      "unit_url": "https://www.bip.krakow.pl/PK131",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=407&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK132",
+      "unit_name": "Przedszkole nr 132",
+      "unit_url": "https://www.bip.krakow.pl/PK132",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=370&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK133",
+      "unit_name": "Przedszkole nr 133",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=371",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=371&dok_id=104362",
+      "url_from_archive": true
+    },
+    {
+      "unit_key": "slug:PK135",
+      "unit_name": "Przedszkole nr 135",
+      "unit_url": "https://www.bip.krakow.pl/PK135",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=372&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK137",
+      "unit_name": "Przedszkole nr 137",
+      "unit_url": "https://www.bip.krakow.pl/PK137",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=452&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK138",
+      "unit_name": "Przedszkole nr 138",
+      "unit_url": "https://www.bip.krakow.pl/PK138",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=453&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK139",
+      "unit_name": "Przedszkole nr 139",
+      "unit_url": "https://www.bip.krakow.pl/PK139",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=454&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK140",
+      "unit_name": "Przedszkole nr 140",
+      "unit_url": "https://www.bip.krakow.pl/PK140",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=373&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK142",
+      "unit_name": "Przedszkole nr 142",
+      "unit_url": "https://www.bip.krakow.pl/PK142",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=408&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK143",
+      "unit_name": "Przedszkole nr 143",
+      "unit_url": "https://www.bip.krakow.pl/PK143",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=409&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK144",
+      "unit_name": "Przedszkole nr 144",
+      "unit_url": "https://www.bip.krakow.pl/PK144",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=410&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK145",
+      "unit_name": "Przedszkole nr 145",
+      "unit_url": "https://www.bip.krakow.pl/PK145",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=374&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK148",
+      "unit_name": "Przedszkole nr 148",
+      "unit_url": "https://www.bip.krakow.pl/PK148",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=411&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK150",
+      "unit_name": "Przedszkole nr 150",
+      "unit_url": "https://www.bip.krakow.pl/PK150",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=375&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK151",
+      "unit_name": "Przedszkole nr 151",
+      "unit_url": "https://www.bip.krakow.pl/PK151",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=412&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK152",
+      "unit_name": "Przedszkole nr 152",
+      "unit_url": "https://www.bip.krakow.pl/PK152",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=413&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK162",
+      "unit_name": "Przedszkole nr 162",
+      "unit_url": "https://www.bip.krakow.pl/PK162",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=455&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK163",
+      "unit_name": "Przedszkole nr 163",
+      "unit_url": "https://www.bip.krakow.pl/PK163",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=377&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK165",
+      "unit_name": "Przedszkole nr 165",
+      "unit_url": "https://www.bip.krakow.pl/PK165",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=456&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK175",
+      "unit_name": "Przedszkole nr 175",
+      "unit_url": "https://www.bip.krakow.pl/PK175",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=457&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK176",
+      "unit_name": "Przedszkole nr 176",
+      "unit_url": "https://www.bip.krakow.pl/PK176",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=378&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK177",
+      "unit_name": "Przedszkole nr 177",
+      "unit_url": "https://www.bip.krakow.pl/PK177",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=414&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK178",
+      "unit_name": "Przedszkole nr 178",
+      "unit_url": "https://www.bip.krakow.pl/PK178",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=458&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK179",
+      "unit_name": "Przedszkole nr 179",
+      "unit_url": "https://www.bip.krakow.pl/PK179",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=379&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK180",
+      "unit_name": "Przedszkole nr 180",
+      "unit_url": "https://www.bip.krakow.pl/PK180",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=380&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK182",
+      "unit_name": "Przedszkole nr 182",
+      "unit_url": "https://www.bip.krakow.pl/PK182",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=415&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK185",
+      "unit_name": "Przedszkole nr 185",
+      "unit_url": "https://www.bip.krakow.pl/PK185",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=416&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PK187",
+      "unit_name": "Przedszkole nr 187",
+      "unit_url": "https://www.bip.krakow.pl/PK187",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=417&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP1",
+      "unit_name": "Szkoła Podstawowa nr 1",
+      "unit_url": "https://www.bip.krakow.pl/SP1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=140&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP2",
+      "unit_name": "Szkoła Podstawowa nr 2",
+      "unit_url": "https://www.bip.krakow.pl/SP2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=141&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP3",
+      "unit_name": "Szkoła Podstawowa nr 3",
+      "unit_url": "https://www.bip.krakow.pl/SP3",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=142&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP4",
+      "unit_name": "Szkoła Podstawowa nr 4",
+      "unit_url": "https://www.bip.krakow.pl/SP4",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=143&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP5",
+      "unit_name": "Szkoła Podstawowa nr 5",
+      "unit_url": "https://www.bip.krakow.pl/SP5",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=592&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP7",
+      "unit_name": "Szkoła Podstawowa nr 7",
+      "unit_url": "https://www.bip.krakow.pl/SP7",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=144&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SPD10",
+      "unit_name": "Szkoła Podstawowa nr 10",
+      "unit_url": "https://www.bip.krakow.pl/SPD10",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=598&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP12",
+      "unit_name": "Szkoła Podstawowa nr 12",
+      "unit_url": "https://www.bip.krakow.pl/SP12",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=584&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP14",
+      "unit_name": "Szkoła Podstawowa nr 14",
+      "unit_url": "https://www.bip.krakow.pl/SP14",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=634&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP15",
+      "unit_name": "Szkoła Podstawowa nr 15",
+      "unit_url": "https://www.bip.krakow.pl/SP15",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=607&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP18",
+      "unit_name": "Szkoła Podstawowa nr 18",
+      "unit_url": "https://www.bip.krakow.pl/SP18",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=148&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:645",
+      "unit_name": "Szkoła Podstawowa nr 20",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=645",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=645&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP21",
+      "unit_name": "Szkoła Podstawowa nr 21",
+      "unit_url": "https://www.bip.krakow.pl/SP21",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=149&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP22",
+      "unit_name": "Szkoła Podstawowa nr 22",
+      "unit_url": "https://www.bip.krakow.pl/SP22",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=150&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP25",
+      "unit_name": "Szkoła Podstawowa nr 25",
+      "unit_url": "https://www.bip.krakow.pl/SP25",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=47&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP26",
+      "unit_name": "Szkoła Podstawowa nr 26",
+      "unit_url": "https://www.bip.krakow.pl/SP26",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=48&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP27",
+      "unit_name": "Szkoła Podstawowa nr 27",
+      "unit_url": "https://www.bip.krakow.pl/SP27",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=49&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP29",
+      "unit_name": "Szkoła Podstawowa nr 29",
+      "unit_url": "https://www.bip.krakow.pl/SP29",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=50&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP30",
+      "unit_name": "Szkoła Podstawowa nr 30",
+      "unit_url": "https://www.bip.krakow.pl/SP30",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=51&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP31",
+      "unit_name": "Szkoła Podstawowa nr 31",
+      "unit_url": "https://www.bip.krakow.pl/SP31",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=151&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP32",
+      "unit_name": "Szkoła Podstawowa nr 32",
+      "unit_url": "https://www.bip.krakow.pl/SP32",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=152&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP33",
+      "unit_name": "Szkoła Podstawowa nr 33",
+      "unit_url": "https://www.bip.krakow.pl/SP33",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=608&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP36",
+      "unit_name": "Szkoła Podstawowa nr 36",
+      "unit_url": "https://www.bip.krakow.pl/SP36",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=154&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP37",
+      "unit_name": "Szkoła Podstawowa nr 37",
+      "unit_url": "https://www.bip.krakow.pl/SP37",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=100&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP38",
+      "unit_name": "Szkoła Podstawowa nr 38",
+      "unit_url": "https://www.bip.krakow.pl/SP38",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=155&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP39",
+      "unit_name": "Szkoła Podstawowa nr 39",
+      "unit_url": "https://www.bip.krakow.pl/SP39",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=591&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP40",
+      "unit_name": "Szkoła Podstawowa nr 40",
+      "unit_url": "https://www.bip.krakow.pl/SP40",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=52&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP41",
+      "unit_name": "Szkoła Podstawowa nr 41",
+      "unit_url": "https://www.bip.krakow.pl/SP41",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=53&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP43",
+      "unit_name": "Szkoła Podstawowa nr 43",
+      "unit_url": "https://www.bip.krakow.pl/SP43",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=56&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP48",
+      "unit_name": "Szkoła Podstawowa nr 48",
+      "unit_url": "https://www.bip.krakow.pl/SP48",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=156&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP49",
+      "unit_name": "Szkoła Podstawowa nr 49",
+      "unit_url": "https://www.bip.krakow.pl/SP49",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=587&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP50",
+      "unit_name": "Szkoła Podstawowa nr 50",
+      "unit_url": "https://www.bip.krakow.pl/SP50",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=157&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP52",
+      "unit_name": "Szkoła Podstawowa nr 52",
+      "unit_url": "https://www.bip.krakow.pl/SP52",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=101&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP53",
+      "unit_name": "Szkoła Podstawowa nr 53",
+      "unit_url": "https://www.bip.krakow.pl/SP53",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=58&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP54",
+      "unit_name": "Szkoła Podstawowa nr 54",
+      "unit_url": "https://www.bip.krakow.pl/SP54",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=74&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP55",
+      "unit_name": "Szkoła Podstawowa nr 55",
+      "unit_url": "https://www.bip.krakow.pl/SP55",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=59&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP56",
+      "unit_name": "Szkoła Podstawowa nr 56",
+      "unit_url": "https://www.bip.krakow.pl/SP56",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=595&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP58",
+      "unit_name": "Szkoła Podstawowa nr 58",
+      "unit_url": "https://www.bip.krakow.pl/SP58",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=160&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP61",
+      "unit_name": "Szkoła Podstawowa nr 61",
+      "unit_url": "https://www.bip.krakow.pl/SP61",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=60&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP62",
+      "unit_name": "Szkoła Podstawowa nr 62",
+      "unit_url": "https://www.bip.krakow.pl/SP62",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=61&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP64",
+      "unit_name": "Szkoła Podstawowa nr 64",
+      "unit_url": "https://www.bip.krakow.pl/SP64",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=161&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP67",
+      "unit_name": "Szkoła Podstawowa nr 67",
+      "unit_url": "https://www.bip.krakow.pl/SP67",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=162&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP72",
+      "unit_name": "Szkoła Podstawowa nr 72",
+      "unit_url": "https://www.bip.krakow.pl/SP72",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=164&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP74",
+      "unit_name": "Szkoła Podstawowa nr 74",
+      "unit_url": "https://www.bip.krakow.pl/SP74",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=102&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP77",
+      "unit_name": "Szkoła Podstawowa nr 77",
+      "unit_url": "https://www.bip.krakow.pl/SP77",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=604&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP78",
+      "unit_name": "Szkoła Podstawowa nr 78",
+      "unit_url": "https://www.bip.krakow.pl/SP78",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=103&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP80",
+      "unit_name": "Szkoła Podstawowa nr 80",
+      "unit_url": "https://www.bip.krakow.pl/SP80",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=104&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP82",
+      "unit_name": "Szkoła Podstawowa nr 82",
+      "unit_url": "https://www.bip.krakow.pl/SP82",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=134&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP85",
+      "unit_name": "Szkoła Podstawowa nr 85",
+      "unit_url": "https://www.bip.krakow.pl/SP85",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=106&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP86",
+      "unit_name": "Szkoła Podstawowa nr 86",
+      "unit_url": "https://www.bip.krakow.pl/SP86",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=107&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP88",
+      "unit_name": "Szkoła Podstawowa nr 88",
+      "unit_url": "https://www.bip.krakow.pl/SP88",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=108&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP89",
+      "unit_name": "Szkoła Podstawowa nr 89",
+      "unit_url": "https://www.bip.krakow.pl/SP89",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=109&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP91",
+      "unit_name": "Szkoła Podstawowa nr 91",
+      "unit_url": "https://www.bip.krakow.pl/SP91",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=603&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP92",
+      "unit_name": "Szkoła Podstawowa nr 92",
+      "unit_url": "https://www.bip.krakow.pl/SP92",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=110&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP93",
+      "unit_name": "Szkoła Podstawowa nr 93",
+      "unit_url": "https://www.bip.krakow.pl/SP93",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=165&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP95",
+      "unit_name": "Szkoła Podstawowa nr 95",
+      "unit_url": "https://www.bip.krakow.pl/SP95",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=166&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP97",
+      "unit_name": "Szkoła Podstawowa nr 97",
+      "unit_url": "https://www.bip.krakow.pl/SP97",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=64&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP98",
+      "unit_name": "Szkoła Podstawowa nr 98",
+      "unit_url": "https://www.bip.krakow.pl/SP98",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=585&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP100",
+      "unit_name": "Szkoła Podstawowa nr 100",
+      "unit_url": "https://www.bip.krakow.pl/SP100",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=111&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP101",
+      "unit_name": "Szkoła Podstawowa nr 101",
+      "unit_url": "https://www.bip.krakow.pl/SP101",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=112&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP103",
+      "unit_name": "Szkoła Podstawowa nr 103",
+      "unit_url": "https://www.bip.krakow.pl/SP103",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=596&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP105",
+      "unit_name": "Szkoła Podstawowa nr 105",
+      "unit_url": "https://www.bip.krakow.pl/SP105",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=610&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP107",
+      "unit_name": "Szkoła Podstawowa nr 107",
+      "unit_url": "https://www.bip.krakow.pl/SP107",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=167&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP110",
+      "unit_name": "Szkoła Podstawowa nr 110",
+      "unit_url": "https://www.bip.krakow.pl/SP110",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=597&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP111",
+      "unit_name": "Szkoła Podstawowa nr 111",
+      "unit_url": "https://www.bip.krakow.pl/SP111",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=55&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP113",
+      "unit_name": "Szkoła Podstawowa nr 113",
+      "unit_url": "https://www.bip.krakow.pl/SP113",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=169&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP114",
+      "unit_name": "Szkoła Podstawowa nr 114",
+      "unit_url": "https://www.bip.krakow.pl/SP114",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=170&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP119",
+      "unit_name": "Szkoła Podstawowa nr 119",
+      "unit_url": "https://www.bip.krakow.pl/SP119",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=171&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP123",
+      "unit_name": "Szkoła Podstawowa nr 123",
+      "unit_url": "https://www.bip.krakow.pl/SP123",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=66&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP124",
+      "unit_name": "Szkoła Podstawowa nr 124",
+      "unit_url": "https://www.bip.krakow.pl/SP124",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=69&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP126",
+      "unit_name": "Szkoła Podstawowa nr 126",
+      "unit_url": "https://www.bip.krakow.pl/SP126",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=114&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP129",
+      "unit_name": "Szkoła Podstawowa nr 129",
+      "unit_url": "https://www.bip.krakow.pl/SP129",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=115&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP134",
+      "unit_name": "Szkoła Podstawowa nr 134",
+      "unit_url": "https://www.bip.krakow.pl/SP134",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=71&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP137",
+      "unit_name": "Szkoła Podstawowa nr 137",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=54",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=54&dok_id=104362",
+      "url_from_archive": true
+    },
+    {
+      "unit_key": "slug:SP138",
+      "unit_name": "Szkoła Podstawowa nr 138",
+      "unit_url": "https://www.bip.krakow.pl/SP138",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=172&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP141",
+      "unit_name": "Szkoła Podstawowa nr 141",
+      "unit_url": "https://www.bip.krakow.pl/SP141",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=605&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP142",
+      "unit_name": "Szkoła Podstawowa nr 142",
+      "unit_url": "https://www.bip.krakow.pl/SP142",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=119&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP144",
+      "unit_name": "Szkoła Podstawowa nr 144",
+      "unit_url": "https://www.bip.krakow.pl/SP144",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=120&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP148",
+      "unit_name": "Szkoła Podstawowa nr 148",
+      "unit_url": "https://www.bip.krakow.pl/SP148",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=600&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP149",
+      "unit_name": "Szkoła Podstawowa nr 149",
+      "unit_url": "https://www.bip.krakow.pl/SP149",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=599&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP151",
+      "unit_name": "Szkoła Podstawowa nr 151",
+      "unit_url": "https://www.bip.krakow.pl/SP151",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=602&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP155",
+      "unit_name": "Szkoła Podstawowa nr 155",
+      "unit_url": "https://www.bip.krakow.pl/SP155",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=121&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP156",
+      "unit_name": "Szkoła Podstawowa nr 156",
+      "unit_url": "https://www.bip.krakow.pl/SP156",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=122&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP158",
+      "unit_name": "Szkoła podstawowa nr 158",
+      "unit_url": "https://www.bip.krakow.pl/SP158",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=593&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SP162",
+      "unit_name": "Szkoła Podstawowa nr 162",
+      "unit_url": "https://www.bip.krakow.pl/SP162",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=75&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:539",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=539",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=539&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:543",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=543",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=543&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:545",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 3",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=545",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=545&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:544",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 4",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=544",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=544&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:551",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 5",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=551",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=551&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:550",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 7",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=550",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=550&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:547",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 8",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=547",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=547&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:549",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 9",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=549",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=549&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:615",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 10",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=615",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=615&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:572",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 11",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=572",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=572&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:631",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 12",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=631",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:81",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 13",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=81",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=81&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:532",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 14",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=532",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=532&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:287",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 15",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=287",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=287&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:569",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 16",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=569",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=569&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:79",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 17",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=79",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=79&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:632",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 18",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=632",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=632&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:633",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 19",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=633",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=633&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:649",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 20",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=649",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=649&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:636",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 21",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=636",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=636&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:646",
+      "unit_name": "Zespół Szkolno-Przedszkolny nr 22",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=646",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=646&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:642",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=642",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=642&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:548",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=548",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=548&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:216",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 7",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=216",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=216&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:188",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 8",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=188",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=188&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSO9",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 9",
+      "unit_url": "https://www.bip.krakow.pl/ZSO9",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=217&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSO13",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 13",
+      "unit_url": "https://www.bip.krakow.pl/ZSO13",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=559&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSO18",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 18",
+      "unit_url": "https://www.bip.krakow.pl/ZSO18",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=552&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSOS2",
+      "unit_name": "Zespół Szkół Ogólnokształcących Sportowych nr 2",
+      "unit_url": "https://www.bip.krakow.pl/ZSOS2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=129&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSOMS",
+      "unit_name": "Zespół Szkół Ogólnokształcących Mistrzostwa Sportowego",
+      "unit_url": "https://www.bip.krakow.pl/ZSOMS",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=288&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO1",
+      "unit_name": "Liceum Ogólnokształcące nr 1",
+      "unit_url": "https://www.bip.krakow.pl/LO1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=197&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO2",
+      "unit_name": "Liceum Ogólnokształcące nr 2",
+      "unit_url": "https://www.bip.krakow.pl/LO2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=198&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO3",
+      "unit_name": "Liceum Ogólnokształcące nr 3",
+      "unit_url": "https://www.bip.krakow.pl/LO3",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=568&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO4",
+      "unit_name": "Liceum Ogólnokształcące nr 4",
+      "unit_url": "https://www.bip.krakow.pl/LO4",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=574&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO5",
+      "unit_name": "Liceum Ogólnokształcące nr 5",
+      "unit_url": "https://www.bip.krakow.pl/LO5",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=199&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO6",
+      "unit_name": "Liceum Ogólnokształcące nr 6",
+      "unit_url": "https://www.bip.krakow.pl/LO6",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=200&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO7",
+      "unit_name": "Liceum Ogólnokształcące nr 7",
+      "unit_url": "https://www.bip.krakow.pl/LO7",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=201&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO8",
+      "unit_name": "Liceum Ogólnokształcące nr 8",
+      "unit_url": "https://www.bip.krakow.pl/LO8",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=202&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO9",
+      "unit_name": "Liceum Ogólnokształcące nr 9",
+      "unit_url": "https://www.bip.krakow.pl/LO9",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=203&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO10",
+      "unit_name": "Liceum Ogólnokształcące nr 10",
+      "unit_url": "https://www.bip.krakow.pl/LO10",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=204&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO11",
+      "unit_name": "Liceum Ogólnokształcące nr 11",
+      "unit_url": "https://www.bip.krakow.pl/LO11",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=601&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO12",
+      "unit_name": "Liceum Ogólnokształcące nr 12",
+      "unit_url": "https://www.bip.krakow.pl/LO12",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=583&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO13",
+      "unit_name": "Liceum Ogólnokształcące nr 13",
+      "unit_url": "https://www.bip.krakow.pl/LO13",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=205&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:623",
+      "unit_name": "Liceum Ogólnokształcące nr 14",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=623",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=623",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:570",
+      "unit_name": "Liceum Ogólnokształcące nr 15",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=570",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=570&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:622",
+      "unit_name": "Liceum Ogólnokształcące nr 16",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=622",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=622",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO20",
+      "unit_name": "Liceum Ogólnokształcące nr 20",
+      "unit_url": "https://www.bip.krakow.pl/LO20",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=208&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:621",
+      "unit_name": "Liceum Ogólnokształcące nr 24",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=621",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=621",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:626",
+      "unit_name": "Liceum Ogólnokształcące nr 25",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=626",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=626",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO28",
+      "unit_name": "Liceum Ogólnokształcące nr 28",
+      "unit_url": "https://www.bip.krakow.pl/LO28",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=210&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:628",
+      "unit_name": "Liceum Ogólnokształcące nr 30",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=628",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=628",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO41",
+      "unit_name": "Liceum Ogólnokształcące nr 41",
+      "unit_url": "https://www.bip.krakow.pl/LO41",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=606&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO42",
+      "unit_name": "Liceum Ogólnokształcące nr 42",
+      "unit_url": "https://www.bip.krakow.pl/LO42",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=590&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO43",
+      "unit_name": "Liceum Ogólnokształcące nr 43",
+      "unit_url": "https://www.bip.krakow.pl/LO43",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=609&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LO44",
+      "unit_name": "Liceum Ogólnokształcące nr 44",
+      "unit_url": "https://www.bip.krakow.pl/LO44",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=588&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSAB",
+      "unit_name": "Zespół Szkół Architektoniczno-Budowlanych",
+      "unit_url": "https://www.bip.krakow.pl/ZSAB",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=273&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSC",
+      "unit_name": "Zespół Szkół Chemicznych",
+      "unit_url": "https://www.bip.krakow.pl/ZSC",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=271&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSE1",
+      "unit_name": "Zespół Szkół Ekonomicznych nr 1",
+      "unit_url": "https://www.bip.krakow.pl/ZSE1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=261&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSE2",
+      "unit_name": "Zespół Szkół Ekonomicznych nr 2",
+      "unit_url": "https://www.bip.krakow.pl/ZSE2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=262&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSET1",
+      "unit_name": "Zespół Szkół Elektrycznych nr 1",
+      "unit_url": "https://www.bip.krakow.pl/ZSET1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=265&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSET2",
+      "unit_name": "Zespół Szkół Elektrycznych nr 2",
+      "unit_url": "https://www.bip.krakow.pl/ZSET2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=266&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSEN",
+      "unit_name": "Zespół Szkół Energetycznych",
+      "unit_url": "https://www.bip.krakow.pl/ZSEN",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=264&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSG1",
+      "unit_name": "Zespół Szkół Gastronomicznych nr 1",
+      "unit_url": "https://www.bip.krakow.pl/ZSG1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=277&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSG2",
+      "unit_name": "Zespół Szkół Gastronomicznych nr 2",
+      "unit_url": "https://www.bip.krakow.pl/ZSG2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=278&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSGD",
+      "unit_name": "Zespół Szkół Geodezyjno-Drogowych i Gospodarki Wodnej",
+      "unit_url": "https://www.bip.krakow.pl/ZSGD",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=282&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSTK",
+      "unit_name": "Zespół Szkół Techniczno-Kreatywnych",
+      "unit_url": "https://www.bip.krakow.pl/ZSTK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=322&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSL",
+      "unit_name": "Zespół Szkół Łączności",
+      "unit_url": "https://www.bip.krakow.pl/ZSL",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=279&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSM1",
+      "unit_name": "Zespół Szkół Mechanicznych nr 1",
+      "unit_url": "https://www.bip.krakow.pl/ZSM1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=267&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSM2",
+      "unit_name": "Zespół Szkół Mechanicznych nr 2",
+      "unit_url": "https://www.bip.krakow.pl/ZSM2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=268&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSM3",
+      "unit_name": "Zespół Szkół Mechanicznych nr 3",
+      "unit_url": "https://www.bip.krakow.pl/ZSM3",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=269&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSM4",
+      "unit_name": "Zespół Szkół Mechanicznych nr 4",
+      "unit_url": "https://www.bip.krakow.pl/ZSM4",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=270&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZS1",
+      "unit_name": "Zespół Szkół nr 1",
+      "unit_url": "https://www.bip.krakow.pl/ZS1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=285&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSO1",
+      "unit_name": "Zespół Szkół Odzieżowych nr 1",
+      "unit_url": "https://www.bip.krakow.pl/ZSO1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=275&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSPM",
+      "unit_name": "Zespół Szkół Poligraficzno-Medialnych",
+      "unit_url": "https://www.bip.krakow.pl/ZSPM",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=280&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSPS",
+      "unit_name": "Zespół Szkół Przemysłu Spożywczego",
+      "unit_url": "https://www.bip.krakow.pl/ZSPS",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=281&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSZ2",
+      "unit_name": "Zespół Szkół Zawodowych nr 2",
+      "unit_url": "https://www.bip.krakow.pl/ZSZ2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=274&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSNT",
+      "unit_name": "Zespół Szkół Nowoczesnych Technologii im. Profesora Walerego Goetla",
+      "unit_url": "https://www.bip.krakow.pl/ZSNT",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=283&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:293",
+      "unit_name": "Centrum Kształcenia Zawodowego nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=293",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=293&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:625",
+      "unit_name": "Centrum Kształcenia Zawodowego i Ustawicznego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=625",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=625",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:OSM",
+      "unit_name": "Ogólnokształcąca Szkoła Muzyczna I stopnia ul. Basztowa 8",
+      "unit_url": "https://www.bip.krakow.pl/OSM",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=296&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SMJ",
+      "unit_name": "Szkoła Muzyczna I i II stopnia ul. Józefińska 10",
+      "unit_url": "https://www.bip.krakow.pl/SMJ",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=297&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SMP",
+      "unit_name": "Szkoła Muzyczna I st. Nr 1 ul. Pilotów 51",
+      "unit_url": "https://www.bip.krakow.pl/SMP",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=298&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:KSOS",
+      "unit_name": "Krakowski Szkolny Ośrodek Sportowy",
+      "unit_url": "https://www.bip.krakow.pl/KSOS",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=289&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MOSKW",
+      "unit_name": "Międzyszkolny Ośrodek Sportowy Kraków „Wschód”",
+      "unit_url": "https://www.bip.krakow.pl/MOSKW",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=479&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MOSKZ",
+      "unit_name": "Międzyszkolny Ośrodek Sportowy Kraków „Zachód”",
+      "unit_url": "https://www.bip.krakow.pl/MOSKZ",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=481&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:BSP1",
+      "unit_name": "Bursa Szkolnictwa Ponadpodstawowego nr 1",
+      "unit_url": "https://www.bip.krakow.pl/BSP1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=258&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:BSP2",
+      "unit_name": "Bursa Szkolnictwa Ponadpodstawowego nr 2",
+      "unit_url": "https://www.bip.krakow.pl/BSP2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=259&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:BSP3",
+      "unit_name": "Bursa Szkolnictwa Ponadpodstawowego nr 3",
+      "unit_url": "https://www.bip.krakow.pl/BSP3",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=260&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SSM",
+      "unit_name": "Szkolne Schronisko Młodzieżowe",
+      "unit_url": "https://www.bip.krakow.pl/SSM",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=292&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:624",
+      "unit_name": "Zespół Szkół i Placówek pn. „Centrum dla Niewidomych i Słabowidzących” w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=624",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?dok_id=104362&bip_id=624",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:241",
+      "unit_name": "Zespół Szkół i Placówek Specjalnych",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=241",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=241&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:191",
+      "unit_name": "Zespół Szkół Specjalnych nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=191",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=191&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSS3",
+      "unit_name": "Zespół Szkół Specjalnych nr 3",
+      "unit_url": "https://www.bip.krakow.pl/ZSS3",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=82&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSS4",
+      "unit_name": "Zespół Szkół Specjalnych nr 4",
+      "unit_url": "https://www.bip.krakow.pl/ZSS4",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=192&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSS6",
+      "unit_name": "Zespół Szkół Specjalnych nr 6",
+      "unit_url": "https://www.bip.krakow.pl/ZSS6",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=137&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSS11",
+      "unit_name": "Zespół Szkół Specjalnych nr 11",
+      "unit_url": "https://www.bip.krakow.pl/ZSS11",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=84&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZSS14",
+      "unit_name": "Zespół Szkół Specjalnych nr 14",
+      "unit_url": "https://www.bip.krakow.pl/ZSS14",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=242&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SOSW1",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 1",
+      "unit_url": "https://www.bip.krakow.pl/SOSW1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=243&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SOSW2",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 2",
+      "unit_url": "https://www.bip.krakow.pl/SOSW2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=244&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SOSW3",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 3",
+      "unit_url": "https://www.bip.krakow.pl/SOSW3",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=245&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SOSW4",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 4",
+      "unit_url": "https://www.bip.krakow.pl/SOSW4",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=246&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SOSW6",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 6",
+      "unit_url": "https://www.bip.krakow.pl/SOSW6",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=510&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:249",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy dla Niesłyszących im. Janusza Korczaka",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=249",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=249&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:553",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy „Centrum Autyzmu i Całościowych Zaburzeń Rozwojowych”",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=553",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=553&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:323",
+      "unit_name": "Zespół Placówek Resocjalizacyjno-Socjoterapeutycznych",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=323",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=323&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PPP1",
+      "unit_name": "Poradnia Psychologiczno-Pedagogiczna nr 1",
+      "unit_url": "https://www.bip.krakow.pl/PPP1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=252&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PPP2",
+      "unit_name": "Poradnia Psychologiczno-Pedagogiczna nr 2",
+      "unit_url": "https://www.bip.krakow.pl/PPP2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=253&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:PPP3",
+      "unit_name": "Poradnia Psychologiczno-Pedagogiczna nr 3",
+      "unit_url": "https://www.bip.krakow.pl/PPP3",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=254&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:255",
+      "unit_name": "Poradnia Psychologiczno-Pedagogiczna nr 4",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=255",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=255&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:251",
+      "unit_name": "Specjalistyczna Poradnia Psychologiczno-Pedagogiczna dla Dzieci z Niepowodzeniami Edukacyjnymi",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=251",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=251&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SPPP",
+      "unit_name": "Specjalistyczna Poradnia Psychologiczno-Pedagogiczna pn. „Krakowski Ośrodek Kariery”",
+      "unit_url": "https://www.bip.krakow.pl/SPPP",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=98&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:257",
+      "unit_name": "Specjalistyczna Poradnia Psychologiczno-Pedagogiczna „Krakowski Ośrodek Terapii”",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=257",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=257&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SPWPPP",
+      "unit_name": "Specjalistyczna Poradnia Wczesnej Pomocy Psychologiczno-Pedagogicznej",
+      "unit_url": "https://www.bip.krakow.pl/SPWPPP",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=256&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:540",
+      "unit_name": "Centrum Młodzieży",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=540",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=540&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:221",
+      "unit_name": "Staromiejskie Centrum Kultury Młodzieży",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=221",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=221&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:LZP",
+      "unit_name": "Międzyszkolny Ludowy Zespół Pieśni i Tańca „Krakowiak”",
+      "unit_url": "https://www.bip.krakow.pl/LZP",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=220&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MDKI",
+      "unit_name": "Młodzieżowy Dom Kultury al. 29 Listopada 102",
+      "unit_url": "https://www.bip.krakow.pl/MDKI",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=222&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MDKG",
+      "unit_name": "Młodzieżowy Dom Kultury ul. Grunwaldzka 5",
+      "unit_url": "https://www.bip.krakow.pl/MDKG",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=227&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MDKB",
+      "unit_name": "Młodzieżowy Dom Kultury im. K.I.Gałczyńskiego",
+      "unit_url": "https://www.bip.krakow.pl/MDKB",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=228&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MDKK",
+      "unit_name": "Młodzieżowy Dom Kultury im. J.Korczaka",
+      "unit_url": "https://www.bip.krakow.pl/MDKK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=223&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MDKT",
+      "unit_name": "Młodzieżowy Dom Kultury im. A.Bursy",
+      "unit_url": "https://www.bip.krakow.pl/MDKT",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=224&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MDKN",
+      "unit_name": "Młodzieżowy Dom Kultury Fort 49 „Krzesławice”",
+      "unit_url": "https://www.bip.krakow.pl/MDKN",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=225&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MDKO",
+      "unit_name": "Młodzieżowy Dom Kultury „Dom Harcerza” im. A.Kamińskiego",
+      "unit_url": "https://www.bip.krakow.pl/MDKO",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=226&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MDKR",
+      "unit_name": "Młodzieżowy Dom Kultury Dom Harcerza ul. Reymonta",
+      "unit_url": "https://www.bip.krakow.pl/MDKR",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=299&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:139",
+      "unit_name": "Miejskie Centrum Obsługi Oświaty w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=139",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=139&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:BKR",
+      "unit_name": "Biblioteka Kraków",
+      "unit_url": "https://www.bip.krakow.pl/BKR",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=579&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:468",
+      "unit_name": "Nowohuckie Centrum Kultury",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=468",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=468&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:KFK",
+      "unit_name": "Krakowskie Forum Kultury",
+      "unit_url": "https://www.bip.krakow.pl/KFK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=652&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:CKDB",
+      "unit_name": "Centrum Kultury „Dworek Białoprądnicki”",
+      "unit_url": "https://www.bip.krakow.pl/CKDB",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=469&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:CKPD",
+      "unit_name": "Centrum Kultury Podgórza",
+      "unit_url": "https://www.bip.krakow.pl/CKPD",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=655&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:OKN",
+      "unit_name": "Ośrodek Kultury im. Cypriana Kamila Norwida",
+      "unit_url": "https://www.bip.krakow.pl/OKN",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=464&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:OKNH",
+      "unit_name": "Ośrodek Kultury Kraków - Nowa Huta",
+      "unit_url": "https://www.bip.krakow.pl/OKNH",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=466&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:GSWBS",
+      "unit_name": "Galeria Sztuki Współczesnej „Bunkier Sztuki”",
+      "unit_url": "https://www.bip.krakow.pl/GSWBS",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=318&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:317",
+      "unit_name": "Muzeum Historii Fotografii im. Walerego Rzewuskiego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=317",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=317&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MHK",
+      "unit_name": "Muzeum Historyczne Miasta Krakowa",
+      "unit_url": "https://www.bip.krakow.pl/MHK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=27&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:MIT",
+      "unit_name": "Muzeum Inżynierii i Techniki",
+      "unit_url": "https://www.bip.krakow.pl/MIT",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=316&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:530",
+      "unit_name": "Muzeum Sztuki Współczesnej",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=530",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=530&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:TG",
+      "unit_name": "Teatr „Groteska”",
+      "unit_url": "https://www.bip.krakow.pl/TG",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=483&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:TN",
+      "unit_name": "Teatr Łaźnia Nowa",
+      "unit_url": "https://www.bip.krakow.pl/TN",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=485&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:KTO",
+      "unit_name": "Teatr KTO",
+      "unit_url": "https://www.bip.krakow.pl/KTO",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=486&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:TB",
+      "unit_name": "Teatr „Bagatela” im. Tadeusza Boya-Żeleńskiego",
+      "unit_url": "https://www.bip.krakow.pl/TB",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=484&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:TL",
+      "unit_name": "Teatr Ludowy",
+      "unit_url": "https://www.bip.krakow.pl/TL",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=463&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:STU",
+      "unit_name": "Krakowski Teatr Scena STU",
+      "unit_url": "https://www.bip.krakow.pl/STU",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=618&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:VARIETE",
+      "unit_name": "Krakowski Teatr VARIETE",
+      "unit_url": "https://www.bip.krakow.pl/VARIETE",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=566&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SCVIA",
+      "unit_name": "Orkiestra Sinfonietta Cracovia",
+      "unit_url": "https://www.bip.krakow.pl/SCVIA",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=488&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:CC",
+      "unit_name": "Capella Cracoviensis",
+      "unit_url": "https://www.bip.krakow.pl/CC",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=462&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:492",
+      "unit_name": "Balet Dworski „Cracovia Danza”",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=492",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=492&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:617",
+      "unit_name": "Instytut Kultury Willa Decjusza",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=617",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=617&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:KBF",
+      "unit_name": "Krakowskie Biuro Festiwalowe",
+      "unit_url": "https://www.bip.krakow.pl/KBF",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=475&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:32",
+      "unit_name": "ZBK - Zarząd Budynków Komunalnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=32",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=32&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:489",
+      "unit_name": "ZCK - Zarząd Cmentarzy Komunalnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=489",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=489&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:511",
+      "unit_name": "ZDMK - Zarząd Dróg Miasta Krakowa",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=511",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=511&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:307",
+      "unit_name": "Centrum Administracyjne nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=307",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=307&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:310",
+      "unit_name": "Centrum Administracyjne nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=310",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=310&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:312",
+      "unit_name": "Centrum Placówek Opiekuńczo-Wychowawczych „Parkowa”",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=312",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=312&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPSB",
+      "unit_name": "Dom Pomocy Społecznej ul.Babińskiego 25",
+      "unit_url": "https://www.bip.krakow.pl/DPSB",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=303&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPSH",
+      "unit_name": "Dom Pomocy Społecznej ul.Helclów 2",
+      "unit_url": "https://www.bip.krakow.pl/DPSH",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=232&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPSK",
+      "unit_name": "Dom Pomocy Społecznej ul.Kluzeka 6",
+      "unit_url": "https://www.bip.krakow.pl/DPSK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=229&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPSKR",
+      "unit_name": "Dom Pomocy Społecznej ul.Krakowska 55",
+      "unit_url": "https://www.bip.krakow.pl/DPSKR",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=300&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPS39",
+      "unit_name": "Dom Pomocy Społecznej ul.Łanowa 39",
+      "unit_url": "https://www.bip.krakow.pl/DPS39",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=234&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPS1",
+      "unit_name": "Dom Pomocy Społecznej ul.Łanowa 41",
+      "unit_url": "https://www.bip.krakow.pl/DPS1",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=324&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPS2",
+      "unit_name": "Dom Pomocy Społecznej ul.Łanowa 43",
+      "unit_url": "https://www.bip.krakow.pl/DPS2",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=325&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPSN",
+      "unit_name": "Dom Pomocy Społecznej ul.A.Nowaczyńskiego 1",
+      "unit_url": "https://www.bip.krakow.pl/DPSN",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=233&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPSP",
+      "unit_name": "Dom Pomocy Społecznej ul.Praska 25",
+      "unit_url": "https://www.bip.krakow.pl/DPSP",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=239&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:DPSR",
+      "unit_name": "Dom Pomocy Społecznej ul. Praska 27",
+      "unit_url": "https://www.bip.krakow.pl/DPSR",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=231&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:301",
+      "unit_name": "Dom Pomocy Społecznej Nowa Huta os. Hutnicze 5",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=301",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=301&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:557",
+      "unit_name": "Dom Pomocy Społecznej ul. Rozrywka 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=557",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=557&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:304",
+      "unit_name": "Krakowskie Centrum Seniora",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=304",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=304&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:306",
+      "unit_name": "Ośrodek Interwencji Kryzysowej",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=306",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=306&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SDS",
+      "unit_name": "Środowiskowy Dom Samopomocy „Vita”",
+      "unit_url": "https://www.bip.krakow.pl/SDS",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=305&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:664",
+      "unit_name": "Zespół Żłobków Miasta Krakowa",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=664",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=664&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:497",
+      "unit_name": "Żłobek Samorządowy nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=497",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=497&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:498",
+      "unit_name": "Żłobek Samorządowy nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=498",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=498&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK5",
+      "unit_name": "Żłobek Samorządowy nr 5",
+      "unit_url": "https://www.bip.krakow.pl/ZK5",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=333&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK6",
+      "unit_name": "Żłobek Samorządowy nr 6",
+      "unit_url": "https://www.bip.krakow.pl/ZK6",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=334&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK7",
+      "unit_name": "Żłobek Samorządowy nr 7",
+      "unit_url": "https://www.bip.krakow.pl/ZK7",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=335&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK12",
+      "unit_name": "Żłobek Samorządowy nr 12",
+      "unit_url": "https://www.bip.krakow.pl/ZK12",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=336&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK13",
+      "unit_name": "Żłobek Samorządowy nr 13",
+      "unit_url": "https://www.bip.krakow.pl/ZK13",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=337&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK14",
+      "unit_name": "Żłobek Samorządowy nr 14",
+      "unit_url": "https://www.bip.krakow.pl/ZK14",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=342&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK18",
+      "unit_name": "Żłobek Samorządowy nr 18",
+      "unit_url": "https://www.bip.krakow.pl/ZK18",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=459&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK19",
+      "unit_name": "Żłobek Samorządowy nr 19",
+      "unit_url": "https://www.bip.krakow.pl/ZK19",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=343&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK20",
+      "unit_name": "Integracyjny Żłobek Samorządowy nr 20",
+      "unit_url": "https://www.bip.krakow.pl/ZK20",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=328&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK22",
+      "unit_name": "Żłobek Samorządowy nr 22",
+      "unit_url": "https://www.bip.krakow.pl/ZK22",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=338&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK23",
+      "unit_name": "Żłobek Samorządowy nr 23",
+      "unit_url": "https://www.bip.krakow.pl/ZK23",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=329&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK24",
+      "unit_name": "Żłobek Samorządowy nr 24",
+      "unit_url": "https://www.bip.krakow.pl/ZK24",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=460&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK25",
+      "unit_name": "Żłobek Samorządowy nr 25",
+      "unit_url": "https://www.bip.krakow.pl/ZK25",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=345&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK27",
+      "unit_name": "Żłobek Samorządowy nr 27",
+      "unit_url": "https://www.bip.krakow.pl/ZK27",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=339&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK28",
+      "unit_name": "Żłobek Samorządowy nr 28",
+      "unit_url": "https://www.bip.krakow.pl/ZK28",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=330&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK30",
+      "unit_name": "Żłobek Samorządowy nr 30",
+      "unit_url": "https://www.bip.krakow.pl/ZK30",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=346&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK31",
+      "unit_name": "Żłobek Samorządowy nr 31",
+      "unit_url": "https://www.bip.krakow.pl/ZK31",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=331&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZK33",
+      "unit_name": "Żłobek Samorządowy nr 33",
+      "unit_url": "https://www.bip.krakow.pl/ZK33",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=461&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:315",
+      "unit_name": "Muzeum Armii Krajowej im. gen. Emila Fieldorfa „Nila”",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=315",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=315&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:630",
+      "unit_name": "Muzeum – Miejsce Pamięci KL Plaszow w Krakowie. Niemiecki nazistowski obóz pracy i obóz koncentracyjny (1942 – 1945) (w organizacji)",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=630",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=630&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SSSZ",
+      "unit_name": "Szpital Specjalistyczny im. S. Żeromskiego w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/SSSZ",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=40&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:SMSGN",
+      "unit_name": "Szpital Miejski Specjalistyczny im. G.Narutowicza w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/SMSGN",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=41&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:39",
+      "unit_name": "Miejskie Centrum Opieki dla Osób Starszych, Przewlekle Niepełnosprawnych oraz Niesamodzielnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=39",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=39&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:GUP",
+      "unit_name": "Grodzki Urząd Pracy w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/GUP",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=28&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:44",
+      "unit_name": "Powiatowy Inspektorat Nadzoru Budowlanego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=44",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=44&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:613",
+      "unit_name": "Arena Kraków S.A.",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=613",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=613&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:614",
+      "unit_name": "Trasa Łagiewnicka S.A.",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=614",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=614&dok_id=104362&mmi=16166",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:620",
+      "unit_name": "Agencja Rozwoju Miasta Krakowa Sp. z o.o.",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=620",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=620&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:635",
+      "unit_name": "KRAKÓW5020 Sp. z o.o. w likwidacji",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=635",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=635&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:deklaracja_dostepnosci",
+      "unit_name": "Deklaracja dostępności",
+      "unit_url": "https://www.bip.krakow.pl/deklaracja_dostepnosci",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:bip",
+      "unit_name": "Biuletyn Informacji Publicznej",
+      "unit_url": "https://www.gov.pl/bip",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:uslugi",
+      "unit_name": "Usługi - Załatw sprawę",
+      "unit_url": "https://www.bip.krakow.pl/uslugi",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:295",
+      "unit_name": "Centrum Edukacyjne",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=295",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:294",
+      "unit_name": "Centrum Kształcenia Ustawicznego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=294",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=294&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:470",
+      "unit_name": "Centrum Kultury Podgórza",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=470",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=470&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:308",
+      "unit_name": "Dom Dziecka Nr 7",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=308",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:327",
+      "unit_name": "Dom Pomocy Społecznej    ul. Łanowa 43 b",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=327",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:326",
+      "unit_name": "Dom Pomocy Społecznej im. Antoniego Żychowskiego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=326",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:302",
+      "unit_name": "Dom Pomocy Społecznej os. Hutnicze 5",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=302",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:230",
+      "unit_name": "Dom Pomocy Społecznej os. Sportowe 9",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=230",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:174",
+      "unit_name": "Gimnazjum Nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=174",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:181",
+      "unit_name": "Gimnazjum Nr 10",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=181",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:182",
+      "unit_name": "Gimnazjum nr 12 z Oddziałami Integracyjnymi  im. Księdza Kardynała Karola Wojtyły",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=182",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:183",
+      "unit_name": "Gimnazjum Nr 13",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=183",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:184",
+      "unit_name": "Gimnazjum Nr 14",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=184",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:185",
+      "unit_name": "Gimnazjum Nr 16",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=185",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:186",
+      "unit_name": "Gimnazjum Nr 17",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=186",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:175",
+      "unit_name": "Gimnazjum nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=175",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:187",
+      "unit_name": "Gimnazjum Nr 20",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=187",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:85",
+      "unit_name": "Gimnazjum Nr 21 im. Tadeusza Boya-Żeleńskiego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=85",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:86",
+      "unit_name": "Gimnazjum Nr 22",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=86",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:88",
+      "unit_name": "Gimnazjum Nr 24",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=88",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:89",
+      "unit_name": "Gimnazjum Nr 27 im. płka H. Dobrzańskiego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=89",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:90",
+      "unit_name": "Gimnazjum Nr 28 im. Marszałka Józefa Piłsudskiego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=90",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:91",
+      "unit_name": "Gimnazjum Nr 29",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=91",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:176",
+      "unit_name": "Gimnazjum Nr 3",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=176",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:92",
+      "unit_name": "Gimnazjum Nr 31",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=92",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:93",
+      "unit_name": "Gimnazjum Nr 34",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=93",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:94",
+      "unit_name": "Gimnazjum Nr 35",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=94",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:130",
+      "unit_name": "Gimnazjum Nr 37 z Oddziałami Integracyjnymi im. św.M.M.Kolbe",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=130",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:131",
+      "unit_name": "Gimnazjum Nr 39",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=131",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:177",
+      "unit_name": "Gimnazjum Nr 4",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=177",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:132",
+      "unit_name": "Gimnazjum Nr 41",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=132",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:133",
+      "unit_name": "Gimnazjum nr 42",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=133",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:105",
+      "unit_name": "Gimnazjum Nr 43 im. Batalionów Chłopskich",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=105",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:138",
+      "unit_name": "Gimnazjum Nr 44",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=138",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:135",
+      "unit_name": "Gimnazjum Nr 45",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=135",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:136",
+      "unit_name": "Gimnazjum Nr 48",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=136",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:482",
+      "unit_name": "Gimnazjum Nr 50",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=482",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:178",
+      "unit_name": "Gimnazjum Nr 6",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=178",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:179",
+      "unit_name": "Gimnazjum Nr 7",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=179",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:180",
+      "unit_name": "Gimnazjum nr 9",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=180",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:314",
+      "unit_name": "Interwencyjna Placówka Opiekuńczo-Wychowawcza dla Chłopców w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=314",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=314&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:43",
+      "unit_name": "Komenda Miejska Państwowej Straży Pożarnej",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=43",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=43&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:29",
+      "unit_name": "Krakowski Zarząd Dróg",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=29",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:36",
+      "unit_name": "Krakowski Zarząd Komunalny",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=36",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:465",
+      "unit_name": "Krakowskie Forum Kultury",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=465",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=465&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:474",
+      "unit_name": "Krowoderska Biblioteka Publiczna",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=474",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:38",
+      "unit_name": "Miejski Zarząd Baz Danych",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=38",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:291",
+      "unit_name": "Międzyszkolny Basen Pływacki os. Kolorowe",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=291",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:290",
+      "unit_name": "Międzyszkolny Basen Pływacki ul. F.Nullo",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=290",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:478",
+      "unit_name": "Międzyszkolny Ośrodek Sportowy Krowodrza",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=478",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:480",
+      "unit_name": "Międzyszkolny Ośrodek Sportowy Podgórze",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=480",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:558",
+      "unit_name": "Muzeum PRL-u (w organizacji)",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=558",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:473",
+      "unit_name": "Nowohucka Biblioteka Publiczna",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=473",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:509",
+      "unit_name": "Ośrodek Kultury 'Biblioteka Polskiej Piosenki'",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=509",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=509&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:42",
+      "unit_name": "Ośrodek Sportu i Rekreacji - Krakowianka",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=42",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:319",
+      "unit_name": "Placówka Opiekuńczo-Wychowawcza Przyjazny Dom",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=319",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:472",
+      "unit_name": "Podgórska Biblioteka Publiczna",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=472",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:444",
+      "unit_name": "Przedszkole Nr 114",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=444",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:371",
+      "unit_name": "Przedszkole Nr 133",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=371",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=371&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:354",
+      "unit_name": "Przedszkole Nr 32",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=354",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:430",
+      "unit_name": "Przedszkole Nr 55",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=430",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:383",
+      "unit_name": "Przedszkole Nr 64",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=383",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:313",
+      "unit_name": "Publiczny Ośrodek Adopcyjno-Opiekuńczy CZOR",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=313",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:376",
+      "unit_name": "Samorządowe Przedszkole Nr 154",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=376",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=376&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:352",
+      "unit_name": "Samorządowe Przedszkole nr 23",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=352",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:309",
+      "unit_name": "Specjalistyczna Placówka Opiekuńczo-Wychowawcza im. Jana Brzechwy",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=309",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:320",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy dla Dzieci Niesłyszących",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=320",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:250",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy dla Dzieci Niewidomych i Słabowidzących",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=250",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=250&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:247",
+      "unit_name": "Specjalny Ośrodek Szkolno-Wychowawczy Nr 5",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=247",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:594",
+      "unit_name": "Szkoła Podstawowa 157",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=594",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:145",
+      "unit_name": "Szkoła Podstawowa nr 10",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=145",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:598",
+      "unit_name": "Szkoła Podstawowa nr 10",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=598",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=598&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:113",
+      "unit_name": "Szkoła Podstawowa nr 104",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=113",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=113&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:586",
+      "unit_name": "Szkoła Podstawowa nr 106",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=586",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=586&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:168",
+      "unit_name": "Szkoła Podstawowa nr 109 im. Kornela Makuszyńskiego w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=168",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:146",
+      "unit_name": "Szkoła Podstawowa nr 11",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=146",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:65",
+      "unit_name": "Szkoła Podstawowa nr 117",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=65",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=65&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:116",
+      "unit_name": "Szkoła Podstawowa nr 130",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=116",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:68",
+      "unit_name": "Szkoła Podstawowa Nr 132 im. św Benedykta z Nursji",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=68",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=68&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:70",
+      "unit_name": "Szkoła Podstawowa nr 133",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=70",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:54",
+      "unit_name": "Szkoła Podstawowa nr 137",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=54",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=54&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:117",
+      "unit_name": "Szkoła Podstawowa nr 140",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=117",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:73",
+      "unit_name": "Szkoła Podstawowa nr 147",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=73",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:173",
+      "unit_name": "Szkoła Podstawowa nr 153 im. ks. prof. Józefa Tischnera",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=173",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:147",
+      "unit_name": "Szkoła Podstawowa nr 16",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=147",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:46",
+      "unit_name": "Szkoła Podstawowa nr 24 im. Krakowskiej Straży Pożarnej",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=46",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:153",
+      "unit_name": "Szkoła Podstawowa nr 34 w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=153",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:57",
+      "unit_name": "Szkoła Podstawowa nr 47 im. Stefana Czarnieckiego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=57",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:158",
+      "unit_name": "Szkoła Podstawowa nr 51",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=158",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:62",
+      "unit_name": "Szkoła Podstawowa nr 65 im. Czesława Janczarskiego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=62",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=62&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:63",
+      "unit_name": "Szkoła Podstawowa nr 66 im. Edwarda Dembowskiego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=63",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:163",
+      "unit_name": "Szkoła Podstawowa nr 68",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=163",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:471",
+      "unit_name": "Śródmiejska Biblioteka Publiczna",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=471",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:581",
+      "unit_name": "Towarzystwo Budownictwa Społecznego „Krak-System”SA",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=581",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=581&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:206",
+      "unit_name": "XIV Liceum Ogólnokształcące w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=206",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:207",
+      "unit_name": "XVI Liceum Ogólnokształcące",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=207",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:209",
+      "unit_name": "XXI Liceum Ogólnokształcące im. St.I. Witkiewicza - Witkacego w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=209",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=209&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:95",
+      "unit_name": "XXIX Liceum Ogólnokształcące",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=95",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:542",
+      "unit_name": "XXVII Liceum Ogólnokształcące im. dr H. Jordana",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=542",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:211",
+      "unit_name": "XXXI Liceum Ogólnokształcące",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=211",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:499",
+      "unit_name": "Zarząd Dróg i Transportu",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=499",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:490",
+      "unit_name": "Zarząd Transportu Publicznego",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=490",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:99",
+      "unit_name": "Zespół Ekonomiki Oświaty Kraków-Wschód",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=99",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:45",
+      "unit_name": "Zespół Ekonomiki Oświaty Południe",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=45",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:467",
+      "unit_name": "Zespół Pieśni i Tańca Krakowiacy",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=467",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=467&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:311",
+      "unit_name": "Zespół Placówek Opiekuńczo-Wychowawczych Nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=311",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:263",
+      "unit_name": "Zespół Szkół Ekonomicznych Nr 3",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=263",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:321",
+      "unit_name": "Zespół Szkół Nr 3 w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=321",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=321&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:276",
+      "unit_name": "Zespół Szkół Odzieżowych i Ekonomicznych",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=276",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:190",
+      "unit_name": "Zespół Szkół Ogólnokształcących Integracyjnych nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=190",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:76",
+      "unit_name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=76",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:77",
+      "unit_name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 3",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=77",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:78",
+      "unit_name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 4",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=78",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:126",
+      "unit_name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 5",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=126",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:127",
+      "unit_name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 6",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=127",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:537",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=537",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:218",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 10",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=218",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:219",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 11",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=219",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=219&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:240",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 12",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=240",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=240&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:123",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 14",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=123",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=123&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:80",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 15",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=80",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:124",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 16",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=124",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:477",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 17",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=477",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:612",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 19",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=612",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=612&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:212",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 2",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=212",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:213",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 3",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=213",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:214",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 4",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=214",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:546",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 5",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=546",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=546&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:189",
+      "unit_name": "Zespół Szkół Ogólnokształcących nr 51",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=189",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:125",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 52",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=125",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:215",
+      "unit_name": "Zespół Szkół Ogólnokształcących Nr 6",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=215",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:128",
+      "unit_name": "Zespół Szkół Ogólnokształcących Sportowych Nr 1",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=128",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:195",
+      "unit_name": "Zespół Szkół Specjalnych Nr 13",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=195",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:194",
+      "unit_name": "Zespół Szkół Specjalnych Nr 7",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=194",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:83",
+      "unit_name": "Zespół Szkół Specjalnych Nr 9",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=83",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:286",
+      "unit_name": "Zespół Szkół Zawodowych Nr 1 im. ks. kard. Adama Stefana Sapiehy",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=286",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:332",
+      "unit_name": "Żłobek Nr 32",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=332",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=332&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:344",
+      "unit_name": "Żłobek Samorządowy Nr 21 w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=344",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=344&dok_id=104362",
+      "url_from_archive": false
+    }
+  ]
+}

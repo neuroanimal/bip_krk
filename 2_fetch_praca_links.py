@@ -214,6 +214,17 @@ def main() -> int:
             for past_reason in ("fetch_failed", "http_404", "timeout",
                                 "empty_response"):
                 bc.clear_failure("2_praca_links", key, past_reason)
+            # Zamykamy też SPEKULACYJNE ostrzeżenie z etapu 1. Etap 1 zgłasza
+            # „possible_stale_link” dla każdej jednostki obecnej zarazem na
+            # liście aktualnej i w archiwum — ale to tylko podejrzenie. Skoro
+            # link właśnie odpowiedział, podejrzenie jest nieprawdziwe.
+            #
+            # Bez tego pełny przebieg zostawiał 7 fałszywych ostrzeżeń, m.in.
+            # dla Centrum Kultury Podgórza (które ma 9 ofert) i Krakowskiego
+            # Forum Kultury (link działa, instytucja po prostu nie publikuje
+            # naborów — strona podaje to wprost). Ostrzeżenie ma zostawać
+            # tylko tam, gdzie adres FAKTYCZNIE nie działa, jak PK133/SP137.
+            bc.clear_failure("1_units", key, "possible_stale_link")
 
         praca_url = find_praca_link(html)
         has_link = praca_url is not None

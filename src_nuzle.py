@@ -47,7 +47,7 @@ from __future__ import annotations
 import argparse
 import logging
 import re
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
 
 from bs4 import BeautifulSoup
 
@@ -82,17 +82,29 @@ DATE_RE = re.compile(r"\b(\d{4}-\d{2}-\d{2})\b")
 # listy wyników, co wyglądało jak oferta, a ofertą nie było.
 OFFER_URL_RE = re.compile(r",g\d+(?:[/?#]|$)")
 
-# Strony kategorii nuzle, które są ISTOTNE dla profilu (kultura, sztuka,
-# grafika). Z nich pobieramy dodatkowe ogłoszenia, bo lista ogólna dla
-# Krakowa pokazuje przekrój wszystkich branż i trafienia z profilu w niej
-# tonęły. Format: (etykieta, adres).
-PROFILE_CATEGORY_URLS: Tuple[Tuple[str, str], ...] = (
-    ("grafik", "https://www.nuzle.pl/krakow,grafik.html"),
-    ("grafik komputerowy", "https://www.nuzle.pl/krakow,grafik-komputerowy.html"),
-    ("plastyk", "https://www.nuzle.pl/krakow,plastyk.html"),
-    ("animator kultury", "https://www.nuzle.pl/krakow,animator-kultury.html"),
-    ("instruktor", "https://www.nuzle.pl/krakow,instruktor.html"),
-)
+# BADANIE KATEGORII PROFILOWYCH — NIE WRACAĆ DO TEGO POMYSŁU
+#
+# Dodano kiedyś pobieranie stron kategorii (``/krakow,grafik.html``,
+# ``,grafik-komputerowy``, ``,plastyk``, ``,animator-kultury``,
+# ``,instruktor``), żeby nadrobić brak ofert dla grafika na liście ogólnej.
+# Pełny przebieg pokazał, że to nic nie wnosi, a generuje fałszywe błędy:
+#
+#   ,grafik             -> 200, "16 ofert", ale realnych ogłoszeń 2 i oba
+#                          to homonim harmonogramu („hostessa — elastyczny
+#                          grafik”, „praca dla uczniów — elastyczny grafik”)
+#   ,grafik-komputerowy -> 200, "14 ofert", a linków do ogłoszeń ZERO —
+#                          94 kafelki prowadzą do innych kategorii
+#   ,plastyk            -> 404 z poprawnym tytułem „Praca Plastyk Kraków”
+#   ,animator-kultury   -> 404 z poprawnym tytułem
+#   ,instruktor         -> faktyczny 404 („Nie znaleziono strony”)
+#
+# Uwaga na mechanikę portalu: nuzle zwraca **404 dla pustej kategorii**,
+# renderując przy tym normalną stronę z tytułem. Dlatego „404” nie znaczy
+# tu „zły adres”, a liczba w tytule nie znaczy „tyle ogłoszeń”.
+#
+# Wniosek: nuzle nie ma ofert dla grafika w Krakowie ani na liście
+# ogólnej, ani w kategoriach. Oferty dla grafika pochodzą z CBOP
+# (src_cbop) i nofluffjobs (src_nofluffjobs).
 
 
 def is_teacher_offer(title: str, description: str) -> bool:
@@ -220,11 +232,6 @@ def main() -> int:
         "--keep-teachers", action="store_true",
         help="Nie odfiltrowuj ofert nauczycielskich/pedagogicznych.",
     )
-    parser.add_argument(
-        "--skip-categories", action="store_true",
-        help="Pomiń pobieranie kategorii profilowych (grafik, plastyk, "
-             "animator kultury) — tylko lista ogólna dla Krakowa.",
-    )
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
@@ -250,22 +257,6 @@ def main() -> int:
             break
         all_offers.extend(page_offers)
 
-    # Strony kategorii istotnych dla profilu (grafika, plastyka, animacja).
-    # Lista ogólna dla Krakowa to przekrój wszystkich branż, w którym
-    # trafienia z profilu tonęły — tu pobieramy je celowanymi zapytaniami.
-    if not args.skip_categories:
-        for label, cat_url in PROFILE_CATEGORY_URLS:
-            logging.info("Kategoria profilowa '%s': %s", label, cat_url)
-            html, reason = bc.fetch_with_reason(session, cat_url)
-            if html is None:
-                bc.record_failure(stage="src_nuzle", key=f"cat_{label}",
-                                  url=cat_url,
-                                  reason=reason or "fetch_failed",
-                                  detail=f"kategoria: {label}")
-                continue
-            cat_offers = parse_offers(html)
-            logging.info("  ofert w kategorii: %d", len(cat_offers))
-            all_offers.extend(cat_offers)
 
     # Deduplikacja po identyfikatorze oferty (strony mogą się nakładać).
     unique: Dict[str, Dict[str, Any]] = {}
