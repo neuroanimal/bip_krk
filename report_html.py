@@ -20,7 +20,7 @@ w skrypcie 5 — ten moduł tylko prezentuje przygotowane dane.
 from __future__ import annotations
 
 import html as html_lib
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, NamedTuple, Optional, Tuple
 
 import bip_common as bc
 
@@ -526,6 +526,7 @@ def build_profile_section(
     offers: List[Dict[str, object]],
     details: Dict[str, Dict[str, object]],
     recent_closed: Optional[List[Dict[str, object]]] = None,
+    profile_description: str = "",
 ) -> str:
     """Buduje wyróżnioną sekcję „dopasowane do profilu” na górze raportu.
 
@@ -577,11 +578,12 @@ def build_profile_section(
         f"{'oferta' if len(matched) == 1 else 'ofert'} "
         f"(mocnych trafień: {strong_count})</h2>"
     )
+    # Opis pochodzi z definicji profilu (pakiet ``profiles``), bo aplikacja
+    # obsługuje kilka profili i zaszyty tekst o kulturze byłby nieprawdą
+    # w raporcie dla profilu danych/AI.
     parts.append(
-        "<p class='hint'>Kultura i sztuka, grafika i design, animacja "
-        "kultury, warsztaty, edukacja muzealna i kulturalna. Pominięte "
-        "stanowiska jawnie spoza profilu (sprzątanie, ochrona, księgowość, "
-        "IT, nauczyciel przedmiotu).</p>"
+        f"<p class='hint'>{html_lib.escape(profile_description)} "
+        "Pominięte stanowiska jawnie spoza profilu.</p>"
     )
     for offer in matched:
         parts.append(build_offer_card(offer, details))
@@ -603,12 +605,31 @@ def build_profile_section(
     return "\n".join(parts)
 
 
+class ReportMeta(NamedTuple):
+    """Metadane raportu — wszystko poza samymi ofertami.
+
+    Zgrupowane w jedną strukturę, bo podróżują razem i bez tego
+    ``build_html`` miało siedem argumentów pozycyjnych, co łatwo pomylić
+    przy wywołaniu.
+
+    Attributes:
+        failures: rekordy dziennika niepowodzeń (sekcja diagnostyczna).
+        recent_closed: niedawno zamknięte trafienia z profilu.
+        profile_label: nazwa profilu w nagłówku raportu.
+        profile_description: zdanie opisujące profil pod nagłówkiem sekcji.
+    """
+
+    failures: Optional[Dict[str, dict]] = None
+    recent_closed: Optional[List[Dict[str, object]]] = None
+    profile_label: str = ""
+    profile_description: str = ""
+
+
 def build_html(
     grouped: List[Tuple[str, List[Dict[str, object]]]],
     details: Dict[str, Dict[str, object]],
     total: int,
-    failures: Optional[Dict[str, dict]] = None,
-    recent_closed: Optional[List[Dict[str, object]]] = None,
+    meta: Optional[ReportMeta] = None,
 ) -> str:
     """Buduje kolorowy, estetyczny raport HTML pogrupowany po kategoriach.
 
@@ -630,12 +651,21 @@ def build_html(
     parts.append("<html lang='pl'><head><meta charset='utf-8'>")
     parts.append("<meta name='viewport' content='width=device-width, "
                  "initial-scale=1'>")
-    parts.append("<title>Raport ofert pracy — BIP Kraków</title>")
+    meta = meta or ReportMeta()
+    failures = meta.failures
+    recent_closed = meta.recent_closed
+    profile_label = meta.profile_label
+    profile_description = meta.profile_description
+
+    heading = "Raport ofert pracy — BIP Kraków"
+    if profile_label:
+        heading = f"{heading} · {profile_label}"
+    parts.append(f"<title>{html_lib.escape(heading)}</title>")
     parts.append(f"<style>{HTML_STYLE}</style></head><body>")
 
     # Nagłówek raportu.
     parts.append("<header><div class='wrap'>")
-    parts.append("<h1>Raport ofert pracy — BIP Kraków</h1>")
+    parts.append(f"<h1>{html_lib.escape(heading)}</h1>")
     parts.append(
         f"<div class='meta'>Wygenerowano: {esc(bc.now_iso())} · "
         f"ofert w raporcie: <strong>{total}</strong></div>"
@@ -681,7 +711,8 @@ def build_html(
     all_offers: List[Dict[str, object]] = []
     for _label, offers_in_group in grouped:
         all_offers.extend(offers_in_group)
-    profile_section = build_profile_section(all_offers, details, recent_closed)
+    profile_section = build_profile_section(
+        all_offers, details, recent_closed, profile_description)
     if profile_section:
         parts.append(profile_section)
 

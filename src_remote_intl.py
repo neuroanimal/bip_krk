@@ -83,21 +83,37 @@ from typing import Any, Dict, List, Optional, Tuple
 import bip_common as bc
 
 # Role kreatywne — oferta bez trafienia tutaj jest pomijana.
-ROLE_PATTERN = re.compile(
-    r"graphic|design|illustrat|creative|brand|visual|art\s*direct"
-    r"|motion|dtp|typograph|ux\b|ui\b|artist",
-    re.IGNORECASE,
-)
+ROLE_PATTERNS: Dict[str, "re.Pattern[str]"] = {
+    "kultura": re.compile(
+        r"graphic|design|illustrat|creative|brand|visual|art\s*direct"
+        r"|motion|dtp|typograph|ux\b|ui\b|artist",
+        re.IGNORECASE,
+    ),
+    "it": re.compile(
+        r"data\s*(scien|engineer|analy)|machine learning|\bml\b|\bai\b"
+        r"|python|backend|back-end|full\s*stack|java\b|android|ios\b"
+        r"|analytics|mlops|llm",
+        re.IGNORECASE,
+    ),
+}
 
 # Role, które słowo „design” wciąga mimo braku związku z grafiką:
 # „Electrical Design Engineer”, „Design Engineer”, „Site Engineer”.
 # Odsiewamy je JUŻ NA WEJŚCIU, żeby nie zaśmiecały datasetu — inaczej
 # trafiały do raportu jako oferty kreatywne.
-ROLE_EXCLUDE = re.compile(
-    r"engineer|developer|programmer|architect\b|devops|security"
-    r"|compliance|analyst|sales|account manager",
-    re.IGNORECASE,
-)
+# Wykluczenia PER PROFIL: w profilu kultury słowo „engineer” to szum
+# („Electrical Design Engineer”), a w profilu danych jest pożądane.
+ROLE_EXCLUDES: Dict[str, "re.Pattern[str]"] = {
+    "kultura": re.compile(
+        r"engineer|developer|programmer|architect\b|devops|security"
+        r"|compliance|analyst|sales|account manager",
+        re.IGNORECASE,
+    ),
+    "it": re.compile(
+        r"recruiter|sales|account manager|customer success|teacher",
+        re.IGNORECASE,
+    ),
+}
 
 # Lokalizacja otwarta, w której Polska się kwalifikuje.
 OPEN_PATTERN = re.compile(
@@ -111,12 +127,23 @@ POLAND_PATTERN = re.compile(
 )
 
 # Źródła: (klucz, etykieta, adres, format).
-FEEDS: Tuple[Tuple[str, str, str, str], ...] = (
-    ("wwr", "weworkremotely.com",
-     "https://weworkremotely.com/categories/remote-design-jobs.rss",
-     "rss"),
-    ("remoteok", "remoteok.com", "https://remoteok.com/api", "remoteok"),
-)
+FEEDS: Dict[str, Tuple[Tuple[str, str, str, str], ...]] = {
+    "kultura": (
+        ("wwr", "weworkremotely.com",
+         "https://weworkremotely.com/categories/remote-design-jobs.rss",
+         "rss"),
+        ("remoteok", "remoteok.com", "https://remoteok.com/api", "remoteok"),
+    ),
+    "it": (
+        ("wwr-prog", "weworkremotely.com",
+         "https://weworkremotely.com/categories/remote-programming-jobs.rss",
+         "rss"),
+        ("wwr-devops", "weworkremotely.com",
+         "https://weworkremotely.com/categories/remote-devops-sysadmin-jobs"
+         ".rss", "rss"),
+        ("remoteok", "remoteok.com", "https://remoteok.com/api", "remoteok"),
+    ),
+}
 
 UNIT_KEY = "src:remote_intl"
 
@@ -275,16 +302,24 @@ def main() -> int:
         "--limit", type=int, default=0,
         help="Ogranicz liczbę zapisanych ofert (tryb próbny).",
     )
+    bc.add_profile_argument(parser)
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
+    bc.use_profile(args.profile)
+    feeds = FEEDS.get(args.profile)
+    role_pattern = ROLE_PATTERNS.get(args.profile)
+    role_exclude = ROLE_EXCLUDES.get(args.profile)
+    if not feeds or role_pattern is None or role_exclude is None:
+        logging.error("Brak konfiguracji dla profilu '%s'.", args.profile)
+        return 1
     session = bc.build_session()
 
     records: List[Dict[str, Any]] = []
     seen_titles = set()
     ok_feeds = 0
 
-    for key, label, url, kind in FEEDS:
+    for key, label, url, kind in feeds:
         logging.info("=== %s ===", label)
         payload, reason = bc.fetch_with_reason(session, url)
         if payload is None:
@@ -297,9 +332,9 @@ def main() -> int:
 
         kept = 0
         for job in jobs:
-            if not job["title"] or not ROLE_PATTERN.search(job["title"]):
+            if not job["title"] or not role_pattern.search(job["title"]):
                 continue
-            if ROLE_EXCLUDE.search(job["title"]):
+            if role_exclude.search(job["title"]):
                 continue  # „Design Engineer” itp. — patrz ROLE_EXCLUDE
             match = _match_reason(job["title"], job["location"])
             if match is None:
@@ -341,7 +376,7 @@ def main() -> int:
     bc.save_dataset(bc.OFFERS_DATASET, dataset)
     bc.save_snapshot("src_remote_intl", {
         "fetched_at": seen_now,
-        "feeds": [label for _k, label, _u, _t in FEEDS],
+        "feeds": [label for _k, label, _u, _t in feeds],
         "kept": len(records),
         "offers": records,
     })

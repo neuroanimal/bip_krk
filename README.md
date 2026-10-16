@@ -1,4 +1,4 @@
-# BIP Kraków — scraper ofert pracy
+# BIP Kraków — scraper ofert pracy (dwa profile zawodowe)
 
 Zestaw skryptów w Pythonie, które codziennie zbierają oferty pracy z
 Biuletynu Informacji Publicznej Miasta Krakowa i budują lokalny dataset
@@ -10,6 +10,49 @@ są nadpisywane, lecz aktualizowane, z zachowaniem historii dostępności
 Skrypty działają identycznie na **Windows** i na **Linux/WSL** (używają
 wyłącznie `pathlib`, bez twardo zakodowanych ścieżek, oraz `sys.executable`
 w orchestratorze).
+
+## Dwa profile zawodowe — jeden kod, osobne dane
+
+Aplikacja obsługuje **dwa profile**, wybierane przełącznikiem `--profile`:
+
+| Profil | Czego szuka | Dane i raporty |
+|--------|-------------|----------------|
+| `kultura` (**domyślny**) | kultura, sztuka, grafika, animacja, edukacja kulturalna | `data/`, `reports/` |
+| `it` | Applied Data Science, AI Engineering, Python, backend/JEE, full-stack, mobile | `data_it/`, `reports_it/` |
+
+```
+python run_all.py                  # profil kultury (jak dotychczas)
+python run_all.py --profile it     # profil danych i AI
+```
+
+**Dlaczego jeden kod, a nie druga aplikacja:** wspólnej mechaniki jest
+~4,5 tys. linii (HTTP z retry, dziennik niepowodzeń, `active/inactive`,
+snapshoty, HTML raportu z trackingiem klikania) — kopia znaczyłaby dwa
+miejsca do poprawiania każdego błędu. Dodatkowo **część źródeł obsługuje
+oba profile**: nofluffjobs ma i „Social Media Graphic Designer”, i 147
+ofert data/AI w Krakowie; CBOP jedno i drugie.
+
+**Dlaczego osobne katalogi:** wspólny dataset znaczyłby, że w raporcie
+żony pojawia się 200 ofert IT w sekcji „pozostałe” — dokładnie ten szum,
+przed którym broni cały projekt. Profil domyślny używa katalogów **bez
+sufiksu**, więc dotychczasowe dane i zbudowany `.exe` działają bez zmian.
+
+Każdy etap potoku jest przypisany do profili, których dotyczy
+(`STEP_PROFILES` w `run_all.py`). Profil `it` wykonuje **5 etapów z 13** —
+pomija obchód ~550 jednostek BIP miasta (szkoły, żłobki, przedszkola),
+który dla niego nie daje ani jednej trafnej oferty. Pełny przebieg profilu
+IT trwa ~25 s, profilu kultury ~15 min.
+
+Pominięty jest też etap 4 (szczegóły ogłoszeń): zmierzone na 219 ofertach
+IT dało 191 rekordów i **zero z czytelną treścią**, bo nofluffjobs
+i bulldogjob to aplikacje JavaScript. Opis mamy już z API.
+
+### Dodanie trzeciego profilu
+
+Jeden plik w `profiles/` (kontrakt opisuje `profiles/__init__.py`) i wpis
+w `profiles.AVAILABLE`. Logika oceniania (`profile_match.py`) jest wspólna
+— poprawka w niej, jak kontekstowe rozpoznawanie homonimów, działa od razu
+dla wszystkich profili.
 
 ## Wymagania
 
@@ -253,7 +296,12 @@ bip_krk/
 ├── src_cbop.py                  # źródło: CBOP (oficjalna baza urzędów pracy)
 ├── src_remote_intl.py           # źródło: zagraniczne oferty zdalne
 ├── check_institution.py         # narzędzie: badanie kandydatów na źródła
-├── profile_match.py             # dopasowanie do profilu zawodowego
+├── profile_match.py             # LOGIKA dopasowania (wspólna dla profili)
+├── profiles/                    # DEFINICJE profili
+│   ├── __init__.py              #   rejestr + kontrakt profilu
+│   ├── kultura.py               #   kultura, sztuka, grafika
+│   └── it.py                    #   dane, AI, backend
+├── src_bulldogjob.py            # źródło: oferty IT (profil it)
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py
 ├── run_all.py               # orchestrator całego potoku (--sample dla próbki)
@@ -261,9 +309,12 @@ bip_krk/
 ├── bip_krk.spec             # konfiguracja PyInstaller
 ├── build_exe.bat            # budowanie .exe (Windows)
 ├── .pylintrc                # konfiguracja lintera (10.00/10)
-├── data/                    # „żywe” datasety + failures.json, clicks.json
-├── snapshots/               # surowe zrzuty z timestampem (historia „collect once”)
-└── reports/                 # wygenerowane raporty (.md + .html)
+├── data/                    # datasety profilu kultury (+ failures, clicks)
+├── snapshots/               # surowe zrzuty profilu kultury
+├── reports/                 # raporty profilu kultury (.md + .html)
+├── data_it/                 # datasety profilu IT
+├── snapshots_it/            # surowe zrzuty profilu IT
+└── reports_it/              # raporty profilu IT
 ```
 
 ## Model danych — active / inactive

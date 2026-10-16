@@ -70,6 +70,11 @@ def _resolve_project_root() -> Path:
 
 PROJECT_ROOT = _resolve_project_root()
 
+# Profil domyślny — musi zgadzać się z ``profiles.DEFAULT``. Nie importujemy
+# pakietu ``profiles``, żeby nie tworzyć zależności cyklicznej (profile nie
+# potrzebują bip_common, ale etapy importują oba).
+DEFAULT_PROFILE = "kultura"
+
 # Katalog z "żywymi" datasetami (aktualizowany stan wiedzy).
 DATA_DIR = PROJECT_ROOT / "data"
 
@@ -100,6 +105,64 @@ CLICKS_DATASET = DATA_DIR / "clicks.json"
 # linki, które BIP zostawił na liście aktualnej po przeniesieniu jednostki
 # do archiwum.
 FAILURES_DATASET = DATA_DIR / "failures.json"
+
+
+def use_profile(slug: str) -> None:
+    """Przestawia ścieżki danych i raportów na wskazany profil.
+
+    Jedna aplikacja obsługuje kilka profili zawodowych (patrz pakiet
+    ``profiles``), a każdy potrzebuje WŁASNYCH datasetów i raportów.
+    Wspólny worek byłby błędem: raport dla profilu kultury pokazywałby
+    kilkaset ofert IT w sekcji „pozostałe”, a to dokładnie ten szum, przed
+    którym broni cały projekt.
+
+    **Zgodność wstecz jest tu celowa i ważna**: profil domyślny
+    (``kultura``) używa katalogów BEZ sufiksu — ``data/``, ``reports/``,
+    ``snapshots/`` — czyli dokładnie tych, w których leżą dotychczasowe
+    dane i na które wskazuje zbudowany wcześniej ``.exe``. Nic nie trzeba
+    przenosić ani budować od nowa. Pozostałe profile dostają sufiks:
+    ``data_it/``, ``reports_it/``, ``snapshots_it/``.
+
+    Funkcję trzeba wywołać PRZED pierwszym użyciem ścieżek — robią to
+    etapy potoku na początku ``main()``, zaraz po odczytaniu argumentów.
+
+    Args:
+        slug: identyfikator profilu (np. ``kultura``, ``it``).
+    """
+    global DATA_DIR, SNAPSHOTS_DIR, REPORTS_DIR  # pylint: disable=global-statement
+    global UNITS_DATASET, PRACA_LINKS_DATASET  # pylint: disable=global-statement
+    global OFFERS_DATASET, OFFER_DETAILS_DATASET  # pylint: disable=global-statement
+    global CLICKS_DATASET, FAILURES_DATASET  # pylint: disable=global-statement
+
+    suffix = "" if slug == DEFAULT_PROFILE else f"_{slug}"
+    DATA_DIR = PROJECT_ROOT / f"data{suffix}"
+    SNAPSHOTS_DIR = PROJECT_ROOT / f"snapshots{suffix}"
+    REPORTS_DIR = PROJECT_ROOT / f"reports{suffix}"
+
+    UNITS_DATASET = DATA_DIR / "units.json"
+    PRACA_LINKS_DATASET = DATA_DIR / "praca_links.json"
+    OFFERS_DATASET = DATA_DIR / "offers.json"
+    OFFER_DETAILS_DATASET = DATA_DIR / "offer_details.json"
+    CLICKS_DATASET = DATA_DIR / "clicks.json"
+    FAILURES_DATASET = DATA_DIR / "failures.json"
+
+
+def add_profile_argument(parser) -> None:
+    """Dodaje do parsera wspólny przełącznik ``--profile``.
+
+    Trzymamy to w jednym miejscu, żeby wszystkie etapy opisywały opcję
+    identycznie i żeby dodanie profilu nie wymagało edycji kilkunastu
+    plików.
+
+    Args:
+        parser: instancja ``argparse.ArgumentParser``.
+    """
+    parser.add_argument(
+        "--profile", default=DEFAULT_PROFILE,
+        help=("Profil zawodowy: 'kultura' (domyślny — kultura, sztuka, "
+              "grafika) albo 'it' (dane, AI, backend). Wybiera osobne "
+              "katalogi danych i raportów."),
+    )
 
 # Nagłówek User-Agent — serwis odpowiada poprawnie na "przeglądarkowy" UA.
 USER_AGENT = (

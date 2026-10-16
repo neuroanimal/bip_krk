@@ -90,10 +90,24 @@ OFFER_URL_BASE = "https://nofluffjobs.com/job/"
 #     bo portal dopasowuje słowo luźno. Czysty szum.
 #   „grafik komputerowy”, „DTP” — 0 wyników; portal jest anglojęzyczny
 #     i nie ma polskich nazw stanowisk.
-SEARCH_QUERIES: Tuple[Tuple[str, str], ...] = (
-    ("ux/design", "category=ux city=krakow"),
-    ("graphic designer", "graphic designer"),
-)
+# Zapytania PER PROFIL. Portal obsługuje oba: dla profilu kultury ma
+# „Social Media Graphic Designer”, a dla profilu danych — 56 unikalnych
+# ofert w kategorii „data” w samym Krakowie (Data Engineer, Data Scientist,
+# AI Engineer, MLOps, Power BI; Tesco, GFT, deepsense.ai, XTB).
+SEARCH_QUERIES: Dict[str, Tuple[Tuple[str, str], ...]] = {
+    "kultura": (
+        ("ux/design", "category=ux city=krakow"),
+        ("graphic designer", "graphic designer"),
+    ),
+    "it": (
+        ("data", "category=data city=krakow"),
+        ("ai/ml", "category=ai city=krakow"),
+        ("backend", "category=backend city=krakow"),
+        ("mobile", "category=mobile city=krakow"),
+        ("data scientist", "data scientist"),
+        ("machine learning", "machine learning"),
+    ),
+}
 
 # Nazwa jednostki w raporcie (źródło nie ma podziału na jednostki miejskie).
 UNIT_KEY = "src:nofluffjobs"
@@ -216,8 +230,7 @@ def build_record(posting: Dict[str, Any]) -> Dict[str, Any]:
         "raw_text": " ".join(x for x in (title, employer, category) if x),
         "source": "nofluffjobs",
         "published": _published_iso(posting),
-        "category_hint": "Kultura i Sztuka" if category in
-                         ("ux", "marketing") else "",
+        "category_hint": "",
     }
 
 
@@ -235,14 +248,20 @@ def main() -> int:
         "--limit", type=int, default=0,
         help="Ogranicz liczbę zapisanych ofert (tryb próbny).",
     )
+    bc.add_profile_argument(parser)
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
+    bc.use_profile(args.profile)
+    queries = SEARCH_QUERIES.get(args.profile)
+    if not queries:
+        logging.error("Brak zapytań dla profilu '%s'.", args.profile)
+        return 1
     session = bc.build_session()
 
     raw: List[Dict[str, Any]] = []
     ok_queries = 0
-    for label, raw_search in SEARCH_QUERIES:
+    for label, raw_search in queries:
         logging.info("Zapytanie '%s': %s", label, raw_search)
         postings = fetch_query(session, label, raw_search)
         if postings:
@@ -308,7 +327,7 @@ def main() -> int:
     bc.save_dataset(bc.OFFERS_DATASET, dataset)
     bc.save_snapshot("src_nofluffjobs", {
         "fetched_at": seen_now,
-        "queries": [label for label, _ in SEARCH_QUERIES],
+        "queries": [label for label, _ in queries],
         "total_fetched": len(raw),
         "kept": len(records),
         "offers": records,

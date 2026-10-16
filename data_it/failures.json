@@ -1,0 +1,328 @@
+{
+  "meta": {
+    "created": "2026-10-16T15:51:50+02:00",
+    "updated": "2026-10-16T15:59:41+02:00"
+  },
+  "records": {
+    "src_bulldogjob|jobs|no_offers_parsed": {
+      "stage": "src_bulldogjob",
+      "key": "jobs",
+      "url": "https://bulldogjob.pl/companies/jobs/s/city,Krakow",
+      "reason": "no_offers_parsed",
+      "detail": "HTTP 200, __NEXT_DATA__ bez listy ofert",
+      "first_seen": "2026-10-16T15:51:50+02:00",
+      "last_seen": "2026-10-16T15:52:04+02:00",
+      "count": 2,
+      "resolved": true,
+      "resolved_at": "2026-10-16T15:53:06+02:00"
+    },
+    "4_offer_details|nfj-senior-java-developer-f-m-x-sii-polska-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-java-developer-f-m-x-sii-polska-krakow",
+      "url": "https://nofluffjobs.com/job/senior-java-developer-f-m-x-sii-polska-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Senior Java Developer (f/m/x)",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-software-architect-staff-engineer-motorola-solutions-systems-polska-krakow-1|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-software-architect-staff-engineer-motorola-solutions-systems-polska-krakow-1",
+      "url": "https://nofluffjobs.com/job/software-architect-staff-engineer-motorola-solutions-systems-polska-krakow-1",
+      "reason": "http_429",
+      "detail": "oferta: Software Architect/Staff Engineer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-aws-developer-mindbox-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-aws-developer-mindbox-krakow",
+      "url": "https://nofluffjobs.com/job/senior-aws-developer-mindbox-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Senior AWS Developer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-java-consultant-gft-poland-krakow-3|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-java-consultant-gft-poland-krakow-3",
+      "url": "https://nofluffjobs.com/job/senior-java-consultant-gft-poland-krakow-3",
+      "reason": "http_429",
+      "detail": "oferta: Senior Java Consultant",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-java-engineer-gft-poland-krakow-3|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-java-engineer-gft-poland-krakow-3",
+      "url": "https://nofluffjobs.com/job/senior-java-engineer-gft-poland-krakow-3",
+      "reason": "http_429",
+      "detail": "oferta: Senior Java Engineer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-tech-lead-java-engineer-gft-poland-krakow-1|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-tech-lead-java-engineer-gft-poland-krakow-1",
+      "url": "https://nofluffjobs.com/job/tech-lead-java-engineer-gft-poland-krakow-1",
+      "reason": "http_429",
+      "detail": "oferta: Tech Lead Java Engineer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-expert-java-consultant-gft-poland-krakow-1|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-expert-java-consultant-gft-poland-krakow-1",
+      "url": "https://nofluffjobs.com/job/expert-java-consultant-gft-poland-krakow-1",
+      "reason": "http_429",
+      "detail": "oferta: Expert Java Consultant",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-developer-mindbox-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-developer-mindbox-krakow",
+      "url": "https://nofluffjobs.com/job/developer-mindbox-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Developer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-java-engineer-krakow-praca-hybrydowa-upvanta-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-java-engineer-krakow-praca-hybrydowa-upvanta-krakow",
+      "url": "https://nofluffjobs.com/job/senior-java-engineer-krakow-praca-hybrydowa-upvanta-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Senior Java Engineer (Kraków - praca hybrydowa)",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-c-net-developer-itfs-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-c-net-developer-itfs-krakow",
+      "url": "https://nofluffjobs.com/job/c-net-developer-itfs-krakow",
+      "reason": "http_429",
+      "detail": "oferta: C#/.NET Developer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-junior-software-engineer-java-devops-motorola-solutions-systems-polska-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-junior-software-engineer-java-devops-motorola-solutions-systems-polska-krakow",
+      "url": "https://nofluffjobs.com/job/junior-software-engineer-java-devops-motorola-solutions-systems-polska-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Junior Software Engineer (Java/DevOps)",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-software-engineer-hsbc-technology-poland-krakow-12|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-software-engineer-hsbc-technology-poland-krakow-12",
+      "url": "https://nofluffjobs.com/job/software-engineer-hsbc-technology-poland-krakow-12",
+      "reason": "http_429",
+      "detail": "oferta: Software Engineer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-software-engineer-hsbc-technology-poland-krakow-14|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-software-engineer-hsbc-technology-poland-krakow-14",
+      "url": "https://nofluffjobs.com/job/senior-software-engineer-hsbc-technology-poland-krakow-14",
+      "reason": "http_429",
+      "detail": "oferta: Senior Software Engineer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-java-developer-banking-britenet-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-java-developer-banking-britenet-krakow",
+      "url": "https://nofluffjobs.com/job/java-developer-banking-britenet-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Java Developer (banking)",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-ios-developer-j-labs-software-specialist-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-ios-developer-j-labs-software-specialist-krakow",
+      "url": "https://nofluffjobs.com/job/senior-ios-developer-j-labs-software-specialist-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Senior iOS Developer",
+      "first_seen": "2026-10-16T15:58:45+02:00",
+      "last_seen": "2026-10-16T15:58:45+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-mobile-developer-kotlin-multiplatform-avenga-agencja-pracy-nr-kraz-8448-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-mobile-developer-kotlin-multiplatform-avenga-agencja-pracy-nr-kraz-8448-krakow",
+      "url": "https://nofluffjobs.com/job/mobile-developer-kotlin-multiplatform-avenga-agencja-pracy-nr-kraz-8448-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Mobile Developer (Kotlin Multiplatform)",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-expert-android-consultant-gft-poland-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-expert-android-consultant-gft-poland-krakow",
+      "url": "https://nofluffjobs.com/job/expert-android-consultant-gft-poland-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Expert Android Consultant",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-mobile-apps-software-engineer-branchspace-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-mobile-apps-software-engineer-branchspace-krakow",
+      "url": "https://nofluffjobs.com/job/mobile-apps-software-engineer-branchspace-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Mobile Apps Software Engineer",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-flutter-consultant-gft-poland-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-flutter-consultant-gft-poland-krakow",
+      "url": "https://nofluffjobs.com/job/senior-flutter-consultant-gft-poland-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Senior Flutter Consultant",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-flutter-developer-team-leader-1-gft-poland-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-flutter-developer-team-leader-1-gft-poland-krakow",
+      "url": "https://nofluffjobs.com/job/flutter-developer-team-leader-1-gft-poland-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Flutter Developer- Team Leader 1",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-android-developer-mindbox-krakow-8|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-android-developer-mindbox-krakow-8",
+      "url": "https://nofluffjobs.com/job/android-developer-mindbox-krakow-8",
+      "reason": "http_429",
+      "detail": "oferta: Android Developer",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-staff-software-engineer-software-mansion-krakow-1|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-staff-software-engineer-software-mansion-krakow-1",
+      "url": "https://nofluffjobs.com/job/staff-software-engineer-software-mansion-krakow-1",
+      "reason": "http_429",
+      "detail": "oferta: Staff Software Engineer",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-data-scientist-verita-hr-polska-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-data-scientist-verita-hr-polska-krakow",
+      "url": "https://nofluffjobs.com/job/data-scientist-verita-hr-polska-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Data Scientist",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-data-scientist-scalo-krakow|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-data-scientist-scalo-krakow",
+      "url": "https://nofluffjobs.com/job/senior-data-scientist-scalo-krakow",
+      "reason": "http_429",
+      "detail": "oferta: Senior Data Scientist",
+      "first_seen": "2026-10-16T15:58:46+02:00",
+      "last_seen": "2026-10-16T15:58:46+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-senior-data-engineer-tech-lead-spark-addepto-krakow-1|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-senior-data-engineer-tech-lead-spark-addepto-krakow-1",
+      "url": "https://nofluffjobs.com/job/senior-data-engineer-tech-lead-spark-addepto-krakow-1",
+      "reason": "http_429",
+      "detail": "oferta: Senior Data Engineer / Tech Lead (Spark)",
+      "first_seen": "2026-10-16T15:59:41+02:00",
+      "last_seen": "2026-10-16T15:59:41+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-head-of-ai-addepto-krakow-1|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-head-of-ai-addepto-krakow-1",
+      "url": "https://nofluffjobs.com/job/head-of-ai-addepto-krakow-1",
+      "reason": "http_429",
+      "detail": "oferta: Head of AI",
+      "first_seen": "2026-10-16T15:59:41+02:00",
+      "last_seen": "2026-10-16T15:59:41+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-solution-engineer-ai-big-data-addepto-krakow-7|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-solution-engineer-ai-big-data-addepto-krakow-7",
+      "url": "https://nofluffjobs.com/job/solution-engineer-ai-big-data-addepto-krakow-7",
+      "reason": "http_429",
+      "detail": "oferta: Solution Engineer (AI & Big Data)",
+      "first_seen": "2026-10-16T15:59:41+02:00",
+      "last_seen": "2026-10-16T15:59:41+02:00",
+      "count": 1,
+      "resolved": false
+    },
+    "4_offer_details|nfj-ai-solution-architect-addepto-krakow-7|http_429": {
+      "stage": "4_offer_details",
+      "key": "nfj-ai-solution-architect-addepto-krakow-7",
+      "url": "https://nofluffjobs.com/job/ai-solution-architect-addepto-krakow-7",
+      "reason": "http_429",
+      "detail": "oferta: AI Solution Architect",
+      "first_seen": "2026-10-16T15:59:41+02:00",
+      "last_seen": "2026-10-16T15:59:41+02:00",
+      "count": 1,
+      "resolved": false
+    }
+  }
+}

@@ -29,7 +29,9 @@ stage_files = [
     ('src_nofluffjobs.py', '.'),          # oferty projektowe/graficzne (Kraków)
     ('src_cbop.py', '.'),                 # CBOP: oficjalna baza urzędów pracy
     ('src_remote_intl.py', '.'),          # zagraniczne oferty zdalne z Polski
-    ('profile_match.py', '.'),            # dopasowanie do profilu zawodowego
+    ('src_bulldogjob.py', '.'),           # oferty IT (profil danych/AI)
+    ('profile_match.py', '.'),            # logika dopasowania do profilu
+    ('profiles', 'profiles'),             # definicje profili (kultura, it)
     ('4_fetch_offer_details.py', '.'),
     ('5_generate_report.py', '.'),
 ]
@@ -48,6 +50,9 @@ a = Analysis(
         # (nie przez importlib), więc PyInstaller musi o nim wiedzieć.
         'report_html',
         'profile_match',
+        'profiles',
+        'profiles.kultura',
+        'profiles.it',
     ],
     hookspath=[],
     hooksconfig={},

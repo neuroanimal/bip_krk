@@ -179,9 +179,11 @@ def main() -> int:
         "--limit", type=int, default=None,
         help="Ogranicz liczbę pobieranych szczegółów (do testów).",
     )
+    bc.add_profile_argument(parser)
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
+    bc.use_profile(args.profile)
     bc.ensure_dirs()
     session = bc.build_session()
 

@@ -57,6 +57,7 @@ PIPELINE_MODULES = [
     "src_nofluffjobs",
     "src_cbop",
     "src_remote_intl",
+    "src_bulldogjob",
     "4_fetch_offer_details",
     "5_generate_report",
 ]
@@ -65,7 +66,8 @@ PIPELINE_MODULES = [
 # być chwilowo niedostępny, a raport ma powstać na danych z BIP.
 OPTIONAL_MODULES = {"src_nuzle", "src_ofertypracy_edu",
                     "src_kultura_instytucje", "src_nofluffjobs",
-                    "src_cbop", "src_remote_intl"}
+                    "src_cbop", "src_remote_intl",
+                    "src_bulldogjob"}
 
 
 def _base_dir() -> Path:

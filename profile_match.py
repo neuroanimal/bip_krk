@@ -1,191 +1,88 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Dopasowanie ofert do profilu zawodowego — kultura, sztuka, grafika.
+"""Ocena dopasowania oferty do PROFILU zawodowego.
 
-Problem, który ten moduł rozwiązuje: w datasecie jest ~435 ofert z BIP plus
-oferty z portali zewnętrznych. Wśród nich tonie kilka trafień naprawdę
-pasujących do profilu, dlatego z raportu wychodziło wrażenie, że „są głównie
-oferty administracyjne i sprzątanie”.
+Moduł zawiera wyłącznie LOGIKĘ oceniania. Definicje „co pasuje do kogo”
+(słowa kluczowe, obszary rdzeniowe, wykluczenia, progi) są w pakiecie
+``profiles`` — po jednym module na profil. Profil wybiera się raz, na
+starcie etapu, przez :func:`set_profile`; domyślny to ``profiles.DEFAULT``
+(kultura), więc wywołania bez wyboru działają jak wcześniej.
 
-Profil, pod który dopasowujemy (kompetencje):
+DLACZEGO TAK
+------------
+Dwa profile (kultura/sztuka oraz dane/AI) różnią się wyłącznie danymi,
+nie mechaniką: oba potrzebują wag, podziału na obszary rdzeniowe
+i wspierające, wykluczeń, degradacji i rozstrzygania homonimów. Trzymanie
+logiki w jednym miejscu znaczy, że poprawka (jak kontekstowe rozpoznanie
+homonimu) działa od razu dla każdego profilu.
 
-* malarstwo i techniki malarskie (akwarela), rysunek,
-* grafika warsztatowa (druk wypukły/wklęsły, własna prasa graficzna),
-* grafika komputerowa, graphic design, DTP,
-* animacja kultury, prowadzenie warsztatów dla wszystkich grup wiekowych,
-* pedagogika, edukacja (muzealna, kulturalna, plastyczna).
-
-Preferencja: sektor publiczny (instytucje kultury, muzea, domy i ośrodki
-kultury, galerie, teatry) — ze względu na stabilność zatrudnienia.
-
-Jak to działa: każda oferta dostaje **wynik dopasowania** (profile_score)
-na podstawie trafień słów kluczowych w tytule (waga wyższa) i treści, oraz
-listę dopasowanych obszarów (``profile_tags``). Oferty jawnie niepasujące
-(sprzątanie, ochrona, kierowca, kucharz itp.) dostają wynik ujemny, aby nie
-zaśmiecały sekcji „dla Ciebie”.
-
-Moduł jest czysto obliczeniowy — nie pobiera niczego z sieci.
+MECHANIZMY, KTÓRE TU ŻYJĄ — każdy powstał z konkretnego błędu
+-------------------------------------------------------------
+* **trafienie w tytule waży podwójnie** — tytuł opisuje stanowisko
+  lepiej niż opis obowiązków;
+* **wymóg trafienia RDZENIOWEGO** — bez niego dopasowań było 96 zamiast
+  27, bo samo słowo „muzeum” w opisie kwalifikowało ofertę;
+* **homonim kontekstowy** — „grafik” to zawód albo harmonogram; lista
+  fraz zawiodła (łapała „Tancerkę w klubie”, bo w opisie było
+  „decydować o swoim grafiku”), więc rozstrzyga okno ±45 znaków;
+* **szum nazwy placówki** — „Poradnia Psychologiczno-**Pedagogiczna**”
+  dawała trafienia dla „LEKARZ PSYCHIATRA” i „Referent”;
+* **degradacja** — „Instruktor terapii zajęciowej” to realna praca dla
+  osoby prowadzącej zajęcia plastyczne, ale wymaga kursu terapii, więc
+  nie może nosić odznaki „DLA CIEBIE” obok oferty z ASP;
+* **preferowani pracodawcy** — oferta ASP miała tytuł „Asystent w grupie
+  pracowników badawczo-dydaktycznych”, bez ani jednego słowa z profilu,
+  a była najlepszym trafieniem w całym raporcie.
 """
 
 from __future__ import annotations
 
 import re
-from typing import Dict, List, Tuple
+from types import ModuleType
+from typing import Dict, List
 
-# Grupy słów kluczowych: (etykieta obszaru, waga, wzorce).
-# Wzorce dopasowujemy po rdzeniu wyrazu, bez końcówek, aby łapać odmiany
-# ("grafik", "grafiki", "graficzny"). Porównanie jest bez wielkości liter.
-PROFILE_KEYWORDS: List[Tuple[str, int, Tuple[str, ...]]] = [
-    ("grafika / design", 5, (
-        "grafik", "graficz", "graphic design", "dtp", "projektant",
-        "projektowanie graficzne", "skład komputerowy", "ilustrator",
-        "ilustracj", "typograf", "identyfikacj wizualn",
-        # Odpowiedniki angielskie — potrzebne dla ofert zagranicznych
-        # (źródło src_remote_intl). Celowo NIE dodajemy "ux", "ui",
-        # "product design" ani "game design": to pokrewne, ale inne
-        # specjalizacje (produkt cyfrowy), nie grafika warsztatowa/DTP.
-        "graphic designer", "visual design", "art direct",
-        "illustration", "illustrator", "typography", "brand design",
-        "desktop publishing", "prepress",
-    )),
-    ("sztuka / plastyka", 5, (
-        "plastyk", "malarstw", "malarsk", "rysunk", "rysunek", "akwarel",
-        "artystyczn", "artyst", "sztuk", "rzeźb", "druk artystyczn",
-        "grafika warsztatow", "serigraf", "linoryt", "akwafort",
-        # Angielskie odpowiedniki.
-        "fine art", "painting", "watercolor", "watercolour",
-        "printmaking", "screen print", "etching",
-    )),
-    ("animacja kultury / warsztaty", 5, (
-        "animator kultury", "animacj kultury", "animator", "warsztat",
-        "instruktor", "organizator kultur", "organizator/organizatorka",
-        "upowszechniani kultury", "działalnoś kulturaln",
-    )),
-    ("edukacja kulturalna / muzealna", 4, (
-        "edukator", "edukacj muzealn", "edukacj kulturaln",
-        "edukacj artystyczn", "edukacj plastyczn", "pedagog",
-        "asystent muzealn", "asystentka muzealn", "przewodnik muzealn",
-        "lekcje muzealn",
-        # Angielskie odpowiedniki — „education designer”, „course
-        # writer” i podobne łączą dydaktykę z projektowaniem, co pokrywa
-        # się z jej doświadczeniem w prowadzeniu warsztatów.
-        "museum educat", "art educat", "education designer",
-        "workshop facilitat", "teaching artist",
-    )),
-    ("instytucja kultury / muzeum / galeria", 3, (
-        "muzeum", "muzealn", "galeri", "kurator", "wystaw",
-        "dom kultury", "ośrodek kultury", "centrum kultury",
-        "teatr", "biblioteka", "kolekcj", "zbior",
-    )),
-    ("konserwacja / zbiory", 3, (
-        "konserwator dzieł", "konserwacj dzieł", "konserwacj zbior",
-        "inwentaryzacj zbior", "digitalizacj zbior", "archiwist",
-    )),
-    ("promocja / media kultury", 2, (
-        "promocj", "social media", "media społecznościow", "content",
-        "redaktor", "copywrit", "komunikacj marketingow",
-    )),
-]
+import profiles
 
-# Stanowiska jawnie NIE pasujące do profilu — obniżają wynik, aby nie
-# trafiały do sekcji dopasowanych (żona wprost wskazała, że to nie jej profil).
-EXCLUDE_KEYWORDS: Tuple[str, ...] = (
-    "sprzątacz", "sprzątaj", "osoba sprzątająca", "pokojow",
-    "ochron", "portier", "woźn", "dozorc", "stróż",
-    "kierowc", "kucharz", "kuchenn", "pomoc kuchenn", "zmywak",
-    "opiekun w żłobku", "pielęgniar", "ratownik", "opiekun medyczn",
-    "księgow", "kadr i płac", "płac", "zamówień publiczn",
-    "informatyk", "programist", "administrator sieci", "serwisant",
-    "hydraulik", "elektryk", "konserwator techniczn", "ślusarz",
-    "robotnik", "pracownik fizyczn", "magazynier", "kasjer",
-    "nauczyciel", "wychowawca",
-    # Zawody medyczne — bywały łapane przez nazwę placówki (poradnie).
-    "lekarz", "lekarka", "psychiatra", "psycholog kliniczn", "logopeda",
-    "terapeut", "rehabilitant", "fizjoterapeut",
-    # Zawody budowlane/produkcyjne — wchodziły przez słowo „warsztat”
-    # („Zbrojarz WARSZTATOWY”, „Zbrojarz-warsztat”), które w profilu
-    # oznacza warsztaty twórcze, a nie warsztat produkcyjny.
-    "zbrojarz", "spawacz", "slusarz", "tokarz", "stolarz", "mechanik",
-    "monter", "operator maszyn",
-)
-
-# Oferty WIARYGODNE, ale wymagające odrębnych kwalifikacji — degradujemy je
-# do „może pasować”, zamiast wykluczać albo promować.
-#
-# Powód: „Instruktor terapii zajęciowej” w Warsztacie Terapii Zajęciowej to
-# realnie praca dla kogoś, kto prowadzi zajęcia plastyczne — a więc
-# sensowna propozycja. Ale wymaga kursu terapii zajęciowej, więc nie może
-# stać w jednym rzędzie z „GRAFIK/GRAFICZKA” czy ofertą ASP i nosić
-# odznaki „DLA CIEBIE”. Decyzję o aplikowaniu zostawiamy człowiekowi,
-# tylko porządkujemy kolejność.
-DEMOTE_KEYWORDS: Tuple[str, ...] = (
-    "terapii zajeciowej", "terapia zajeciowa", "terapii zajęciowej",
-    "terapia zajęciowa", "oligofrenopedagog",
-)
-
-# Obszary RDZENIOWE — tylko one mogą samodzielnie zakwalifikować ofertę.
-# Obszary pozostałe ("instytucja kultury", "promocja / media kultury") są
-# WSPIERAJĄCE: podnoszą wynik, gdy jest już trafienie rdzeniowe, ale same
-# nie wystarczą. Bez tego podziału do wyników wchodziły oferty typu
-# "Dentysta" (trafienie kontekstowe w opisie) i "Wykładowca – Instruktor
-# (Montażysta Rusztowań)" (słowo "instruktor" bez związku z kulturą).
-CORE_AREAS: Tuple[str, ...] = (
-    "grafika / design",
-    "sztuka / plastyka",
-    "animacja kultury / warsztaty",
-    "edukacja kulturalna / muzealna",
-    "konserwacja / zbiory",
-)
-
-# Progi interpretacji wyniku.
-SCORE_STRONG = 8   # mocne dopasowanie (co najmniej dwa trafne obszary)
-SCORE_WEAK = 3     # słabe, ale warte pokazania
-
-# Pracodawcy JEDNOZNACZNIE artystyczni/kulturalni. Ich obecność pozwala
-# uznać ofertę za mocne trafienie nawet wtedy, gdy sam tytuł jest ogólny.
-#
-# Przypadek, który to wymusił: „Asystent/asystentka w grupie pracowników
-# badawczo-dydaktycznych” w **Akademii Sztuk Pięknych im. Jana Matejki**
-# (Katedra grafiki, od 5600 zł). Tytuł nie zawiera żadnego słowa z profilu,
-# więc reguła „mocne wymaga trafienia rdzeniowego w tytule” degradowała
-# najlepszą ofertę w całym raporcie do „może pasować”.
-#
-# UWAGA na różnicę wobec wcześniejszego błędu: tu wymieniamy konkretne,
-# niedwuznaczne instytucje sztuki. Nie wystarcza TYP placówki — to właśnie
-# ogólne „Poradnia Psychologiczno-Pedagogiczna” generowało trafienia dla
-# „LEKARZ PSYCHIATRA” (patrz INSTITUTION_NOISE).
-ARTS_EMPLOYERS: Tuple[str, ...] = (
-    "akademia sztuk pieknych", "akademia sztuk pięknych",
-    "muzeum narodowe", "zamek krolewski", "zamek królewski",
-    "teatr", "filharmonia", "opera", "galeria sztuki",
-    "dom kultury", "osrodek kultury", "ośrodek kultury",
-    "centrum kultury", "cricoteka", "muzeum historyczne",
-)
-
-# PUŁAPKA JĘZYKOWA: po polsku "grafik" to zarówno zawód (grafik komputerowy),
-# jak i harmonogram pracy ("elastyczny grafik", "decydować o swoim grafiku").
-# Listowanie wszystkich fraz zawiodło (złapało "Tancerkę w klubie", bo w opisie
-# była fraza "decydować o swoim grafiku"), dlatego rozpoznajemy znaczenie
-# KONTEKSTOWO: jeśli w otoczeniu słowa "grafik" stoi którekolwiek z poniższych
-# słów, chodzi o harmonogram i takie wystąpienie usuwamy z tekstu.
-SCHEDULE_CONTEXT_WORDS: Tuple[str, ...] = (
-    "elastyczn", "dogodn", "swoim", "swój", "własnym", "ustalać", "ustalasz",
-    "decydować", "decydujesz", "zmianow", "dyżur", "godzin", "pracy",
-    "miesięczn", "tygodniow", "harmonogram", "dostosuj", "układa",
-)
-
-# Ile znaków wokół słowa „grafik” sprawdzamy w poszukiwaniu kontekstu.
+# Ile znaków wokół homonimu sprawdzamy w poszukiwaniu kontekstu.
+# „Grafik” w „elastyczny grafik pracy” i „GRAFIK/GRAFICZKA” różni się
+# wyłącznie otoczeniem, nie samym słowem.
 SCHEDULE_CONTEXT_WINDOW = 45
 
-# Nazwy instytucji, w których słowo „pedagogiczn” jest częścią TYPU placówki,
-# a nie opisem stanowiska. Bez tego do wyników wchodziły oferty typu
-# „LEKARZ/LEKARKA PSYCHIATRA” czy „Referent” z Poradni
-# Psychologiczno-Pedagogicznej — trafiały przez nazwę pracodawcy.
-INSTITUTION_NOISE: Tuple[str, ...] = (
-    "psychologiczno-pedagogiczn",
-    "psychologiczno pedagogiczn",
-    "poradni pedagogiczn",
-)
+# Rdzenie, dla których w ogóle sprawdzamy kontekst homonimu — zależne od
+# profilu, dlatego trzymane obok jego definicji byłoby nadmiarem; tu
+# wystarczy jedna lista rdzeni wieloznacznych spotykanych w obu profilach.
+HOMONYM_STEMS = ("grafik", "analityk")
+
+# Aktualnie wybrany profil (moduł z pakietu ``profiles``).
+_ACTIVE: ModuleType = profiles.get(profiles.DEFAULT)
+
+
+def set_profile(slug: str) -> ModuleType:
+    """Ustawia profil używany przez :func:`score_offer`.
+
+    Args:
+        slug: identyfikator profilu (np. ``kultura``, ``it``).
+
+    Returns:
+        Moduł wybranego profilu — przydaje się do odczytania ``LABEL``
+        i ``DESCRIPTION`` w raporcie.
+
+    Raises:
+        KeyError: gdy profil nie istnieje (komunikat zawiera listę
+            dostępnych).
+    """
+    global _ACTIVE  # pylint: disable=global-statement
+    _ACTIVE = profiles.get(slug)
+    return _ACTIVE
+
+
+def active_profile() -> ModuleType:
+    """Zwraca aktualnie wybrany moduł profilu.
+
+    Returns:
+        Moduł profilu.
+    """
+    return _ACTIVE
 
 
 def _strip_institution_noise(text: str) -> str:
@@ -197,32 +94,38 @@ def _strip_institution_noise(text: str) -> str:
     Returns:
         Tekst bez fraz oznaczających typ placówki.
     """
-    for phrase in INSTITUTION_NOISE:
+    for phrase in _ACTIVE.INSTITUTION_NOISE:
         text = text.replace(phrase, " ")
     return text
 
 
-def _strip_schedule_meanings(text: str) -> str:
-    """Usuwa wystąpienia „grafik”, w których chodzi o harmonogram pracy.
+def _strip_homonyms(text: str) -> str:
+    """Usuwa wystąpienia wieloznacznych rdzeni użytych w innym znaczeniu.
 
-    Dla każdego wystąpienia rdzenia „grafik” sprawdzamy okno kontekstu
-    (:data:`SCHEDULE_CONTEXT_WINDOW` znaków po obu stronach). Jeśli pojawia
-    się tam słowo wskazujące na harmonogram (np. „elastyczny”, „swoim”,
-    „zmianowy”, „godzin”), usuwamy to wystąpienie — nie jest to zawód.
+    Dla każdego wystąpienia rdzenia z :data:`HOMONYM_STEMS` sprawdzamy
+    okno :data:`SCHEDULE_CONTEXT_WINDOW` znaków po obu stronach. Jeśli
+    pojawia się tam słowo z ``SCHEDULE_CONTEXT_WORDS`` profilu, usuwamy
+    to wystąpienie — w tym znaczeniu nie jest to zawód z profilu.
+
+    Przykłady, na których to zbudowano: „elastyczny **grafik** pracy”
+    (harmonogram, nie zawód) oraz „**analityk** kredytowy” (inna
+    specjalizacja niż analityk danych).
 
     Args:
         text: znormalizowany tekst (małe litery).
 
     Returns:
-        Tekst z usuniętymi „harmonogramowymi” wystąpieniami słowa „grafik”.
+        Tekst z usuniętymi wystąpieniami w niewłaściwym znaczeniu.
     """
     result = text
+    joined = "|".join(HOMONYM_STEMS)
+    pattern = re.compile(rf"(?:{joined})\w*")
     # Iterujemy od końca, aby podmiany nie psuły pozycji kolejnych trafień.
-    for match in reversed(list(re.finditer(r"grafik\w*", result))):
+    for match in reversed(list(pattern.finditer(result))):
         start = max(0, match.start() - SCHEDULE_CONTEXT_WINDOW)
         end = min(len(result), match.end() + SCHEDULE_CONTEXT_WINDOW)
         context = result[start:match.start()] + result[match.end():end]
-        if any(word in context for word in SCHEDULE_CONTEXT_WORDS):
+        if any(word in context for word in _ACTIVE.SCHEDULE_CONTEXT_WORDS):
             result = result[:match.start()] + " " + result[match.end():]
     return result
 
@@ -241,10 +144,10 @@ def _normalize(text: str) -> str:
 
 def score_offer(title: str, description: str = "",
                 unit_name: str = "") -> Dict[str, object]:
-    """Ocenia dopasowanie oferty do profilu (kultura, sztuka, grafika).
+    """Ocenia dopasowanie oferty do aktualnie wybranego profilu.
 
-    Trafienie w TYTULE waży podwójnie względem trafienia w opisie lub nazwie
-    jednostki — tytuł najlepiej opisuje stanowisko.
+    Trafienie w TYTULE waży podwójnie względem trafienia w opisie lub
+    nazwie jednostki — tytuł najlepiej opisuje stanowisko.
 
     Args:
         title: tytuł oferty.
@@ -255,9 +158,18 @@ def score_offer(title: str, description: str = "",
         Słownik: profile_score (int), profile_tags (lista obszarów),
         profile_level ('strong' / 'weak' / 'none'), profile_excluded (bool).
     """
-    title_norm = _strip_schedule_meanings(_normalize(title))
+    title_norm = _strip_homonyms(_normalize(title))
+    # Tytuł PRZED usunięciem homonimów — potrzebny do wykluczeń.
+    #
+    # Kolejność ma znaczenie i kosztowała jeden fałszywy wynik: dla
+    # „Analityk kredytowy” filtr homonimu usuwał słowo „analityk” (bo
+    # w kontekście jest „kredytow”), więc wykluczenie „analityk kredytow”
+    # nie miało już czego dopasować i oferta wychodziła jako „może
+    # pasować”. Wykluczenia opisują to, co tytuł MÓWI, więc muszą działać
+    # na tekście nietkniętym.
+    title_for_exclude = _normalize(title)
     body_norm = _strip_institution_noise(
-        _strip_schedule_meanings(_normalize(f"{description} {unit_name}"))
+        _strip_homonyms(_normalize(f"{description} {unit_name}"))
     )
 
     score = 0
@@ -265,7 +177,7 @@ def score_offer(title: str, description: str = "",
     core_in_title = False
     core_anywhere = False
 
-    for label, weight, patterns in PROFILE_KEYWORDS:
+    for label, weight, patterns in _ACTIVE.PROFILE_KEYWORDS:
         hit_title = any(pattern in title_norm for pattern in patterns)
         hit_body = any(pattern in body_norm for pattern in patterns)
         if hit_title:
@@ -274,36 +186,37 @@ def score_offer(title: str, description: str = "",
             score += weight
         if hit_title or hit_body:
             tags.append(label)
-            if label in CORE_AREAS:
+            if label in _ACTIVE.CORE_AREAS:
                 core_anywhere = True
                 if hit_title:
                     core_in_title = True
 
     # Wykluczenia liczymy tylko z tytułu — w opisie mogą pojawiać się
-    # przypadkowo (np. "współpraca z księgowością" w ofercie dla animatora).
-    excluded = any(pattern in title_norm for pattern in EXCLUDE_KEYWORDS)
+    # przypadkowo (np. „współpraca z księgowością” w ofercie dla animatora).
+    excluded = any(pattern in title_for_exclude
+                   for pattern in _ACTIVE.EXCLUDE_KEYWORDS)
     if excluded:
         score -= 10
 
-    # Degradacja: oferta jest wiarygodna, ale wymaga odrębnych kwalifikacji
-    # (patrz DEMOTE_KEYWORDS). Nie usuwamy jej — tylko nie pozwalamy jej
-    # nosić odznaki „DLA CIEBIE” na równi z ofertą wprost z profilu.
+    # Degradacja: oferta jest wiarygodna, ale wymaga odrębnych kwalifikacji.
+    # Nie usuwamy jej — tylko nie pozwalamy jej nosić odznaki „DLA CIEBIE”
+    # na równi z ofertą wprost z profilu.
     demoted = any(pattern in title_norm or pattern in body_norm
-                  for pattern in DEMOTE_KEYWORDS)
+                  for pattern in _ACTIVE.DEMOTE_KEYWORDS)
 
     # Kwalifikacja: musi być trafienie w obszarze RDZENIOWYM. Trafienie
-    # wyłącznie w obszarze wspierającym (np. sama nazwa "muzeum" w opisie)
-    # nie czyni oferty dopasowaną do profilu.
-    arts_employer = any(name in _normalize(unit_name)
-                        for name in ARTS_EMPLOYERS)
-    if excluded or not core_anywhere or score < SCORE_WEAK:
+    # wyłącznie w obszarze wspierającym (np. samo „SQL” w wymaganiach albo
+    # sama nazwa „muzeum” w opisie) nie czyni oferty dopasowaną.
+    preferred = any(name in _normalize(unit_name)
+                    for name in _ACTIVE.PREFERRED_EMPLOYERS)
+    if excluded or not core_anywhere or score < _ACTIVE.SCORE_WEAK:
         level = "none"
-    elif (score >= SCORE_STRONG and not demoted
-          and (core_in_title or arts_employer)):
+    elif (score >= _ACTIVE.SCORE_STRONG and not demoted
+          and (core_in_title or preferred)):
         # Mocne dopasowanie wymaga trafienia rdzeniowego w TYTULE — to
-        # odróżnia "GRAFIK/GRAFICZKA" od oferty, która tylko wspomina
-        # projektowanie w opisie obowiązków. Wyjątkiem jest jednoznacznie
-        # artystyczny pracodawca (ARTS_EMPLOYERS), np. ASP.
+        # odróżnia „GRAFIK/GRAFICZKA” od oferty, która tylko wspomina
+        # projektowanie w opisie obowiązków. Wyjątkiem jest pracodawca
+        # z PREFERRED_EMPLOYERS (np. ASP w profilu kultury).
         level = "strong"
     else:
         level = "weak"

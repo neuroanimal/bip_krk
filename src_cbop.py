@@ -75,10 +75,21 @@ PORTAL_SEARCH = "https://oferty.praca.gov.pl/portal/lista-ofert"
 # Liczby z badania 2026-10-15 (kraj / Małopolska): grafik 15/5,
 # instruktor 61/0, animator 15/0, kultur 18/1, warsztat 13/2,
 # plastyk 5/1, edukator 5/1, muzeum 1/0.
-SEARCH_PHRASES: Tuple[str, ...] = (
-    "grafik", "grafika", "plastyk", "animator", "instruktor",
-    "edukator", "muzeum", "kultur", "warsztat", "wystaw",
-)
+SEARCH_PHRASES: Dict[str, Tuple[str, ...]] = {
+    "kultura": (
+        "grafik", "grafika", "plastyk", "animator", "instruktor",
+        "edukator", "muzeum", "kultur", "warsztat", "wystaw",
+    ),
+    # Dla profilu danych CBOP jest źródłem SŁABYM i trzeba o tym wiedzieć:
+    # „programista” daje w Małopolsce głównie automatykę przemysłową
+    # (Programista-Operator CNC, Programista Robotów), a „analityk danych”
+    # zero w całym kraju. Zostawiamy, bo urzędy pracy publikują też etaty
+    # w uczelniach i instytutach, których nie ma na portalach IT.
+    "it": (
+        "programista", "informatyk", "analityk danych", "python",
+        "java", "baz danych", "sztuczn inteligencj", "automatyzacj",
+    ),
+}
 
 # Rozmiar strony i limit stron. API zwraca najwyżej 20 pozycji na stronę
 # niezależnie od żądanego rozmiaru, więc chodzimy po stronach. MAX_PAGES to
@@ -287,6 +298,7 @@ def main() -> int:
         "--limit", type=int, default=0,
         help="Ogranicz liczbę zapisanych ofert (tryb próbny).",
     )
+    bc.add_profile_argument(parser)
     parser.add_argument(
         "--skip-numbers", action="store_true",
         help="Nie pobieraj numerów ofert (szybciej, ale bez sygnatur).",
@@ -294,12 +306,17 @@ def main() -> int:
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
+    bc.use_profile(args.profile)
+    phrases = SEARCH_PHRASES.get(args.profile)
+    if not phrases:
+        logging.error("Brak fraz dla profilu '%s'.", args.profile)
+        return 1
     session = bc.build_session()
 
     # Zbieramy po frazach i od razu odsiewamy oferty spoza Małopolski.
     local: Dict[str, Dict[str, Any]] = {}
     ok_phrases = 0
-    for phrase in SEARCH_PHRASES:
+    for phrase in phrases:
         logging.info("Fraza '%s'", phrase)
         offers = search_phrase(session, phrase)
         if offers:
@@ -349,7 +366,7 @@ def main() -> int:
     bc.save_dataset(bc.OFFERS_DATASET, dataset)
     bc.save_snapshot("src_cbop", {
         "fetched_at": seen_now,
-        "phrases": list(SEARCH_PHRASES),
+        "phrases": list(phrases),
         "kept": len(records),
         "offers": records,
     })

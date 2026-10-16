@@ -38,8 +38,10 @@ from datetime import date
 from typing import Dict, List, Optional, Tuple
 
 import bip_common as bc
+import profile_match
 from profile_match import score_offer
-from report_html import build_html, deadline_label, summarize_body
+from report_html import (ReportMeta, build_html, deadline_label,
+                         summarize_body)
 
 # Priorytet kategorii — im niższa liczba, tym wyżej w raporcie. Dopasowanie
 # jest po fragmencie nazwy (małe litery), aby złapać warianty nazewnictwa
@@ -529,9 +531,20 @@ def main() -> int:
         help="Zapisz znacznik 'oferty oglądane' (last_report_at) po "
              "wygenerowaniu — kolejny raport nie oznaczy ich jako NOWE.",
     )
+    bc.add_profile_argument(parser)
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
+    # Kolejność jest istotna: najpierw przestawiamy ścieżki i profil
+    # oceniania, a dopiero potem czytamy jakikolwiek dataset — inaczej
+    # wczytalibyśmy dane innego profilu.
+    bc.use_profile(args.profile)
+    try:
+        profile = profile_match.set_profile(args.profile)
+    except KeyError as exc:
+        logging.error("%s", exc)
+        return 1
+    logging.info("Profil: %s", profile.LABEL)
     bc.ensure_dirs()
 
     offers_ds = bc.load_dataset(bc.OFFERS_DATASET)
@@ -600,12 +613,21 @@ def main() -> int:
         logging.info("Niedawno zamkniętych trafień z profilu: %d",
                      len(recent_closed))
 
-    html = build_html(grouped, details_ds["records"], len(enriched),
-                      failures_ds.get("records"), recent_closed)
+    html = build_html(
+        grouped, details_ds["records"], len(enriched),
+        ReportMeta(failures=failures_ds.get("records"),
+                   recent_closed=recent_closed,
+                   profile_label=profile.LABEL,
+                   profile_description=profile.DESCRIPTION),
+    )
 
     stamp = bc.timestamp_str()
-    md_path = bc.REPORTS_DIR / f"raport_praca_{stamp}.md"
-    html_path = bc.REPORTS_DIR / f"raport_praca_{stamp}.html"
+    # Nazwa pliku zawiera slug profilu, żeby raporty obu profili dały się
+    # trzymać razem bez pomyłki (dla profilu domyślnego zostaje stara
+    # nazwa — tak, by nie zmieniać tego, co użytkownik już zna).
+    tag = "" if args.profile == bc.DEFAULT_PROFILE else f"_{args.profile}"
+    md_path = bc.REPORTS_DIR / f"raport_praca{tag}_{stamp}.md"
+    html_path = bc.REPORTS_DIR / f"raport_praca{tag}_{stamp}.html"
 
     md_path.write_text(markdown, encoding="utf-8")
     html_path.write_text(html, encoding="utf-8")

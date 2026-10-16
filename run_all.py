@@ -45,6 +45,7 @@ PIPELINE = [
     "src_nofluffjobs.py",
     "src_cbop.py",
     "src_remote_intl.py",
+    "src_bulldogjob.py",
     "4_fetch_offer_details.py",
     "5_generate_report.py",
 ]
@@ -53,7 +54,44 @@ PIPELINE = [
 # (zewnętrzny portal może być chwilowo niedostępny).
 OPTIONAL_STEPS = {"src_nuzle.py", "src_ofertypracy_edu.py",
                   "src_kultura_instytucje.py", "src_nofluffjobs.py",
-                  "src_cbop.py", "src_remote_intl.py"}
+                  "src_cbop.py", "src_remote_intl.py",
+                  "src_bulldogjob.py"}
+
+# Które etapy mają sens dla którego PROFILU.
+#
+# Bez tego podziału profil danych/AI obchodziłby ~550 jednostek BIP miasta
+# (szkoły, żłobki, przedszkola) i instytucje kultury, co trwa ~20 minut
+# i nie daje ani jednej trafnej oferty. A profil kultury pobierałby
+# bulldogjob (same stanowiska programistyczne).
+#
+# Etapy obsługujące OBA profile przyjmują ``--profile`` i same dobierają
+# zapytania — tak robią nofluffjobs (grafika vs dane) i CBOP.
+STEP_PROFILES = {
+    "1_fetch_units.py": {"kultura"},
+    "2_fetch_praca_links.py": {"kultura"},
+    "3_fetch_offers.py": {"kultura"},
+    "3b_fetch_offers_global.py": {"kultura"},
+    "src_nuzle.py": {"kultura"},
+    "src_ofertypracy_edu.py": {"kultura"},
+    "src_kultura_instytucje.py": {"kultura"},
+    "src_remote_intl.py": {"kultura", "it"},
+    "src_nofluffjobs.py": {"kultura", "it"},
+    "src_cbop.py": {"kultura", "it"},
+    "src_bulldogjob.py": {"it"},
+    # Etap 4 pobiera treść ogłoszenia z jego strony — ma sens tylko dla
+    # BIP, gdzie strona oferty to statyczny HTML. Źródła profilu IT
+    # (nofluffjobs, bulldogjob) to aplikacje JavaScript: zmierzone na
+    # 219 ofertach dało 191 rekordów szczegółów i ZERO z czytelną treścią,
+    # kosztem ~6 minut i tyluż żądań. Opis i tak mamy z API w raw_text.
+    "4_fetch_offer_details.py": {"kultura"},
+    "5_generate_report.py": {"kultura", "it"},
+}
+
+# Etapy, które przyjmują przełącznik ``--profile``. Etapy wyłącznie
+# „kulturowe” go nie znają (nie mają po co), więc nie wolno im go podać.
+PROFILE_AWARE = {"src_nofluffjobs.py", "src_cbop.py", "src_remote_intl.py",
+                 "src_bulldogjob.py", "4_fetch_offer_details.py",
+                 "5_generate_report.py"}
 
 
 def sample_args(script: str, sample: int) -> List[str]:
@@ -84,7 +122,8 @@ def sample_args(script: str, sample: int) -> List[str]:
 
 
 def run_step(script: str, verbose: bool,
-             sample: Optional[int] = None) -> int:
+             sample: Optional[int] = None,
+             profile: str = "") -> int:
     """Uruchamia pojedynczy skrypt potoku jako podproces.
 
     Używamy ``sys.executable``, aby na Windows i Linux uruchomić dokładnie
@@ -94,12 +133,16 @@ def run_step(script: str, verbose: bool,
         script: nazwa pliku skryptu do uruchomienia.
         verbose: gdy True, przekazuje flagę --verbose do skryptu.
         sample: rozmiar próbki trybu próbnego (None = pełny przebieg).
+        profile: profil zawodowy; przekazywany tylko etapom z
+            :data:`PROFILE_AWARE` (pozostałe nie znają tej opcji).
 
     Returns:
         Kod wyjścia podprocesu.
     """
     script_path = Path(__file__).resolve().parent / script
     command = [sys.executable, str(script_path)]
+    if profile and script in PROFILE_AWARE:
+        command.extend(["--profile", profile])
     if verbose:
         command.append("--verbose")
     if sample is not None:
@@ -124,17 +167,28 @@ def main() -> int:
         help="Tryb próbny: przetwarzaj tylko N jednostek/ofert (szybka "
              "weryfikacja całego potoku bez pełnego pobierania).",
     )
+    bc.add_profile_argument(parser)
     args = parser.parse_args()
 
     bc.setup_logging(args.verbose)
+    bc.use_profile(args.profile)
     bc.ensure_dirs()
+
+    steps = [s for s in PIPELINE
+             if args.profile in STEP_PROFILES.get(s, {args.profile})]
+    skipped = [s for s in PIPELINE if s not in steps]
+    logging.info("Profil: %s — etapów do wykonania: %d z %d.",
+                 args.profile, len(steps), len(PIPELINE))
+    if skipped:
+        logging.info("Pominięte (nie dotyczą tego profilu): %s",
+                     ", ".join(skipped))
 
     if args.sample is not None:
         logging.info("TRYB PRÓBNY: próbka = %d (szybki przebieg).",
                      args.sample)
 
-    for script in PIPELINE:
-        code = run_step(script, args.verbose, args.sample)
+    for script in steps:
+        code = run_step(script, args.verbose, args.sample, args.profile)
         if code != 0:
             if script in OPTIONAL_STEPS:
                 # Zewnętrzne źródło zawiodło — notujemy i idziemy dalej,
