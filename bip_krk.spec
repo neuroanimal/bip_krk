@@ -30,6 +30,7 @@ stage_files = [
     ('src_cbop.py', '.'),                 # CBOP: oficjalna baza urzędów pracy
     ('src_remote_intl.py', '.'),          # zagraniczne oferty zdalne z Polski
     ('src_bulldogjob.py', '.'),           # oferty IT (profil danych/AI)
+    ('src_arc_dev.py', '.'),              # zdalne zlecenia dev z Polski
     ('profile_match.py', '.'),            # logika dopasowania do profilu
     ('profiles', 'profiles'),             # definicje profili (kultura, it)
     ('4_fetch_offer_details.py', '.'),

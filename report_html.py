@@ -23,6 +23,7 @@ import html as html_lib
 from typing import Dict, List, NamedTuple, Optional, Tuple
 
 import bip_common as bc
+import report_stats
 
 def summarize_body(body_text: Optional[str], max_chars: int = 600) -> str:
     """Buduje krótki opis oferty z treści szczegółów.
@@ -95,6 +96,58 @@ header {
 header h1 { margin: 0 0 .3em; font-size: 1.7em; }
 header .meta { opacity: .9; font-size: .92em; }
 .wrap { max-width: 960px; margin: 0 auto; padding: 1.2em; }
+
+/* Układ trzykolumnowy: statystyki | treść | wykresy.
+   Grid, nie flex — kolumny boczne mają stałą szerokość, a środek bierze
+   resztę, co przy flexie wymagałoby dodatkowych reguł flex-basis. */
+.layout { display: grid; grid-template-columns: 210px minmax(0,1fr) 210px;
+          gap: 0; align-items: start; }
+.main-col { min-width: 0; }  /* bez tego długie linki rozpychają grid */
+.side { padding: 1.2em 0.8em; font-size: 0.82em; color: #24292f; }
+.side h3 { font-size: 0.92em; margin: 1.1em 0 0.4em; color: #57606a;
+           text-transform: uppercase; letter-spacing: 0.04em; }
+.side h3:first-child { margin-top: 0; }
+.side-left { border-right: 1px solid #d0d7de; }
+.side-right { border-left: 1px solid #d0d7de; }
+
+/* Pasek jest „przyklejony” przy przewijaniu, żeby liczby i wykresy były
+   widoczne także po zjechaniu do dalszych kategorii. */
+@media (min-width: 1100px) {
+  .side { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; }
+}
+
+table.stats { width: 100%; border-collapse: collapse; }
+table.stats th { text-align: left; font-weight: 400; color: #57606a;
+                 padding: 0.18em 0; font-size: 0.95em; }
+table.stats td { text-align: right; font-variant-numeric: tabular-nums;
+                 font-weight: 600; padding: 0.18em 0; }
+table.stats td.ok { color: #1a7f37; }
+table.stats td.new { color: #0969da; }
+table.stats td.urgent { color: #cf222e; }
+
+.chart { margin-bottom: 1.1em; }
+.chart h4 { font-size: 0.82em; font-weight: 600; color: #57606a;
+            margin: 0 0 0.3em; }
+.chart svg { width: 100%; height: auto; }
+.chart text.cl { font-size: 9px; fill: #57606a; }
+.chart text.cv { font-size: 9px; fill: #6e7781;
+                 font-variant-numeric: tabular-nums; }
+.chart text.cd { font-size: 15px; font-weight: 700; fill: #24292f; }
+
+/* Wąski ekran i druk: paski schodzą pod treść i tracą obramowania,
+   żeby nie ciąć kolumny na kartce. */
+@media (max-width: 1099px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { border: 0; border-top: 1px solid #d0d7de; max-width: 960px;
+          margin: 0 auto; }
+  .side-right { display: grid; grid-template-columns: repeat(2, 1fr);
+                gap: 0 1.5em; }
+  .side-right h3 { grid-column: 1 / -1; }
+}
+@media print {
+  .layout { grid-template-columns: 1fr; }
+  .side { border: 0; page-break-inside: avoid; }
+}
 .legend { margin: 1em 0; font-size: .88em; color: var(--muted); }
 .legend span { display: inline-block; margin-right: 1em; }
 .dot {
@@ -264,12 +317,22 @@ HTML_TRACKING_SCRIPT = """
   }
 
   function refreshCounter() {
-    var cards = document.querySelectorAll(".offer");
-    var seen = document.querySelectorAll(".offer.clicked").length;
+    // Liczymy UNIKALNE oferty, nie karty w dokumencie. Oferta dopasowana
+    // do profilu występuje w DOM dwukrotnie — raz w sekcji „Dopasowane do
+    // profilu” na górze, raz w swojej kategorii. Zliczanie kart dawało
+    // liczbę zawyżoną (w raporcie IT: 388 kart przy 229 ofertach), co
+    // kłóciło się ze statystyką w pasku bocznym.
+    var all = {}, clicked = {};
+    document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+      var id = card.getAttribute("data-nab");
+      all[id] = true;
+      if (card.classList.contains("clicked")) { clicked[id] = true; }
+    });
+    var total = Object.keys(all).length;
+    var seen = Object.keys(clicked).length;
     var el = document.getElementById("counter");
     if (el) {
-      el.textContent = (cards.length - seen) + " / " + cards.length +
-        " nieprzejrzanych";
+      el.textContent = (total - seen) + " / " + total + " nieprzejrzanych";
     }
   }
 
@@ -617,12 +680,15 @@ class ReportMeta(NamedTuple):
         recent_closed: niedawno zamknięte trafienia z profilu.
         profile_label: nazwa profilu w nagłówku raportu.
         profile_description: zdanie opisujące profil pod nagłówkiem sekcji.
+        stats: statystyki z ``report_stats.collect_stats`` do pasków
+            bocznych; gdy None, paski się nie pojawiają.
     """
 
     failures: Optional[Dict[str, dict]] = None
     recent_closed: Optional[List[Dict[str, object]]] = None
     profile_label: str = ""
     profile_description: str = ""
+    stats: Optional[Dict[str, object]] = None
 
 
 def build_html(
@@ -672,7 +738,14 @@ def build_html(
     )
     parts.append("</div></header>")
 
-    parts.append("<div class='wrap'>")
+    # Układ trzykolumnowy: liczby po lewej, treść w środku, wykresy po
+    # prawej. Przy wąskim ekranie (i przy druku) paski schodzą pod treść —
+    # patrz reguły @media w HTML_STYLE.
+    stats = meta.stats
+    parts.append("<div class='layout'>")
+    if stats:
+        parts.append(report_stats.build_stats_sidebar(stats))
+    parts.append("<div class='main-col'><div class='wrap'>")
 
     # Legenda kolorów pilności oraz świeżości.
     parts.append(
@@ -733,6 +806,10 @@ def build_html(
             parts.append("<div class='wrap'>")
             parts.append(section)
             parts.append("</div>")
+    parts.append("</div>")  # koniec kolumny głównej
+    if stats:
+        parts.append(report_stats.build_charts_sidebar(stats))
+    parts.append("</div>")  # koniec layoutu
     parts.append(
         "<footer>Źródło danych: Biuletyn Informacji Publicznej Miasta "
         "Krakowa · raport wygenerowany automatycznie</footer>"

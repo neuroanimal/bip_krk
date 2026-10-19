@@ -58,6 +58,7 @@ PIPELINE_MODULES = [
     "src_cbop",
     "src_remote_intl",
     "src_bulldogjob",
+    "src_arc_dev",
     "4_fetch_offer_details",
     "5_generate_report",
 ]
@@ -67,7 +68,7 @@ PIPELINE_MODULES = [
 OPTIONAL_MODULES = {"src_nuzle", "src_ofertypracy_edu",
                     "src_kultura_instytucje", "src_nofluffjobs",
                     "src_cbop", "src_remote_intl",
-                    "src_bulldogjob"}
+                    "src_bulldogjob", "src_arc_dev"}
 
 
 def _base_dir() -> Path:

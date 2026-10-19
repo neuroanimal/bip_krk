@@ -39,6 +39,7 @@ from typing import Dict, List, Optional, Tuple
 
 import bip_common as bc
 import profile_match
+import report_stats
 from profile_match import score_offer
 from report_html import (ReportMeta, build_html, deadline_label,
                          summarize_body)
@@ -618,7 +619,8 @@ def main() -> int:
         ReportMeta(failures=failures_ds.get("records"),
                    recent_closed=recent_closed,
                    profile_label=profile.LABEL,
-                   profile_description=profile.DESCRIPTION),
+                   profile_description=profile.DESCRIPTION,
+                   stats=report_stats.collect_stats(enriched)),
     )
 
     stamp = bc.timestamp_str()

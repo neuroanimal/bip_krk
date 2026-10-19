@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang='pl'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Raport ofert pracy — BIP Kraków · Kultura i sztuka</title>
+<style>
+:root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --ink: #1f2933;
+    --muted: #647380;
+    --accent: #7b2d8e;
+    --urgent: #d32f2f;
+    --soon: #ef6c00;
+    --ok: #2e7d32;
+    --unknown: #607d8b;
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.55;
+}
+header {
+    background: linear-gradient(135deg, #7b2d8e 0%, #3a1c71 100%);
+    color: #fff;
+    padding: 1.6em 1.2em;
+}
+header h1 { margin: 0 0 .3em; font-size: 1.7em; }
+header .meta { opacity: .9; font-size: .92em; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 1.2em; }
+
+/* Układ trzykolumnowy: statystyki | treść | wykresy.
+   Grid, nie flex — kolumny boczne mają stałą szerokość, a środek bierze
+   resztę, co przy flexie wymagałoby dodatkowych reguł flex-basis. */
+.layout { display: grid; grid-template-columns: 210px minmax(0,1fr) 210px;
+          gap: 0; align-items: start; }
+.main-col { min-width: 0; }  /* bez tego długie linki rozpychają grid */
+.side { padding: 1.2em 0.8em; font-size: 0.82em; color: #24292f; }
+.side h3 { font-size: 0.92em; margin: 1.1em 0 0.4em; color: #57606a;
+           text-transform: uppercase; letter-spacing: 0.04em; }
+.side h3:first-child { margin-top: 0; }
+.side-left { border-right: 1px solid #d0d7de; }
+.side-right { border-left: 1px solid #d0d7de; }
+
+/* Pasek jest „przyklejony” przy przewijaniu, żeby liczby i wykresy były
+   widoczne także po zjechaniu do dalszych kategorii. */
+@media (min-width: 1100px) {
+  .side { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; }
+}
+
+table.stats { width: 100%; border-collapse: collapse; }
+table.stats th { text-align: left; font-weight: 400; color: #57606a;
+                 padding: 0.18em 0; font-size: 0.95em; }
+table.stats td { text-align: right; font-variant-numeric: tabular-nums;
+                 font-weight: 600; padding: 0.18em 0; }
+table.stats td.ok { color: #1a7f37; }
+table.stats td.new { color: #0969da; }
+table.stats td.urgent { color: #cf222e; }
+
+.chart { margin-bottom: 1.1em; }
+.chart h4 { font-size: 0.82em; font-weight: 600; color: #57606a;
+            margin: 0 0 0.3em; }
+.chart svg { width: 100%; height: auto; }
+.chart text.cl { font-size: 9px; fill: #57606a; }
+.chart text.cv { font-size: 9px; fill: #6e7781;
+                 font-variant-numeric: tabular-nums; }
+.chart text.cd { font-size: 15px; font-weight: 700; fill: #24292f; }
+
+/* Wąski ekran i druk: paski schodzą pod treść i tracą obramowania,
+   żeby nie ciąć kolumny na kartce. */
+@media (max-width: 1099px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { border: 0; border-top: 1px solid #d0d7de; max-width: 960px;
+          margin: 0 auto; }
+  .side-right { display: grid; grid-template-columns: repeat(2, 1fr);
+                gap: 0 1.5em; }
+  .side-right h3 { grid-column: 1 / -1; }
+}
+@media print {
+  .layout { grid-template-columns: 1fr; }
+  .side { border: 0; page-break-inside: avoid; }
+}
+.legend { margin: 1em 0; font-size: .88em; color: var(--muted); }
+.legend span { display: inline-block; margin-right: 1em; }
+.dot {
+    display: inline-block; width: .8em; height: .8em; border-radius: 50%;
+    margin-right: .35em; vertical-align: middle;
+}
+.dot.urgent { background: var(--urgent); }
+.dot.soon { background: var(--soon); }
+.dot.ok { background: var(--ok); }
+.dot.unknown { background: var(--unknown); }
+h2.category {
+    margin: 1.6em 0 .6em;
+    padding: .45em .7em;
+    border-radius: 8px;
+    background: #ece2f3;
+    color: var(--accent);
+    border-left: 6px solid var(--accent);
+    font-size: 1.25em;
+}
+.count { color: var(--muted); font-weight: normal; font-size: .8em; }
+.offer {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 1em 1.1em;
+    margin: .8em 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    border-left: 6px solid var(--unknown);
+}
+.offer.urgent { border-left-color: var(--urgent); }
+.offer.soon { border-left-color: var(--soon); }
+.offer.ok { border-left-color: var(--ok); }
+.offer h3 { margin: 0 0 .3em; font-size: 1.1em; }
+.badge {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .78em; font-weight: 600; color: #fff; margin-left: .4em;
+}
+.badge.urgent { background: var(--urgent); }
+.badge.soon { background: var(--soon); }
+.badge.ok { background: var(--ok); }
+.badge.unknown { background: var(--unknown); }
+/* Znacznik świeżości oferty (kiedy się pojawiła). */
+.fresh {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .78em; font-weight: 700; margin-left: .4em;
+}
+.fresh-new { background: #16a34a; color: #fff; }        /* NOWE — zielony */
+.fresh-recent { background: #d1fae5; color: #065f46; }  /* ≤7 dni */
+.fresh-old { background: #eceff1; color: #607d8b; }     /* starsze */
+/* Wyróżnienie karty nowej oferty. */
+.offer.is-new {
+    border-left-width: 8px;
+    box-shadow: 0 2px 8px rgba(22,163,74,.18);
+    background: #f6fff9;
+}
+/* Oferta już KLIKNIĘTA (otwarta wcześniej) — wygaszona, by nie rozpraszała.
+   Stan trzymany w localStorage przeglądarki (raport jest plikiem offline). */
+.offer.clicked {
+    opacity: .55;
+    background: #f7f7f8;
+}
+.offer.clicked h3 { text-decoration: line-through; text-decoration-thickness: 1px; }
+.seen-mark {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .75em; font-weight: 600; margin-left: .4em;
+    background: #455a64; color: #fff;
+}
+/* Pasek narzędzi trackingu (licznik + akcje). */
+.toolbar {
+    display: flex; flex-wrap: wrap; gap: .6em; align-items: center;
+    background: #fff; border: 1px solid #dde3e8; border-radius: 8px;
+    padding: .6em .8em; margin: .8em 0; font-size: .9em;
+}
+.toolbar button {
+    font: inherit; cursor: pointer; border: 1px solid #b0bec5;
+    background: #eceff1; border-radius: 6px; padding: .3em .7em;
+}
+.toolbar button:hover { background: #cfd8dc; }
+.toolbar .counter { font-weight: 700; color: var(--accent); }
+.meta { color: var(--muted); font-size: .9em; margin: .2em 0 .5em; }
+.desc {
+    white-space: pre-wrap;
+    background: #fafbfc;
+    border-left: 3px solid #d7dee5;
+    padding: .6em .8em;
+    border-radius: 4px;
+    margin: .5em 0;
+    font-size: .93em;
+}
+a { color: #0645ad; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.links { font-size: .88em; margin-top: .4em; }
+.links ul { margin: .3em 0 0; padding-left: 1.2em; }
+/* Sekcja "dopasowane do profilu" — wyróżniona, na samej górze raportu. */
+.profile-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #fffbeb 100%);
+    border: 2px solid #f59e0b; border-radius: 10px;
+    padding: .9em 1.1em; margin: 1em 0 1.4em;
+}
+.profile-box h2 {
+    margin: 0 0 .2em; font-size: 1.2em; color: #b45309;
+    background: none; border: none; padding: 0;
+}
+.profile-box .hint { color: #78716c; font-size: .88em; margin: 0 0 .6em; }
+.profile-tags { font-size: .8em; color: #92400e; margin-top: .3em; }
+.match {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .75em; font-weight: 700; margin-left: .4em;
+    background: #f59e0b; color: #fff;
+}
+.match.weak { background: #fcd34d; color: #78350f; }
+/* Zwijana lista niedawno zamkniętych trafień z profilu. */
+.closed-matches { margin-top: .8em; }
+.closed-matches summary {
+    cursor: pointer; font-weight: 600; color: #92400e; font-size: .92em;
+}
+.closed-matches .offer { opacity: .75; }
+/* Sekcja diagnostyczna (co się nie pobrało) — zwinięta, nie rozprasza. */
+.failures {
+    background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+    padding: .6em .9em; margin: 1.2em 0; font-size: .88em;
+}
+.failures summary { cursor: pointer; font-weight: 600; color: #b26a00; }
+.failures ul { margin: .2em 0 .8em; padding-left: 1.3em; }
+footer { text-align: center; color: var(--muted); font-size: .82em; padding: 2em 0; }
+</style></head><body>
+<header><div class='wrap'>
+<h1>Raport ofert pracy — BIP Kraków · Kultura i sztuka</h1>
+<div class='meta'>Wygenerowano: 2026-10-16T16:51:42+02:00 · ofert w raporcie: <strong>105</strong></div>
+</div></header>
+<div class='layout'>
+<aside class='side side-left'><h3>Statystyki</h3><table class='stats'><tr><th>Ofert w raporcie</th><td>105</td></tr><tr><th>Dopasowanych</th><td class='ok'>18</td></tr><tr><th>— mocnych trafień</th><td class='ok'>12</td></tr><tr><th>— może pasować</th><td>6</td></tr><tr><th>NOWE od ostatniego raportu</th><td class='new'>7</td></tr><tr><th>Pilne (termin ≤ 7 dni)</th><td class='urgent'>13</td></tr><tr><th>Już oglądane</th><td>0</td></tr><tr><th>Bez podanego terminu</th><td>60</td></tr></table><h3>Źródła</h3><table class='stats'><tr><th>bip_global</th><td>29</td></tr><tr><th>nuzle</th><td>23</td></tr><tr><th>kultura_instytucje</th><td>17</td></tr><tr><th>cbop</th><td>16</td></tr><tr><th>remote_intl</th><td>12</td></tr><tr><th>nofluffjobs</th><td>8</td></tr></table></aside>
+<div class='main-col'><div class='wrap'>
+<div class='legend'><strong>Termin:</strong> <span><i class='dot urgent'></i>≤ 3 dni</span><span><i class='dot soon'></i>≤ 7 dni</span><span><i class='dot ok'></i>&gt; 7 dni</span><span><i class='dot unknown'></i>termin nieznany</span> &nbsp;|&nbsp; <strong>Świeżość:</strong> <span class='fresh fresh-new'>NOWE (nieoglądane)</span> <span class='fresh fresh-recent'>≤ 7 dni</span> <span class='fresh fresh-old'>starsze</span></div>
+<div class='toolbar'><span class='counter' id='counter'>—</span><button type='button' id='mark-all'>Oznacz wszystkie jako przejrzane</button><button type='button' id='export-seen'>Eksportuj stan (clicks.json)</button><button type='button' id='clear-seen'>Wyczyść historię</button><span class='meta'>Kliknięte oferty są wygaszane i pamiętane w tej przeglądarce.</span></div>
+<div class='profile-box'>
+<h2>Dopasowane do profilu — 18 ofert (mocnych trafień: 12)</h2>
+<p class='hint'>Kultura i sztuka, grafika i design, animacja kultury, warsztaty, edukacja muzealna i kulturalna. Pominięte stanowiska jawnie spoza profilu.</p>
+<div class='offer ok' data-nab='cbop-d6421b7f91faefccc43b1fefe1560ebc'>
+<h3>Asystent/asystentka w grupie pracowników badawczo-dydaktycznych w Katedrze Grafiki Warsztatowej na Wydziale Grafiki Akademii Sztuk Pięknych im. Jana Matejki w Krakowie<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 10 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Akademia Sztuk Pięknych im. Jana Matejki w Krakowie (Kraków, małopolskie) · 
+Termin: <strong>2026-10-26 (za 10 dni)</strong> · 
+Nr ref.: StPr/26/4192
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/d6421b7f91faefccc43b1fefe1560ebc' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/d6421b7f91faefccc43b1fefe1560ebc</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, sztuka / plastyka, animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer ok is-new' data-nab='cbop-7ebfab5a10a4711f82871b610fa301ea'>
+<h3>Bibliotekarz- instruktor (K/M)<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 14 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+POWIATOWA I MIEJSKA BIBLIOTEKA PUBLICZNA W BOCHNI (Bochnia, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/0391
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/7ebfab5a10a4711f82871b610fa301ea' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/7ebfab5a10a4711f82871b610fa301ea</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer unknown' data-nab='nfj-social-media-graphic-designer-bluebinary-krakow'>
+<h3>Social Media Graphic Designer<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+BLUEBINARY (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/social-media-graphic-designer-bluebinary-krakow' target='_blank'>https://nofluffjobs.com/job/social-media-graphic-designer-bluebinary-krakow</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, promocja / media kultury</div>
+</div>
+<div class='offer urgent' data-nab='cbop-2fa4ae4f98d7d343b62dd9854ca3ecc2'>
+<h3>Grafik/czka<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge urgent'>dziś</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+kontakt przez PUP (Olkusz, małopolskie) · 
+Termin: <strong>2026-10-16 (dziś!)</strong> · 
+Nr ref.: StPr/26/0400
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/2fa4ae4f98d7d343b62dd9854ca3ecc2' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/2fa4ae4f98d7d343b62dd9854ca3ecc2</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer ok' data-nab='cbop-4c5519ceae6a2f588d30a75c018b10d5'>
+<h3>Grafik komputerowy (K/M)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 14 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Jacek Piróg Firma Usługowo Handlowa (Lipinki, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/0493
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/4c5519ceae6a2f588d30a75c018b10d5' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/4c5519ceae6a2f588d30a75c018b10d5</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer ok' data-nab='cbop-ce57f4f939ac71550f659d11665efd9b'>
+<h3>Wykładowca na kursach (edukator, trener) (k/m)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 26 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+STRATEGY Sebastian Adamczyk (Kraków, małopolskie) · 
+Termin: <strong>2026-11-11 (za 26 dni)</strong> · 
+Nr ref.: StPr/26/3399
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/ce57f4f939ac71550f659d11665efd9b' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/ce57f4f939ac71550f659d11665efd9b</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna, promocja / media kultury</div>
+</div>
+<div class='offer ok' data-nab='cbop-3ca964533f7d34c304fec247fc7d3d24'>
+<h3>Plastyk K/M (O)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 27 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+SIGMA - GLASS PRODUCENT SZKŁA OZDOBNEGO I ARTYSTYCZNEGO Piotr SAJDAK (Pogórska Wola, małopolskie) · 
+Termin: <strong>2026-11-12 (za 27 dni)</strong> · 
+Nr ref.: StPr/26/1832
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/3ca964533f7d34c304fec247fc7d3d24' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/3ca964533f7d34c304fec247fc7d3d24</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka</div>
+</div>
+<div class='offer unknown' data-nab='intl-replika-brand-design-manager'>
+<h3>Brand Design Manager<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Replika — praca zdalna, otwarte: EMEA [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/replika-brand-design-manager' target='_blank'>https://weworkremotely.com/remote-jobs/replika-brand-design-manager</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer unknown' data-nab='intl-bluetuskr-graphic-designer-video-editor'>
+<h3>Graphic Designer &amp; Video Editor<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+BlueTuskr — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://remoteOK.com/remote-jobs/remote-graphic-designer-video-editor-bluetuskr-1137507' target='_blank'>https://remoteOK.com/remote-jobs/remote-graphic-designer-video-editor-bluetuskr-1137507</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer unknown' data-nab='intl-bbe-marketing-inc-senior-graphic-designer'>
+<h3>Senior Graphic Designer<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+BBE Marketing Inc — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/bbe-marketing-inc-senior-graphic-designer' target='_blank'>https://weworkremotely.com/remote-jobs/bbe-marketing-inc-senior-graphic-designer</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer unknown' data-nab='kult-wawel-edukator-edukatorka'>
+<h3>Edukator / Edukatorka<span class='fresh fresh-recent'>3 dni temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Zamek Królewski na Wawelu · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://wawel.krakow.pl/oferta/edukator-edukatorka' target='_blank'>https://wawel.krakow.pl/oferta/edukator-edukatorka</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer unknown' data-nab='intl-ixdf-interaction-design-foundation-education-designer-ux-ui-and-ai'>
+<h3>Education Designer: UX, UI, and AI<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+IxDF - Interaction Design Foundation — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/ixdf-interaction-design-foundation-education-designer-ux-ui-and-ai-1' target='_blank'>https://weworkremotely.com/remote-jobs/ixdf-interaction-design-foundation-education-designer-ux-ui-and-ai-1</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer ok is-new' data-nab='cbop-5792bab65e7378b038e6ddbca94547dd'>
+<h3>Instruktor terapii zajęciowej w pracowni ogrodniczo-porządkowej (K/M)<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 27 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+CARITAS ARCHIDIECEZJI KRAKOWSKIEJ (Kraków, małopolskie) · 
+Termin: <strong>2026-11-12 (za 27 dni)</strong> · 
+Nr ref.: StPr/2026-10-15/2059
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/5792bab65e7378b038e6ddbca94547dd' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/5792bab65e7378b038e6ddbca94547dd</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer ok' data-nab='cbop-44b32aa83a1d1de82bb9057baf5a70ac'>
+<h3>Instruktor terapii zajęciowej (k/m)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 45 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+BONIFRATERSKA FUNDACJA DOBROCZYNNA (Konary, małopolskie) · 
+Termin: <strong>2026-11-30 (za 45 dni)</strong> · 
+Nr ref.: StPr/26/3783
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/44b32aa83a1d1de82bb9057baf5a70ac' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/44b32aa83a1d1de82bb9057baf5a70ac</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer ok' data-nab='cbop-d377ffb99d79b72c7eafc6d62bfff608'>
+<h3>Instruktor/Instruktorka Terapii Zajęciowej<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 43 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+STOWARZYSZENIE POMOCY SOCJALNEJ GAUDIUM ET SPES (Kraków, małopolskie) · 
+Termin: <strong>2026-11-28 (za 43 dni)</strong> · 
+Nr ref.: StPr/26/3762
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/d377ffb99d79b72c7eafc6d62bfff608' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/d377ffb99d79b72c7eafc6d62bfff608</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty</div>
+</div>
+<div class='offer ok' data-nab='cbop-c9fe730f8a6cc3c3cd0f813288049daf'>
+<h3>Instruktor terapii zajęciowej (K/M)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 45 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Fundacja im. Brata Alberta Warsztat Terapii Zajęciowej (Kraków, małopolskie) · 
+Termin: <strong>2026-11-30 (za 45 dni)</strong> · 
+Nr ref.: StPr/26/3804
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/c9fe730f8a6cc3c3cd0f813288049daf' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/c9fe730f8a6cc3c3cd0f813288049daf</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty</div>
+</div>
+<div class='offer ok is-new' data-nab='cbop-e534d935b62e5a179fd95db5b38a7a34'>
+<h3>Grafik komputerowy (K/M) - oferta pracy po stażu<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 14 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+kontakt przez PUP (Gorlice, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/0668
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/e534d935b62e5a179fd95db5b38a7a34' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/e534d935b62e5a179fd95db5b38a7a34</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer ok' data-nab='cbop-7e878655be56211d9373631b63806fe7'>
+<h3>Asystent międzykulturowy (K/M)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 14 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+SZKOŁA PODSTAWOWA Z ODDZIAŁAMI INTEGRACYJNYMI NR 30 IM. KAZIMIERZA PUŁASKIEGO W KRAKOWIE (Kraków, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/4152
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/7e878655be56211d9373631b63806fe7' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/7e878655be56211d9373631b63806fe7</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna</div>
+</div>
+<details class='closed-matches'>
+<summary>Niedawno zamknięte oferty z profilu — 7 (podpowiedź, gdzie warto pilnować ogłoszeń)</summary>
+<div class='offer urgent' data-nab='16442'>
+<h3>Asystent/Asystentka muzealna w Fabryce Emalia Oskara Schindlera<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Muzeum Historyczne Miasta Krakowa · 
+Termin: <strong>2026-10-15 (termin minął)</strong> · 
+Nr ref.: MHK-01/11/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16442&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16442&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16400'>
+<h3>Stanowisko urzędnicze - Archiwista<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>po terminie</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Centrum Kształcenia Zawodowego i Ustawicznego · 
+Termin: <strong>2026-09-25 (termin minął)</strong> · 
+Nr ref.: CKZIU
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=625&amp;sub_dok_id=104362&amp;nab_id=16400&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=625&amp;sub_dok_id=104362&amp;nab_id=16400&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: konserwacja / zbiory</div>
+</div>
+<div class='offer urgent' data-nab='16142'>
+<h3>Instruktor/Instruktorka organizujący/a działalność w Klubie Mirage<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Ośrodek Kultury Kraków - Nowa Huta · 
+Termin: <strong>2026-09-11 (termin minął)</strong> · 
+Nr ref.: DKP.1100.6.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=466&amp;sub_dok_id=104362&amp;nab_id=16142&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=466&amp;sub_dok_id=104362&amp;nab_id=16142&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16133'>
+<h3>Osoba do prowadzenia szkolnej składnicy akt (archiwistka/archiwista)<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>po terminie</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Zespół Szkół Chemicznych · 
+Termin: <strong>2026-08-25 (termin minął)</strong> · 
+Nr ref.: ZSCh.110.4.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=271&amp;sub_dok_id=104362&amp;nab_id=16133&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=271&amp;sub_dok_id=104362&amp;nab_id=16133&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: konserwacja / zbiory</div>
+</div>
+<div class='offer urgent' data-nab='16078'>
+<h3>specjalista/ka ds. obsługi zwiedzających<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Galeria Sztuki Współczesnej „Bunkier Sztuki” · 
+Termin: <strong>2026-08-24 (termin minął)</strong> · 
+Nr ref.: 2026/08/1
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=318&amp;sub_dok_id=104362&amp;nab_id=16078&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=318&amp;sub_dok_id=104362&amp;nab_id=16078&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16145'>
+<h3>Instruktor/instruktorka d.s.imprez<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Centrum Kultury „Dworek Białoprądnicki” · 
+Termin: <strong>2026-08-17 (termin minął)</strong> · 
+Nr ref.: CKDB-1/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=469&amp;sub_dok_id=104362&amp;nab_id=16145&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=469&amp;sub_dok_id=104362&amp;nab_id=16145&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16003'>
+<h3>ORGANIZATOR/ORGANIZATORKA<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Centrum Kultury Podgórza · 
+Termin: <strong>2026-08-17 (termin minął)</strong> · 
+Nr ref.: IP.110.11.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=655&amp;sub_dok_id=104362&amp;nab_id=16003&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=655&amp;sub_dok_id=104362&amp;nab_id=16003&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+</details>
+</div>
+<h2 class='category'>Kultura i Sztuka <span class='count'>(28)</span></h2>
+<div class='offer soon' data-nab='16430'>
+<h3>Starszy asystent/asystentka konserwatorska w Pracowni Konserwacji Tkanin<span class='fresh fresh-recent'>4 dni temu</span><span class='badge soon'>za 4 dni</span></h3>
+<div class='meta'>
+Muzeum Historyczne Miasta Krakowa · 
+Termin: <strong>2026-10-20 (za 4 dni)</strong> · 
+Nr ref.: MHK-01/10/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16430&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16430&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+MUZEUM HISTORYCZNE MIASTA KRAKOWA
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO STARSZY ASYSTENT/ASYSTENTKA KONSERWATORSKA W PRACOWNI KONSERWACJI TKANIN
+(NR REF. MHK-01/10/2026)
+1. Wymagania formalne
+dyplom ukończenia studiów pierwszego stopnia związanych z zakresem gromadzonych w muzeum zbiorów (preferowane  Studia Konserwacji i Restauracji Dzieł Sztuki ze specjalizacją Konserwator Tkanin) i 3 lata stażu pracy w wykonywanej specjalności lub
+dyplom ukończenia studiów drugiego stopnia  lub jednolitych studiów magisterskich związanych z zakresem gromadzonych w …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=27' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://system.erecruiter.pl/FormTemplates/RecruitmentForm.aspx?WebID=33f9040d1d44411f9d8365c72fc211f2 ' target='_blank'>https://system.erecruiter.pl/FormTemplates/RecruitmentForm.aspx?WebID=33f9040d1d44411f9d8365c72fc211f2</a></li>
+<li><a href='https://muzeumkrakowa.pl/procedura-zgloszen-wewnetrznych-w-muzeum-krakowa' target='_blank'>https://muzeumkrakowa.pl/procedura-zgloszen-wewnetrznych-w-muzeum-krakowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16430&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16576'>
+<h3>Specjalista/specjalistka/koordynator/ koordynatorka w Biurze Programowym<span class='fresh fresh-recent'>2 dni temu</span><span class='badge ok'>za 15 dni</span></h3>
+<div class='meta'>
+Instytut Kultury Willa Decjusza · 
+Termin: <strong>2026-10-31 (za 15 dni)</strong> · 
+Nr ref.: IKWD2026/10/1
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=617&amp;sub_dok_id=104362&amp;nab_id=16576&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=617&amp;sub_dok_id=104362&amp;nab_id=16576&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+Dyrektor Instytutu Kultury Willa Decjusza ogłasza nabór w biurze programowym na wolne stanowisko
+specjalista/specjalistka/koordynator/ koordynatorka
+Oferujemy:
+pracę w samorządowej instytucji kultury realizującej projekty o charakterze lokalnym i międzynarodowym,
+możliwość współpracy z artystami, pisarzami, ekspertami i organizacjami z Polski i zagranicy,
+udział w realizacji międzynarodowych programów rezydencyjnych oraz wydarzeń kulturalnych i literackich,
+możliwość rozwoju zawodowego, podnoszenia kwalifikacji i udziału w szkoleniach,
+ciekawą, …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=617' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=617&amp;sub_dok_id=104362&amp;nab_id=16576&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16507'>
+<h3>Główna Księgowa/Główny Księgowy<span class='fresh fresh-recent'>4 dni temu</span><span class='badge ok'>za 45 dni</span></h3>
+<div class='meta'>
+Orkiestra Sinfonietta Cracovia · 
+Termin: <strong>2026-11-30 (za 45 dni)</strong> · 
+Nr ref.: SC-7/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=488&amp;sub_dok_id=104362&amp;nab_id=16507&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=488&amp;sub_dok_id=104362&amp;nab_id=16507&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DYREKTOR
+ORKIESTRY STOŁECZNEGO KRÓLEWSKIEGO MIASTA KRAKOWA &quot;SINFONIETTA CRACOVIA&quot;
+OGŁASZA NABÓR
+NA WOLNE STANOWISKO
+GŁÓWNA KSIĘGOWA/GŁÓWNY KSIĘGOWY
+(NR REF. SC-7/2026)
+1. Wymagania formalne:
+Zgodnie z art. 54, ust. 1 i 2 Ustawy z dnia 27 sierpnia 2009 r., o finansach publicznych (Dz.U. 2022 poz. 1634 ze zm.) do udziału w naborze mogą przystąpić osoby spełniające następujące wymagania:
+1. posiadanie obywatelstwa państwa członkowskiego Unii Europejskiej, Konfederacji Szwajcarskiej albo państwa członkowskiego Europejskiego Porozumienia o Wolnym Handlu (EFTA) …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=488' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=488&amp;sub_dok_id=104362&amp;nab_id=16507&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer unknown' data-nab='kult-mnk-asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich'>
+<h3>Asystent/-ka / Adiunkt/-ka w Bibliotece Czartoryskich<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Muzeum Narodowe w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://mnk.pl/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/' target='_blank'>https://mnk.pl/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-wbp-dzial-administracji-pracownik-gospodarczy.pdf'>
+<h3>Dział Administracji - pracownik gospodarczy<span class='fresh fresh-recent'>3 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Wojewódzka Biblioteka Publiczna w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://rajska.info/system/files/8795/dzial-administracji-pracownik-gospodarczy.pdf' target='_blank'>https://rajska.info/system/files/8795/dzial-administracji-pracownik-gospodarczy.pdf</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-wawel-edukator-edukatorka'>
+<h3>Edukator / Edukatorka<span class='fresh fresh-recent'>3 dni temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Zamek Królewski na Wawelu · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://wawel.krakow.pl/oferta/edukator-edukatorka' target='_blank'>https://wawel.krakow.pl/oferta/edukator-edukatorka</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer unknown' data-nab='nfj-game-economy-designer-bluebinary-krakow-1'>
+<h3>Game Economy Designer<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+BLUEBINARY (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/game-economy-designer-bluebinary-krakow-1' target='_blank'>https://nofluffjobs.com/job/game-economy-designer-bluebinary-krakow-1</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nfj-interaction-designer-m-f-n-eset-krakow'>
+<h3>Interaction Designer (m/f/n)<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+ESET (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/interaction-designer-m-f-n-eset-krakow' target='_blank'>https://nofluffjobs.com/job/interaction-designer-m-f-n-eset-krakow</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-wawel-konserwator-kierownik-zespolu-w-pracowni-konserwacji-zabytko'>
+<h3>Konserwator - Kierownik Zespołu w Pracowni konserwacji zabytków archeologicznych<span class='fresh fresh-recent'>3 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Zamek Królewski na Wawelu · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://wawel.krakow.pl/oferta/konserwator-kierownik-zespolu-w-pracowni-konserwacji-zabytkow-archeologicznych' target='_blank'>https://wawel.krakow.pl/oferta/konserwator-kierownik-zespolu-w-pracowni-konserwacji-zabytkow-archeologicznych</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-koordynator_ds_dostepnosci.docx'>
+<h3>Koordynator/ka Dostępności<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/koordynator_ds_dostepnosci.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/koordynator_ds_dostepnosci.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-mnk-nabor-na-stanowisko-osoba-sprzatajaca'>
+<h3>Osoba sprzątająca<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Muzeum Narodowe w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://mnk.pl/nabor-na-stanowisko-osoba-sprzatajaca/' target='_blank'>https://mnk.pl/nabor-na-stanowisko-osoba-sprzatajaca/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-mnk-nabor-na-stanowisko-pomocnik-czka-muzealna-a-kasjer-ka'>
+<h3>Pomocnik/czka muzealna/a – Kasjer/ka<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Muzeum Narodowe w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://mnk.pl/nabor-na-stanowisko-pomocnik-czka-muzealna-a-kasjer-ka/' target='_blank'>https://mnk.pl/nabor-na-stanowisko-pomocnik-czka-muzealna-a-kasjer-ka/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-praca_informatyk.docx'>
+<h3>Pracownik działu IT<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/PDF_rozne/2025/praca_informatyk.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/PDF_rozne/2025/praca_informatyk.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-ogloszenie_pracownik_gospodarczy.docx'>
+<h3>Pracownik gospodarczy<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/ogloszenie_pracownik_gospodarczy.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/ogloszenie_pracownik_gospodarczy.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nfj-product-designer-keepit-krakow-1'>
+<h3>Product Designer<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Keepit (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/product-designer-keepit-krakow-1' target='_blank'>https://nofluffjobs.com/job/product-designer-keepit-krakow-1</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nfj-senior-ux-designer-mindbox-krakow'>
+<h3>Senior UX Designer<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Mindbox Sp. z o.o. (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/senior-ux-designer-mindbox-krakow' target='_blank'>https://nofluffjobs.com/job/senior-ux-designer-mindbox-krakow</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nfj-social-media-graphic-designer-bluebinary-krakow'>
+<h3>Social Media Graphic Designer<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+BLUEBINARY (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/social-media-graphic-designer-bluebinary-krakow' target='_blank'>https://nofluffjobs.com/job/social-media-graphic-designer-bluebinary-krakow</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, promocja / media kultury</div>
+</div>
+<div class='offer unknown' data-nab='nfj-solution-designer-mindbox-krakow'>
+<h3>Solution Designer<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Mindbox Sp. z o.o. (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/solution-designer-mindbox-krakow' target='_blank'>https://nofluffjobs.com/job/solution-designer-mindbox-krakow</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-Specjalista%20ds.%20bezpiecze%C5%84stwa%20Teatr%20S%C5%82owa'>
+<h3>Specjalista ds. bezpieczeństwa<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/MOS/Specjalista%20ds.%20bezpiecze%C5%84stwa%20Teatr%20S%C5%82owackiego.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/MOS/Specjalista%20ds.%20bezpiecze%C5%84stwa%20Teatr%20S%C5%82owackiego.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-ksiegowosc_oferta_pracy.docx'>
+<h3>Specjalista ds. księgowości / samodzielny księgowy<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/ksiegowosc_oferta_pracy.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/ksiegowosc_oferta_pracy.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-specjalista_ds_ksiegowosci_i_finansow.docx'>
+<h3>Specjalista ds. księgowości i finansów<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2026_2027/specjalista_ds_ksiegowosci_i_finansow.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2026_2027/specjalista_ds_ksiegowosci_i_finansow.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-ogloszenie_montazysta_2026.docx'>
+<h3>Specjalista ds. montażu dekoracji teatralnych<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/PDF_rozne/ogloszenie_montazysta_2026.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/PDF_rozne/ogloszenie_montazysta_2026.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-ogloszenie_administracja.docx'>
+<h3>Specjalista/Specjalistka ds. administrowania majątkiem Teatru<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/ogloszenie_administracja.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/ogloszenie_administracja.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-mnk-specjalista-ka-ds-nadzoru-budowlanego'>
+<h3>Specjalista/ka ds. Nadzoru Budowlanego<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Muzeum Narodowe w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://mnk.pl/specjalista-ka-ds-nadzoru-budowlanego/' target='_blank'>https://mnk.pl/specjalista-ka-ds-nadzoru-budowlanego/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-mnk-specjalista-ka-w-sekcji-ds-ksiegowosci'>
+<h3>Specjalista/ka w Sekcji ds. Księgowości<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Muzeum Narodowe w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://mnk.pl/specjalista-ka-w-sekcji-ds-ksiegowosci/' target='_blank'>https://mnk.pl/specjalista-ka-w-sekcji-ds-ksiegowosci/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nfj-ui-designer-avenga-agencja-pracy-nr-kraz-8448-krakow'>
+<h3>UI Designer<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+AVENGA (Agencja Pracy, nr KRAZ: 8448) (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/ui-designer-avenga-agencja-pracy-nr-kraz-8448-krakow' target='_blank'>https://nofluffjobs.com/job/ui-designer-avenga-agencja-pracy-nr-kraz-8448-krakow</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nfj-ux-researcher-mindbox-krakow'>
+<h3>UX Researcher<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Mindbox Sp. z o.o. (nofluffjobs.com (Kraków)) · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nofluffjobs
+</div>
+<div class='meta'>Szczegóły: <a href='https://nofluffjobs.com/job/ux-researcher-mindbox-krakow' target='_blank'>https://nofluffjobs.com/job/ux-researcher-mindbox-krakow</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='kult-slowacki-2026ogloszenie_montazysta.docx'>
+<h3>specjalista ds. montażu dekoracji teatralnych<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Teatr im. Juliusza Słowackiego w Krakowie · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: kultura_instytucje
+</div>
+<div class='meta'>Szczegóły: <a href='https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/2026ogloszenie_montazysta.docx' target='_blank'>https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/2026ogloszenie_montazysta.docx</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<h2 class='category'>Szkolnictwo i Edukacja <span class='count'>(4)</span></h2>
+<div class='offer ok is-new' data-nab='16600'>
+<h3>Referent<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 10 dni</span></h3>
+<div class='meta'>
+Centrum Kształcenia Zawodowego nr 1 · 
+Termin: <strong>2026-10-26 (za 10 dni)</strong> · 
+Nr ref.: 1/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=293&amp;sub_dok_id=104362&amp;nab_id=16600&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=293&amp;sub_dok_id=104362&amp;nab_id=16600&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+CENTRUM KSZTAŁCENIA ZAWODOWEGO NR 1
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO REFERENT
+(NR REF. 1/2026)
+1. Wymagania formalne
+Kandydat:
+1. Posiada obywatelstwo polskie;
+2. Posiada pełną zdolność do czynności prawnych oraz korzystania w pełni z praw publicznych;
+3. Posiada stan zdrowia pozwalający na zatrudnienie na ww. stanowisku;
+4. Nie był prawomocnie skazany za przestępstwo popełnione umyślnie;
+5. Posiada co najmniej średnie wykształcenie oraz doświadczenie w pracy na stanowisku związanym ze sprawami biurowo – administracyjnymi
+2. Wymagania …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=293' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=293&amp;sub_dok_id=104362&amp;nab_id=16600&amp;MODE=nab&amp;ACT=dodatkowe' target='_blank'>Informacje dodatkowe</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=293&amp;sub_dok_id=104362&amp;nab_id=16600&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer urgent' data-nab='16504'>
+<h3>specjalista/ka ds. kadr<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>dziś</span></h3>
+<div class='meta'>
+Zespół Szkół Mechanicznych nr 1 · 
+Termin: <strong>2026-10-16 (dziś!)</strong> · 
+Nr ref.: 1/KAD/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=267&amp;sub_dok_id=104362&amp;nab_id=16504&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=267&amp;sub_dok_id=104362&amp;nab_id=16504&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+Zespół Szkół Mechanicznych nr 1 w Krakowie
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO specjalisty/tki d/s kadr
+(NR REF. 1/KAD/2026)
+1. Wymagania formalne
+obywatelstwo polskie,
+pełna zdolność do czynności prawnych i pełnia praw publicznych,
+wykształcenie wyższe i minimum 4 lata stażu pracy lub wykształcenie średnie i minimum 5 lat stażu na podobnym stanowisku,
+niekaralność za umyślne przestępstwa lub przestępstwa skarbowe.
+2. Wymagania dodatkowe
+znajomość prawa pracy, Karty Nauczyciela oraz przepisów dotyczących ubezpieczeń społecznych, podatków i finansów …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=267' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=267&amp;sub_dok_id=104362&amp;nab_id=16504&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer soon' data-nab='16460'>
+<h3>starszy referent, samodzielny referent, specjalista<span class='fresh fresh-recent'>4 dni temu</span><span class='badge soon'>za 6 dni</span></h3>
+<div class='meta'>
+Miejskie Centrum Obsługi Oświaty w Krakowie · 
+Termin: <strong>2026-10-22 (za 6 dni)</strong> · 
+Nr ref.: KD.1110.19.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=139&amp;sub_dok_id=104362&amp;nab_id=16460&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=139&amp;sub_dok_id=104362&amp;nab_id=16460&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+KD.1110.19.2026
+DYREKTOR MCOO w KRAKOWIE
+ogłasza nabór kandydatów na stanowisko urzędnicze starszy referent, samodzielny referent, specjalista w Dziale Zamówień Publicznych w MCOO w Krakowie – ilość 1 etat.
+1.Wymagania niezbędne (formalne):
+spełnienie wymagań określonych art.6 ustawy z dnia 21 listopada 2008 r. o pracownikach samorządowych,
+wykształcenie wyższe,
+minimum roczny staż pracy na stanowisku ds. zamówień publicznych po stronie zamawiającego w zakresie zamówień publicznych podlegających przepisom ustawy Prawo zamówień publicznych.
+Uwaga: osoby, …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=139' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=139&amp;sub_dok_id=104362&amp;nab_id=16460&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16564'>
+<h3>WOŹNY/WOŹNA<span class='fresh fresh-recent'>3 dni temu</span><span class='badge ok'>za 14 dni</span></h3>
+<div class='meta'>
+Zespół Szkół Gastronomicznych nr 2 · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: 1/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=278&amp;sub_dok_id=104362&amp;nab_id=16564&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=278&amp;sub_dok_id=104362&amp;nab_id=16564&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+ZESPÓŁ SZKÓŁ GASTRONOMICZNYCH NR 2 IM. PROF. ODONA BUJWIDA W KRAKOWIE
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO WOŹNY/WOŹNA
+1. Wymagania formalne
+-obywatelstwo polskie
+- minimum wykształcenie zawodowe
+- niekaralność
+- mile widziane doświadczenie na podobnym stanowisku
+- pełna zdolność do czynności prawnych i korzystania z pełni praw publicznych
+- stan zdrowia pozwalający na wykonywaniu pracy na proponowanym stanowisku
+2. Wymagania dodatkowe
+- umiejętności zawodowe: planowanie i organizacja pracy,
+- odpowiedzialność, punktualność, dokładność, sumienność, …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=278' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=278&amp;sub_dok_id=104362&amp;nab_id=16564&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<h2 class='category'>Pomoc społeczna <span class='count'>(12)</span></h2>
+<div class='offer ok is-new' data-nab='16603'>
+<h3>OPIEKUNKA/OPIEKUN<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 15 dni</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul.Krakowska 55 · 
+Termin: <strong>2026-10-31 (za 15 dni)</strong> · 
+Nr ref.: DPSKR-18/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=300&amp;sub_dok_id=104362&amp;nab_id=16603&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=300&amp;sub_dok_id=104362&amp;nab_id=16603&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ W KRAKOWIE, UL. KRAKOWSKA 55
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO OPIEKUNKA/OPIEKUN
+(NR REF. DPSKR-18/2026)
+Wymiar czasu pracy: pełny etat
+Wykształcenie: podstawowe - staż pracy 5 lat, średnie - staż pracy 1 rok
+Praca w równoważnym systemie czasu pracy od 7:00 do 19:00, 19:00 do 7:00.
+Miejsce wykonywania pracy: Dom Pomocy Społecznej w Krakowie, ul. Krakowska 55.
+Wynagrodzenie:
+wynagrodzenie zasadnicze 6 060,00 zł,
+dodatek stażowy uzależniony od udokumentowanych poprzednich okresów zatrudnienia kandydatki/kandydata w wymiarze od …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=300' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='mailto:kadry@dpskrakowska.krakow.pl' target='_blank'>kadry@dpskrakowska.krakow.pl</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=300&amp;sub_dok_id=104362&amp;nab_id=16603&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok is-new' data-nab='16597'>
+<h3>OSOBY REALIZUJĄCE USŁUGI WSPARCIA<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 12 dni</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul. Praska 27 · 
+Termin: <strong>2026-10-28 (za 12 dni)</strong> · 
+Nr ref.: DPS-FK-1101-5/26
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=231&amp;sub_dok_id=104362&amp;nab_id=16597&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=231&amp;sub_dok_id=104362&amp;nab_id=16597&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ W KRAKOWIE UL. PRASKA 27
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO OSOBY REALIZUJĄCE USŁUGI WSPARCIA
+(NR REF. DPS-FK-1101-5/26)
+1. Wymagania formalne
+Wykonującą usługi wsparcia może być osoba, która:
+jest pełnoletnia;
+nie jest członkiem rodziny osoby, na rzecz której będą świadczone usługi wsparcia;
+nie jest oddzielnie zamieszkującym małżonkiem, wstępnym ani zstępnym osoby, na rzecz której będą świadczone usługi wsparcia;
+złożyła podmiotowi świadczącemu usługi wsparcia oświadczenie o zdolności pod względem psychofizycznym do …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=231' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=231&amp;sub_dok_id=104362&amp;nab_id=16597&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok is-new' data-nab='16606'>
+<h3>PIELĘGNIARKA/PIELĘGNIARZ/RATOWNIK MEDYCZNY/RATOWNICZKA MEDYCZNA<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 14 dni</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul.Łanowa 43 · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: DPS2-11/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=325&amp;sub_dok_id=104362&amp;nab_id=16606&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=325&amp;sub_dok_id=104362&amp;nab_id=16606&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO  STANOWISKO PIELĘGNIARKA/PIELĘGNIARZ/RATOWNIK MEDYCZNY/RATOWNICZKA
+(NR REF. DPS2-11/2026)
+1. Wymagania formalne
+wykształcenie minimum średnie medyczne;
+posiadanie aktualnego prawa wykonywania zawodu pielęgniarki.
+2. Wymagania dodatkowe
+silna orientacja na Pacjenta, empatia, chęć niesienia pomocy innym, wysoka kultura osobista;
+umiejętność sprawnej organizacji pracy, kreatywność i elastyczność w działaniu;
+doświadczenie w pracy z osobami z niepełnosprawnością;
+umiejętność obsługi komputera i …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=325' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=325&amp;sub_dok_id=104362&amp;nab_id=16606&amp;MODE=nab&amp;ACT=dodatkowe' target='_blank'>Informacje dodatkowe</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=325&amp;sub_dok_id=104362&amp;nab_id=16606&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer urgent' data-nab='16555'>
+<h3>Pokojowa / Pokojowy<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>dziś</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej Nowa Huta os. Hutnicze 5 · 
+Termin: <strong>2026-10-16 (dziś!)</strong> · 
+Nr ref.: DPS - SZ 5/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=301&amp;sub_dok_id=104362&amp;nab_id=16555&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=301&amp;sub_dok_id=104362&amp;nab_id=16555&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ NOWA HUTA
+OS. HUTNICZE 5 W KRAKOWIE
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO POKOJOWA / POKOJOWY
+(NR REF. 5/2026)
+1. Wymagania
+1. Wykształcenie co najmniej podstawowe.
+2. Stan zdrowia pozwalający na zatrudnienie na danym stanowisku pracy.
+2. Zakres obowiązków
+1. Sprzątanie i dezynfekcja pomieszczeń w budynku DPS (w tym: mycie i codzienna dezynfekcja łazienek, korytarzy, sprzątanie pokoi mieszkańców, pomieszczeń biurowych i innych pomieszczeń użytkowych) oraz dbanie o czystość i porządek w całym obiekcie.
+2. Przygotowanie i …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=301' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=301&amp;sub_dok_id=104362&amp;nab_id=16555&amp;MODE=nab&amp;ACT=dodatkowe' target='_blank'>Informacje dodatkowe</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=301&amp;sub_dok_id=104362&amp;nab_id=16555&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer urgent' data-nab='16519'>
+<h3>Terapeuta/ka 0,8 etatu<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>dziś</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul. Rozrywka 1 · 
+Termin: <strong>2026-10-16 (dziś!)</strong> · 
+Nr ref.: DPS.DAG.1102.4.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=557&amp;sub_dok_id=104362&amp;nab_id=16519&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=557&amp;sub_dok_id=104362&amp;nab_id=16519&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ W KRAKOWIE PRZY UL ROZRYWKA 1
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO TERAPEUTA/KA 0,8 ETATU
+(NR REF. DPS.DAG.1102.4.2026)
+Wymagania niezbędne:
+1.    Posiadanie certyfikatu bądź w trakcie certyfikacji specjalisty psychoterapii uzależnień lub specjalisty terapii uzależnień lub przeszkolenie w zakresie oddziaływań terapeutyczno-rehabilitacyjnych wobec osób uzależnionych od alkoholu- np. psychologia, pedagogika resocjalizacyjna, trener umiejętności społecznych;
+Warunki pracy i płacy:
+1/    wymiar czasu pracy: 0,8  etatu,
+2/   …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=557' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=557&amp;sub_dok_id=104362&amp;nab_id=16519&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer urgent' data-nab='16409'>
+<h3>PIELĘGNIARKA/PIELĘGNIARZ<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>jutro</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul.Krakowska 55 · 
+Termin: <strong>2026-10-17 (jutro)</strong> · 
+Nr ref.: DPSKR-17/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=300&amp;sub_dok_id=104362&amp;nab_id=16409&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=300&amp;sub_dok_id=104362&amp;nab_id=16409&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ W KRAKOWIE, UL. KRAKOWSKA 55
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO PIELĘGNIARKA/PIELĘGNIARZ
+(NR REF. DPSKR-17/2026)
+Wymiar czasu pracy: pełny etat
+Wykształcenie: zgodne z przepisami
+Praca w równoważnym systemie czasu pracy od 7:00 do 19:00, 19:00 do 7:00.
+Miejsce wykonywania pracy: Dom Pomocy Społecznej w Krakowie, ul. Krakowska 55.
+Wynagrodzenie:
+wynagrodzenie zasadnicze 6 964,00  zł,
+dodatek stażowy uzależniony od udokumentowanych poprzednich okresów zatrudnienia kandydatki/kandydata w wymiarze od 5 do 20% wynagrodzenia …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=300' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='mailto:kadry@dpskrakowska.krakow.pl' target='_blank'>kadry@dpskrakowska.krakow.pl</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=300&amp;sub_dok_id=104362&amp;nab_id=16409&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer soon' data-nab='16579'>
+<h3>PIELĘGNIARKA / PIELĘGNIARZ - 0,5 etatu<span class='fresh fresh-recent'>2 dni temu</span><span class='badge soon'>za 7 dni</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul.A.Nowaczyńskiego 1 · 
+Termin: <strong>2026-10-23 (za 7 dni)</strong> · 
+Nr ref.: DPSN-47/26
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=233&amp;sub_dok_id=104362&amp;nab_id=16579&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=233&amp;sub_dok_id=104362&amp;nab_id=16579&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ IM. ŚW. BRATA ALBERTA
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO
+PIELĘGNIARKA / PIELĘGNIARZ - 0,5 ETATU
+(NR REF. DPSN-47/26)
+Uwaga!
+osoby, które nie spełniają wszystkich wymogów formalnych nie zostaną dopuszczone do udziału w prowadzonym postępowaniu.
+1. Wymagania formalne:
+pielęgniarka / pielęgniarz - wykształcenie minimum średnie medyczne, aktualne prawo wykonywania zawodu;
+spełnienie wymagań zawartych w art. 6 ust 1 Ustawy o pracownikach samorządowych z dnia21 listopada z 2008 r. (Dz. U. z 2024 r., poz. 1135).
+2. Wymagania …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=233' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/696748/' target='_blank'>Regulaminem wynagradzania pracowników Domu Pomocy Społecznej im. św. Brata Alberta w Krakowie</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/687817/' target='_blank'>kwestionariusz osobowy dla osoby ubiegającej się o zatrudnienie</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/687820/' target='_blank'>oświadczenie (zgoda) dotyczące przetwarzania danych osobowych oraz wykorzystania wizerunku</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/687823/' target='_blank'>klauzula informacyjna Administratora o przetwarzaniu danych osobowych nabór na wolne stanowisko pomocnicze i obsługi</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/516487/' target='_blank'>oświadczenie dotyczące Regulaminu zgłoszeń wewnętrznych określający procedurę zgłaszania naruszeń prawa oraz podejmowania działań następczych w Domu Pomocy Społecznej im. św. Brata Alberta, ul. Nowaczyńskiego 1 w Krakowie</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=233&amp;sub_dok_id=104362&amp;nab_id=16579&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer soon' data-nab='16585'>
+<h3>Specjalista ds. finansowych<span class='fresh fresh-recent'>2 dni temu</span><span class='badge soon'>za 7 dni</span></h3>
+<div class='meta'>
+Krakowskie Centrum Seniora · 
+Termin: <strong>2026-10-23 (za 7 dni)</strong> · 
+Nr ref.: 21/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=304&amp;sub_dok_id=104362&amp;nab_id=16585&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=304&amp;sub_dok_id=104362&amp;nab_id=16585&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+KRAKOWSKIE CENTRUM SENIORA
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO SPECJALISTA DS. FINANSOWYCH
+(NR REF. 21/2026)
+1. Wymagania formalne:
+wykształcenie średnie lub wyższe,
+obywatelstwo polskie,
+pełna zdolność do czynności prawnych oraz korzystanie z pełni praw publicznych,
+brak skazania prawomocnym wyrokiem sądu za umyślne przestępstwo ścigane z oskarżenia publicznego lub umyślne przestępstwo skarbowe,
+doświadczenie w rozliczaniu projektów finansowanych ze źródeł zewnętrznych,
+w tym UE,
+2. Wymagania dodatkowe:
+minimum rok stażu pracy w jednostkach …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=304' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=304&amp;sub_dok_id=104362&amp;nab_id=16585&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16567'>
+<h3>starszy referent<span class='fresh fresh-recent'>2 dni temu</span><span class='badge ok'>za 10 dni</span></h3>
+<div class='meta'>
+Centrum Placówek Opiekuńczo-Wychowawczych „Parkowa” · 
+Termin: <strong>2026-10-26 (za 10 dni)</strong> · 
+Nr ref.: CPOW/1/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=312&amp;sub_dok_id=104362&amp;nab_id=16567&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=312&amp;sub_dok_id=104362&amp;nab_id=16567&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+CENTRUM PLACÓWEK OPIEKUŃCZO-WYCHOWAWCZYCH
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO STARSZY REFERENT
+(NR REF. CPOW/1/2026)
+1. Wymagania formalne (niezbędne):
+Spełnienie wymagań określonych w art. 6 ustawy z dnia 21 listopada 2008 r. o pracownikach samorządowych (Dz. U. 2024 poz.1135 z późn. zm.).
+Wykształcenie: średnie o profilu ekonomicznym lub wykształcenie wyższe umożliwiające wykonywanie zadań na stanowisku.
+Doświadczenie zawodowe: wykształcenie średnie – min. 2 lata; wykształcenie wyższe – doświadczenie zawodowe nie jest wymagane w przypadku osób …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=312' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=312&amp;sub_dok_id=104362&amp;nab_id=16567&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16139'>
+<h3>PIELĘGNIARKA/PIELĘGNIARZ/RATOWNIK MEDYCZNY/RATOWNICZKA MEDYCZNA<span class='fresh fresh-recent'>4 dni temu</span><span class='badge ok'>za 15 dni</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul.Praska 25 · 
+Termin: <strong>2026-10-31 (za 15 dni)</strong> · 
+Nr ref.: DPSP-4/26
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=239&amp;sub_dok_id=104362&amp;nab_id=16139&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=239&amp;sub_dok_id=104362&amp;nab_id=16139&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ W KRAKOWIE, UL. PRASKA 25
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO PIELĘGNIARKA/PIELĘGNIARZ/
+RATOWNIK MEDYCZNY/RATOWNICZKA MEDYCZNA
+1. Wykształcenie umożliwiające pracę na stanowisku: pielęgniarka /pielęgniarz/ ratownik medyczny/ratowniczka medyczna.
+2. Stan zdrowia pozwalający na wykonywanie pracy na wyżej wymienionych stanowiskach.
+3. Wymiar czasu pracy: pełny lub niepełny etat;
+4. Praca w równoważnym systemie czasu pracy
+od 07.00-19.00 i 19.00-07.00.
+5. Miejsce wykonywania pracy: Dom Pomocy Społecznej w Krakowie, ul. Praska …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=239' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=239&amp;sub_dok_id=104362&amp;nab_id=16139&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='14311'>
+<h3>OPIEKUN ŚRODOWISKOWY / OPIEKUNKA ŚRODOWISKOWA - umowa zlecenie<span class='fresh fresh-recent'>4 dni temu</span><span class='badge ok'>za 76 dni</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul.A.Nowaczyńskiego 1 · 
+Termin: <strong>2026-12-31 (za 76 dni)</strong> · 
+Nr ref.: DPSN-1/26
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=233&amp;sub_dok_id=104362&amp;nab_id=14311&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=233&amp;sub_dok_id=104362&amp;nab_id=14311&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DOM POMOCY SPOŁECZNEJ IM. ŚW. BRATA ALBERTA
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO
+OPIEKUN ŚRODOWISKOWY / OPIEKUNKA ŚRODOWISKOWA - UMOWA ZLECENIE
+(NR REF. DPSN-1/26)
+1. Wymagania formalne:
+opiekun środowiskowy / opiekunka środowiskowa - wykształcenie minimum średnie.
+2. Wymagania dodatkowe:
+kwalifikacje zawodowe z zakresu: opiekuna / asystenta osoby starszej / niepełnosprawnej / opiekuna medycznego;
+doświadczenie w opiece nad osobami starszymi i/lub niepełnosprawnymi;
+posiadanie badań sanitarno epidemiologicznych;
+wysoka kultura osobista, umiejętność …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=233' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/688879/' target='_blank'>informacja Administratora o przetwarzaniu danych osobowych w celu przeprowadzenia naboru na stanowisko: zleceniobiorca usług opiekuńczych</a></li>
+<li><a href='mailto:dps@dpsnowaczynskiego.pl' target='_blank'>dps@dpsnowaczynskiego.pl</a></li>
+<li><a href='mailto:m.walczak@dpsnowaczynskiego.pl' target='_blank'>m.walczak@dpsnowaczynskiego.pl</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=233&amp;sub_dok_id=104362&amp;nab_id=14311&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='14155'>
+<h3>OPIEKUN ŚRODOWISKOWY/OPIEKUNKA ŚRODOWISKOWA<span class='fresh fresh-recent'>4 dni temu</span><span class='badge ok'>za 76 dni</span></h3>
+<div class='meta'>
+Dom Pomocy Społecznej ul.Łanowa 39 · 
+Termin: <strong>2026-12-31 (za 76 dni)</strong> · 
+Nr ref.: K.110.02.2025
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=234&amp;sub_dok_id=104362&amp;nab_id=14155&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=234&amp;sub_dok_id=104362&amp;nab_id=14155&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+DYREKTOR DOMU POMOCY SPOŁECZNEJ
+ul. Łanowa 39 w Krakowie
+OGŁASZA NABÓR NA WOLNE STANOWISKO
+OPIEKUN ŚRODOWISKOWY/OPIEKUNKA ŚRODOWISKOWA
+1. Wymagania formalne
+1) wykształcenie umożliwiające pracę jako opiekun środowiskowy;
+2) stan zdrowia pozwalający na wykonywanie pracy na stanowisku opiekun środowiskowy.
+2. Wymagania dodatkowe
+1) kwalifikacje zawodowe z zakresu: opiekuna/asystenta osoby starszej/niepełnosprawnej/ opiekuna medycznego;
+2) doświadczenie w opiece nad osobami starszymi i/lub niepełnosprawnymi;
+3) posiadanie badań …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=234' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=234&amp;sub_dok_id=104362&amp;nab_id=14155&amp;MODE=nab&amp;ACT=dodatkowe' target='_blank'>Informacje dodatkowe</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=234&amp;sub_dok_id=104362&amp;nab_id=14155&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<h2 class='category'>Gospodarka komunalna <span class='count'>(6)</span></h2>
+<div class='offer urgent' data-nab='16457'>
+<h3>Specjalista w Dziale Zarządzania Nieruchomościami w Zespole Zarządzania Obiektami Sportowymi<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>dziś</span></h3>
+<div class='meta'>
+ZIS - Zarząd Infrastruktury Sportowej w Krakowie · 
+Termin: <strong>2026-10-16 (dziś!)</strong> · 
+Nr ref.: 21/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16457&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16457&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+ZARZĄD INFRASTRUKTURY SPORTOWEJ W KRAKOWIE
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO SPECJALISTA W DZIALE ZARZĄDZANIA NIERUCHOMOŚCIAMI W ZESPOLE ZARZĄDZANIA OBIEKTAMI SPORTOWYMI
+(NR REF. 21/2026)
+1. Wymagania formalne
+Spełnienie wymagań
+art. 6 ustawy z dnia 21 listopada 2008 r. o pracownikach samorządowych określonych dla stanowisk urzędniczych
+,
+Wykształcenie kierunkowe techniczne/budowlane, średnie lub wyższe
+Bardzo dobra umiejętność obsługi programów kosztorysowych (norma PRO, BIMestiMate) związane z robotami budowlanymi, remontowymi wszystkich …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=512' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?dok_id=23451' target='_blank'>art. 6 ustawy z dnia 21 listopada 2008 r. o pracownikach samorządowych określonych dla stanowisk urzędniczych</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/630565/karta' target='_blank'>kwestionariusz osobowy</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16457&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer urgent' data-nab='16528'>
+<h3>Zastępca Kierownika Technicznego Obiektu w Dziale Zarządzania Nieruchomościami<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>dziś</span></h3>
+<div class='meta'>
+ZIS - Zarząd Infrastruktury Sportowej w Krakowie · 
+Termin: <strong>2026-10-16 (dziś!)</strong> · 
+Nr ref.: 22/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16528&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16528&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+ZARZĄD INFRASTRUKTURY SPORTOWEJ W KRAKOWIE
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO ZASTĘPCA KIEROWNIKA TECHNICZNEGO OBIEKTU  W DZIALE ZARZĄDZANIA NIERUCHOMOŚCIAMI
+(NR REF. 22/2026)
+1. Wymagania formalne
+spełnienie wymagań
+art. 6 ustawy z dnia 21 listopada 2008 r. o pracownikach samorządowych określonych dla stanowisk urzędniczych
+,
+wykształcenie wyższe,
+staż pracy*: minimum 5 lat,
+prawo jazdy kat. B (czynne).
+*„staż pracy” rozumiany jako okres zatrudnienia, do którego zastosowanie mają przepisy kodeksu pracy (zatrudnienie na podstawie umowy o pracę, …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=512' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?dok_id=23451' target='_blank'>art. 6 ustawy z dnia 21 listopada 2008 r. o pracownikach samorządowych określonych dla stanowisk urzędniczych</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/630565/karta' target='_blank'>kwestionariusz osobowy</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16528&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer urgent' data-nab='16537'>
+<h3>Specjalista w Dziale Budżetu i Windykacji<span class='fresh fresh-recent'>4 dni temu</span><span class='badge urgent'>za 3 dni</span></h3>
+<div class='meta'>
+ZCK - Zarząd Cmentarzy Komunalnych w Krakowie · 
+Termin: <strong>2026-10-19 (za 3 dni)</strong> · 
+Nr ref.: ZCK-16/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=489&amp;sub_dok_id=104362&amp;nab_id=16537&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=489&amp;sub_dok_id=104362&amp;nab_id=16537&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+ZARZĄD CMENTARZY KOMUNALNYCH W KRAKOWIE
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO
+SPECJALISTA W DZIALE BUDŻETU I WINDYKACJI (kobieta lub mężczyzna)
+(NR REF. ZCK-16/2026)
+1. Wymagania formalne
+posiadanie obywatelstwa polskiego,
+posiadanie pełnej zdolności do czynności prawnych,
+korzystanie z pełni praw publicznych,
+nieskazanie prawomocnym wyrokiem za umyślne przestępstwo ścigane z oskarżenia publicznego lub umyślne przestępstwo skarbowe,
+posiadanie nieposzlakowanej opinii,
+wykształcenie: wyższe lub średnie,
+staż pracy/ doświadczenie zawodowe:
+przy wyższym …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=489' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/542698/karta' target='_blank'>kwestionariusz osobowy dla osoby ubiegającej się o zatrudnienie,</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/542701/karta' target='_blank'>oświadczenie kandydata wraz z klauzulą informacyjną administratora,</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/568459/karta' target='_blank'>Procedura zgłoszeń wewnętrznych naruszeń prawa i podejmowania działań następczych w Zarządzie Cmentarzy Komunalnych w Krakowie.</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/568462/karta' target='_blank'>Klauzula informacyjna o zasadach przetwarzania danych osobowych sygnalisty.</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=489&amp;sub_dok_id=104362&amp;nab_id=16537&amp;MODE=nab&amp;ACT=dodatkowe' target='_blank'>Informacje dodatkowe</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=489&amp;sub_dok_id=104362&amp;nab_id=16537&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16588'>
+<h3>Specjalista w Dziale Sponsoringu i Pozyskiwania Funduszy<span class='fresh fresh-recent'>2 dni temu</span><span class='badge ok'>za 10 dni</span></h3>
+<div class='meta'>
+ZIS - Zarząd Infrastruktury Sportowej w Krakowie · 
+Termin: <strong>2026-10-26 (za 10 dni)</strong> · 
+Nr ref.: 23/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16588&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16588&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+ZARZĄD INFRASTRUKTURY SPORTOWEJ W KRAKOWIE
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO SPECJALISTA W DZIALE SPONSORINGU I POZYSKIWANIA FUNDUSZY
+(NR REF. 23/2026)
+1. Wymagania formalne
+spełnienie wymagań
+art. 6 ustawy z dnia 21 listopada 2008 r. o pracownikach samorządowych określonych dla stanowisk urzędniczych
+,
+wykształcenie wyższe, preferowany kierunek: zarządzanie, marketing, politologia,
+staż pracy: minimum 3 lata,
+prawo jazdy kat. B (czynne).
+*„staż pracy” rozumiany jako okres zatrudnienia, do którego zastosowanie mają przepisy kodeksu pracy …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=512' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?dok_id=23451' target='_blank'>art. 6 ustawy z dnia 21 listopada 2008 r. o pracownikach samorządowych określonych dla stanowisk urzędniczych</a></li>
+<li><a href='https://www.bip.krakow.pl/zalaczniki/dokumenty/n/630565/karta' target='_blank'>kwestionariusz osobowy</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16588&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16549'>
+<h3>Inspektor nadzoru/Inspektorka nadzoru w Dziale Realizacji Inwestycji - 1 etat<span class='fresh fresh-recent'>4 dni temu</span><span class='badge ok'>za 14 dni</span></h3>
+<div class='meta'>
+ZDMK - Zarząd Dróg Miasta Krakowa · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: ZDMK-28/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=511&amp;sub_dok_id=104362&amp;nab_id=16549&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=511&amp;sub_dok_id=104362&amp;nab_id=16549&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+ZARZĄD DRÓG MIASTA KRAKOWA
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO INSPEKTOR NADZORU/INSPEKTORKA NADZORU W DZIALE REALIZACJI INWESTYCJI - 1 ETAT
+(NR REF. ZDMK-28/2026)
+1. Wymagania niezbędne (formalne):
+a)
+spełnienie wymagań z art. 6 ustawy z dnia 21 listopada 2008r. o pracownikach samorządowych określonych dla stanowisk urzędniczych;
+b) wykształcenie: średnie lub wyższe techniczne;
+c) uprawnienia budowlane do pełnienia samodzielnych funkcji w budownictwie w branży elektrycznej lub pokrewne wraz z przynależnością do izby inżynierów budownictwa;
+d) staż …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=511' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://zdmk.krakow.pl/wp-content/uploads/2023/01/Wymagania-niezb%C4%99dne.pdf' target='_blank'>spełnienie wymagań z art. 6 ustawy z dnia 21 listopada 2008r. o pracownikach samorządowych określonych dla stanowisk urzędniczych;</a></li>
+<li><a href='https://zdmk.krakow.pl/wp-content/uploads/2024/03/kwestionariusz-kandydata-2024-r.doc' target='_blank'>kwestionariusz osobowy (do pobrania na stronie internetowej ZDMK, zakładka praca);</a></li>
+<li><a href='https://zdmk.krakow.pl/wp-content/uploads/2024/03/Klauzula-informacyjna-2024-r.pdf' target='_blank'>Klauzula informacyjna Administratora o przetwarzaniu danych osobowych w procesie rekrutacji.</a></li>
+<li><a href='https://Procedury dokonywania zgłoszeń naruszeń prawa i podejmowania działań następczych.' target='_blank'>Procedury dokonywania zgłoszeń naruszeń prawa i podejmowania działań następczych.</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=511&amp;sub_dok_id=104362&amp;nab_id=16549&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='14509'>
+<h3>Kontroler/Kontrolerka Obszaru Płatnego Parkowania - 3 etaty<span class='fresh fresh-old'>24 dni temu</span><span class='badge ok'>za 14 dni</span></h3>
+<div class='meta'>
+ZDMK - Zarząd Dróg Miasta Krakowa · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: ZDMK-3/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=511&amp;sub_dok_id=104362&amp;nab_id=14509&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=511&amp;sub_dok_id=104362&amp;nab_id=14509&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+ZARZĄD DRÓG MIASTA KRAKOWA
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO KONTROLER/KONTROLERKA OBSZARU PŁATNEGO PARKOWANIA - 3 ETATY
+(NR REF. ZDMK-3/2026)
+1. Do zakresu zadań pracownika będzie należeć:
+a) Kontrola poboru opłat za postój pojazdów samochodowych na drogach publicznych w obszarze płatnego parkowania w Krakowie
+b) Weryfikacja sprawności i czystości parkomatów;
+c) Monitoring Strefy Płatnego Parkowania pod kątem braku oznakowania w obrębie strefy, jak i innych nieprawidłowości oraz informowaniu o nich przełożonych.
+2. Wymagania:
+- wykształcenie …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=511' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://zdmk.krakow.pl/wp-content/uploads/2024/03/kwestionariusz-kandydata-2024-r.doc' target='_blank'>kwestionariusz osobowy dla osoby ubiegającej się o zatrudnienie,</a></li>
+<li><a href='https://zdmk.krakow.pl/wp-content/uploads/2024/03/Klauzula-informacyjna-2024-r.pdf' target='_blank'>Klauzula informacyjna Administratora o przetwarzaniu danych osobowych w procesie rekrutacji (wyłącznie do zapoznania się).</a></li>
+<li><a href='https://Procedury dokonywania zgłoszeń naruszeń prawa i podejmowania działań następczych.' target='_blank'>Procedury dokonywania zgłoszeń naruszeń prawa i podejmowania działań następczych.</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=511&amp;sub_dok_id=104362&amp;nab_id=14509&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<h2 class='category'>Spółki miejskie <span class='count'>(1)</span></h2>
+<div class='offer soon' data-nab='16493'>
+<h3>Specjalistka/Specjalista ds. Sprzedaży<span class='fresh fresh-recent'>4 dni temu</span><span class='badge soon'>za 7 dni</span></h3>
+<div class='meta'>
+Agencja Rozwoju Miasta Krakowa Sp. z o.o. · 
+Termin: <strong>2026-10-23 (za 7 dni)</strong> · 
+Nr ref.: 4/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=620&amp;sub_dok_id=104362&amp;nab_id=16493&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=620&amp;sub_dok_id=104362&amp;nab_id=16493&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+Agencja Rozwoju Miasta Krakowa sp. z o.o.
+OGŁASZA NABÓR
+NA WOLNE STANOWISKO Specjalistki/Specjalisty ds. Sprzedaży
+(NR REF. 4/2026)
+1. Wymagania formalne
+•    doświadczenie w zakresie pracy w przemyśle spotkań oraz komercjalizacji nieruchomości
+•    doświadczenie w sprzedaży
+•    znajomość języka angielskiego w stopniu umożliwiającym swobodną komunikację (min. B2)
+•    wykształcenie wyższe, preferowane kierunki związane z zarządzaniem, marketingiem, finansami, sprzedażą lub turystyką biznesową
+•    znajomość branży, w szczególności znajomość technik …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=620' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=620&amp;sub_dok_id=104362&amp;nab_id=16493&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<h2 class='category'>Inne podmioty <span class='count'>(3)</span></h2>
+<div class='offer ok' data-nab='16594'>
+<h3>stanowisko urzędnicze informatyk 1 etat<span class='fresh fresh-recent'>2 dni temu</span><span class='badge ok'>za 9 dni</span></h3>
+<div class='meta'>
+Grodzki Urząd Pracy w Krakowie · 
+Termin: <strong>2026-10-25 (za 9 dni)</strong> · 
+Nr ref.: GUP-KK.1101.11.2026.SS
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=28&amp;sub_dok_id=104362&amp;nab_id=16594&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=28&amp;sub_dok_id=104362&amp;nab_id=16594&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+GRODZKI URZĄD PRACY W KRAKOWIE
+DYREKTOR OGŁASZA NABÓR
+NA WOLNE STANOWISKO STANOWISKO URZĘDNICZE INFORMATYK  1 ETAT
+(NR REF. GUP-KK.1101.11.2026.SS)
+Dział Obsługi Urzędu
+Stanowiska ds. Obsługi Informatycznej
+/miejsce wykonywania pracy/
+O wyżej wymienione stanowisko/a może/
+nie może
+* ubiegać się obywatel Unii Europejskiej oraz obywatel państwa, któremu na podstawie umów międzynarodowych lub przepisów prawa wspólnotowego przysługuje prawo do podjęcia zatrudnienia na terytorium Rzeczypospolitej Polskiej.
+W miesiącu poprzedzającym datę upublicznienia …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=28' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://gupkrakow.praca.gov.pl/praca-w-gup' target='_blank'>kwestionariusz osobowy</a></li>
+<li><a href='https://gupkrakow.praca.gov.pl/praca-w-gup' target='_blank'>„Informacja przedstawiana kandydatom do pracy w Grodzkim Urzędzie Pracy w Krakowie o prawach związanych z ochroną danych osobowych”</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=28&amp;sub_dok_id=104362&amp;nab_id=16594&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16573'>
+<h3>inspektor/inspektorka ds. kadr<span class='fresh fresh-recent'>2 dni temu</span><span class='badge ok'>za 10 dni</span></h3>
+<div class='meta'>
+Powiatowy Inspektorat Nadzoru Budowlanego · 
+Termin: <strong>2026-10-26 (za 10 dni)</strong> · 
+Nr ref.: 168977
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=44&amp;sub_dok_id=104362&amp;nab_id=16573&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=44&amp;sub_dok_id=104362&amp;nab_id=16573&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+Powiatowy Inspektorat Nadzoru Budowlanego w Krakowie - Powiat Grodzki
+30-552 Kraków Wielicka 28 A
+Ogłoszenie nr 168977/ 14.10.2026
+Inspektor / inspektorka
+Do spraw: kadr i płac
+Liczba stanowisk: 1
+Wymiar etatu: 3/4
+Wynagrodzenie zasadnicze: około 5500,00 zł brutto
+Miejsce pracy: Kraków Wielicka 28A
+Czym będziesz się zajmować
+Osoba na tym stanowisku:
+nalicza wynagrodzenia i sporządza listy płac (umowy o pracę, umowy cywilnoprawne),
+nalicza świadczenia z ubezpieczenia chorobowego i wypadkowego,
+prowadzi kompleksową dokumentację kadrową związaną z stosunkiem …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=44' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=44&amp;sub_dok_id=104362&amp;nab_id=16573&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<div class='offer ok' data-nab='16570'>
+<h3>inspektor/inspektorka<span class='fresh fresh-recent'>2 dni temu</span><span class='badge ok'>za 12 dni</span></h3>
+<div class='meta'>
+Powiatowy Inspektorat Nadzoru Budowlanego · 
+Termin: <strong>2026-10-28 (za 12 dni)</strong> · 
+Nr ref.: 168976 PINB
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=44&amp;sub_dok_id=104362&amp;nab_id=16570&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=44&amp;sub_dok_id=104362&amp;nab_id=16570&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>Strona Podmiotowa
+Praca w jednostce
+﻿
+Powiatowy Inspektorat Nadzoru Budowlanego w Krakowie - Powiat Grodzki
+30-552 Kraków Wielicka 28A
+Ogłoszenie nr 168976 / 14.10.2026 r.
+I
+nspektor/inspektorka
+Do spraw: inspekcji i kontroli Referat Orzecznictwa i Kontroli
+Liczba stanowisk 1
+Wymiar etatu 1
+Miejsce pracy Kraków Wielicka 28 A
+Wynagrodzenie zasadnicze: około 6400,00 zł brutto
+Czym będziesz się zajmować
+Osoba na tym stanowisku:
+przeprowadza inspekcje terenowe: w zakresie budów i stanów technicznych obiektów budowlanych,
+przeprowadza inspekcje i kontrole budów, robót budowlanych, utrzymywania i …</div>
+<div class='links'>Odnośniki w ogłoszeniu:<ul>
+<li><a href='https://www.bip.krakow.pl/?bip_id=44' target='_blank'>Strona Podmiotowa</a></li>
+<li><a href='https://www.bip.krakow.pl/?bip_id=44&amp;sub_dok_id=104362&amp;nab_id=16570&amp;MODE=nab&amp;ACT=info&amp;metka=1' target='_blank'>Pokaż metkę</a></li>
+</ul></div>
+</div>
+<h2 class='category'>Oferty komercyjne (poza BIP) <span class='count'>(23)</span></h2>
+<div class='offer unknown' data-nab='nuzle-59237542'>
+<h3>Czynności magazynowe Kraków Rybitwy<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/czynnosci-magazynowe-krakow-rybitwy-krakow,g4526779' target='_blank'>https://www.nuzle.pl/czynnosci-magazynowe-krakow-rybitwy-krakow,g4526779</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-57773745'>
+<h3>Hostessa Klubowa / Od Zaraz / Rynek Główny<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/hostessa-klubowa-od-zaraz-rynek-glowny-krakow,g4529328' target='_blank'>https://www.nuzle.pl/hostessa-klubowa-od-zaraz-rynek-glowny-krakow,g4529328</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-58007623'>
+<h3>KIEROWCA/KIEROWCZYNI-KAT.B- PREMIUM!!!<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/kierowcakierowczyni-katb-premium-krakow,g4528845' target='_blank'>https://www.nuzle.pl/kierowcakierowczyni-katb-premium-krakow,g4528845</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-66896356'>
+<h3>KRAKÓW - Prace fizyczne przy torowiskach<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/krakow-prace-fizyczne-przy-torowiskach-krakow,g4515890' target='_blank'>https://www.nuzle.pl/krakow-prace-fizyczne-przy-torowiskach-krakow,g4515890</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-43828469'>
+<h3>Koordynator/ka Kontraktu<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/koordynatorka-kontraktu-krakow,g4539773' target='_blank'>https://www.nuzle.pl/koordynatorka-kontraktu-krakow,g4539773</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-27110412'>
+<h3>Magazynier, operator wózka widłowego<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/magazynier-operator-wozka-widlowego-krakow,g4540566' target='_blank'>https://www.nuzle.pl/magazynier-operator-wozka-widlowego-krakow,g4540566</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-71482993'>
+<h3>Masażystka<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/masazystka-krakow,g4718448' target='_blank'>https://www.nuzle.pl/masazystka-krakow,g4718448</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-43031635'>
+<h3>Młodszy/a Operator/ka Linii Produkcji<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/mlodszya-operatorka-linii-produkcji-krakow,g4540000' target='_blank'>https://www.nuzle.pl/mlodszya-operatorka-linii-produkcji-krakow,g4540000</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-54832581'>
+<h3>Młodszy/a Operator/ka Linii Produkcyjnej<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/mlodszya-operatorka-linii-produkcyjnej-krakow,g4535030' target='_blank'>https://www.nuzle.pl/mlodszya-operatorka-linii-produkcyjnej-krakow,g4535030</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-43819447'>
+<h3>Młodszy/sza Operator/ka Linii Produkcyjnej<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/mlodszysza-operatorka-linii-produkcyjnej-krakow,g4539774' target='_blank'>https://www.nuzle.pl/mlodszysza-operatorka-linii-produkcyjnej-krakow,g4539774</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-43352939'>
+<h3>Operator/ka do strefy jakości (k/m/n)<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/operatorka-do-strefy-jakosci-kmn-krakow,g4539901' target='_blank'>https://www.nuzle.pl/operatorka-do-strefy-jakosci-kmn-krakow,g4539901</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-27603311'>
+<h3>Osoba sprzątająca, sprzątanie biur<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/osoba-sprzatajaca-sprzatanie-biur-krakow,g4540555' target='_blank'>https://www.nuzle.pl/osoba-sprzatajaca-sprzatanie-biur-krakow,g4540555</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-69791106'>
+<h3>POSZUKUJEMY MASAŻYSTEK – WARSZAWA &amp; KRAKÓW<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/poszukujemy-masazystek-warszawa-ampkrakow-krakow,g4509880' target='_blank'>https://www.nuzle.pl/poszukujemy-masazystek-warszawa-ampkrakow-krakow,g4509880</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-47596417'>
+<h3>PRACA DLA UCZNIÓW I STUDENTÓW - ELASTYCZNY GRAFIK<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/praca-dla-uczniow-i-studentow-elastyczny-grafik-krakow,g4539406' target='_blank'>https://www.nuzle.pl/praca-dla-uczniow-i-studentow-elastyczny-grafik-krakow,g4539406</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-71509469'>
+<h3>Pracownik gospodarczy<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/pracownik-gospodarczy-krakow,g4729091' target='_blank'>https://www.nuzle.pl/pracownik-gospodarczy-krakow,g4729091</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-50127764'>
+<h3>Pracownik sprzątający(K/M) w szpitalu - Kraków<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/pracownik-sprzatajacykmw-szpitalu-krakow-krakow,g4539079' target='_blank'>https://www.nuzle.pl/pracownik-sprzatajacykmw-szpitalu-krakow-krakow,g4539079</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-71510870'>
+<h3>Psychoterapeuta psychodynamiczny (TFP) - praca...<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/psychoterapeuta-psychodynamiczny-tfppraca-krakow,g4730006' target='_blank'>https://www.nuzle.pl/psychoterapeuta-psychodynamiczny-tfppraca-krakow,g4730006</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-64782374'>
+<h3>Sortowacz recyklingowy<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/sortowacz-recyklingowy-krakow,g4518125' target='_blank'>https://www.nuzle.pl/sortowacz-recyklingowy-krakow,g4518125</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-63901581'>
+<h3>Specjalista ds. obsługi klienta z j. niemieckim<span class='fresh fresh-recent'>2 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/specjalista-ds-obslugi-klienta-z-j-niemieckim-krakow,g4519293' target='_blank'>https://www.nuzle.pl/specjalista-ds-obslugi-klienta-z-j-niemieckim-krakow,g4519293</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-64685273'>
+<h3>Specjalista/Mł. Specjalista ds. Rekrutacji Cudzoziemców<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/specjalistaml-specjalista-ds-rekrutacji-cudzoziemcow-krakow,g4518251' target='_blank'>https://www.nuzle.pl/specjalistaml-specjalista-ds-rekrutacji-cudzoziemcow-krakow,g4518251</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-39346954'>
+<h3>Specjalista/tka Techniczny/na - Elektronika lub...<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/specjalistatka-technicznyna-elektronika-lub-krakow,g4540267' target='_blank'>https://www.nuzle.pl/specjalistatka-technicznyna-elektronika-lub-krakow,g4540267</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-57509901'>
+<h3>TANCERKI / HOSTESSY/TYGODNIÓWKI/ KRAKÓW - RYNEK...<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/tancerki-hostessytygodniowkikrakow-rynek-krakow,g4529816' target='_blank'>https://www.nuzle.pl/tancerki-hostessytygodniowkikrakow-rynek-krakow,g4529816</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='nuzle-71380168'>
+<h3>Tancerka w klubie<span class='fresh fresh-recent'>4 dni temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Kraków · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: nuzle.pl
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.nuzle.pl/tancerka-w-klubie-krakow,g4673763' target='_blank'>https://www.nuzle.pl/tancerka-w-klubie-krakow,g4673763</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<h2 class='category'>Pozostałe <span class='count'>(28)</span></h2>
+<div class='offer ok is-new' data-nab='cbop-7ebfab5a10a4711f82871b610fa301ea'>
+<h3>Bibliotekarz- instruktor (K/M)<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 14 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+POWIATOWA I MIEJSKA BIBLIOTEKA PUBLICZNA W BOCHNI (Bochnia, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/0391
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/7ebfab5a10a4711f82871b610fa301ea' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/7ebfab5a10a4711f82871b610fa301ea</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer ok is-new' data-nab='cbop-e534d935b62e5a179fd95db5b38a7a34'>
+<h3>Grafik komputerowy (K/M) - oferta pracy po stażu<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 14 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+kontakt przez PUP (Gorlice, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/0668
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/e534d935b62e5a179fd95db5b38a7a34' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/e534d935b62e5a179fd95db5b38a7a34</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer ok is-new' data-nab='cbop-5792bab65e7378b038e6ddbca94547dd'>
+<h3>Instruktor terapii zajęciowej w pracowni ogrodniczo-porządkowej (K/M)<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='badge ok'>za 27 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+CARITAS ARCHIDIECEZJI KRAKOWSKIEJ (Kraków, małopolskie) · 
+Termin: <strong>2026-11-12 (za 27 dni)</strong> · 
+Nr ref.: StPr/2026-10-15/2059
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/5792bab65e7378b038e6ddbca94547dd' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/5792bab65e7378b038e6ddbca94547dd</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer urgent' data-nab='cbop-2fa4ae4f98d7d343b62dd9854ca3ecc2'>
+<h3>Grafik/czka<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge urgent'>dziś</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+kontakt przez PUP (Olkusz, małopolskie) · 
+Termin: <strong>2026-10-16 (dziś!)</strong> · 
+Nr ref.: StPr/26/0400
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/2fa4ae4f98d7d343b62dd9854ca3ecc2' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/2fa4ae4f98d7d343b62dd9854ca3ecc2</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer ok' data-nab='cbop-d6421b7f91faefccc43b1fefe1560ebc'>
+<h3>Asystent/asystentka w grupie pracowników badawczo-dydaktycznych w Katedrze Grafiki Warsztatowej na Wydziale Grafiki Akademii Sztuk Pięknych im. Jana Matejki w Krakowie<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 10 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Akademia Sztuk Pięknych im. Jana Matejki w Krakowie (Kraków, małopolskie) · 
+Termin: <strong>2026-10-26 (za 10 dni)</strong> · 
+Nr ref.: StPr/26/4192
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/d6421b7f91faefccc43b1fefe1560ebc' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/d6421b7f91faefccc43b1fefe1560ebc</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, sztuka / plastyka, animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer ok' data-nab='cbop-acbc71e93c12af1b370fb89635d6fe59'>
+<h3>Nauczyciel grafiki K/M<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 11 dni</span></h3>
+<div class='meta'>
+AGNIESZKA GĄSIERKIEWICZ (Kraków, małopolskie) · 
+Termin: <strong>2026-10-27 (za 11 dni)</strong> · 
+Nr ref.: StPr/26/3728
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/acbc71e93c12af1b370fb89635d6fe59' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/acbc71e93c12af1b370fb89635d6fe59</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer ok' data-nab='cbop-1c0fd9b2830b9c95f55529a465c7e36d'>
+<h3>Nauczyciel grafiki K/M<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 11 dni</span></h3>
+<div class='meta'>
+RYSZARD GĄSIERKIEWICZ CENTRUM EDUKACYJNE &quot;WELES&quot; (Kraków, małopolskie) · 
+Termin: <strong>2026-10-27 (za 11 dni)</strong> · 
+Nr ref.: StPr/26/3725
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/1c0fd9b2830b9c95f55529a465c7e36d' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/1c0fd9b2830b9c95f55529a465c7e36d</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer ok' data-nab='cbop-7e878655be56211d9373631b63806fe7'>
+<h3>Asystent międzykulturowy (K/M)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 14 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+SZKOŁA PODSTAWOWA Z ODDZIAŁAMI INTEGRACYJNYMI NR 30 IM. KAZIMIERZA PUŁASKIEGO W KRAKOWIE (Kraków, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/4152
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/7e878655be56211d9373631b63806fe7' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/7e878655be56211d9373631b63806fe7</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer ok' data-nab='cbop-4c5519ceae6a2f588d30a75c018b10d5'>
+<h3>Grafik komputerowy (K/M)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 14 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Jacek Piróg Firma Usługowo Handlowa (Lipinki, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/0493
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/4c5519ceae6a2f588d30a75c018b10d5' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/4c5519ceae6a2f588d30a75c018b10d5</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer ok' data-nab='cbop-18a37f91107559bfe8895f3bd5d8563e'>
+<h3>Nauczyciel-Instruktor (k/m)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 14 dni</span></h3>
+<div class='meta'>
+Młodzieżowy Dom Kultury Fort 49 Krzesławice (Kraków, małopolskie) · 
+Termin: <strong>2026-10-30 (za 14 dni)</strong> · 
+Nr ref.: StPr/26/3637
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/18a37f91107559bfe8895f3bd5d8563e' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/18a37f91107559bfe8895f3bd5d8563e</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer ok' data-nab='cbop-ce57f4f939ac71550f659d11665efd9b'>
+<h3>Wykładowca na kursach (edukator, trener) (k/m)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 26 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+STRATEGY Sebastian Adamczyk (Kraków, małopolskie) · 
+Termin: <strong>2026-11-11 (za 26 dni)</strong> · 
+Nr ref.: StPr/26/3399
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/ce57f4f939ac71550f659d11665efd9b' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/ce57f4f939ac71550f659d11665efd9b</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna, promocja / media kultury</div>
+</div>
+<div class='offer ok' data-nab='cbop-3ca964533f7d34c304fec247fc7d3d24'>
+<h3>Plastyk K/M (O)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 27 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+SIGMA - GLASS PRODUCENT SZKŁA OZDOBNEGO I ARTYSTYCZNEGO Piotr SAJDAK (Pogórska Wola, małopolskie) · 
+Termin: <strong>2026-11-12 (za 27 dni)</strong> · 
+Nr ref.: StPr/26/1832
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/3ca964533f7d34c304fec247fc7d3d24' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/3ca964533f7d34c304fec247fc7d3d24</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka</div>
+</div>
+<div class='offer ok' data-nab='cbop-d377ffb99d79b72c7eafc6d62bfff608'>
+<h3>Instruktor/Instruktorka Terapii Zajęciowej<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 43 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+STOWARZYSZENIE POMOCY SOCJALNEJ GAUDIUM ET SPES (Kraków, małopolskie) · 
+Termin: <strong>2026-11-28 (za 43 dni)</strong> · 
+Nr ref.: StPr/26/3762
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/d377ffb99d79b72c7eafc6d62bfff608' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/d377ffb99d79b72c7eafc6d62bfff608</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty</div>
+</div>
+<div class='offer ok' data-nab='cbop-c9fe730f8a6cc3c3cd0f813288049daf'>
+<h3>Instruktor terapii zajęciowej (K/M)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 45 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Fundacja im. Brata Alberta Warsztat Terapii Zajęciowej (Kraków, małopolskie) · 
+Termin: <strong>2026-11-30 (za 45 dni)</strong> · 
+Nr ref.: StPr/26/3804
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/c9fe730f8a6cc3c3cd0f813288049daf' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/c9fe730f8a6cc3c3cd0f813288049daf</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty</div>
+</div>
+<div class='offer ok' data-nab='cbop-44b32aa83a1d1de82bb9057baf5a70ac'>
+<h3>Instruktor terapii zajęciowej (k/m)<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 45 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+BONIFRATERSKA FUNDACJA DOBROCZYNNA (Konary, małopolskie) · 
+Termin: <strong>2026-11-30 (za 45 dni)</strong> · 
+Nr ref.: StPr/26/3783
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/44b32aa83a1d1de82bb9057baf5a70ac' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/44b32aa83a1d1de82bb9057baf5a70ac</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer ok' data-nab='cbop-2bcd4d8df5412cf9bd159a3f74b91562'>
+<h3>Zbrojarz warsztatowy K/M<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge ok'>za 76 dni</span></h3>
+<div class='meta'>
+ACERO SYSTEM SP.Z O.O. (Nowy Sącz, małopolskie) · 
+Termin: <strong>2026-12-31 (za 76 dni)</strong> · 
+Nr ref.: StPr/26/0858
+ · Źródło: cbop
+</div>
+<div class='meta'>Szczegóły: <a href='https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/2bcd4d8df5412cf9bd159a3f74b91562' target='_blank'>https://oferty.praca.gov.pl/portal/lista-ofert/szczegoly-oferty/2bcd4d8df5412cf9bd159a3f74b91562</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='intl-ilogos-2d-artist-props-and-customization'>
+<h3>2D Artist Props and Customization<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+iLogos — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/ilogos-2d-artist-props-and-customization' target='_blank'>https://weworkremotely.com/remote-jobs/ilogos-2d-artist-props-and-customization</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='intl-replika-brand-design-manager'>
+<h3>Brand Design Manager<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Replika — praca zdalna, otwarte: EMEA [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/replika-brand-design-manager' target='_blank'>https://weworkremotely.com/remote-jobs/replika-brand-design-manager</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer unknown' data-nab='intl-ixdf-interaction-design-foundation-course-director-ux-ui-and-ai'>
+<h3>Course Director: UX, UI, and AI<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+IxDF - Interaction Design Foundation — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/ixdf-interaction-design-foundation-course-director-ux-ui-and-ai' target='_blank'>https://weworkremotely.com/remote-jobs/ixdf-interaction-design-foundation-course-director-ux-ui-and-ai</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='intl-ixdf-interaction-design-foundation-course-writer-and-editor-ux-ui-and-ai'>
+<h3>Course Writer and Editor: UX, UI, and AI<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+IxDF - Interaction Design Foundation — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/ixdf-interaction-design-foundation-course-writer-and-editor-ux-ui-and-ai-1' target='_blank'>https://weworkremotely.com/remote-jobs/ixdf-interaction-design-foundation-course-writer-and-editor-ux-ui-and-ai-1</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='intl-ixdf-interaction-design-foundation-education-designer-ux-ui-and-ai'>
+<h3>Education Designer: UX, UI, and AI<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+IxDF - Interaction Design Foundation — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/ixdf-interaction-design-foundation-education-designer-ux-ui-and-ai-1' target='_blank'>https://weworkremotely.com/remote-jobs/ixdf-interaction-design-foundation-education-designer-ux-ui-and-ai-1</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna</div>
+</div>
+<div class='offer unknown' data-nab='intl-bluetuskr-graphic-designer-video-editor'>
+<h3>Graphic Designer &amp; Video Editor<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+BlueTuskr — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://remoteOK.com/remote-jobs/remote-graphic-designer-video-editor-bluetuskr-1137507' target='_blank'>https://remoteOK.com/remote-jobs/remote-graphic-designer-video-editor-bluetuskr-1137507</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer unknown' data-nab='intl-fuel50-product-design-lead'>
+<h3>Product Design Lead<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Fuel50 — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://remoteOK.com/remote-jobs/remote-product-design-lead-fuel50-1137474' target='_blank'>https://remoteOK.com/remote-jobs/remote-product-design-lead-fuel50-1137474</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='intl-contra-senior-3d-designer'>
+<h3>Senior 3D Designer<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Contra — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/contra-senior-3d-designer' target='_blank'>https://weworkremotely.com/remote-jobs/contra-senior-3d-designer</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='intl-contra-senior-game-designer'>
+<h3>Senior Game Designer<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Contra — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/contra-senior-game-designer' target='_blank'>https://weworkremotely.com/remote-jobs/contra-senior-game-designer</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='intl-bbe-marketing-inc-senior-graphic-designer'>
+<h3>Senior Graphic Designer<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+BBE Marketing Inc — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/bbe-marketing-inc-senior-graphic-designer' target='_blank'>https://weworkremotely.com/remote-jobs/bbe-marketing-inc-senior-graphic-designer</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design</div>
+</div>
+<div class='offer unknown' data-nab='intl-calm-com-senior-product-designer'>
+<h3>Senior Product Designer<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Calm.com — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/calm-com-senior-product-designer' target='_blank'>https://weworkremotely.com/remote-jobs/calm-com-senior-product-designer</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+<div class='offer unknown' data-nab='intl-seat-geek-senior-ux-designer'>
+<h3>Senior UX Designer<span class='fresh fresh-recent'>1 dzień temu</span><span class='badge unknown'>termin ?</span></h3>
+<div class='meta'>
+Seat Geek — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com] · 
+Termin: <strong>brak danych</strong> · 
+Nr ref.: brak
+ · Źródło: remote_intl
+</div>
+<div class='meta'>Szczegóły: <a href='https://weworkremotely.com/remote-jobs/seat-geek-senior-ux-designer' target='_blank'>https://weworkremotely.com/remote-jobs/seat-geek-senior-ux-designer</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+</div>
+</div>
+<div class='wrap'>
+<details class='failures'>
+<summary>Diagnostyka pobierania — 5 zgłoszeń (kliknij, aby rozwinąć)</summary>
+<p class='meta'><strong>dead_link_fixed_from_archive</strong> (2)</p><ul>
+<li>slug:PK133 — <a href='https://www.bip.krakow.pl/PK133' target='_blank'>link</a> <span class='meta'>jednostka: Przedszkole nr 133; link z listy aktualnej nie działa (http_404), użyto archiwalnego: https://www.bip.krakow.pl/?bip_id=371</span></li>
+<li>slug:SP137 — <a href='https://www.bip.krakow.pl/SP137' target='_blank'>link</a> <span class='meta'>jednostka: Szkoła Podstawowa nr 137; link z listy aktualnej nie działa (http_404), użyto archiwalnego: https://www.bip.krakow.pl/?bip_id=54</span></li>
+</ul>
+<p class='meta'><strong>no_offers_parsed</strong> (1)</p><ul>
+<li>cricoteka — <a href='https://cricoteka.pl/praca' target='_blank'>link</a> <span class='meta'>Ośrodek Dokumentacji Sztuki Tadeusza Kantora Cricoteka — zero trafień parsera</span></li>
+</ul>
+<p class='meta'><strong>possible_stale_link</strong> (2)</p><ul>
+<li>slug:PK133 — <a href='https://www.bip.krakow.pl/PK133' target='_blank'>link</a> <span class='meta'>nazwa &#x27;przedszkole nr 133&#x27; występuje też w archiwum jako bip_id:371 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:SP137 — <a href='https://www.bip.krakow.pl/SP137' target='_blank'>link</a> <span class='meta'>nazwa &#x27;szkoła podstawowa nr 137&#x27; występuje też w archiwum jako bip_id:54 — stary link na liście aktualnej może być martwy</span></li>
+</ul>
+</details>
+</div>
+</div>
+<aside class='side side-right'><h3>Wykresy</h3><div class='chart'><h4>Dopasowanie do profilu</h4><svg viewBox='0 0 190 96' role='img' aria-label='Dopasowanie do profilu'><g transform='translate(48,48)'><circle r='38' fill='none' stroke='#1a7f37' stroke-width='16' stroke-dasharray='27.29 211.47' stroke-dashoffset='-0.00' transform='rotate(-90)'></circle><circle r='38' fill='none' stroke='#9a6700' stroke-width='16' stroke-dasharray='13.64 225.12' stroke-dashoffset='-27.29' transform='rotate(-90)'></circle><circle r='38' fill='none' stroke='#656d76' stroke-width='16' stroke-dasharray='197.83 40.93' stroke-dashoffset='-40.93' transform='rotate(-90)'></circle><text x='0' y='5' text-anchor='middle' class='cd'>105</text></g><rect x='98' y='10' width='9' height='9' rx='2' fill='#1a7f37'></rect><text x='112' y='18' class='cl'>mocne: 12</text><rect x='98' y='28' width='9' height='9' rx='2' fill='#9a6700'></rect><text x='112' y='36' class='cl'>może pasować: 6</text><rect x='98' y='46' width='9' height='9' rx='2' fill='#656d76'></rect><text x='112' y='54' class='cl'>poza profilem: 87</text></svg></div><div class='chart'><h4>Oferty po źródle</h4><svg viewBox='0 0 258 138' role='img' aria-label='Oferty po źródle'><text x='0' y='15' class='cl'>bip_global</text><rect x='104' y='6' width='120' height='12' rx='2' fill='#0969da'></rect><text x='228' y='16' class='cv'>29</text><text x='0' y='37' class='cl'>nuzle</text><rect x='104' y='28' width='95' height='12' rx='2' fill='#0969da'></rect><text x='203' y='38' class='cv'>23</text><text x='0' y='59' class='cl'>kultura_instytuc…</text><rect x='104' y='50' width='70' height='12' rx='2' fill='#0969da'></rect><text x='178' y='60' class='cv'>17</text><text x='0' y='81' class='cl'>cbop</text><rect x='104' y='72' width='66' height='12' rx='2' fill='#0969da'></rect><text x='174' y='82' class='cv'>16</text><text x='0' y='103' class='cl'>remote_intl</text><rect x='104' y='94' width='50' height='12' rx='2' fill='#0969da'></rect><text x='158' y='104' class='cv'>12</text><text x='0' y='125' class='cl'>nofluffjobs</text><rect x='104' y='116' width='33' height='12' rx='2' fill='#0969da'></rect><text x='141' y='126' class='cv'>8</text></svg></div><div class='chart'><h4>Terminy</h4><svg viewBox='0 0 190 96' role='img' aria-label='Terminy'><g transform='translate(48,48)'><circle r='38' fill='none' stroke='#cf222e' stroke-width='16' stroke-dasharray='29.56 209.20' stroke-dashoffset='-0.00' transform='rotate(-90)'></circle><circle r='38' fill='none' stroke='#0969da' stroke-width='16' stroke-dasharray='72.77 166.00' stroke-dashoffset='-29.56' transform='rotate(-90)'></circle><circle r='38' fill='none' stroke='#656d76' stroke-width='16' stroke-dasharray='136.43 102.33' stroke-dashoffset='-102.33' transform='rotate(-90)'></circle><text x='0' y='5' text-anchor='middle' class='cd'>105</text></g><rect x='98' y='10' width='9' height='9' rx='2' fill='#cf222e'></rect><text x='112' y='18' class='cl'>pilne (≤7 dni): 13</text><rect x='98' y='28' width='9' height='9' rx='2' fill='#0969da'></rect><text x='112' y='36' class='cl'>z terminem: 32</text><rect x='98' y='46' width='9' height='9' rx='2' fill='#656d76'></rect><text x='112' y='54' class='cl'>bez terminu: 60</text></svg></div><div class='chart'><h4>Napływ ofert (14 dni)</h4><svg viewBox='0 0 170 68' role='img' aria-label='Napływ ofert (14 dni)'><line x1='0' y1='54' x2='170' y2='54' stroke='#d0d7de'></line><rect x='1.0' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='13.1' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='25.3' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='37.4' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='49.6' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='61.7' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='73.9' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='86.0' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='98.1' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='110.3' y='4' width='10.1' height='50' rx='1' fill='#0969da'></rect><rect x='122.4' y='50' width='10.1' height='4' rx='1' fill='#0969da'></rect><rect x='134.6' y='35' width='10.1' height='19' rx='1' fill='#0969da'></rect><rect x='146.7' y='28' width='10.1' height='26' rx='1' fill='#0969da'></rect><rect x='158.9' y='47' width='10.1' height='7' rx='1' fill='#0969da'></rect><text x='0' y='66' class='cv'>03.10</text><text x='170' y='66' text-anchor='end' class='cv'>16.10</text></svg></div></aside>
+</div>
+<footer>Źródło danych: Biuletyn Informacji Publicznej Miasta Krakowa · raport wygenerowany automatycznie</footer>
+
+<script>
+(function () {
+  "use strict";
+  var STORE_KEY = "BIP_KRK_CLICKED";
+
+  function loadClicked() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }
+    catch (e) { return {}; }
+  }
+  function saveClicked(map) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(map)); }
+    catch (e) { /* brak localStorage (tryb prywatny) — tracking nieaktywny */ }
+  }
+
+  var clicked = loadClicked();
+
+  function markCard(card, when) {
+    if (card.classList.contains("clicked")) { return; }
+    card.classList.add("clicked");
+    var head = card.querySelector("h3");
+    if (head && !head.querySelector(".seen-mark")) {
+      var mark = document.createElement("span");
+      mark.className = "seen-mark";
+      mark.textContent = "oglądane" + (when ? " " + when.slice(0, 10) : "");
+      head.appendChild(mark);
+    }
+  }
+
+  function refreshCounter() {
+    // Liczymy UNIKALNE oferty, nie karty w dokumencie. Oferta dopasowana
+    // do profilu występuje w DOM dwukrotnie — raz w sekcji „Dopasowane do
+    // profilu” na górze, raz w swojej kategorii. Zliczanie kart dawało
+    // liczbę zawyżoną (w raporcie IT: 388 kart przy 229 ofertach), co
+    // kłóciło się ze statystyką w pasku bocznym.
+    var all = {}, clicked = {};
+    document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+      var id = card.getAttribute("data-nab");
+      all[id] = true;
+      if (card.classList.contains("clicked")) { clicked[id] = true; }
+    });
+    var total = Object.keys(all).length;
+    var seen = Object.keys(clicked).length;
+    var el = document.getElementById("counter");
+    if (el) {
+      el.textContent = (total - seen) + " / " + total + " nieprzejrzanych";
+    }
+  }
+
+  // Oznacz karty już klikniętych ofert (stan z poprzednich sesji).
+  document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+    var id = card.getAttribute("data-nab");
+    if (clicked[id]) { markCard(card, clicked[id]); }
+  });
+
+  // Rejestruj kliknięcie w link szczegółów oferty.
+  document.querySelectorAll(".offer[data-nab] a[href]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var card = a.closest(".offer[data-nab]");
+      if (!card) { return; }
+      var id = card.getAttribute("data-nab");
+      if (!clicked[id]) {
+        clicked[id] = new Date().toISOString();
+        saveClicked(clicked);
+      }
+      markCard(card, clicked[id]);
+      refreshCounter();
+    });
+  });
+
+  // Przycisk: oznacz wszystkie jako przejrzane.
+  var markAll = document.getElementById("mark-all");
+  if (markAll) {
+    markAll.addEventListener("click", function () {
+      document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+        var id = card.getAttribute("data-nab");
+        if (!clicked[id]) { clicked[id] = new Date().toISOString(); }
+        markCard(card, clicked[id]);
+      });
+      saveClicked(clicked);
+      refreshCounter();
+    });
+  }
+
+  // Przycisk: wyczyść historię klikania.
+  var clearBtn = document.getElementById("clear-seen");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function () {
+      if (!confirm("Wyczyścić historię oglądanych ofert?")) { return; }
+      clicked = {};
+      saveClicked(clicked);
+      document.querySelectorAll(".offer.clicked").forEach(function (card) {
+        card.classList.remove("clicked");
+        var m = card.querySelector(".seen-mark");
+        if (m) { m.remove(); }
+      });
+      refreshCounter();
+    });
+  }
+
+  // Przycisk: eksport stanu do pliku clicks.json (do wczytania w datasecie).
+  var exportBtn = document.getElementById("export-seen");
+  if (exportBtn) {
+    exportBtn.addEventListener("click", function () {
+      var payload = JSON.stringify({ clicked: clicked }, null, 2);
+      var blob = new Blob([payload], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "clicks.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  refreshCounter();
+})();
+</script>
+
+</body></html>

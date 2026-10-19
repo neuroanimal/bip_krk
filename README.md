@@ -95,6 +95,7 @@ obsługiwane.
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
 | `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
 | `report_html.py` | Moduł prezentacji HTML (styl, skrypt trackingu, budowa dokumentu) | — | — |
+| `report_stats.py` | Statystyki i **wykresy SVG** do pasków bocznych raportu | — | — |
 
 Orchestrator `run_all.py` uruchamia wszystkie etapy po kolei. Źródła
 zewnętrzne (`src_*`) są **opcjonalne** — ich awaria nie przerywa potoku.
@@ -217,6 +218,24 @@ ofert dotyczy designu produktowego i UX, nie grafiki warsztatowej — dlatego
 dopasowanie, a uznaje „Graphic Designer”, „Brand Design” i „Education
 Designer”.
 
+## Paski boczne: statystyki i wykresy
+
+Raport ma układ trzykolumnowy: **liczby po lewej**, treść w środku,
+**wykresy po prawej**. Przy wąskim ekranie i przy druku paski schodzą pod
+treść (reguły `@media`), więc nic się nie ucina.
+
+Lewy pasek: ile ofert, ile dopasowanych (mocnych i słabych), ile NOWYCH,
+ile pilnych (termin ≤ 7 dni), ile już oglądanych, oraz rozkład po źródłach.
+Prawy pasek: dopasowanie do profilu (pierścień), oferty po źródle
+(słupki), terminy (pierścień), napływ ofert w ostatnich 14 dniach.
+
+**Wykresy są wbudowanym SVG liczonym w Pythonie, bez biblioteki.** Powód:
+raport to pojedynczy plik otwierany lokalnie, często bez internetu —
+biblioteka z CDN dawałaby puste prostokąty, a dołączona lokalnie dokładałaby
+kilkaset kilobajtów do każdego raportu. Statyczne SVG działa offline, bez
+JavaScriptu i skaluje się przy druku. Cena: brak interaktywności, co jest
+tu akceptowalne — wykres ma odpowiedzieć „czego jest dużo i skąd to jest”.
+
 ## Diagnostyka — nic nie ginie po cichu
 
 Każde nieudane pobranie, brak oczekiwanego elementu i niedopasowanie rekordu
@@ -302,6 +321,8 @@ bip_krk/
 │   ├── kultura.py               #   kultura, sztuka, grafika
 │   └── it.py                    #   dane, AI, backend
 ├── src_bulldogjob.py            # źródło: oferty IT (profil it)
+├── src_arc_dev.py               # źródło: zdalne zlecenia dev
+├── report_stats.py              # statystyki + wykresy SVG (paski boczne)
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py
 ├── run_all.py               # orchestrator całego potoku (--sample dla próbki)

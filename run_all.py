@@ -46,6 +46,7 @@ PIPELINE = [
     "src_cbop.py",
     "src_remote_intl.py",
     "src_bulldogjob.py",
+    "src_arc_dev.py",
     "4_fetch_offer_details.py",
     "5_generate_report.py",
 ]
@@ -55,7 +56,7 @@ PIPELINE = [
 OPTIONAL_STEPS = {"src_nuzle.py", "src_ofertypracy_edu.py",
                   "src_kultura_instytucje.py", "src_nofluffjobs.py",
                   "src_cbop.py", "src_remote_intl.py",
-                  "src_bulldogjob.py"}
+                  "src_bulldogjob.py", "src_arc_dev.py"}
 
 # Które etapy mają sens dla którego PROFILU.
 #
@@ -78,6 +79,7 @@ STEP_PROFILES = {
     "src_nofluffjobs.py": {"kultura", "it"},
     "src_cbop.py": {"kultura", "it"},
     "src_bulldogjob.py": {"it"},
+    "src_arc_dev.py": {"it"},
     # Etap 4 pobiera treść ogłoszenia z jego strony — ma sens tylko dla
     # BIP, gdzie strona oferty to statyczny HTML. Źródła profilu IT
     # (nofluffjobs, bulldogjob) to aplikacje JavaScript: zmierzone na
@@ -90,7 +92,7 @@ STEP_PROFILES = {
 # Etapy, które przyjmują przełącznik ``--profile``. Etapy wyłącznie
 # „kulturowe” go nie znają (nie mają po co), więc nie wolno im go podać.
 PROFILE_AWARE = {"src_nofluffjobs.py", "src_cbop.py", "src_remote_intl.py",
-                 "src_bulldogjob.py", "4_fetch_offer_details.py",
+                 "src_bulldogjob.py", "src_arc_dev.py", "4_fetch_offer_details.py",
                  "5_generate_report.py"}
 
 
