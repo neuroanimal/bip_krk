@@ -20,9 +20,12 @@ w skrypcie 5 — ten moduł tylko prezentuje przygotowane dane.
 from __future__ import annotations
 
 import html as html_lib
+from collections import Counter
 from typing import Dict, List, NamedTuple, Optional, Tuple
 
 import bip_common as bc
+import contract_type as ct
+import report_script
 import report_stats
 
 def summarize_body(body_text: Optional[str], max_chars: int = 600) -> str:
@@ -124,6 +127,34 @@ table.stats td { text-align: right; font-variant-numeric: tabular-nums;
 table.stats td.ok { color: #1a7f37; }
 table.stats td.new { color: #0969da; }
 table.stats td.urgent { color: #cf222e; }
+
+/* Pasek filtrów. Przyciski przełączane (klasa .on = widoczne),
+   zgaszone = odfiltrowane. */
+.filters { background: #fff; border: 1px solid #d0d7de; border-radius: 6px;
+           padding: 0.6em 0.8em; margin: 0 0 1em; }
+.frow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35em;
+        margin: 0.25em 0; }
+.flabel { font-size: 0.82em; color: #57606a; min-width: 7.5em; }
+.fbtn { font: inherit; font-size: 0.82em; cursor: pointer; padding: 0.2em 0.6em;
+        border: 1px solid #d0d7de; border-radius: 999px; background: #f6f8fa;
+        color: #8c959f; text-decoration: line-through; }
+.fbtn.on { background: #ddf4ff; border-color: #54aeff; color: #0a3069;
+           text-decoration: none; }
+.fbtn.act { background: #f6f8fa; color: #24292f; text-decoration: none;
+            border-radius: 6px; }
+.fbtn:hover { border-color: #0969da; }
+.fcount { margin-left: 0.4em; font-size: 0.86em; opacity: 0.75; }
+.fsummary { font-size: 0.82em; color: #57606a; margin-left: 0.6em; }
+
+/* Odznaki rodzaju umowy na karcie oferty. UoP wyróżniony zielenią, bo to
+   forma dająca stabilność, o którą w tym projekcie chodzi. */
+.contract { font-size: 0.68em; font-weight: 700; padding: 0.16em 0.5em;
+            border-radius: 999px; margin-left: 0.4em; vertical-align: middle;
+            background: #eaeef2; color: #57606a; white-space: nowrap; }
+.contract.c-uop { background: #dafbe1; color: #116329; }
+.contract.c-uz { background: #fff8c5; color: #7d4e00; }
+.contract.c-b2b { background: #ddf4ff; color: #0a3069; }
+.contract.c-dzielo { background: #fbefff; color: #6639ba; }
 
 .chart { margin-bottom: 1.1em; }
 .chart h4 { font-size: 0.82em; font-weight: 600; color: #57606a;
@@ -287,125 +318,10 @@ footer { text-align: center; color: var(--muted); font-size: .82em; padding: 2em
 #  * przycisk "Eksportuj" pozwala pobrać stan do pliku clicks.json, który
 #    można wczytać do datasetu (skrypt importujący), aby informacja
 #    przetrwała zmianę przeglądarki/komputera.
-HTML_TRACKING_SCRIPT = """
-<script>
-(function () {
-  "use strict";
-  var STORE_KEY = "BIP_KRK_CLICKED";
+# Skrypt przeglądarkowy (tracking + filtrowanie) żyje w osobnym module —
+# patrz docstring ``report_script``.
+HTML_TRACKING_SCRIPT = report_script.HTML_TRACKING_SCRIPT
 
-  function loadClicked() {
-    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }
-    catch (e) { return {}; }
-  }
-  function saveClicked(map) {
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(map)); }
-    catch (e) { /* brak localStorage (tryb prywatny) — tracking nieaktywny */ }
-  }
-
-  var clicked = loadClicked();
-
-  function markCard(card, when) {
-    if (card.classList.contains("clicked")) { return; }
-    card.classList.add("clicked");
-    var head = card.querySelector("h3");
-    if (head && !head.querySelector(".seen-mark")) {
-      var mark = document.createElement("span");
-      mark.className = "seen-mark";
-      mark.textContent = "oglądane" + (when ? " " + when.slice(0, 10) : "");
-      head.appendChild(mark);
-    }
-  }
-
-  function refreshCounter() {
-    // Liczymy UNIKALNE oferty, nie karty w dokumencie. Oferta dopasowana
-    // do profilu występuje w DOM dwukrotnie — raz w sekcji „Dopasowane do
-    // profilu” na górze, raz w swojej kategorii. Zliczanie kart dawało
-    // liczbę zawyżoną (w raporcie IT: 388 kart przy 229 ofertach), co
-    // kłóciło się ze statystyką w pasku bocznym.
-    var all = {}, clicked = {};
-    document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
-      var id = card.getAttribute("data-nab");
-      all[id] = true;
-      if (card.classList.contains("clicked")) { clicked[id] = true; }
-    });
-    var total = Object.keys(all).length;
-    var seen = Object.keys(clicked).length;
-    var el = document.getElementById("counter");
-    if (el) {
-      el.textContent = (total - seen) + " / " + total + " nieprzejrzanych";
-    }
-  }
-
-  // Oznacz karty już klikniętych ofert (stan z poprzednich sesji).
-  document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
-    var id = card.getAttribute("data-nab");
-    if (clicked[id]) { markCard(card, clicked[id]); }
-  });
-
-  // Rejestruj kliknięcie w link szczegółów oferty.
-  document.querySelectorAll(".offer[data-nab] a[href]").forEach(function (a) {
-    a.addEventListener("click", function () {
-      var card = a.closest(".offer[data-nab]");
-      if (!card) { return; }
-      var id = card.getAttribute("data-nab");
-      if (!clicked[id]) {
-        clicked[id] = new Date().toISOString();
-        saveClicked(clicked);
-      }
-      markCard(card, clicked[id]);
-      refreshCounter();
-    });
-  });
-
-  // Przycisk: oznacz wszystkie jako przejrzane.
-  var markAll = document.getElementById("mark-all");
-  if (markAll) {
-    markAll.addEventListener("click", function () {
-      document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
-        var id = card.getAttribute("data-nab");
-        if (!clicked[id]) { clicked[id] = new Date().toISOString(); }
-        markCard(card, clicked[id]);
-      });
-      saveClicked(clicked);
-      refreshCounter();
-    });
-  }
-
-  // Przycisk: wyczyść historię klikania.
-  var clearBtn = document.getElementById("clear-seen");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", function () {
-      if (!confirm("Wyczyścić historię oglądanych ofert?")) { return; }
-      clicked = {};
-      saveClicked(clicked);
-      document.querySelectorAll(".offer.clicked").forEach(function (card) {
-        card.classList.remove("clicked");
-        var m = card.querySelector(".seen-mark");
-        if (m) { m.remove(); }
-      });
-      refreshCounter();
-    });
-  }
-
-  // Przycisk: eksport stanu do pliku clicks.json (do wczytania w datasecie).
-  var exportBtn = document.getElementById("export-seen");
-  if (exportBtn) {
-    exportBtn.addEventListener("click", function () {
-      var payload = JSON.stringify({ clicked: clicked }, null, 2);
-      var blob = new Blob([payload], { type: "application/json" });
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement("a");
-      a.href = url;
-      a.download = "clicks.json";
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-  }
-
-  refreshCounter();
-})();
-</script>
-"""
 
 
 def build_failures_section(failures: Dict[str, dict]) -> str:
@@ -468,6 +384,87 @@ def build_failures_section(failures: Dict[str, dict]) -> str:
     return "\n".join(parts)
 
 
+def build_filter_bar(stats: Dict[str, object]) -> str:
+    """Buduje pasek filtrów raportu (rodzaj umowy, dopasowanie, źródło).
+
+    DLACZEGO FILTROWANIE PO STRONIE PRZEGLĄDARKI
+    --------------------------------------------
+    Raport jest plikiem statycznym — nie ma serwera, który mógłby
+    przefiltrować dane po kliknięciu. Wszystkie oferty są więc w HTML,
+    a filtr jedynie ukrywa karty (``display:none``). Dzięki temu działa
+    offline i natychmiast, bez przeładowania.
+
+    Rodzaje umowy są **rozdzielone**: UoP, UZ i B2B to trzy różne sytuacje
+    prawne i finansowe (staż pracy, ZUS, urlop, zdolność kredytowa), więc
+    łączenie ich w „inne niż UoP” zacierałoby najważniejszą różnicę.
+    Osobna pozycja „umowa nieznana” jest konieczna, bo BIP podaje rodzaj
+    umowy tylko w części ogłoszeń — ukrycie ich byłoby ukryciem ofert,
+    o których po prostu nie wiemy.
+
+    Args:
+        stats: statystyki raportu (do liczników przy filtrach).
+
+    Returns:
+        Fragment HTML paska filtrów.
+    """
+    contracts: Counter = stats.get("contracts") or Counter()
+    sources: Counter = stats.get("sources") or Counter()
+
+    parts = ["<div class='filters' id='filters'>"]
+
+    parts.append("<div class='frow'><span class='flabel'>Rodzaj umowy:"
+                 "</span>")
+    for code in ct.ORDER:
+        count = contracts.get(code, 0)
+        if not count:
+            continue
+        parts.append(
+            f"<button type='button' class='fbtn on' data-filter='contract' "
+            f"data-value='{html_lib.escape(code)}' "
+            f"title='{html_lib.escape(ct.DESCRIPTIONS.get(code, ''))}'>"
+            f"{html_lib.escape(ct.LABELS.get(code, code))}"
+            f"<span class='fcount'>{count}</span></button>"
+        )
+    parts.append("</div>")
+
+    parts.append("<div class='frow'><span class='flabel'>Dopasowanie:"
+                 "</span>")
+    for value, text in (("strong", "DLA CIEBIE"), ("weak", "może pasować"),
+                        ("none", "poza profilem")):
+        count = int(stats.get({"strong": "strong", "weak": "weak",
+                               "none": "nomatch"}[value], 0) or 0)
+        if not count:
+            continue
+        parts.append(
+            f"<button type='button' class='fbtn on' data-filter='level' "
+            f"data-value='{value}'>{text}"
+            f"<span class='fcount'>{count}</span></button>"
+        )
+    parts.append("</div>")
+
+    if len(sources) > 1:
+        parts.append("<div class='frow'><span class='flabel'>Źródło:"
+                     "</span>")
+        for name, count in sources.most_common():
+            parts.append(
+                f"<button type='button' class='fbtn on' data-filter='source' "
+                f"data-value='{html_lib.escape(name)}'>"
+                f"{html_lib.escape(name)}"
+                f"<span class='fcount'>{count}</span></button>"
+            )
+        parts.append("</div>")
+
+    parts.append(
+        "<div class='frow'>"
+        "<button type='button' class='fbtn act' id='f-all'>"
+        "Pokaż wszystkie</button>"
+        "<span class='fsummary' id='f-summary'></span>"
+        "</div>"
+    )
+    parts.append("</div>")
+    return "".join(parts)
+
+
 def build_offer_card(offer: Dict[str, object],
                      details: Dict[str, Dict[str, object]]) -> str:
     """Buduje kartę HTML jednej oferty.
@@ -521,13 +518,29 @@ def build_offer_card(offer: Dict[str, object],
         match_badge = "<span class='match weak'>może pasować</span>"
     else:
         match_badge = ""
+    # Atrybuty data-* zasilają filtrowanie po stronie przeglądarki
+    # (pasek filtrów w nagłówku). Trzymamy je na karcie, a nie w osobnej
+    # strukturze JS, żeby raport pozostał jednym plikiem bez danych
+    # dublowanych w dwóch miejscach.
+    contracts = offer.get("contract_types") or [ct.UNKNOWN]
+    contract_attr = " ".join(str(c) for c in contracts)
+    contract_badges = "".join(
+        f"<span class='contract c-{esc(code)}' "
+        f"title='{esc(ct.DESCRIPTIONS.get(str(code), ''))}'>"
+        f"{esc(ct.LABELS.get(str(code), code))}</span>"
+        for code in contracts
+    )
     parts.append(
         f"<div class='offer {esc(urgency)}{is_new_cls}' "
-        f"data-nab='{nab_attr}'>"
+        f"data-nab='{nab_attr}' "
+        f"data-source='{esc(offer.get('source') or '?')}' "
+        f"data-contract='{esc(contract_attr)}' "
+        f"data-level='{esc(level)}'>"
     )
     parts.append(
         f"<h3>{esc(offer.get('title') or '(bez tytułu)')}"
         f"<span class='fresh {esc(fresh_cls)}'>{esc(fresh_text)}</span>"
+        f"{contract_badges}"
         f"<span class='badge {esc(urgency)}'>{esc(badge_text)}</span>"
         f"{match_badge}"
         "</h3>"
@@ -786,6 +799,9 @@ def build_html(
         all_offers.extend(offers_in_group)
     profile_section = build_profile_section(
         all_offers, details, recent_closed, profile_description)
+    if stats:
+        parts.append(build_filter_bar(stats))
+
     if profile_section:
         parts.append(profile_section)
 

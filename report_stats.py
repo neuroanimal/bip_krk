@@ -82,6 +82,15 @@ def collect_stats(offers: Sequence[Dict[str, object]]) -> Dict[str, object]:
     sources = Counter(str(o.get("source") or "?") for o in offers)
     statuses = Counter(str(o.get("status") or "?") for o in offers)
 
+    # Rodzaje umowy liczymy per OFERTA, ale oferta może dopuszczać kilka
+    # form (bulldogjob często „UoP albo B2B”), więc suma liczników bywa
+    # większa niż liczba ofert. To zamierzone: filtr ma pokazać, ile ofert
+    # da się dostać na daną formę.
+    contracts: Counter = Counter()
+    for offer in offers:
+        for code in (offer.get("contract_types") or ["nieznana"]):
+            contracts[str(code)] += 1
+
     urgent = 0
     with_deadline = 0
     for offer in offers:
@@ -113,6 +122,7 @@ def collect_stats(offers: Sequence[Dict[str, object]]) -> Dict[str, object]:
         "with_deadline": with_deadline,
         "no_deadline": len(offers) - with_deadline,
         "sources": sources,
+        "contracts": contracts,
         "statuses": statuses,
         "inflow": inflow,
     }

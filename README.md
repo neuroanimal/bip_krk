@@ -106,6 +106,8 @@ obsługiwane.
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
 | `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
 | `report_html.py` | Moduł prezentacji HTML (styl, skrypt trackingu, budowa dokumentu) | — | — |
+| `contract_type.py` | Rozpoznawanie **rodzaju umowy** (UoP / UZ / B2B / dzieło) — wspólne dla źródeł | — | — |
+| `report_script.py` | Skrypt przeglądarki raportu: tracking klikania i filtrowanie | — | — |
 | `report_stats.py` | Statystyki i **wykresy SVG** do pasków bocznych raportu | — | — |
 
 Orchestrator `run_all.py` uruchamia wszystkie etapy po kolei. Źródła
@@ -247,6 +249,50 @@ kilkaset kilobajtów do każdego raportu. Statyczne SVG działa offline, bez
 JavaScriptu i skaluje się przy druku. Cena: brak interaktywności, co jest
 tu akceptowalne — wykres ma odpowiedzieć „czego jest dużo i skąd to jest”.
 
+## Filtrowanie raportu i rodzaj umowy
+
+Nad listą ofert jest pasek filtrów działający **natychmiast, bez
+przeładowania i bez internetu** — raport jest plikiem statycznym, więc
+wszystkie oferty są w HTML, a filtr tylko ukrywa karty.
+
+Filtrować można po **rodzaju umowy**, **dopasowaniu do profilu**
+i **źródle**. W obrębie jednej grupy działa suma (wyłączenie B2B zostawia
+UoP i UZ), a między grupami iloczyn („UoP” + „DLA CIEBIE” = oferty
+spełniające oba warunki). Przycisk **„Pokaż wszystkie”** zdejmuje filtry.
+
+### Rodzaje umów — rozdzielone, nie łącznie
+
+| Odznaka | Znaczenie |
+|---------|-----------|
+| **UoP** (zielona) | umowa o pracę — staż pracy, ZUS, urlop, zdolność kredytowa |
+| **UZ** (żółta) | umowa zlecenie |
+| **B2B** (niebieska) | własna działalność (JDG) albo przez pośrednika |
+| **dzieło** (fioletowa) | umowa o dzieło — realna przy warsztatach i pojedynczych realizacjach |
+| umowa nieznana | ogłoszenie nie podaje rodzaju |
+
+To trzy różne sytuacje prawne i finansowe, więc łączenie ich w „inne niż
+UoP” zacierałoby najważniejszą różnicę. Oferta może dopuszczać kilka form
+naraz (bulldogjob często „UoP albo B2B”) — wtedy ma kilka odznak i pojawia
+się przy każdym z tych filtrów.
+
+**Skąd wiemy, jaka umowa:** CBOP podaje ją wprost (`rodzajUmowy`),
+nofluffjobs ma `salary.type` (`b2b`/`permanent`), bulldogjob trzy flagi,
+arc.dev `jobType`. BIP nie ma takiego pola — tam rozpoznajemy z treści
+ogłoszenia, co działa w 61 z 440 przypadków; pozostałe zostają jako
+**„umowa nieznana”** i są osobną pozycją filtra. Nie zakładamy UoP tylko
+dlatego, że to sektor publiczny — nabory na instruktorów w ośrodkach
+kultury bywają na zlecenie (w danych: 3 takie oferty).
+
+Dla ofert zagranicznych rodzaj umowy jest **przybliżony**: ani
+weworkremotely, ani remoteok nie mają na niego pola, a angielskie
+„contract” nie jest polskim rodzajem umowy.
+
+### Pułapka językowa w rozpoznawaniu
+
+Polska alternacja spółgłoskowa: „etat” odmienia się na „eta**c**ie”, więc
+wzorzec `etat\w*` nie łapał „praca na etacie”. Rdzeń musi dopuszczać obie
+postaci (`eta[tc]`), a przy tym nie łapać „etapu rekrutacji”.
+
 ## Diagnostyka — nic nie ginie po cichu
 
 Każde nieudane pobranie, brak oczekiwanego elementu i niedopasowanie rekordu
@@ -334,6 +380,8 @@ bip_krk/
 ├── src_bulldogjob.py            # źródło: oferty IT (profil it)
 ├── src_arc_dev.py               # źródło: zdalne zlecenia dev
 ├── report_stats.py              # statystyki + wykresy SVG (paski boczne)
+├── report_script.py             # skrypt przeglądarki (tracking + filtry)
+├── contract_type.py             # rozpoznawanie rodzaju umowy
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py
 ├── run_all.py               # orchestrator całego potoku (--sample dla próbki)

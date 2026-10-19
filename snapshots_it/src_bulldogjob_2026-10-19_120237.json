@@ -1,0 +1,853 @@
+{
+  "fetched_at": "2026-10-19T12:02:37+02:00",
+  "total_on_page": 50,
+  "kept": 47,
+  "offers": [
+    {
+      "nab_id": "bdj-257915-java-team-lead-krakow-warsaw-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Warsaw, Wroclaw) — lead · UoP · zdalnie [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257915-java-team-lead-krakow-warsaw-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Java Team Lead",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257915-java-team-lead-krakow-warsaw-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Java Team Lead Luxoft DXC Krakow, Warsaw, Wroclaw lead UoP Spark, Hadoop, SQL",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257914-senior-qa-automation-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257914-senior-qa-automation-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior QA Automation",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257914-senior-qa-automation-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior QA Automation Luxoft DXC Krakow senior UoP Azure, SQL, Docker, Kafka",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258432-senior-java-spark-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Warsaw, Wroclaw) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258432-senior-java-spark-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java (Spark) Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258432-senior-java-spark-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java (Spark) Developer Luxoft DXC Krakow, Warsaw, Wroclaw senior UoP Spark, SQL",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258431-devops-engineer-for-embedded-software-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — medium · UoP · zdalnie [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258431-devops-engineer-for-embedded-software-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "DevOps Engineer for Embedded Software",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258431-devops-engineer-for-embedded-software-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "DevOps Engineer for Embedded Software Luxoft DXC Krakow medium UoP Python, Yocto, Docker, Jenkins",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257196-automation-qa-engineer-krakow-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Wroclaw) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257196-automation-qa-engineer-krakow-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Automation QA Engineer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257196-automation-qa-engineer-krakow-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Automation QA Engineer Luxoft DXC Krakow, Wroclaw medium UoP TypeScript, Python, Java, GitLab",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-237669-data-engineer-with-snowflake-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Accenture Polska (Warsaw, Krakow, Wroclaw, Poznan, Gdansk, Bialystok) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/237669-data-engineer-with-snowflake-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "status": "trwajacy",
+      "title": "Data Engineer with Snowflake (AI&Data)",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/237669-data-engineer-with-snowflake-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Data Engineer with Snowflake (AI&Data) Accenture Polska Warsaw, Krakow, Wroclaw, Poznan, Gdansk, Bialystok medium UoP Python, SQL, AWS, Azure",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-237667-data-scientist-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Accenture Polska (Warsaw, Krakow, Wroclaw, Poznan, Gdansk, Bialystok) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/237667-data-scientist-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "status": "trwajacy",
+      "title": "Data Scientist (AI&Data)",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/237667-data-scientist-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Data Scientist (AI&Data) Accenture Polska Warsaw, Krakow, Wroclaw, Poznan, Gdansk, Bialystok medium UoP SQL, scikit-learn, PyTorch, TensorFlow",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258721-software-engineer-python-programmable-networking-amsterdam-krakow-bucharest-telnyx",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Telnyx (Amsterdam, Krakow, Bucharest) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258721-software-engineer-python-programmable-networking-amsterdam-krakow-bucharest-telnyx",
+      "status": "trwajacy",
+      "title": "Software Engineer (Python) ‚Äî Programmable Networking",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258721-software-engineer-python-programmable-networking-amsterdam-krakow-bucharest-telnyx",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Software Engineer (Python) ‚Äî Programmable Networking Telnyx Amsterdam, Krakow, Bucharest senior UoP Go, PostgreSQL, Ansible, BGP",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257846-senior-java-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257846-senior-java-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257846-senior-java-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer Luxoft DXC Krakow senior UoP ION, Python, Perl, Kafka",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257842-senior-java-developer-with-oracle-sql-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257842-senior-java-developer-with-oracle-sql-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer with Oracle SQL",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257842-senior-java-developer-with-oracle-sql-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer with Oracle SQL Luxoft DXC Krakow senior UoP Spring Boot, Oracle SQL, PostgreSQL, Docker",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257119-senior-data-analyst-krakow-warsaw-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Warsaw, Wroclaw) — senior · UoP · zdalnie [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257119-senior-data-analyst-krakow-warsaw-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Data Analyst",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257119-senior-data-analyst-krakow-warsaw-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Data Analyst Luxoft DXC Krakow, Warsaw, Wroclaw senior UoP Python, R, VBA",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257840-senior-full-stack-java-react-engineer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257840-senior-full-stack-java-react-engineer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Full Stack (Java/React) Engineer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257840-senior-full-stack-java-react-engineer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Full Stack (Java/React) Engineer Luxoft DXC Krakow senior UoP React, Spring Boot, TypeScript, SQL",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258265-python-pyspark-developer-and-data-engineer-krakow-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Wroclaw) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258265-python-pyspark-developer-and-data-engineer-krakow-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Python/PySpark developer and Data Engineer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258265-python-pyspark-developer-and-data-engineer-krakow-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Python/PySpark developer and Data Engineer Luxoft DXC Krakow, Wroclaw medium UoP PySpark, Databricks, SQL, Oracle Database",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257118-senior-java-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257118-senior-java-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257118-senior-java-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer Luxoft DXC Krakow senior UoP Spring Boot, Hibernate, Kubernetes, Terraform",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258264-l3-support-specialist-with-bigdata-krakow-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Wroclaw) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258264-l3-support-specialist-with-bigdata-krakow-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "L3 support specialist with BigData",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258264-l3-support-specialist-with-bigdata-krakow-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "L3 support specialist with BigData Luxoft DXC Krakow, Wroclaw medium UoP Databricks, Java, Scala, Kubernetes",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257117-senior-java-developer-with-oracle-sql-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257117-senior-java-developer-with-oracle-sql-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer with Oracle SQL",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257117-senior-java-developer-with-oracle-sql-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer with Oracle SQL Luxoft DXC Krakow senior UoP Spring Boot, Hibernate, Oracle SQL, PostgreSQL",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258263-database-administrator-krakow-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Wroclaw) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258263-database-administrator-krakow-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Database Administrator",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258263-database-administrator-krakow-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Database Administrator Luxoft DXC Krakow, Wroclaw medium UoP T-SQL, PowerShell, SSIS, SSRS",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258678-mobile-fullstack-team-leader-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "TeamQuest (Bialystok, Gdansk, Katowice, Krakow, Lublin, Poznan, Rzesz√≥w, Warsaw, Wroclaw, Lodz) — lead · B2B · zdalnie [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258678-mobile-fullstack-team-leader-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "status": "trwajacy",
+      "title": "Mobile Fullstack Team Leader",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258678-mobile-fullstack-team-leader-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Mobile Fullstack Team Leader TeamQuest Bialystok, Gdansk, Katowice, Krakow, Lublin, Poznan, Rzesz√≥w, Warsaw, Wroclaw, Lodz lead B2B Spring Boot, Kotlin, Swift, AWS",
+      "contract_types": [
+        "b2b"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258005-aws-enginee-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Accenture Polska (Warsaw, Krakow, Wroclaw, Poznan, Gdansk, Bialystok) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258005-aws-enginee-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "status": "trwajacy",
+      "title": "AWS Enginee (AI&Data)",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258005-aws-enginee-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "AWS Enginee (AI&Data) Accenture Polska Warsaw, Krakow, Wroclaw, Poznan, Gdansk, Bialystok medium UoP Python, Amazon Bedrock, Amazon SageMaker, Terraform",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257697-senior-software-engineer-linux-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257697-senior-software-engineer-linux-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Software Engineer (Linux)",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257697-senior-software-engineer-linux-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Software Engineer (Linux) Luxoft DXC Krakow senior UoP C++, Python, Yocto, WebRTC",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258188-senior-python-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258188-senior-python-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Python Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258188-senior-python-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Python Developer Luxoft DXC Krakow senior UoP FastAPI, Kafka, PostgreSQL, Kubernetes",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257032-senior-java-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257032-senior-java-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257032-senior-java-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer Luxoft DXC Krakow senior UoP Spring Boot, Kafka, Hibernate, Oracle Database",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258629-senior-net-dev-with-azure-devops-krakow-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Wroclaw) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258629-senior-net-dev-with-azure-devops-krakow-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior .Net dev with Azure DevOps",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258629-senior-net-dev-with-azure-devops-krakow-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior .Net dev with Azure DevOps Luxoft DXC Krakow, Wroclaw senior UoP C#, Azure DevOps, Databricks",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258628-senior-automation-qa-engineer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258628-senior-automation-qa-engineer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Automation QA Engineer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258628-senior-automation-qa-engineer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Automation QA Engineer Luxoft DXC Krakow senior UoP Playwright, Selenium, REST Assured, Gatling",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258627-senior-java-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258627-senior-java-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258627-senior-java-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer Luxoft DXC Krakow senior UoP Spring Boot, Kafka, Kubernetes, PostgreSQL",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258185-it-risk-and-control-specialist-krakow-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Wroclaw) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258185-it-risk-and-control-specialist-krakow-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "IT Risk and Control Specialist",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258185-it-risk-and-control-specialist-krakow-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "IT Risk and Control Specialist Luxoft DXC Krakow, Wroclaw medium UoP AWS, Azure, GCP",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257368-safety-functional-expert-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257368-safety-functional-expert-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Safety Functional Expert",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257368-safety-functional-expert-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Safety Functional Expert Luxoft DXC Krakow medium UoP Jira, Teamcenter",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258626-senior-ui-engineer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258626-senior-ui-engineer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior UI Engineer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258626-senior-ui-engineer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior UI Engineer Luxoft DXC Krakow senior UoP JavaScript, Redux, Jest, Cypress",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258625-senior-java-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258625-senior-java-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258625-senior-java-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer Luxoft DXC Krakow senior UoP Quarkus, React, Kubernetes, Azure",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257367-software-architect-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257367-software-architect-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Software Architect",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257367-software-architect-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Software Architect Luxoft DXC Krakow medium UoP Docker, Kubernetes, Terraform, Azure",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-256703-senior-automation-qa-engineer-with-python-krakow-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Wroclaw) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/256703-senior-automation-qa-engineer-with-python-krakow-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Automation QA Engineer with Python",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/256703-senior-automation-qa-engineer-with-python-krakow-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Automation QA Engineer with Python Luxoft DXC Krakow, Wroclaw senior UoP Robot Framework, PyTest, SQL, Kafka",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257691-senior-qa-automation-engineer-krakow-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Wroclaw) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257691-senior-qa-automation-engineer-krakow-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior QA Automation Engineer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257691-senior-qa-automation-engineer-krakow-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior QA Automation Engineer Luxoft DXC Krakow, Wroclaw senior UoP Azure Databricks, Robot Framework, SQL, Oracle Database",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258619-fullstack-mobile-developer-kotlin-java-backend-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "TeamQuest (Bialystok, Gdansk, Katowice, Krakow, Lublin, Poznan, Rzesz√≥w, Warsaw, Wroclaw, Lodz) — senior · B2B · zdalnie [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258619-fullstack-mobile-developer-kotlin-java-backend-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "status": "trwajacy",
+      "title": "Fullstack Mobile Developer ( Kotlin, Java Backend)",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258619-fullstack-mobile-developer-kotlin-java-backend-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Fullstack Mobile Developer ( Kotlin, Java Backend) TeamQuest Bialystok, Gdansk, Katowice, Krakow, Lublin, Poznan, Rzesz√≥w, Warsaw, Wroclaw, Lodz senior B2B Java, Spring Boot, Kotlin Multiplatform, Android",
+      "contract_types": [
+        "b2b"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258593-backend-net-developer-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "TeamQuest (Bialystok, Gdansk, Katowice, Krakow, Lublin, Poznan, Rzesz√≥w, Warsaw, Wroclaw, Lodz) — medium · B2B · zdalnie [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258593-backend-net-developer-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "status": "trwajacy",
+      "title": "Backend .Net Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258593-backend-net-developer-bialystok-gdansk-katowice-krakow-lublin-poznan-rzeszow-warsaw-wroclaw-lodz-teamquest",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Backend .Net Developer TeamQuest Bialystok, Gdansk, Katowice, Krakow, Lublin, Poznan, Rzesz√≥w, Warsaw, Wroclaw, Lodz medium B2B .NET, ASP.NET, RabbitMQ, Docker",
+      "contract_types": [
+        "b2b"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258579-ai-solution-architect-krakow-madrid-bengaluru-barcelona-milan-hitachi-next",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Hitachi NExt (Krakow, Madrid, Bengaluru, Barcelona, Milan) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258579-ai-solution-architect-krakow-madrid-bengaluru-barcelona-milan-hitachi-next",
+      "status": "trwajacy",
+      "title": "AI Solution Architect",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258579-ai-solution-architect-krakow-madrid-bengaluru-barcelona-milan-hitachi-next",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "AI Solution Architect Hitachi NExt Krakow, Madrid, Bengaluru, Barcelona, Milan senior UoP Azure, AWS, GCP, MLOps",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258578-ai-business-analyst-krakow-bengaluru-madrid-milan-hitachi-next",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Hitachi NExt (Krakow, Bengaluru, Madrid, Milan) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258578-ai-business-analyst-krakow-bengaluru-madrid-milan-hitachi-next",
+      "status": "trwajacy",
+      "title": "AI Business Analyst",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258578-ai-business-analyst-krakow-bengaluru-madrid-milan-hitachi-next",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "AI Business Analyst Hitachi NExt Krakow, Bengaluru, Madrid, Milan medium UoP Power BI, JIRA, Confluence",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258561-senior-data-engineer-tech-lead-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Accenture Polska (Krakow, Lodz, Wroclaw, Gdansk) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258561-senior-data-engineer-tech-lead-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "status": "trwajacy",
+      "title": "Senior Data Engineer /Tech Lead",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258561-senior-data-engineer-tech-lead-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Data Engineer /Tech Lead Accenture Polska Krakow, Lodz, Wroclaw, Gdansk senior UoP Python, Spark, Delta Lake, GitLab",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258560-software-engineer-spark-databricks-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Accenture Polska (Krakow, Lodz, Wroclaw, Gdansk) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258560-software-engineer-spark-databricks-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "status": "trwajacy",
+      "title": "Software Engineer (Spark, Databricks)",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258560-software-engineer-spark-databricks-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Software Engineer (Spark, Databricks) Accenture Polska Krakow, Lodz, Wroclaw, Gdansk senior UoP Databricks, Python, Java, Kafka",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-251356-sap-ps-senior-consultant-warsaw-katowice-lodz-krakow-wroclaw-accenture-polska",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Accenture Polska (Warsaw, Katowice, Lodz, Krakow, Wroclaw) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/251356-sap-ps-senior-consultant-warsaw-katowice-lodz-krakow-wroclaw-accenture-polska",
+      "status": "trwajacy",
+      "title": "SAP PS Senior Consultant",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/251356-sap-ps-senior-consultant-warsaw-katowice-lodz-krakow-wroclaw-accenture-polska",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "SAP PS Senior Consultant Accenture Polska Warsaw, Katowice, Lodz, Krakow, Wroclaw senior UoP SAP CO, SAP SD, SAP FI, S/4HANA",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258526-senior-java-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258526-senior-java-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258526-senior-java-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer Luxoft DXC Krakow senior UoP Spring Boot, Kafka, Docker, Kubernetes",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258525-senior-software-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258525-senior-software-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Software Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258525-senior-software-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Software Developer Luxoft DXC Krakow senior UoP Spring Boot, Kafka, Kubernetes, PostgreSQL",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257287-senior-java-software-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Warsaw, Wroclaw) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257287-senior-java-software-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Software Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257287-senior-java-software-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Software Developer Luxoft DXC Krakow, Warsaw, Wroclaw senior UoP Spring Boot, Kubernetes, Kafka, Terraform",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257286-senior-java-software-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Warsaw, Wroclaw) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257286-senior-java-software-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Software Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257286-senior-java-software-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Software Developer Luxoft DXC Krakow, Warsaw, Wroclaw senior UoP Spring Boot, Kubernetes, Kafka, Terraform",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-256933-android-developer-krakow-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/256933-android-developer-krakow-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Android Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/256933-android-developer-krakow-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Android Developer Luxoft DXC Krakow medium UoP Java, Kotlin, C++, JNI",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258522-sql-server-sme-and-l3-support-gdansk-krakow-warsaw-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Gdansk, Krakow, Warsaw, Wroclaw) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258522-sql-server-sme-and-l3-support-gdansk-krakow-warsaw-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "SQL Server SME and L3 support",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258522-sql-server-sme-and-l3-support-gdansk-krakow-warsaw-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "SQL Server SME and L3 support Luxoft DXC Gdansk, Krakow, Warsaw, Wroclaw medium UoP PowerShell, Oracle Database, Snowflake, MongoDB",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-258521-sql-server-developer-and-l3-support-gdansk-krakow-warsaw-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Gdansk, Krakow, Warsaw, Wroclaw) — medium · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258521-sql-server-developer-and-l3-support-gdansk-krakow-warsaw-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "SQL Server Developer and L3 support",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258521-sql-server-developer-and-l3-support-gdansk-krakow-warsaw-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "SQL Server Developer and L3 support Luxoft DXC Gdansk, Krakow, Warsaw, Wroclaw medium UoP Oracle Database, MongoDB, Snowflake, PowerShell",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "bdj-257983-senior-java-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Luxoft DXC (Krakow, Warsaw, Wroclaw) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/257983-senior-java-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "status": "trwajacy",
+      "title": "Senior Java Developer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/257983-senior-java-developer-krakow-warsaw-wroclaw-luxoft-dxc",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Java Developer Luxoft DXC Krakow, Warsaw, Wroclaw senior UoP Spark, SQL",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": ""
+    }
+  ]
+}

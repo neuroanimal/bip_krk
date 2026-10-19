@@ -63,6 +63,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List
 
 import bip_common as bc
+import contract_type as ct
 
 JOBS_URL = "https://arc.dev/remote-jobs"
 
@@ -243,6 +244,8 @@ def build_record(job: Dict[str, Any], reason: str) -> Dict[str, Any]:
             title, company, kind, rate, _categories_label(job),
             job.get("experienceLevel") or "",
         ) if x),
+        "contract_types": ct.classify(kind),
+        "contract_raw": kind,
         "source": "arc_dev",
         "published": _published(job),
         "category_hint": "",

@@ -38,6 +38,7 @@ from datetime import date
 from typing import Dict, List, Optional, Tuple
 
 import bip_common as bc
+import contract_type as ct
 import profile_match
 import report_stats
 from profile_match import score_offer
@@ -320,6 +321,24 @@ def enrich_offers(
             str(offer.get("raw_text") or ""),
             str(offer.get("unit_name") or ""),
         ))
+
+        # Rodzaj umowy. Źródła, które mają go w danych (CBOP, nofluffjobs,
+        # bulldogjob, arc.dev), zapisały go już przy pobieraniu — wtedy go
+        # nie ruszamy. Dla BIP rozpoznajemy z ``raw_text``, bo tam bywa
+        # podany słownie („umowa o pracę na czas określony”, „umowa
+        # zlecenie na prowadzenie zajęć”).
+        #
+        # Zmierzone na 440 ogłoszeniach BIP: rodzaj umowy pojawia się
+        # w ``raw_text`` w 61 z nich, a w pobranych treściach ogłoszeń
+        # w ZERU — dlatego nie sięgamy do ``offer_details``. Pozostałe
+        # zostają jako „umowa nieznana”; nie zakładamy UoP tylko dlatego,
+        # że to sektor publiczny, bo nabory na instruktorów w ośrodkach
+        # kultury bywają na zlecenie.
+        contracts = offer.get("contract_types")
+        if not contracts:
+            contracts = ct.classify(str(offer.get("raw_text") or ""))
+        item["contract_types"] = contracts
+        item["contract_label"] = ct.label(contracts)
         enriched.append(item)
     return enriched
 

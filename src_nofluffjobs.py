@@ -63,6 +63,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Tuple
 
 import bip_common as bc
+import contract_type as ct
 
 # Endpoint wyszukiwania ofert.
 API_URL = "https://nofluffjobs.com/api/search/posting"
@@ -217,7 +218,13 @@ def build_record(posting: Dict[str, Any]) -> Dict[str, Any]:
     employer = str(posting.get("name") or "").strip()
     category = str(posting.get("category") or "").strip()
 
+    # ``salary.type`` to słownik portalu: w badaniu wyłącznie ``b2b``
+    # (113 ofert) i ``permanent`` (37). Klasyfikator rozumie oba.
+    salary_type = str((posting.get("salary") or {}).get("type") or "")
+
     return {
+        "contract_types": ct.classify(salary_type),
+        "contract_raw": salary_type,
         "nab_id": f"nfj-{slug}",
         "unit_key": UNIT_KEY,
         "unit_name": f"{employer} ({UNIT_NAME})" if employer else UNIT_NAME,

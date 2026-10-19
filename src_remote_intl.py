@@ -81,6 +81,7 @@ import re
 from typing import Any, Dict, List, Optional, Tuple
 
 import bip_common as bc
+import contract_type as ct
 
 # Role kreatywne — oferta bez trafienia tutaj jest pomijana.
 ROLE_PATTERNS: Dict[str, "re.Pattern[str]"] = {
@@ -243,6 +244,9 @@ def parse_rss(payload: str) -> List[Dict[str, str]]:
             "location": field("region"),
             "url": field("link"),
             "published": "",
+            # Opis bierzemy tylko po to, żeby rozpoznać rodzaj umowy —
+            # kanał nie ma na to osobnego pola.
+            "description": field("description")[:1500],
         })
     return result
 
@@ -270,7 +274,17 @@ def build_record(job: Dict[str, str], feed_label: str,
     key = re.sub(r"[^a-z0-9]+", "-",
                  f"{employer}-{job['title']}".lower())[:90]
 
+    # Rodzaj umowy jest tu PRZYBLIŻONY i trzeba o tym wiedzieć: ani WWR,
+    # ani remoteok nie mają na niego pola (kanał WWR podaje tylko
+    # ``category`` i ``region``), a angielskie „contract” nie jest polskim
+    # rodzajem umowy — dla osoby z Polski to zwykle współpraca B2B, ale
+    # bywa też employer of record. Gdy ogłoszenie nic nie mówi, zostaje
+    # „umowa nieznana”; zmierzone na kanale programistycznym: wzmianka
+    # o „contract” w 4 z 25 ofert, o „full-time” w 9.
+    contracts = ct.classify(job["title"], job.get("description", ""))
+
     return {
+        "contract_types": contracts,
         "nab_id": f"intl-{key}",
         "unit_key": UNIT_KEY,
         "unit_name": unit_name,

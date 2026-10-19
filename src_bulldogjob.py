@@ -54,6 +54,7 @@ import re
 from typing import Any, Dict, List
 
 import bip_common as bc
+import contract_type as ct
 
 JOBS_URL = "https://bulldogjob.pl/companies/jobs/s/city,Krakow"
 
@@ -191,6 +192,13 @@ def build_record(job: Dict[str, Any]) -> Dict[str, Any]:
         "raw_text": " ".join(x for x in (
             title, company, city, level, contract, tech,
         ) if x),
+        # Portal podaje gotowe flagi, więc korzystamy z nich wprost.
+        # Flagi ``contractOther`` nie mapujemy — patrz uwaga w
+        # ``contract_type.from_flags``.
+        "contract_types": ct.from_flags(
+            uop=bool(job.get("contractEmployment")),
+            b2b=bool(job.get("contractB2b")),
+        ),
         "source": "bulldogjob",
         "published": "",
         "category_hint": "",

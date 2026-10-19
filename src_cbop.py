@@ -58,6 +58,7 @@ import logging
 from typing import Any, Dict, List, Optional, Tuple
 
 import bip_common as bc
+import contract_type as ct
 
 # Baza API (odkryta przez przechwycenie ruchu aplikacji — patrz docstring).
 API_BASE = "https://oferty.praca.gov.pl/portal-api/v3"
@@ -258,13 +259,17 @@ def build_record(offer: Dict[str, Any], number: str) -> Dict[str, Any]:
     """
     offer_id = str(offer.get("id") or "")
     link = f"{OFFER_URL_BASE}{offer_id}" if offer_id else PORTAL_SEARCH
+    # CBOP podaje rodzaj umowy wprost („Umowa o pracę na czas określony”),
+    # więc nie zgadujemy go z treści.
+    contract_raw = str(offer.get("rodzajUmowy") or "")
     employer = str(offer.get("pracodawca") or "").strip()
     place = str(offer.get("miejscePracy") or "").strip()
     title = str(offer.get("stanowisko") or "").strip()
     # Opis sklejamy z wymagań i zakresu obowiązków — to po nim ocenia
     # dopasowanie do profilu, a karta w raporcie ma być samowystarczalna.
     description = " ".join(str(offer.get(key) or "") for key in
-                           ("zakresObowiazkow", "wymagania", "wynagrodzenie"))
+                           ("zakresObowiazkow", "wymagania", "wynagrodzenie",
+                            "rodzajUmowy"))
 
     return {
         "nab_id": f"cbop-{offer_id}",
@@ -277,6 +282,8 @@ def build_record(offer: Dict[str, Any], number: str) -> Dict[str, Any]:
         "ref_number": number,
         "deadline": _to_iso(offer.get("dataWaznDo")),
         "raw_text": f"{title} {employer} {description}".strip(),
+        "contract_types": ct.classify(contract_raw),
+        "contract_raw": contract_raw,
         "source": "cbop",
         "published": _to_iso(offer.get("dataDodaniaCbop")),
         "category_hint": "",

@@ -19,7 +19,9 @@ block_cipher = None
 stage_files = [
     ('bip_common.py', '.'),
     ('report_html.py', '.'),
-    ('report_stats.py', '.'),             # statystyki + wykresy SVG          # moduł prezentacji HTML (wymagany przez etap 5)
+    ('report_stats.py', '.'),
+    ('report_script.py', '.'),            # skrypt przeglądarki (tracking+filtry)
+    ('contract_type.py', '.'),            # rozpoznawanie rodzaju umowy             # statystyki + wykresy SVG          # moduł prezentacji HTML (wymagany przez etap 5)
     ('1_fetch_units.py', '.'),
     ('2_fetch_praca_links.py', '.'),
     ('3_fetch_offers.py', '.'),
@@ -52,6 +54,8 @@ a = Analysis(
         # (nie przez importlib), więc PyInstaller musi o nim wiedzieć.
         'report_html',
         'report_stats',
+        'report_script',
+        'contract_type',
         'profile_match',
         'profiles',
         'profiles.kultura',
