@@ -25,6 +25,17 @@ python run_all.py                  # profil kultury (jak dotychczas)
 python run_all.py --profile it     # profil danych i AI
 ```
 
+W wersji `.exe` profil wybiera się argumentem — albo gotowym plikiem
+`.bat` do dwukliku:
+
+```
+bip_krk_raport.exe                 # profil kultury
+bip_krk_raport.exe --profile it    # profil danych i AI
+
+raport_kultura.bat                 # dwuklik: profil kultury
+raport_it.bat                      # dwuklik: profil danych i AI
+```
+
 **Dlaczego jeden kod, a nie druga aplikacja:** wspólnej mechaniki jest
 ~4,5 tys. linii (HTTP z retry, dziennik niepowodzeń, `active/inactive`,
 snapshoty, HTML raportu z trackingiem klikania) — kopia znaczyłaby dwa
@@ -329,6 +340,8 @@ bip_krk/
 ├── run_report.py            # punkt wejścia .exe (potok + otwarcie raportu)
 ├── bip_krk.spec             # konfiguracja PyInstaller
 ├── build_exe.bat            # budowanie .exe (Windows)
+├── raport_kultura.bat       # dwuklik: raport profilu kultury
+├── raport_it.bat            # dwuklik: raport profilu danych/AI
 ├── .pylintrc                # konfiguracja lintera (10.00/10)
 ├── data/                    # datasety profilu kultury (+ failures, clicks)
 ├── snapshots/               # surowe zrzuty profilu kultury

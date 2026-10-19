@@ -18,7 +18,8 @@ block_cipher = None
 # ładowane dynamicznie z dysku (importlib), a nie zwykłym importem.
 stage_files = [
     ('bip_common.py', '.'),
-    ('report_html.py', '.'),          # moduł prezentacji HTML (wymagany przez etap 5)
+    ('report_html.py', '.'),
+    ('report_stats.py', '.'),             # statystyki + wykresy SVG          # moduł prezentacji HTML (wymagany przez etap 5)
     ('1_fetch_units.py', '.'),
     ('2_fetch_praca_links.py', '.'),
     ('3_fetch_offers.py', '.'),
@@ -50,6 +51,7 @@ a = Analysis(
         # report_html jest importowany przez etap 5 zwykłym importem
         # (nie przez importlib), więc PyInstaller musi o nim wiedzieć.
         'report_html',
+        'report_stats',
         'profile_match',
         'profiles',
         'profiles.kultura',

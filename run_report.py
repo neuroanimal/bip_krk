@@ -70,6 +70,35 @@ OPTIONAL_MODULES = {"src_nuzle", "src_ofertypracy_edu",
                     "src_cbop", "src_remote_intl",
                     "src_bulldogjob", "src_arc_dev"}
 
+# Które etapy dotyczą którego PROFILU — musi odpowiadać STEP_PROFILES
+# w ``run_all.py``.
+#
+# Bez tego podziału .exe uruchamiałby WSZYSTKIE źródła z profilem
+# domyślnym, czyli wsypywałby oferty programistyczne do datasetu profilu
+# kultury — dokładnie to zanieczyszczenie, przed którym broni rozdzielenie
+# katalogów (patrz ``bip_common.use_profile``).
+MODULE_PROFILES = {
+    "1_fetch_units": {"kultura"},
+    "2_fetch_praca_links": {"kultura"},
+    "3_fetch_offers": {"kultura"},
+    "3b_fetch_offers_global": {"kultura"},
+    "src_nuzle": {"kultura"},
+    "src_ofertypracy_edu": {"kultura"},
+    "src_kultura_instytucje": {"kultura"},
+    "src_nofluffjobs": {"kultura", "it"},
+    "src_cbop": {"kultura", "it"},
+    "src_remote_intl": {"kultura", "it"},
+    "src_bulldogjob": {"it"},
+    "src_arc_dev": {"it"},
+    "4_fetch_offer_details": {"kultura"},
+    "5_generate_report": {"kultura", "it"},
+}
+
+# Etapy przyjmujące przełącznik ``--profile`` (pozostałe go nie znają).
+PROFILE_AWARE = {"src_nofluffjobs", "src_cbop", "src_remote_intl",
+                 "src_bulldogjob", "src_arc_dev", "4_fetch_offer_details",
+                 "5_generate_report"}
+
 
 def _base_dir() -> Path:
     """Zwraca katalog bazowy, w którym leżą moduły etapów potoku.
@@ -128,7 +157,7 @@ def find_latest_html_report() -> Optional[Path]:
         Ścieżkę do najnowszego pliku .html albo ``None``, gdy brak raportów.
     """
     reports = sorted(
-        bc.REPORTS_DIR.glob("raport_praca_*.html"),
+        bc.REPORTS_DIR.glob("raport_praca*.html"),
         key=lambda p: p.stat().st_mtime,
         reverse=True,
     )
@@ -142,14 +171,35 @@ def main() -> int:
         0 przy sukcesie; kod błędu etapu, gdy któryś zawiedzie.
     """
     bc.setup_logging(verbose=False)
+
+    # Profil czytamy z argumentu .exe: ``bip_krk_raport.exe --profile it``.
+    # Bez argumentu działa profil domyślny, czyli dokładnie to, co .exe
+    # robił przed wprowadzeniem profili.
+    profile = bc.DEFAULT_PROFILE
+    for index, value in enumerate(sys.argv[1:]):
+        if value == "--profile" and index + 2 <= len(sys.argv[1:]):
+            profile = sys.argv[index + 2]
+        elif value.startswith("--profile="):
+            profile = value.split("=", 1)[1]
+    bc.use_profile(profile)
     bc.ensure_dirs()
+    logging.info("Profil: %s", profile)
+
+    modules = [m for m in PIPELINE_MODULES
+               if profile in MODULE_PROFILES.get(m, {profile})]
+    skipped = [m for m in PIPELINE_MODULES if m not in modules]
+    if skipped:
+        logging.info("Pominięte (nie dotyczą profilu %s): %s",
+                     profile, ", ".join(skipped))
 
     # Podmieniamy argv, aby argparse w modułach etapów nie zobaczył
-    # ewentualnych argumentów przekazanych do .exe (uruchamiamy z domyślnymi).
+    # argumentów .exe — poza profilem, który przekazujemy jawnie.
     original_argv = sys.argv
-    for module_name in PIPELINE_MODULES:
+    for module_name in modules:
         logging.info("=== Etap: %s ===", module_name)
-        sys.argv = [f"{module_name}.py"]  # brak dodatkowych flag
+        sys.argv = [f"{module_name}.py"]
+        if module_name in PROFILE_AWARE:
+            sys.argv += ["--profile", profile]
         code = 1
         try:
             module = load_stage(module_name)
