@@ -205,6 +205,30 @@ def _categories_label(job: Dict[str, Any]) -> str:
     return ", ".join(names)
 
 
+def _salary_fields(job: Dict[str, Any]) -> Dict[str, Any]:
+    """Wyciąga widełki wynagrodzenia w postaci do dalszej normalizacji.
+
+    arc.dev podaje albo stawkę GODZINOWĄ, albo ROCZNĄ — zawsze w USD.
+    Przeliczenie na PLN/miesiąc robi moduł ``salary`` na etapie raportu,
+    żeby kurs był jeden dla wszystkich źródeł.
+
+    Args:
+        job: surowy rekord oferty.
+
+    Returns:
+        Słownik pól ``salary_*`` (puste wartości, gdy portal nie podaje).
+    """
+    if job.get("minHourlyRate") or job.get("maxHourlyRate"):
+        return {"salary_min": job.get("minHourlyRate"),
+                "salary_max": job.get("maxHourlyRate"),
+                "salary_currency": "USD", "salary_period": "hour"}
+    if job.get("minAnnualSalary") or job.get("maxAnnualSalary"):
+        return {"salary_min": job.get("minAnnualSalary"),
+                "salary_max": job.get("maxAnnualSalary"),
+                "salary_currency": "USD", "salary_period": "year"}
+    return {}
+
+
 def build_record(job: Dict[str, Any], reason: str) -> Dict[str, Any]:
     """Przekształca ofertę arc.dev na format datasetu.
 
@@ -244,6 +268,7 @@ def build_record(job: Dict[str, Any], reason: str) -> Dict[str, Any]:
             title, company, kind, rate, _categories_label(job),
             job.get("experienceLevel") or "",
         ) if x),
+        **_salary_fields(job),
         "contract_types": ct.classify(kind),
         "contract_raw": kind,
         "source": "arc_dev",

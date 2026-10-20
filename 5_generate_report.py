@@ -41,6 +41,7 @@ import bip_common as bc
 import contract_type as ct
 import profile_match
 import report_stats
+import salary as sal
 from profile_match import score_offer
 from report_html import (ReportMeta, build_html, deadline_label,
                          summarize_body)
@@ -251,6 +252,7 @@ def enrich_offers(
     units: Dict[str, dict],
     last_report_at: Optional[date] = None,
     clicked_ids: Optional[set] = None,
+    rates: Optional[Dict[str, float]] = None,
 ) -> List[Dict[str, object]]:
     """Wzbogaca oferty o kategorię jednostki, pilność i świeżość.
 
@@ -271,6 +273,7 @@ def enrich_offers(
         is_new, clicked, freshness, freshness_cls.
     """
     clicked_ids = clicked_ids or set()
+    rates = rates or {"PLN": 1.0}
     enriched: List[Dict[str, object]] = []
     for offer in offers:
         unit = units.get(offer.get("unit_key") or "", {})
@@ -339,6 +342,21 @@ def enrich_offers(
             contracts = ct.classify(str(offer.get("raw_text") or ""))
         item["contract_types"] = contracts
         item["contract_label"] = ct.label(contracts)
+
+        # Wynagrodzenie: pokazujemy kwotę ŹRÓDŁOWĄ, a przeliczenie na
+        # PLN/miesiąc służy wyłącznie sortowaniu (patrz docstring modułu
+        # ``salary`` — B2B netto/h i UoP brutto/mies. nie są porównywalne).
+        item["salary_text"] = sal.describe(
+            offer.get("salary_min"), offer.get("salary_max"),
+            str(offer.get("salary_currency") or "PLN"),
+            str(offer.get("salary_period") or "month"),
+        )
+        item["salary_pln"] = sal.to_pln_month(
+            offer.get("salary_min"), offer.get("salary_max"),
+            str(offer.get("salary_currency") or "PLN"),
+            str(offer.get("salary_period") or "month"),
+            rates,
+        )
         enriched.append(item)
     return enriched
 
@@ -479,6 +497,7 @@ def collect_recent_closed_matches(
     units: Dict[str, dict],
     clicked_ids: set,
     shown_keys: set,
+    rates: Optional[Dict[str, float]] = None,
 ) -> List[Dict[str, object]]:
     """Zbiera niedawno zamknięte oferty pasujące do profilu.
 
@@ -496,6 +515,7 @@ def collect_recent_closed_matches(
         units: rekordy jednostek (dla kategorii).
         clicked_ids: zbiór nab_id ofert już klikniętych.
         shown_keys: nab_id ofert już pokazanych w raporcie (pomijamy je).
+        rates: kursy walut do przeliczenia wynagrodzeń.
 
     Returns:
         Listę wzbogaconych ofert, od najświeżej zamkniętych.
@@ -524,7 +544,7 @@ def collect_recent_closed_matches(
     candidates.sort(key=lambda pair: pair[0])
     selected = [record for _days, record in candidates[:CLOSED_MATCH_LIMIT]]
     # Wzbogacamy tak samo jak oferty raportu, aby karty wyglądały spójnie.
-    return enrich_offers(selected, units, None, clicked_ids)
+    return enrich_offers(selected, units, None, clicked_ids, rates)
 
 
 def main() -> int:
@@ -567,6 +587,11 @@ def main() -> int:
     logging.info("Profil: %s", profile.LABEL)
     bc.ensure_dirs()
 
+    # Kursy walut do SORTOWANIA po wynagrodzeniu. Pobieramy raz na raport;
+    # gdy nie ma sieci, moduł użyje zapisanych albo zapasowych (patrz
+    # docstring ``salary.fetch_rates``), więc raport zawsze się wygeneruje.
+    rates = sal.fetch_rates(bc.build_session())
+
     offers_ds = bc.load_dataset(bc.OFFERS_DATASET)
     if not offers_ds["records"]:
         logging.error(
@@ -600,7 +625,7 @@ def main() -> int:
 
     # Wzbogacamy o kategorię, pilność i świeżość, sortujemy, grupujemy.
     enriched = enrich_offers(selected, units_ds["records"], last_report_at,
-                             clicked_ids)
+                             clicked_ids, rates)
     enriched.sort(key=sort_key)
 
     # Tryb próbny: ograniczamy liczbę ofert do szybkiej weryfikacji wyglądu.
@@ -628,6 +653,7 @@ def main() -> int:
     recent_closed = collect_recent_closed_matches(
         offers_ds["records"], units_ds["records"], clicked_ids,
         shown_keys={str(o.get("nab_id")) for o in enriched},
+        rates=rates,
     )
     if recent_closed:
         logging.info("Niedawno zamkniętych trafień z profilu: %d",

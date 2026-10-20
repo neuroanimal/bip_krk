@@ -155,6 +155,15 @@ table.stats td.urgent { color: #cf222e; }
 .contract.c-uz { background: #fff8c5; color: #7d4e00; }
 .contract.c-b2b { background: #ddf4ff; color: #0a3069; }
 .contract.c-dzielo { background: #fbefff; color: #6639ba; }
+.pay { font-size: 0.72em; font-weight: 600; color: #116329; margin-left: 0.4em;
+       white-space: nowrap; }
+/* Przyciski SORTOWANIA wyglądają inaczej niż filtry: filtr zgaszony
+   znaczy „ukryte”, a sortowanie niewybrane jest nadal klikalne — więc
+   bez przekreślenia i bez wyblakłego szarego. */
+.fbtn.sbtn { border-radius: 6px; text-decoration: none; background: #fff;
+             color: #24292f; }
+.fbtn.sbtn.on { background: #0969da; border-color: #0969da; color: #fff; }
+.fbtn.sbtn.on .fcount { opacity: 0.9; }
 
 .chart { margin-bottom: 1.1em; }
 .chart h4 { font-size: 0.82em; font-weight: 600; color: #57606a;
@@ -454,6 +463,31 @@ def build_filter_bar(stats: Dict[str, object]) -> str:
             )
         parts.append("</div>")
 
+    # Sortowanie. Domyślne „po pilności” zostaje takie jak było — raport
+    # ma przede wszystkim nie przegapić terminu. Sortowanie po płacy jest
+    # ORIENTACYJNE: przelicza B2B netto/h i UoP brutto/mies. na jedną
+    # miarę, co opisuje docstring modułu ``salary``.
+    with_pay = int(stats.get("with_pay", 0) or 0)
+    parts.append("<div class='frow'><span class='flabel'>Sortuj:</span>")
+    for value, text, title in (
+        ("urgency", "po pilności", "Najpierw oferty z najbliższym terminem"),
+        ("pay", "po wynagrodzeniu",
+         "Malejąco, po przeliczeniu na PLN/miesiąc — orientacyjnie, "
+         "bo B2B podaje się netto, a UoP brutto"),
+        ("score", "po dopasowaniu", "Najpierw najlepiej dopasowane"),
+    ):
+        if value == "pay" and not with_pay:
+            continue
+        extra = " on" if value == "urgency" else ""
+        count = (f"<span class='fcount'>{with_pay}</span>"
+                 if value == "pay" else "")
+        parts.append(
+            f"<button type='button' class='fbtn sbtn{extra}' "
+            f"data-sort='{value}' title='{html_lib.escape(title)}'>"
+            f"{text}{count}</button>"
+        )
+    parts.append("</div>")
+
     parts.append(
         "<div class='frow'>"
         "<button type='button' class='fbtn act' id='f-all'>"
@@ -535,12 +569,23 @@ def build_offer_card(offer: Dict[str, object],
         f"data-nab='{nab_attr}' "
         f"data-source='{esc(offer.get('source') or '?')}' "
         f"data-contract='{esc(contract_attr)}' "
-        f"data-level='{esc(level)}'>"
+        f"data-level='{esc(level)}' "
+        # Atrybuty do sortowania w przeglądarce. -1 znaczy „brak kwoty” —
+        # takie oferty trafiają na koniec listy przy sortowaniu po płacy,
+        # a nie na początek (co by się stało przy 0).
+        f"data-pay='{int(offer.get('salary_pln') or -1)}' "
+        f"data-days='{offer.get('days_left') if isinstance(offer.get('days_left'), int) else 9999}' "
+        f"data-score='{int(offer.get('profile_score') or 0)}'>"
+    )
+    pay_badge = (
+        f"<span class='pay'>{esc(offer.get('salary_text'))}</span>"
+        if offer.get("salary_text") else ""
     )
     parts.append(
         f"<h3>{esc(offer.get('title') or '(bez tytułu)')}"
         f"<span class='fresh {esc(fresh_cls)}'>{esc(fresh_text)}</span>"
         f"{contract_badges}"
+        f"{pay_badge}"
         f"<span class='badge {esc(urgency)}'>{esc(badge_text)}</span>"
         f"{match_badge}"
         "</h3>"
@@ -806,12 +851,18 @@ def build_html(
         parts.append(profile_section)
 
     for label, offers in grouped:
+        # Każda kategoria dostaje własny <section>. To nie kosmetyka:
+        # bez kontenera nie da się ani posortować kart w obrębie
+        # kategorii, ani ukryć nagłówka kategorii, z której filtr usunął
+        # wszystkie oferty — jedno i drugie wymaga rodzica w DOM.
+        parts.append("<section class='cat'>")
         parts.append(
             f"<h2 class='category'>{esc(label)} "
             f"<span class='count'>({len(offers)})</span></h2>"
         )
         for offer in offers:
             parts.append(build_offer_card(offer, details))
+        parts.append("</section>")
 
     parts.append("</div>")  # .wrap
 

@@ -106,6 +106,7 @@ obsługiwane.
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
 | `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
 | `report_html.py` | Moduł prezentacji HTML (styl, skrypt trackingu, budowa dokumentu) | — | — |
+| `salary.py` | Normalizacja **wynagrodzeń** do PLN/mies. (kurs z API NBP) — do sortowania | — | — |
 | `contract_type.py` | Rozpoznawanie **rodzaju umowy** (UoP / UZ / B2B / dzieło) — wspólne dla źródeł | — | — |
 | `report_script.py` | Skrypt przeglądarki raportu: tracking klikania i filtrowanie | — | — |
 | `report_stats.py` | Statystyki i **wykresy SVG** do pasków bocznych raportu | — | — |
@@ -287,6 +288,35 @@ Dla ofert zagranicznych rodzaj umowy jest **przybliżony**: ani
 weworkremotely, ani remoteok nie mają na niego pola, a angielskie
 „contract” nie jest polskim rodzajem umowy.
 
+## Sortowanie po wynagrodzeniu — i czego ta liczba nie znaczy
+
+Obok sortowania **po pilności** (domyślne) i **po dopasowaniu** jest
+sortowanie **po wynagrodzeniu**. Przycisk pojawia się tylko wtedy, gdy
+w raporcie są oferty z podaną kwotą, a licznik przy nim mówi ile.
+
+Żeby dało się je uszeregować, kwoty są przeliczane na **PLN miesięcznie**
+(kurs z oficjalnego API NBP, pobierany raz na przebieg i zapisywany
+w `data*/rates.json`, więc raport generuje się też bez internetu).
+
+**To wartość orientacyjna, nie porównanie zarobków.** Zestawia rzeczy
+nieporównywalne:
+
+- **B2B podaje się zwykle netto, UoP brutto** — przy tej samej kwocie B2B
+  jest korzystniejsze podatkowo, ale bez urlopu i ZUS-u pracodawcy,
+- stawka godzinowa przeliczana jest przez **168 h/mies.** (21 dni × 8 h),
+  co zakłada pełne obłożenie,
+- kurs walut jest z dnia pobrania.
+
+Dlatego na karcie widać **kwotę źródłową** („20 000–25 000 PLN/mies.”,
+„30–45 USD/h”), a przeliczenie służy wyłącznie kolejności. Oferty bez
+podanej kwoty trafiają **na koniec** listy, nie na początek — „brak
+danych” nie może wyglądać jak „zarobki zerowe”.
+
+Skąd kwoty: nofluffjobs podaje widełki wprost (`salary.from/to`), arc.dev
+stawkę godzinową lub roczną w USD, CBOP tekstem („od 10 000 PLN”).
+**bulldogjob ukrywa kwoty** na liście (`money: null`, `showSalary: false`),
+a BIP ich nie ma.
+
 ### Pułapka językowa w rozpoznawaniu
 
 Polska alternacja spółgłoskowa: „etat” odmienia się na „eta**c**ie”, więc
@@ -382,6 +412,7 @@ bip_krk/
 ├── report_stats.py              # statystyki + wykresy SVG (paski boczne)
 ├── report_script.py             # skrypt przeglądarki (tracking + filtry)
 ├── contract_type.py             # rozpoznawanie rodzaju umowy
+├── salary.py                    # normalizacja wynagrodzeń (kurs NBP)
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py
 ├── run_all.py               # orchestrator całego potoku (--sample dla próbki)

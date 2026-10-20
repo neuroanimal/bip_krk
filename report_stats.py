@@ -123,6 +123,9 @@ def collect_stats(offers: Sequence[Dict[str, object]]) -> Dict[str, object]:
         "no_deadline": len(offers) - with_deadline,
         "sources": sources,
         "contracts": contracts,
+        # Ile ofert ma w ogóle podaną kwotę — decyduje, czy pokazywać
+        # przycisk sortowania po wynagrodzeniu.
+        "with_pay": sum(1 for o in offers if o.get("salary_pln")),
         "statuses": statuses,
         "inflow": inflow,
     }

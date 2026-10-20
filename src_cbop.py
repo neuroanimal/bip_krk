@@ -59,6 +59,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import bip_common as bc
 import contract_type as ct
+import salary as sal
 
 # Baza API (odkryta przez przechwycenie ruchu aplikacji — patrz docstring).
 API_BASE = "https://oferty.praca.gov.pl/portal-api/v3"
@@ -282,6 +283,12 @@ def build_record(offer: Dict[str, Any], number: str) -> Dict[str, Any]:
         "ref_number": number,
         "deadline": _to_iso(offer.get("dataWaznDo")),
         "raw_text": f"{title} {employer} {description}".strip(),
+        # CBOP podaje wynagrodzenie tekstem („od 10 000 PLN Zgodnie
+        # z przepisami…”), więc wyłuskujemy kwotę wzorcem.
+        **dict(zip(("salary_min", "salary_max", "salary_currency"),
+                   sal.parse_from_text(str(offer.get("wynagrodzenie")
+                                           or "")))),
+        "salary_period": "month",
         "contract_types": ct.classify(contract_raw),
         "contract_raw": contract_raw,
         "source": "cbop",

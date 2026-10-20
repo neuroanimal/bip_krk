@@ -21,7 +21,8 @@ stage_files = [
     ('report_html.py', '.'),
     ('report_stats.py', '.'),
     ('report_script.py', '.'),            # skrypt przeglądarki (tracking+filtry)
-    ('contract_type.py', '.'),            # rozpoznawanie rodzaju umowy             # statystyki + wykresy SVG          # moduł prezentacji HTML (wymagany przez etap 5)
+    ('contract_type.py', '.'),
+    ('salary.py', '.'),                   # normalizacja wynagrodzeń (kurs NBP)            # rozpoznawanie rodzaju umowy             # statystyki + wykresy SVG          # moduł prezentacji HTML (wymagany przez etap 5)
     ('1_fetch_units.py', '.'),
     ('2_fetch_praca_links.py', '.'),
     ('3_fetch_offers.py', '.'),
@@ -56,6 +57,7 @@ a = Analysis(
         'report_stats',
         'report_script',
         'contract_type',
+        'salary',
         'profile_match',
         'profiles',
         'profiles.kultura',

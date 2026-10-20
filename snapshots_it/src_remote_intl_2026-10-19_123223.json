@@ -1,0 +1,263 @@
+{
+  "fetched_at": "2026-10-19T12:32:23+02:00",
+  "feeds": [
+    "weworkremotely.com",
+    "weworkremotely.com",
+    "remoteok.com"
+  ],
+  "kept": 14,
+  "offers": [
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-doximity-commercial-data-scientist",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Doximity — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com]",
+      "praca_url": "https://weworkremotely.com/remote-jobs/doximity-commercial-data-scientist",
+      "status": "trwajacy",
+      "title": "Commercial Data Scientist",
+      "detail_url": "https://weworkremotely.com/remote-jobs/doximity-commercial-data-scientist",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Commercial Data Scientist Doximity Anywhere in the World",
+      "source": "remote_intl",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-salesloft-principal-software-engineer-ai",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Salesloft — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com]",
+      "praca_url": "https://weworkremotely.com/remote-jobs/salesloft-principal-software-engineer-ai",
+      "status": "trwajacy",
+      "title": "Principal Software Engineer, AI",
+      "detail_url": "https://weworkremotely.com/remote-jobs/salesloft-principal-software-engineer-ai",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Principal Software Engineer, AI Salesloft Anywhere in the World",
+      "source": "remote_intl",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-tailscale-analytics-engineer-data",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Tailscale — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com]",
+      "praca_url": "https://weworkremotely.com/remote-jobs/tailscale-analytics-engineer-data",
+      "status": "trwajacy",
+      "title": "Analytics Engineer, Data",
+      "detail_url": "https://weworkremotely.com/remote-jobs/tailscale-analytics-engineer-data",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Analytics Engineer, Data Tailscale Anywhere in the World",
+      "source": "remote_intl",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-discord-engineering-manager-machine-learning-safety-",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Discord — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com]",
+      "praca_url": "https://weworkremotely.com/remote-jobs/discord-engineering-manager-machine-learning-safety",
+      "status": "trwajacy",
+      "title": "Engineering Manager, Machine Learning (Safety)",
+      "detail_url": "https://weworkremotely.com/remote-jobs/discord-engineering-manager-machine-learning-safety",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Engineering Manager, Machine Learning (Safety) Discord Anywhere in the World",
+      "source": "remote_intl",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "b2b"
+      ],
+      "nab_id": "intl-zoominfo-technologies-llc-director-applied-ai",
+      "unit_key": "src:remote_intl",
+      "unit_name": "ZoomInfo Technologies LLC — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com]",
+      "praca_url": "https://weworkremotely.com/remote-jobs/zoominfo-technologies-llc-director-applied-ai",
+      "status": "trwajacy",
+      "title": "Director, Applied AI",
+      "detail_url": "https://weworkremotely.com/remote-jobs/zoominfo-technologies-llc-director-applied-ai",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Director, Applied AI ZoomInfo Technologies LLC Anywhere in the World",
+      "source": "remote_intl",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-toggl-senior-full-stack",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Toggl — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com]",
+      "praca_url": "https://weworkremotely.com/remote-jobs/toggl-senior-full-stack",
+      "status": "trwajacy",
+      "title": "Senior Full Stack",
+      "detail_url": "https://weworkremotely.com/remote-jobs/toggl-senior-full-stack",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Full Stack Toggl Anywhere in the World",
+      "source": "remote_intl",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "b2b"
+      ],
+      "nab_id": "intl-steuart-nutrition-software-developer-ai-coding",
+      "unit_key": "src:remote_intl",
+      "unit_name": "STEUART NUTRITION — praca zdalna, otwarte: Anywhere in the World [weworkremotely.com]",
+      "praca_url": "https://weworkremotely.com/remote-jobs/steuart-nutrition-software-developer-ai-coding",
+      "status": "trwajacy",
+      "title": "Software Developer AI Coding",
+      "detail_url": "https://weworkremotely.com/remote-jobs/steuart-nutrition-software-developer-ai-coding",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Software Developer AI Coding STEUART NUTRITION Anywhere in the World",
+      "source": "remote_intl",
+      "published": "",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-askable-software-engineer-ai-coding-tasks",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Askable — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com]",
+      "praca_url": "https://remoteOK.com/remote-jobs/remote-software-engineer-ai-coding-tasks-askable-1137538",
+      "status": "trwajacy",
+      "title": "Software Engineer AI Coding Tasks",
+      "detail_url": "https://remoteOK.com/remote-jobs/remote-software-engineer-ai-coding-tasks-askable-1137538",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Software Engineer AI Coding Tasks Askable",
+      "source": "remote_intl",
+      "published": "2026-10-17",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-kodland-apac-python",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Kodland — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com]",
+      "praca_url": "https://remoteOK.com/remote-jobs/remote-apac-python-kodland-1137534",
+      "status": "trwajacy",
+      "title": "APAC Python",
+      "detail_url": "https://remoteOK.com/remote-jobs/remote-apac-python-kodland-1137534",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "APAC Python Kodland",
+      "source": "remote_intl",
+      "published": "2026-10-16",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-wrapbook-senior-software-engineer-ii-applied-ai",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Wrapbook — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com]",
+      "praca_url": "https://remoteOK.com/remote-jobs/remote-senior-software-engineer-ii-applied-ai-wrapbook-1137527",
+      "status": "trwajacy",
+      "title": "Senior Software Engineer II Applied AI",
+      "detail_url": "https://remoteOK.com/remote-jobs/remote-senior-software-engineer-ii-applied-ai-wrapbook-1137527",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Software Engineer II Applied AI Wrapbook",
+      "source": "remote_intl",
+      "published": "2026-10-15",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-lemon-io-senior-react-full-stack-developer",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Lemon.io — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com]",
+      "praca_url": "https://remoteOK.com/remote-jobs/remote-senior-react-full-stack-developer-lemon-io-1137475",
+      "status": "trwajacy",
+      "title": "Senior React Full stack Developer",
+      "detail_url": "https://remoteOK.com/remote-jobs/remote-senior-react-full-stack-developer-lemon-io-1137475",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior React Full stack Developer Lemon.io",
+      "source": "remote_intl",
+      "published": "2026-10-09",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-benzinga-ai-engineer-data-apis",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Benzinga — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com]",
+      "praca_url": "https://remoteOK.com/remote-jobs/remote-ai-engineer-data-apis-benzinga-1137224",
+      "status": "trwajacy",
+      "title": "AI Engineer Data APIs",
+      "detail_url": "https://remoteOK.com/remote-jobs/remote-ai-engineer-data-apis-benzinga-1137224",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "AI Engineer Data APIs Benzinga",
+      "source": "remote_intl",
+      "published": "2026-08-30",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-salesforge-senior-backend-engineer-build-ai-agents",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Salesforge — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com]",
+      "praca_url": "https://remoteOK.com/remote-jobs/remote-senior-backend-engineer-build-ai-agents-salesforge-1137114",
+      "status": "trwajacy",
+      "title": "Senior Backend Engineer Build AI Agents",
+      "detail_url": "https://remoteOK.com/remote-jobs/remote-senior-backend-engineer-build-ai-agents-salesforge-1137114",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Backend Engineer Build AI Agents Salesforge",
+      "source": "remote_intl",
+      "published": "2026-08-25",
+      "category_hint": ""
+    },
+    {
+      "contract_types": [
+        "nieznana"
+      ],
+      "nab_id": "intl-kruger-nearshore-llc-rekluti-desarrollador-full-stack",
+      "unit_key": "src:remote_intl",
+      "unit_name": "Kruger NearShore LLC - Rekluti — praca zdalna, brak ograniczeń (nie podano lokalizacji) [remoteok.com]",
+      "praca_url": "https://remoteOK.com/remote-jobs/remote-desarrollador-full-stack-kruger-nearshore-llc-rekluti-1137062",
+      "status": "trwajacy",
+      "title": "DESARROLLADOR FULL STACK",
+      "detail_url": "https://remoteOK.com/remote-jobs/remote-desarrollador-full-stack-kruger-nearshore-llc-rekluti-1137062",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "DESARROLLADOR FULL STACK Kruger NearShore LLC - Rekluti",
+      "source": "remote_intl",
+      "published": "2026-08-22",
+      "category_hint": ""
+    }
+  ]
+}

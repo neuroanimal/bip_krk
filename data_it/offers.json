@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-10-16T15:45:59+02:00",
-    "updated": "2026-10-19T12:02:38+02:00"
+    "updated": "2026-10-19T12:32:26+02:00"
   },
   "records": {
     "nfj-senior-data-engineer-azure-data-factory-addepto-krakow-6": {
@@ -19,13 +19,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21000.0,
+      "salary_max": 28560.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-azure-data-factory-addepto-krakow-12": {
       "nab_id": "nfj-data-engineer-azure-data-factory-addepto-krakow-12",
@@ -42,13 +46,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 12600.0,
+      "salary_max": 21000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-engineer-databricks-addepto-krakow-27": {
       "nab_id": "nfj-senior-data-engineer-databricks-addepto-krakow-27",
@@ -65,13 +73,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21000.0,
+      "salary_max": 28560.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-databricks-addepto-krakow-30": {
       "nab_id": "nfj-data-engineer-databricks-addepto-krakow-30",
@@ -88,13 +100,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 15120.0,
+      "salary_max": 21000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-engineer-spark-addepto-krakow-21": {
       "nab_id": "nfj-senior-data-engineer-spark-addepto-krakow-21",
@@ -111,13 +127,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21000.0,
+      "salary_max": 28560.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-spark-addepto-krakow-23": {
       "nab_id": "nfj-data-engineer-spark-addepto-krakow-23",
@@ -134,13 +154,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 15120.0,
+      "salary_max": 21000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-bi-engineer-xtb-krakow-1": {
       "nab_id": "nfj-senior-bi-engineer-xtb-krakow-1",
@@ -157,13 +181,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 18000.0,
+      "salary_max": 22700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-power-bi-consultant-gft-poland-krakow": {
       "nab_id": "nfj-senior-power-bi-consultant-gft-poland-krakow",
@@ -180,13 +208,17 @@
       "published": "2026-09-28",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21000.0,
+      "salary_max": 26880.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-power-bi-engineer-gft-poland-krakow": {
       "nab_id": "nfj-senior-power-bi-engineer-gft-poland-krakow",
@@ -203,13 +235,17 @@
       "published": "2026-09-28",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 14600.0,
+      "salary_max": 22300.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-and-financial-engineering-verita-hr-krakow": {
       "nab_id": "nfj-data-and-financial-engineering-verita-hr-krakow",
@@ -226,13 +262,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 28350.0,
+      "salary_max": 30450.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-security-policy-engineer-mindbox-krakow": {
       "nab_id": "nfj-data-security-policy-engineer-mindbox-krakow",
@@ -249,13 +289,17 @@
       "published": "2026-09-28",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 32550.0,
+      "salary_max": 35700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-software-engineer-machine-learning-mlops-tesco-technology-krakow-6": {
       "nab_id": "nfj-software-engineer-machine-learning-mlops-tesco-technology-krakow-6",
@@ -272,13 +316,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 20000.0,
+      "salary_max": 25000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-stores-customer-order-tesco-technology-krakow": {
       "nab_id": "nfj-data-engineer-stores-customer-order-tesco-technology-krakow",
@@ -295,13 +343,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 20000.0,
+      "salary_max": 26000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-protection-specialist-data-discovery-casb-proofpoint-mindbox-krakow": {
       "nab_id": "nfj-data-protection-specialist-data-discovery-casb-proofpoint-mindbox-krakow",
@@ -318,13 +370,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 32550.0,
+      "salary_max": 38850.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-dlp-operations-analyst-mindbox-krakow": {
       "nab_id": "nfj-dlp-operations-analyst-mindbox-krakow",
@@ -341,13 +397,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21000.0,
+      "salary_max": 24150.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-quantum-reporting-and-mi-mindbox-krakow": {
       "nab_id": "nfj-quantum-reporting-and-mi-mindbox-krakow",
@@ -364,13 +424,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 25200.0,
+      "salary_max": 29400.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-engineer-hubquest-krakow": {
       "nab_id": "nfj-senior-data-engineer-hubquest-krakow",
@@ -387,13 +451,17 @@
       "published": "2026-10-10",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 33600.0,
+      "salary_max": 40320.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-analyst-mindbox-krakow": {
       "nab_id": "nfj-senior-analyst-mindbox-krakow",
@@ -410,13 +478,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 23100.0,
+      "salary_max": 25200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-business-analyst-mindbox-krakow-24": {
       "nab_id": "nfj-business-analyst-mindbox-krakow-24",
@@ -433,13 +505,17 @@
       "published": "2026-09-21",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21000.0,
+      "salary_max": 24150.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-quality-expert-fresenius-digital-technology-krakow": {
       "nab_id": "nfj-data-quality-expert-fresenius-digital-technology-krakow",
@@ -456,13 +532,17 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 20000.0,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-engineer-iteamly-krakow": {
       "nab_id": "nfj-senior-data-engineer-iteamly-krakow",
@@ -479,13 +559,17 @@
       "published": "2026-10-09",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 15500.0,
+      "salary_max": 26500.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-analytics-social-data-iteamly-krakow": {
       "nab_id": "nfj-data-engineer-analytics-social-data-iteamly-krakow",
@@ -502,13 +586,17 @@
       "published": "2026-10-09",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 13000.0,
+      "salary_max": 22500.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-analyst-with-dataiku-talend-alteryx-link-group-krakow": {
       "nab_id": "nfj-data-analyst-with-dataiku-talend-alteryx-link-group-krakow",
@@ -525,13 +613,17 @@
       "published": "2026-09-21",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 18480.0,
+      "salary_max": 26880.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-scientist-deepsense-ai-krakow-1": {
       "nab_id": "nfj-senior-data-scientist-deepsense-ai-krakow-1",
@@ -548,13 +640,17 @@
       "published": "2026-09-21",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 19000.0,
+      "salary_max": 28000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-principal-data-engineer-data-architect-gft-poland-krakow": {
       "nab_id": "nfj-principal-data-engineer-data-architect-gft-poland-krakow",
@@ -571,13 +667,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 22500.0,
+      "salary_max": 34500.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-architect-gft-poland-krakow-1": {
       "nab_id": "nfj-data-architect-gft-poland-krakow-1",
@@ -594,13 +694,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 33600.0,
+      "salary_max": 44520.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-engineer-with-gcp-and-powerbi-f-m-x-sii-polska-krakow": {
       "nab_id": "nfj-senior-data-engineer-with-gcp-and-powerbi-f-m-x-sii-polska-krakow",
@@ -617,13 +721,17 @@
       "published": "2026-10-08",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20000.0,
+      "salary_max": 24000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-tax-care-xtb-krakow": {
       "nab_id": "nfj-data-engineer-tax-care-xtb-krakow",
@@ -640,13 +748,17 @@
       "published": "2026-10-08",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 14000.0,
+      "salary_max": 18000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-xtb-krakow": {
       "nab_id": "nfj-data-engineer-xtb-krakow",
@@ -663,13 +775,17 @@
       "published": "2026-10-08",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 14000.0,
+      "salary_max": 18000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-lead-data-consultant-gft-poland-krakow": {
       "nab_id": "nfj-lead-data-consultant-gft-poland-krakow",
@@ -686,13 +802,17 @@
       "published": "2026-10-09",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 26040.0,
+      "salary_max": 34944,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-lead-data-engineer-gft-poland-krakow": {
       "nab_id": "nfj-lead-data-engineer-gft-poland-krakow",
@@ -709,13 +829,17 @@
       "published": "2026-10-09",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 17400.0,
+      "salary_max": 26700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-security-sme-cloud-security-analyst-mindbox-krakow": {
       "nab_id": "nfj-security-sme-cloud-security-analyst-mindbox-krakow",
@@ -827,13 +951,17 @@
       "published": "2026-10-01",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 23100.0,
+      "salary_max": 27300.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-infrastructure-data-engineer-mindbox-krakow": {
       "nab_id": "nfj-infrastructure-data-engineer-mindbox-krakow",
@@ -850,13 +978,17 @@
       "published": "2026-10-01",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 29400.0,
+      "salary_max": 34650.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-product-analyst-mindbox-krakow": {
       "nab_id": "nfj-product-analyst-mindbox-krakow",
@@ -873,13 +1005,17 @@
       "published": "2026-10-01",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 22050.0,
+      "salary_max": 25200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-analyst-verita-hr-krakow-2": {
       "nab_id": "nfj-data-analyst-verita-hr-krakow-2",
@@ -896,13 +1032,17 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 25000.0,
+      "salary_max": 29000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-science-specialist-mindbox-krakow": {
       "nab_id": "nfj-data-science-specialist-mindbox-krakow",
@@ -919,13 +1059,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 27300.0,
+      "salary_max": 29400.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-oracle-gft-poland-krakow": {
       "nab_id": "nfj-data-engineer-oracle-gft-poland-krakow",
@@ -942,13 +1086,17 @@
       "published": "2026-09-30",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 11700.0,
+      "salary_max": 18700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-engineer-oracle-gft-poland-krakow": {
       "nab_id": "nfj-senior-data-engineer-oracle-gft-poland-krakow",
@@ -965,13 +1113,17 @@
       "published": "2026-09-30",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 14600.0,
+      "salary_max": 22300.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-developer-scalo-krakow-19": {
       "nab_id": "nfj-senior-java-developer-scalo-krakow-19",
@@ -1007,13 +1159,17 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 26250.0,
+      "salary_max": 29400.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-business-intelligence-analyst-ii-qlik-qlik-cloud-ray-allen-krakow": {
       "nab_id": "nfj-business-intelligence-analyst-ii-qlik-qlik-cloud-ray-allen-krakow",
@@ -1030,13 +1186,17 @@
       "published": "2026-09-30",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 8500.0,
+      "salary_max": 12000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-tech-lead-data-engineer-gft-poland-krakow-1": {
       "nab_id": "nfj-tech-lead-data-engineer-gft-poland-krakow-1",
@@ -1053,13 +1213,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 17400.0,
+      "salary_max": 26700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-etl-engineering-delivery-lead-mindbox-krakow": {
       "nab_id": "nfj-etl-engineering-delivery-lead-mindbox-krakow",
@@ -1076,13 +1240,17 @@
       "published": "2026-10-18",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 27300.0,
+      "salary_max": 33600.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-team-lead-data-consultant-gft-poland-krakow": {
       "nab_id": "nfj-team-lead-data-consultant-gft-poland-krakow",
@@ -1099,13 +1267,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 26040.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-team-lead-data-engineer-gft-poland-krakow": {
       "nab_id": "nfj-team-lead-data-engineer-gft-poland-krakow",
@@ -1122,13 +1294,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 17400.0,
+      "salary_max": 26700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-expert-data-consultant-gft-poland-krakow-2": {
       "nab_id": "nfj-expert-data-consultant-gft-poland-krakow-2",
@@ -1145,13 +1321,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 26040.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-analysis-mindbox-krakow": {
       "nab_id": "nfj-data-analysis-mindbox-krakow",
@@ -1168,13 +1348,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 18900.0,
+      "salary_max": 23100.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-junior-data-engineer-mindbox-krakow-1": {
       "nab_id": "nfj-junior-data-engineer-mindbox-krakow-1",
@@ -1191,13 +1375,17 @@
       "published": "2026-09-23",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 16800.0,
+      "salary_max": 21000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-vendor-manager-analyst-mindbox-krakow": {
       "nab_id": "nfj-vendor-manager-analyst-mindbox-krakow",
@@ -1214,13 +1402,17 @@
       "published": "2026-09-29",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 17850.0,
+      "salary_max": 21000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-ai-engineer-llms-python-addepto-krakow-17": {
       "nab_id": "nfj-senior-ai-engineer-llms-python-addepto-krakow-17",
@@ -1237,13 +1429,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 19320.0,
+      "salary_max": 25200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-ai-engineer-llms-python-addepto-krakow-14": {
       "nab_id": "nfj-ai-engineer-llms-python-addepto-krakow-14",
@@ -1260,13 +1456,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 12600.0,
+      "salary_max": 19320.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-scientist-ml-engineer-addepto-krakow-33": {
       "nab_id": "nfj-senior-data-scientist-ml-engineer-addepto-krakow-33",
@@ -1283,13 +1483,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 19320.0,
+      "salary_max": 25200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-scientist-tech-lead-addepto-krakow-29": {
       "nab_id": "nfj-senior-data-scientist-tech-lead-addepto-krakow-29",
@@ -1306,13 +1510,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 19320.0,
+      "salary_max": 28560.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-scientist-ml-engineer-addepto-krakow-32": {
       "nab_id": "nfj-data-scientist-ml-engineer-addepto-krakow-32",
@@ -1329,13 +1537,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 12600.0,
+      "salary_max": 19320.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-lead-data-scientist-ml-engineer-addepto-krakow-34": {
       "nab_id": "nfj-lead-data-scientist-ml-engineer-addepto-krakow-34",
@@ -1352,13 +1564,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 19320.0,
+      "salary_max": 28560.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-integrations-engineer-machine-learning-onerail-poland-krakow": {
       "nab_id": "nfj-integrations-engineer-machine-learning-onerail-poland-krakow",
@@ -1375,13 +1591,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20000.0,
+      "salary_max": 27000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-machine-learning-integrations-engineer-onerail-poland-krakow-1": {
       "nab_id": "nfj-machine-learning-integrations-engineer-onerail-poland-krakow-1",
@@ -1398,13 +1618,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20000.0,
+      "salary_max": 27000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-ai-agents-engineer-ringier-axel-springer-tech-krakow": {
       "nab_id": "nfj-senior-ai-agents-engineer-ringier-axel-springer-tech-krakow",
@@ -1421,13 +1645,17 @@
       "published": "2026-09-22",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 14100.0,
+      "salary_max": 23500.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-generative-ai-engineer-product-intelligence-tesco-technology-krakow": {
       "nab_id": "nfj-generative-ai-engineer-product-intelligence-tesco-technology-krakow",
@@ -1444,13 +1672,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 20000.0,
+      "salary_max": 25000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-staff-senior-staff-software-engineer-ai-systems-cksource-krakow-1": {
       "nab_id": "nfj-staff-senior-staff-software-engineer-ai-systems-cksource-krakow-1",
@@ -1467,13 +1699,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 32000.0,
+      "salary_max": 40000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-ai-engineering-manager-deepsense-ai-krakow-2": {
       "nab_id": "nfj-ai-engineering-manager-deepsense-ai-krakow-2",
@@ -1490,13 +1726,17 @@
       "published": "2026-09-27",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 26000.0,
+      "salary_max": 35000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-applied-ai-engineer-deepsense-ai-krakow-1": {
       "nab_id": "nfj-senior-applied-ai-engineer-deepsense-ai-krakow-1",
@@ -1513,13 +1753,17 @@
       "published": "2026-10-10",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20000.0,
+      "salary_max": 30000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-ai-software-architect-c-c-python-deep-learning-inference-1dea-krakow": {
       "nab_id": "nfj-ai-software-architect-c-c-python-deep-learning-inference-1dea-krakow",
@@ -1536,13 +1780,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 25000.0,
+      "salary_max": 50000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-inference-engineer-c-python-ai-1dea-krakow": {
       "nab_id": "nfj-inference-engineer-c-python-ai-1dea-krakow",
@@ -1559,13 +1807,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 25000.0,
+      "salary_max": 50000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-head-of-ai-addepto-krakow": {
       "nab_id": "nfj-head-of-ai-addepto-krakow",
@@ -1620,13 +1872,17 @@
       "published": "2026-10-02",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21840.0,
+      "salary_max": 28560.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-power-platform-developer-with-copilot-studio-spyrosoft-krakow": {
       "nab_id": "nfj-senior-power-platform-developer-with-copilot-studio-spyrosoft-krakow",
@@ -1643,13 +1899,17 @@
       "published": "2026-10-08",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 18480.0,
+      "salary_max": 25200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-ai-engineer-itfs-krakow": {
       "nab_id": "nfj-ai-engineer-itfs-krakow",
@@ -1666,13 +1926,17 @@
       "published": "2026-10-08",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 140.0,
+      "salary_max": 170.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-ai-engineer-mindbox-krakow-1": {
       "nab_id": "nfj-ai-engineer-mindbox-krakow-1",
@@ -1689,13 +1953,17 @@
       "published": "2026-09-18",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 32550.0,
+      "salary_max": 35700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-solution-engineer-ai-big-data-addepto-krakow-6": {
       "nab_id": "nfj-solution-engineer-ai-big-data-addepto-krakow-6",
@@ -1731,13 +1999,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 18800.0,
+      "salary_max": 28900.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-ai-solutions-engineer-mindbox-krakow": {
       "nab_id": "nfj-ai-solutions-engineer-mindbox-krakow",
@@ -1754,13 +2026,17 @@
       "published": "2026-09-30",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 27300.0,
+      "salary_max": 31500.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-machine-learning-engineer-llms-deepsense-ai-krakow": {
       "nab_id": "nfj-senior-machine-learning-engineer-llms-deepsense-ai-krakow",
@@ -1777,13 +2053,17 @@
       "published": "2026-09-29",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20000.0,
+      "salary_max": 30000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-lead-ai-data-architect-gft-poland-krakow": {
       "nab_id": "nfj-lead-ai-data-architect-gft-poland-krakow",
@@ -1800,13 +2080,17 @@
       "published": "2026-10-05",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 34440.0,
+      "salary_max": 46200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-mid-net-backend-developer-manufacturo-krakow": {
       "nab_id": "nfj-mid-net-backend-developer-manufacturo-krakow",
@@ -1842,13 +2126,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 25000.0,
+      "salary_max": 30000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-c-trading-systems-engineer-vistulo-for-a-major-n-american-bank-krakow": {
       "nab_id": "nfj-senior-c-trading-systems-engineer-vistulo-for-a-major-n-american-bank-krakow",
@@ -1865,13 +2153,17 @@
       "published": "2026-10-13",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 42000.0,
+      "salary_max": 47040.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-java-developer-itfs-krakow-3": {
       "nab_id": "nfj-java-developer-itfs-krakow-3",
@@ -1945,13 +2237,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 25200.0,
+      "salary_max": 33600.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-application-developer-mindbox-krakow": {
       "nab_id": "nfj-application-developer-mindbox-krakow",
@@ -1987,13 +2283,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 26880.0,
+      "salary_max": 31920.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-backend-node-js-engineer-ringier-axel-springer-tech-krakow": {
       "nab_id": "nfj-backend-node-js-engineer-ringier-axel-springer-tech-krakow",
@@ -2010,13 +2310,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 13000.0,
+      "salary_max": 20500.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-fullstack-java-developer-angular-j-labs-software-specialist-krakow": {
       "nab_id": "nfj-fullstack-java-developer-angular-j-labs-software-specialist-krakow",
@@ -2033,13 +2337,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20160.0,
+      "salary_max": 24360.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-software-engineer-backend-product-intelligence-tesco-technology-krakow": {
       "nab_id": "nfj-software-engineer-backend-product-intelligence-tesco-technology-krakow",
@@ -2056,13 +2364,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 20000.0,
+      "salary_max": 25000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-engineering-manager-backend-transcend-tesco-technology-krakow": {
       "nab_id": "nfj-engineering-manager-backend-transcend-tesco-technology-krakow",
@@ -2079,13 +2391,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 31000.0,
+      "salary_max": 40000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-developer-diverse-cg-sp-k--krakow-2": {
       "nab_id": "nfj-senior-java-developer-diverse-cg-sp-k--krakow-2",
@@ -2102,13 +2418,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 17500.0,
+      "salary_max": 23500.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-servicenow-developer-with-csm-or-irm-grc-experience-f-m-x-sii-polska-krakow": {
       "nab_id": "nfj-servicenow-developer-with-csm-or-irm-grc-experience-f-m-x-sii-polska-krakow",
@@ -2125,13 +2445,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 29400.0,
+      "salary_max": 33600.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-hsbc-2027-technology-graduate-programmes-engineering-cyber-data-hsbc-technology-poland-krakow": {
       "nab_id": "nfj-hsbc-2027-technology-graduate-programmes-engineering-cyber-data-hsbc-technology-poland-krakow",
@@ -2148,13 +2472,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 11000.0,
+      "salary_max": 11000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-software-engineer-mindbox-krakow-7": {
       "nab_id": "nfj-senior-software-engineer-mindbox-krakow-7",
@@ -2171,13 +2499,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 32550.0,
+      "salary_max": 36750.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-solution-architect-mindbox-krakow-3": {
       "nab_id": "nfj-solution-architect-mindbox-krakow-3",
@@ -2194,13 +2526,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 35700.0,
+      "salary_max": 38850.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-developer-mindbox-krakow-8": {
       "nab_id": "nfj-senior-java-developer-mindbox-krakow-8",
@@ -2236,13 +2572,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 28350.0,
+      "salary_max": 34650.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-lead-power-platforms-developer-mindbox-krakow": {
       "nab_id": "nfj-lead-power-platforms-developer-mindbox-krakow",
@@ -2259,13 +2599,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 31500.0,
+      "salary_max": 35700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-java-developer-scalo-krakow-13": {
       "nab_id": "nfj-java-developer-scalo-krakow-13",
@@ -2301,13 +2645,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 29400.0,
+      "salary_max": 33600.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-developer-experience-engineer-mindbox-krakow": {
       "nab_id": "nfj-senior-developer-experience-engineer-mindbox-krakow",
@@ -2324,13 +2672,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 30450.0,
+      "salary_max": 33600.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-developer-moondigo-krakow": {
       "nab_id": "nfj-senior-java-developer-moondigo-krakow",
@@ -2347,13 +2699,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20160.0,
+      "salary_max": 26880.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-backend-developer-java-kotlin-j-labs-software-specialist-krakow": {
       "nab_id": "nfj-senior-backend-developer-java-kotlin-j-labs-software-specialist-krakow",
@@ -2427,13 +2783,17 @@
       "published": "2026-10-11",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 31500.0,
+      "salary_max": 37800.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-internal-kubernetes-platform-engineering-team-lead-mindbox-krakow": {
       "nab_id": "nfj-internal-kubernetes-platform-engineering-team-lead-mindbox-krakow",
@@ -2526,13 +2886,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 31500.0,
+      "salary_max": 37800.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-vp-lead-engineer-hsbc-technology-poland-krakow-2": {
       "nab_id": "nfj-vp-lead-engineer-hsbc-technology-poland-krakow-2",
@@ -2549,13 +2913,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 21141,
+      "salary_max": 31000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-python-software-engineer-verita-hr-krakow": {
       "nab_id": "nfj-python-software-engineer-verita-hr-krakow",
@@ -2667,13 +3035,17 @@
       "published": "2026-10-13",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20000.0,
+      "salary_max": 24000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-java-software-engineer-junior-mid-motorola-solutions-systems-polska-krakow": {
       "nab_id": "nfj-java-software-engineer-junior-mid-motorola-solutions-systems-polska-krakow",
@@ -2690,13 +3062,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 9300.0,
+      "salary_max": 13000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-developer-f-m-x-sii-polska-krakow": {
       "nab_id": "nfj-senior-java-developer-f-m-x-sii-polska-krakow",
@@ -2713,13 +3089,17 @@
       "published": "2026-10-13",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20000.0,
+      "salary_max": 24000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-software-architect-staff-engineer-motorola-solutions-systems-polska-krakow-1": {
       "nab_id": "nfj-software-architect-staff-engineer-motorola-solutions-systems-polska-krakow-1",
@@ -2736,13 +3116,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "permanent"
+      "contract_raw": "permanent",
+      "salary_min": 25000.0,
+      "salary_max": 30000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-aws-developer-mindbox-krakow": {
       "nab_id": "nfj-senior-aws-developer-mindbox-krakow",
@@ -2892,13 +3276,17 @@
       "published": "2026-10-13",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21840.0,
+      "salary_max": 26880.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-junior-software-engineer-java-devops-motorola-solutions-systems-polska-krakow": {
       "nab_id": "nfj-junior-software-engineer-java-devops-motorola-solutions-systems-polska-krakow",
@@ -2991,13 +3379,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 23520.0,
+      "salary_max": 30240.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-mobile-developer-kotlin-multiplatform-avenga-agencja-pracy-nr-kraz-8448-krakow": {
       "nab_id": "nfj-mobile-developer-kotlin-multiplatform-avenga-agencja-pracy-nr-kraz-8448-krakow",
@@ -3014,13 +3406,17 @@
       "published": "2026-10-09",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20160.0,
+      "salary_max": 25200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-expert-android-consultant-gft-poland-krakow": {
       "nab_id": "nfj-expert-android-consultant-gft-poland-krakow",
@@ -3037,13 +3433,17 @@
       "published": "2026-10-09",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 28560.0,
+      "salary_max": 35280.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-mobile-apps-software-engineer-branchspace-krakow": {
       "nab_id": "nfj-mobile-apps-software-engineer-branchspace-krakow",
@@ -3060,13 +3460,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 19000.0,
+      "salary_max": 27000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-flutter-consultant-gft-poland-krakow": {
       "nab_id": "nfj-senior-flutter-consultant-gft-poland-krakow",
@@ -3083,13 +3487,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 20496,
+      "salary_max": 26880.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-flutter-developer-team-leader-1-gft-poland-krakow": {
       "nab_id": "nfj-flutter-developer-team-leader-1-gft-poland-krakow",
@@ -3106,13 +3514,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 25200.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-android-developer-mindbox-krakow-8": {
       "nab_id": "nfj-android-developer-mindbox-krakow-8",
@@ -3129,13 +3541,17 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 29400.0,
+      "salary_max": 34650.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-staff-software-engineer-software-mansion-krakow-1": {
       "nab_id": "nfj-staff-software-engineer-software-mansion-krakow-1",
@@ -3152,13 +3568,17 @@
       "published": "2026-09-25",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 27000.0,
+      "salary_max": 35000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-scientist-verita-hr-polska-krakow": {
       "nab_id": "nfj-data-scientist-verita-hr-polska-krakow",
@@ -3175,13 +3595,17 @@
       "published": "2026-09-29",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 25000.0,
+      "salary_max": 32000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-scientist-scalo-krakow": {
       "nab_id": "nfj-senior-data-scientist-scalo-krakow",
@@ -3198,13 +3622,17 @@
       "published": "2026-10-05",
       "category_hint": "",
       "first_seen": "2026-10-16T15:45:59+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 26880.0,
+      "salary_max": 30240.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-ai-solution-architect-addepto-krakow-6": {
       "nab_id": "nfj-ai-solution-architect-addepto-krakow-6",
@@ -3240,7 +3668,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3262,7 +3690,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3284,7 +3712,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3306,7 +3734,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3328,7 +3756,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3350,7 +3778,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3373,8 +3801,8 @@
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
       "last_seen": "2026-10-19T12:02:37+02:00",
-      "active": true,
-      "inactive_since": null,
+      "active": false,
+      "inactive_since": "2026-10-19T12:32:24+02:00",
       "contract_types": [
         "uop"
       ]
@@ -3395,8 +3823,8 @@
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
       "last_seen": "2026-10-19T12:02:37+02:00",
-      "active": true,
-      "inactive_since": null,
+      "active": false,
+      "inactive_since": "2026-10-19T12:32:24+02:00",
       "contract_types": [
         "uop"
       ]
@@ -3530,7 +3958,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3571,7 +3999,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3593,7 +4021,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3615,7 +4043,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -3637,7 +4065,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:06+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4172,13 +4600,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:46+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21000.0,
+      "salary_max": 28560.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-head-of-ai-addepto-krakow-1": {
       "nab_id": "nfj-head-of-ai-addepto-krakow-1",
@@ -4195,13 +4627,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:46+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 28560.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-solution-engineer-ai-big-data-addepto-krakow-7": {
       "nab_id": "nfj-solution-engineer-ai-big-data-addepto-krakow-7",
@@ -4218,13 +4654,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:46+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 21000.0,
+      "salary_max": 33000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-ai-solution-architect-addepto-krakow-7": {
       "nab_id": "nfj-ai-solution-architect-addepto-krakow-7",
@@ -4241,13 +4681,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:53:46+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 28560.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "cbop-176ba48301c7919414e068ac6a50ebb3": {
       "nab_id": "cbop-176ba48301c7919414e068ac6a50ebb3",
@@ -4264,13 +4708,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na okres próbny"
+      "contract_raw": "Umowa o pracę na okres próbny",
+      "salary_min": 4806.0,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-dff6871558af59692b5ff5478d84d538": {
       "nab_id": "cbop-dff6871558af59692b5ff5478d84d538",
@@ -4287,13 +4735,17 @@
       "published": "2026-10-09",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na okres próbny"
+      "contract_raw": "Umowa o pracę na okres próbny",
+      "salary_min": 5500.0,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-b1e4a1d06a9e5d5374030c338ab4d4b3": {
       "nab_id": "cbop-b1e4a1d06a9e5d5374030c338ab4d4b3",
@@ -4310,13 +4762,17 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na okres próbny"
+      "contract_raw": "Umowa o pracę na okres próbny",
+      "salary_min": 4806.0,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-c782ea8c6c52d4bdd9eb97dfd6b89b77": {
       "nab_id": "cbop-c782ea8c6c52d4bdd9eb97dfd6b89b77",
@@ -4333,13 +4789,17 @@
       "published": "2026-07-22",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na okres próbny"
+      "contract_raw": "Umowa o pracę na okres próbny",
+      "salary_min": 4806.0,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-e29c7d0afa0f2870dae81c8745be6239": {
       "nab_id": "cbop-e29c7d0afa0f2870dae81c8745be6239",
@@ -4356,13 +4816,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na czas określony"
+      "contract_raw": "Umowa o pracę na czas określony",
+      "salary_min": 7000.0,
+      "salary_max": 8000.0,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-4bbc03a8a7b3e6a2b7486931f82e0d84": {
       "nab_id": "cbop-4bbc03a8a7b3e6a2b7486931f82e0d84",
@@ -4379,13 +4843,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę w zastępstwie"
+      "contract_raw": "Umowa o pracę w zastępstwie",
+      "salary_min": 5308.0,
+      "salary_max": 6397.0,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-f3e5de8d8b71754dc989366d189a442b": {
       "nab_id": "cbop-f3e5de8d8b71754dc989366d189a442b",
@@ -4402,13 +4870,17 @@
       "published": "2026-10-08",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na czas określony"
+      "contract_raw": "Umowa o pracę na czas określony",
+      "salary_min": 7366.0,
+      "salary_max": 8987.0,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-d26351b629a76cd51dc24a45f2f984ea": {
       "nab_id": "cbop-d26351b629a76cd51dc24a45f2f984ea",
@@ -4425,13 +4897,17 @@
       "published": "2026-10-08",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę w zastępstwie"
+      "contract_raw": "Umowa o pracę w zastępstwie",
+      "salary_min": 2654.0,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-f47cdaba92e9d41e60636c5cfd653c28": {
       "nab_id": "cbop-f47cdaba92e9d41e60636c5cfd653c28",
@@ -4467,13 +4943,17 @@
       "published": "2026-09-28",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na czas określony"
+      "contract_raw": "Umowa o pracę na czas określony",
+      "salary_min": 1800.0,
+      "salary_max": 2200.0,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-51e4297a9564bdc3fcedda9667d703e0": {
       "nab_id": "cbop-51e4297a9564bdc3fcedda9667d703e0",
@@ -4509,13 +4989,17 @@
       "published": "2026-08-27",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na czas określony"
+      "contract_raw": "Umowa o pracę na czas określony",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-500ca037086ee559aeb129bb1554e4e6": {
       "nab_id": "cbop-500ca037086ee559aeb129bb1554e4e6",
@@ -4532,13 +5016,17 @@
       "published": "2026-08-27",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:00+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "uop"
       ],
-      "contract_raw": "Umowa o pracę na czas określony"
+      "contract_raw": "Umowa o pracę na czas określony",
+      "salary_min": null,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "intl-salesloft-principal-software-engineer-ai": {
       "nab_id": "intl-salesloft-principal-software-engineer-ai",
@@ -4555,7 +5043,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4577,7 +5065,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4599,7 +5087,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4621,7 +5109,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4643,7 +5131,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4665,7 +5153,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4706,7 +5194,7 @@
       "published": "2026-10-09",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4747,7 +5235,7 @@
       "published": "2026-08-30",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4769,7 +5257,7 @@
       "published": "2026-08-25",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4791,7 +5279,7 @@
       "published": "2026-08-22",
       "category_hint": "",
       "first_seen": "2026-10-16T15:54:06+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -4813,13 +5301,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T16:00:48+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "b2b"
+      "contract_raw": "b2b",
+      "salary_min": 28560.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "arc-ai-integration-engineer": {
       "nab_id": "arc-ai-integration-engineer",
@@ -4836,13 +5328,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 30,
+      "salary_max": 45,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-experienced-software-engineer-ai-coding-tasks": {
       "nab_id": "arc-experienced-software-engineer-ai-coding-tasks",
@@ -4859,13 +5355,17 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 30,
+      "salary_max": 45,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-senior-mobile-engineer-ios-android-overlap-with-est": {
       "nab_id": "arc-senior-mobile-engineer-ios-android-overlap-with-est",
@@ -4882,13 +5382,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 40,
+      "salary_max": 50,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-lead-engineer-systems-architect-backend-developer-devops-engineer-overlap-with-est": {
       "nab_id": "arc-lead-engineer-systems-architect-backend-developer-devops-engineer-overlap-with-est",
@@ -4905,13 +5409,17 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 45,
+      "salary_max": 55,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-senior-fractional-cto-principal-geospatial-data-architect-pt-emea-apac": {
       "nab_id": "arc-senior-fractional-cto-principal-geospatial-data-architect-pt-emea-apac",
@@ -4928,13 +5436,17 @@
       "published": "2026-10-14",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 45,
+      "salary_max": 70,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-audit-of-ml-and-econometric-models-on-financial-time-series": {
       "nab_id": "arc-audit-of-ml-and-econometric-models-on-financial-time-series",
@@ -4951,13 +5463,17 @@
       "published": "2026-10-12",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 30,
+      "salary_max": 45,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-sr-data-engineer-sports-analytics-platform-python-web-scraping-statistical-modeling-ft-worldwide": {
       "nab_id": "arc-sr-data-engineer-sports-analytics-platform-python-web-scraping-statistical-modeling-ft-worldwide",
@@ -4974,13 +5490,17 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 40,
+      "salary_max": 75,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-senior-ai-automation-developer-python-agentic-ai-ww-pt": {
       "nab_id": "arc-senior-ai-automation-developer-python-agentic-ai-ww-pt",
@@ -4997,13 +5517,17 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 35,
+      "salary_max": 55,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-senior-python-django-backend-engineer-health-tech-lead-technical-owner-ww-ft": {
       "nab_id": "arc-senior-python-django-backend-engineer-health-tech-lead-technical-owner-ww-ft",
@@ -5020,13 +5544,17 @@
       "published": "2026-10-05",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 35,
+      "salary_max": 55,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "arc-rust-code-reviewer-security-architecture-pt-worldwide": {
       "nab_id": "arc-rust-code-reviewer-security-architecture-pt-worldwide",
@@ -5043,13 +5571,17 @@
       "published": "2026-10-04",
       "category_hint": "",
       "first_seen": "2026-10-16T16:45:21+02:00",
-      "last_seen": "2026-10-19T12:02:38+02:00",
+      "last_seen": "2026-10-19T12:32:26+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
         "b2b"
       ],
-      "contract_raw": "contract"
+      "contract_raw": "contract",
+      "salary_min": 20,
+      "salary_max": 50,
+      "salary_currency": "USD",
+      "salary_period": "hour"
     },
     "nfj-senior-java-developer-braver-it-krakow-1": {
       "nab_id": "nfj-senior-java-developer-braver-it-krakow-1",
@@ -5085,7 +5617,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-16T16:51:16+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null,
       "contract_types": [
@@ -5111,9 +5643,13 @@
       "published": "2026-10-17",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 30240.0,
+      "salary_max": 33600.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-architect-idego-group-krakow-3": {
       "contract_types": [
@@ -5134,9 +5670,13 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 30240.0,
+      "salary_max": 40320.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-engineer-with-ms-fabric-f-m-x-sii-polska-krakow": {
       "contract_types": [
@@ -5157,9 +5697,13 @@
       "published": "2026-10-05",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 25200.0,
+      "salary_max": 29400.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-data-engineer-blackline-krakow-1": {
       "contract_types": [
@@ -5180,9 +5724,13 @@
       "published": "2026-09-29",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 22000.0,
+      "salary_max": 28000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-etl-developer-f-m-x-sii-polska-krakow": {
       "contract_types": [
@@ -5203,9 +5751,13 @@
       "published": "2026-09-29",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 15000.0,
+      "salary_max": 18000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-engineer-gcp-ds-stream-krakow": {
       "contract_types": [
@@ -5226,9 +5778,13 @@
       "published": "2026-09-29",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 23520.0,
+      "salary_max": 27720.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-principal-data-architect-gft-poland-krakow": {
       "contract_types": [
@@ -5249,9 +5805,13 @@
       "published": "2026-10-05",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 24500.0,
+      "salary_max": 37500.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-data-bi-analyst-databricks-power-bi-hubquest-krakow": {
       "contract_types": [
@@ -5272,9 +5832,13 @@
       "published": "2026-09-29",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 18480.0,
+      "salary_max": 23520.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-java-developer-with-azure-m-f-arche-solutions-krakow": {
       "contract_types": [
@@ -5295,9 +5859,13 @@
       "published": "2026-10-01",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 16800.0,
+      "salary_max": 21000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-java-developer-mindbox-krakow-5": {
       "contract_types": [
@@ -5318,9 +5886,13 @@
       "published": "2026-10-01",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 23100.0,
+      "salary_max": 27300.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-developer-mindbox-krakow-9": {
       "contract_types": [
@@ -5341,9 +5913,13 @@
       "published": "2026-10-01",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 32550.0,
+      "salary_max": 35700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-net-developer-mindbox-krakow-7": {
       "contract_types": [
@@ -5364,9 +5940,13 @@
       "published": "2026-10-01",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 23100.0,
+      "salary_max": 27300.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-software-engineer-clm-gcas-mindbox-krakow": {
       "contract_types": [
@@ -5387,9 +5967,13 @@
       "published": "2026-10-01",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 29400.0,
+      "salary_max": 33600.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-lead-java-software-engineer-verita-hr-krakow": {
       "contract_types": [
@@ -5410,9 +5994,13 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 29400.0,
+      "salary_max": 35700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-dynamics-365-developer-antal-krakow-1": {
       "contract_types": [
@@ -5433,9 +6021,13 @@
       "published": "2026-09-30",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 33600.0,
+      "salary_max": 40320.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-database-engineer-knowledge-graph-platform-mindbox-krakow": {
       "contract_types": [
@@ -5456,9 +6048,13 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 29400.0,
+      "salary_max": 34650.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-engineer-trading-systems-vistulo-for-a-major-n-american-bank-krakow": {
       "contract_types": [
@@ -5479,9 +6075,13 @@
       "published": "2026-09-30",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 45360.0,
+      "salary_max": 50400.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-software-engineer-cloudferro-krakow-5": {
       "contract_types": [
@@ -5502,9 +6102,13 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 18000.0,
+      "salary_max": 27000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-lead-data-engineer-mindbox-krakow": {
       "contract_types": [
@@ -5525,9 +6129,13 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 35700.0,
+      "salary_max": 38850.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-gcp-data-engineer-with-java-f-m-x-sii-polska-krakow-2": {
       "contract_types": [
@@ -5548,9 +6156,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 18900.0,
+      "salary_max": 25200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-tech-lead-lp-hsbc-technology-poland-krakow": {
       "contract_types": [
@@ -5571,9 +6183,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 30000.0,
+      "salary_max": 33000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-fullstack-golang-engineer-verita-hr-krakow": {
       "contract_types": [
@@ -5594,9 +6210,13 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 26250.0,
+      "salary_max": 30450.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-backend-engineer-core-java-trading-systems-vistulo-for-a-major-n-american-bank-krakow-5": {
       "contract_types": [
@@ -5617,9 +6237,13 @@
       "published": "2026-09-30",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 36960.0,
+      "salary_max": 40320.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-consultant-with-postgresql-gft-poland-krakow": {
       "contract_types": [
@@ -5640,9 +6264,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 21000.0,
+      "salary_max": 26880.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-engineer-with-postgresql-gft-poland-krakow": {
       "contract_types": [
@@ -5663,9 +6291,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 14600.0,
+      "salary_max": 22300.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-expert-java-consultant-gft-poland-krakow-3": {
       "contract_types": [
@@ -5686,9 +6318,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 26040.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-tech-lead-java-engineer-gft-poland-krakow-3": {
       "contract_types": [
@@ -5709,9 +6345,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 17400.0,
+      "salary_max": 26700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-consultant-gft-poland-krakow-4": {
       "contract_types": [
@@ -5732,9 +6372,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 21000.0,
+      "salary_max": 26880.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-engineer-gft-poland-krakow-4": {
       "contract_types": [
@@ -5755,9 +6399,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 14600.0,
+      "salary_max": 22300.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-backend-developer-with-gcp-aws-j-labs-software-specialist-krakow": {
       "contract_types": [
@@ -5778,9 +6426,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 26880.0,
+      "salary_max": 30240.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-expert-net-consultant-with-azure-gft-poland-krakow": {
       "contract_types": [
@@ -5801,9 +6453,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 26040.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-tech-lead-net-engineer-with-azure-gft-poland-krakow": {
       "contract_types": [
@@ -5824,9 +6480,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 17400.0,
+      "salary_max": 26700.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-backend-engineer-vonroll-infratec-krakow-1": {
       "contract_types": [
@@ -5847,9 +6507,13 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 23000.0,
+      "salary_max": 28000.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-backend-engineer-java-mindbox-krakow": {
       "contract_types": [
@@ -5870,9 +6534,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 29400.0,
+      "salary_max": 33600.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-software-security-backend-engineer-java-mindbox-krakow": {
       "contract_types": [
@@ -5893,9 +6561,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 25200.0,
+      "salary_max": 30450.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-backend-developer-mindbox-krakow-2": {
       "contract_types": [
@@ -5916,9 +6588,13 @@
       "published": "2026-09-24",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 30450.0,
+      "salary_max": 34650.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-lead-java-consultant-gft-poland-krakow-1": {
       "contract_types": [
@@ -5939,9 +6615,13 @@
       "published": "2026-10-06",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 26040.0,
+      "salary_max": 34440.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-cloud-service-developer-scalo-krakow-1": {
       "contract_types": [
@@ -5962,9 +6642,13 @@
       "published": "2026-10-13",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 25200.0,
+      "salary_max": 26880.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-senior-java-developer-antal-krakow-6": {
       "contract_types": [
@@ -5985,9 +6669,13 @@
       "published": "2026-09-23",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 31920.0,
+      "salary_max": 38640.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "nfj-production-engineering-specialist-mindbox-krakow-5": {
       "contract_types": [
@@ -6008,9 +6696,13 @@
       "published": "2026-09-23",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:41+02:00",
-      "last_seen": "2026-10-19T12:02:19+02:00",
+      "last_seen": "2026-10-19T12:31:56+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 21000.0,
+      "salary_max": 25200.0,
+      "salary_currency": "PLN",
+      "salary_period": "Month"
     },
     "cbop-978e031df674f27964315be259573efc": {
       "nab_id": "cbop-978e031df674f27964315be259573efc",
@@ -6031,9 +6723,13 @@
       "published": "2026-10-19",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:53+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 4886.0,
+      "salary_max": null,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-85bf423a626aa9a786748861797f9080": {
       "nab_id": "cbop-85bf423a626aa9a786748861797f9080",
@@ -6054,9 +6750,13 @@
       "published": "2026-10-19",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:53+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 8000.0,
+      "salary_max": 10000.0,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "cbop-af228042a630ed6f9adc662e91d1c59b": {
       "nab_id": "cbop-af228042a630ed6f9adc662e91d1c59b",
@@ -6077,9 +6777,13 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:53+02:00",
-      "last_seen": "2026-10-19T12:02:30+02:00",
+      "last_seen": "2026-10-19T12:32:14+02:00",
       "active": true,
-      "inactive_since": null
+      "inactive_since": null,
+      "salary_min": 5150.0,
+      "salary_max": 5400.0,
+      "salary_currency": "PLN",
+      "salary_period": "month"
     },
     "bdj-237669-data-engineer-with-snowflake-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska": {
       "nab_id": "bdj-237669-data-engineer-with-snowflake-ai-data-warsaw-krakow-wroclaw-poznan-gdansk-bialystok-accenture-polska",
@@ -6099,7 +6803,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6121,7 +6825,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6143,7 +6847,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6165,7 +6869,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6187,7 +6891,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6209,7 +6913,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6231,7 +6935,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6253,7 +6957,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6275,7 +6979,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6297,7 +7001,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6319,7 +7023,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6341,7 +7045,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6363,7 +7067,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6385,7 +7089,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6407,7 +7111,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6429,7 +7133,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6451,7 +7155,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6473,7 +7177,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6495,7 +7199,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6517,7 +7221,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6539,7 +7243,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6561,7 +7265,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6583,7 +7287,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6605,7 +7309,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6627,7 +7331,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6649,7 +7353,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6671,7 +7375,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6693,7 +7397,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6715,7 +7419,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6737,7 +7441,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6759,7 +7463,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6781,7 +7485,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6803,7 +7507,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:58:55+02:00",
-      "last_seen": "2026-10-19T12:02:37+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6825,7 +7529,7 @@
       "published": "",
       "category_hint": "",
       "first_seen": "2026-10-19T11:59:48+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6847,7 +7551,7 @@
       "published": "2026-10-17",
       "category_hint": "",
       "first_seen": "2026-10-19T11:59:48+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6869,7 +7573,7 @@
       "published": "2026-10-16",
       "category_hint": "",
       "first_seen": "2026-10-19T11:59:48+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
       "active": true,
       "inactive_since": null
     },
@@ -6891,7 +7595,51 @@
       "published": "2026-10-15",
       "category_hint": "",
       "first_seen": "2026-10-19T11:59:48+02:00",
-      "last_seen": "2026-10-19T12:02:35+02:00",
+      "last_seen": "2026-10-19T12:32:23+02:00",
+      "active": true,
+      "inactive_since": null
+    },
+    "bdj-258290-senior-python-developer-data-engineer-krakow-lodz-wroclaw-gdansk-accenture-polska": {
+      "nab_id": "bdj-258290-senior-python-developer-data-engineer-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Accenture Polska (Krakow, Lodz, Wroclaw, Gdansk) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258290-senior-python-developer-data-engineer-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "status": "trwajacy",
+      "title": "Senior Python Developer & Data Engineer",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258290-senior-python-developer-data-engineer-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Python Developer & Data Engineer Accenture Polska Krakow, Lodz, Wroclaw, Gdansk senior UoP PySpark, Databricks, Azure, Oracle Database",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": "",
+      "first_seen": "2026-10-19T12:32:24+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
+      "active": true,
+      "inactive_since": null
+    },
+    "bdj-258289-data-migration-transformation-consultant-manager-warsaw-krakow-lodz-wroclaw-gdansk-accenture-polska": {
+      "nab_id": "bdj-258289-data-migration-transformation-consultant-manager-warsaw-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "unit_key": "src:bulldogjob",
+      "unit_name": "Accenture Polska (Warsaw, Krakow, Lodz, Wroclaw, Gdansk) — senior · UoP [bulldogjob.pl]",
+      "praca_url": "https://bulldogjob.pl/companies/jobs/258289-data-migration-transformation-consultant-manager-warsaw-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "status": "trwajacy",
+      "title": "Data Migration & Transformation Consultant / Manager",
+      "detail_url": "https://bulldogjob.pl/companies/jobs/258289-data-migration-transformation-consultant-manager-warsaw-krakow-lodz-wroclaw-gdansk-accenture-polska",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Data Migration & Transformation Consultant / Manager Accenture Polska Warsaw, Krakow, Lodz, Wroclaw, Gdansk senior UoP",
+      "contract_types": [
+        "uop"
+      ],
+      "source": "bulldogjob",
+      "published": "",
+      "category_hint": "",
+      "first_seen": "2026-10-19T12:32:24+02:00",
+      "last_seen": "2026-10-19T12:32:24+02:00",
       "active": true,
       "inactive_since": null
     }

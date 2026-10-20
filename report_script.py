@@ -213,6 +213,55 @@ HTML_TRACKING_SCRIPT = """
   }
 
   applyFilters();
+
+  // ----- SORTOWANIE (pilność / wynagrodzenie / dopasowanie) -----
+  //
+  // Sortujemy karty W OBRĘBIE każdej sekcji, nie globalnie — grupowanie
+  // po kategoriach (i sekcja „Dopasowane do profilu”) ma zostać, bo to
+  // ona daje raportowi strukturę. Zmiana kolejności to przestawienie
+  // węzłów DOM; przy kilkuset kartach jest to niezauważalne.
+  //
+  // Oferty bez podanej kwoty mają data-pay="-1" i lądują NA KOŃCU przy
+  // sortowaniu po wynagrodzeniu — inaczej „brak danych” wyglądałby jak
+  // „zarobki zerowe” i wypychałby realne oferty poza ekran.
+  function sortCards(mode) {
+    document.querySelectorAll("section, .profile-box").forEach(function (box) {
+      var cards = Array.prototype.slice.call(
+        box.querySelectorAll(":scope > .offer[data-nab]")
+      );
+      if (cards.length < 2) { return; }
+      cards.sort(function (a, b) {
+        function num(card, attr, fallback) {
+          var raw = parseInt(card.getAttribute(attr), 10);
+          return isNaN(raw) ? fallback : raw;
+        }
+        if (mode === "pay") {
+          var pa = num(a, "data-pay", -1), pb = num(b, "data-pay", -1);
+          if (pa !== pb) {
+            if (pa < 0) { return 1; }
+            if (pb < 0) { return -1; }
+            return pb - pa;  // malejąco
+          }
+        } else if (mode === "score") {
+          var sa = num(a, "data-score", 0), sb = num(b, "data-score", 0);
+          if (sa !== sb) { return sb - sa; }
+        }
+        // Domyślnie i jako rozstrzygnięcie remisu: po pilności terminu.
+        return num(a, "data-days", 9999) - num(b, "data-days", 9999);
+      });
+      cards.forEach(function (card) { box.appendChild(card); });
+    });
+  }
+
+  document.querySelectorAll(".sbtn[data-sort]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".sbtn[data-sort]").forEach(function (b) {
+        b.classList.remove("on");
+      });
+      btn.classList.add("on");
+      sortCards(btn.getAttribute("data-sort"));
+    });
+  });
 })();
 </script>
 """

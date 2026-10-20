@@ -221,8 +221,14 @@ def build_record(posting: Dict[str, Any]) -> Dict[str, Any]:
     # ``salary.type`` to słownik portalu: w badaniu wyłącznie ``b2b``
     # (113 ofert) i ``permanent`` (37). Klasyfikator rozumie oba.
     salary_type = str((posting.get("salary") or {}).get("type") or "")
+    pay = posting.get("salary") or {}
 
     return {
+        # Widełki podane wprost przez portal — w badaniu zawsze PLN/Month.
+        "salary_min": pay.get("from"),
+        "salary_max": pay.get("to"),
+        "salary_currency": str(pay.get("currency") or "PLN"),
+        "salary_period": str(pay.get("period") or "Month"),
         "contract_types": ct.classify(salary_type),
         "contract_raw": salary_type,
         "nab_id": f"nfj-{slug}",
