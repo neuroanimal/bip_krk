@@ -116,6 +116,14 @@ EXCLUDE_KEYWORDS: Tuple[str, ...] = (
     "ux design", "ui design", "ux/ui", "ui/ux", "ux researcher",
     "product designer", "game designer", "interaction designer",
     "solution designer", "design engineer",
+    # Instruktorzy SPORTU i rekreacji — osobna klasa fałszów, odkryta po
+    # dodaniu jooble: fraza „instruktor” ściągała instruktorów fitness,
+    # pływania, OCR i tańca. Wymagają sprawności i uprawnień, których ten
+    # profil nie obejmuje, więc odpadają po tytule.
+    "fitness", "pływani", "plywani", "ocr", "crossfit", "siłowni",
+    "silowni", "personalny", "instruktor sportu", "instruktor tańca",
+    "zajęć tanecznych", "zajec tanecznych", "instruktor jazdy",
+    "instruktor nauki jazdy", "ratownik", "trener personaln",
     # Zawody budowlane/produkcyjne — wchodziły przez słowo „warsztat”
     # („Zbrojarz WARSZTATOWY”, „Zbrojarz-warsztat”), które w profilu
     # oznacza warsztaty twórcze, a nie warsztat produkcyjny.
@@ -135,6 +143,13 @@ EXCLUDE_KEYWORDS: Tuple[str, ...] = (
 DEMOTE_KEYWORDS: Tuple[str, ...] = (
     "terapii zajeciowej", "terapia zajeciowa", "terapii zajęciowej",
     "terapia zajęciowa", "oligofrenopedagog",
+    # Sport UKRYTY W OPISIE przy właściwej instytucji. Przypadek z jooble:
+    # „Nauczyciel-Instruktor” w Młodzieżowym Domu Kultury Fort 49 — dom
+    # kultury to właściwy pracodawca, ale opis podaje „Zawód: instruktor
+    # sportu”. Nie wykluczamy (instytucja się zgadza), tylko degradujemy
+    # do „może pasować” i zostawiamy decyzję człowiekowi.
+    "zawód: instruktor sportu", "zawod: instruktor sportu",
+    "instruktor sportu", "zajęcia sportow", "zajecia sportow",
 )
 
 # Obszary RDZENIOWE — tylko one mogą samodzielnie zakwalifikować ofertę.

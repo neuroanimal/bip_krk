@@ -97,6 +97,7 @@ obsługiwane.
 | **`3b_fetch_offers_global.py`** | **Szybka ścieżka**: wszystkie nabory z jednej globalnej strony BIP (`?dok_id=104362`) — ~435 ofert w ~2 s | globalna lista naborów | `data/offers.json` |
 | `src_nuzle.py` | Źródło zewnętrzne: nuzle.pl (Kraków, bez ofert nauczycielskich) | nuzle.pl | `data/offers.json` |
 | `src_ofertypracy_edu.py` | Źródło zewnętrzne: ofertypracy.edu.pl przez Inertia API (Kraków, typ „Pracownik niepedagogiczny”) | API portalu | `data/offers.json` |
+| **`src_jooble.py`** | Źródło zewnętrzne: **jooble.org przez oficjalne REST API** (wymaga klucza) — agreguje też portale, które same blokują odczyt | API z kluczem | `data*/offers.json` |
 | **`src_pracujwkulturze.py`** | Źródło zewnętrzne: **pracujwkulturze.nck.pl** (Narodowe Centrum Kultury) — instytucje kultury z całej Polski, z taksonomią obszarów (sztuka, edukacja, grafika, muzeum, nowe media…) | API odkryte | `data/offers.json` |
 | `src_kultura_instytucje.py` | Źródło zewnętrzne: **instytucje kultury poza BIP miasta** (Muzeum Narodowe, Zamek Królewski na Wawelu, Teatr Słowackiego, Cricoteka, Wojewódzka Biblioteka Publiczna) — BIP Krakowa obejmuje tylko jednostki miejskie | strony instytucji | `data/offers.json` |
 | `src_nofluffjobs.py` | Źródło zewnętrzne: nofluffjobs.com — **oferty dla grafika/designera** w Krakowie (luka, której nie pokrywa BIP ani nuzle) | API portalu | `data/offers.json` |
@@ -182,7 +183,8 @@ nie ma. Wnioski warto znać, zanim ktoś spróbuje dodać kolejny portal:
 | **oferty.praca.gov.pl (CBOP)** | ✅ **dodany — najlepsze źródło poza BIP**: 13 ofert w Małopolsce, w tym „Grafik/czka”, „Grafik komputerowy”, „Plastyk”, oraz **asystent w Katedrze grafiki ASP** (5600 zł). Oficjalna baza wszystkich urzędów pracy (17,5 tys. ofert w kraju) |
 | **nofluffjobs.com** | ✅ **dodany** — 8 ofert UX + „Social Media Graphic Designer” w Krakowie, czyste API JSON |
 | `pracuj.pl`, `olx.pl` | ❌ Cloudflare blokuje **wszystko**, także `robots.txt` i `sitemap.xml` (403) |
-| `jooble.org`, `indeed.pl`, `useme.com` | ❌ 403 |
+| **jooble.org** | ✅ **dodany przez oficjalne REST API** (klucz na zgłoszenie). Strona, RSS, a nawet dokumentacja `/api/about` dają 403, sitemap zawiera tylko numeryczne ID bez tytułu i miasta — API jest jedyną drogą |
+| `indeed.pl`, `useme.com` | ❌ 403 |
 | `praca.pl` | ❌ **pułapka**: pisze „Nie znaleźliśmy ofert”, a pokazuje karty „Grafik / Graficzka” — wszystkie **z Łodzi** |
 | `aplikuj.pl` | ❌ filtr frazy nie działa — pod `/praca/krakow/grafik` są ogłoszenia dla magazynierów |
 | `nabory.kprm.gov.pl` (służba cywilna) | ❌ czytelne (`Ad[id_province]=1397`, `Ad[id_city]=92`), ale **0 ofert dla „grafik” w Krakowie**; krakowskie nabory to administracja (Izba Skarbowa, Komenda Policji, inspektoraty) |
@@ -262,11 +264,22 @@ W raporcie były oferty z Gorlic i Tarnowa — formalnie „małopolskie”, ale
 - **Miejsce wyjazdu** — lista 18 dzielnic Krakowa, domyślnie **Bronowice**,
 - **Promień poza Krakowem** — suwak w km, domyślnie **10 km**.
 
-Oferty **w samym Krakowie są zawsze w zasięgu** (przełącznik „Kraków
-zawsze”, domyślnie włączony). To nie uproszczenie, a konieczność: 10 km od
-Bronowic to mniej niż odległość do Nowej Huty (18,5 km), więc promień
-liczony od domu ukryłby ofertę z Klubu Dukat — czyli dokładnie tę, której
-w raporcie brakowało.
+Promień liczy się od domu i dotyczy **wszystkich** ofert, także
+krakowskich. Przełącznik **„Kraków zawsze”** jest **domyślnie wyłączony**
+— to decyzja użytkownika: 18,5 km (Bronowice → Nowa Huta) jest realnie za
+daleko, więc dobrze, że promień 10 km to ucina. Przełącznik zostaje jako
+wyjście awaryjne: gdy w bliskich dzielnicach nic nie ma, jedno kliknięcie
+pokazuje cały Kraków.
+
+**Co odsiewa promień 10 km** (zmierzone): 30 ofert spoza zasięgu, m.in.
+Rzeszów 153 km, Lipinki 111 km, Biecz 106 km, Kielce 100 km, Gorlice
+103 km. W zasięgu zostaje 101 ofert z rozpoznaną lokalizacją.
+
+**Ograniczenie, o którym trzeba wiedzieć:** gdy źródło podaje tylko
+„Kraków” bez dzielnicy (tak robi pracujwkulturze), odległość liczymy do
+**centrum miasta**. Dlatego oferta z Klubu Dukat (faktycznie Nowa Huta)
+wypada jako ~5,5 km od Bronowic, a nie 18,5 km. Precyzja wewnątrz miasta
+jest więc ograniczona danymi źródła, nie metodą.
 
 **Odległość liczy przeglądarka**, więc przesunięcie suwaka albo zmiana
 dzielnicy działa natychmiast, bez generowania raportu od nowa. Jest to
@@ -392,6 +405,36 @@ Polska alternacja spółgłoskowa: „etat” odmienia się na „eta**c**ie”,
 wzorzec `etat\w*` nie łapał „praca na etacie”. Rdzeń musi dopuszczać obie
 postaci (`eta[tc]`), a przy tym nie łapać „etapu rekrutacji”.
 
+## Klucz API jooble — poza repozytorium
+
+jooble wymaga klucza partnerskiego (darmowy, **limit 500 wyszukiwań**).
+Klucz jest **sekretem i nie ma go w kodzie** — wczytujemy go w kolejności:
+
+1. zmienna środowiskowa `JOOBLE_API_KEY`,
+2. plik `jooble.key` w katalogu projektu (jedna linia, dopisany
+   do `.gitignore`).
+
+Bez klucza etap kończy się spokojnie i tylko odnotowuje brak w dzienniku
+— to źródło opcjonalne.
+
+**Oszczędzanie limitu:** każde wywołanie API to jedno wyszukiwanie, więc
+pytamy tylko o cztery frazy na przebieg i nie stronicujemy (30 ofert na
+frazę). To ~125 uruchomień, czyli kwartał codziennego użycia. Zużycie
+liczymy lokalnie w `data*/jooble_usage.json` i ostrzegamy po 400
+zapytaniach; licznik jest **przybliżeniem** — nie wie o zapytaniach
+spoza narzędzia.
+
+### Pułapka: „instruktor” w jooble to głównie sport
+
+Fraza „instruktor” w ogólnym agregatorze ściąga instruktorów **fitness,
+pływania, OCR i tańca** — wymagają sprawności i uprawnień spoza tego
+profilu, więc są wykluczone po tytule.
+
+Osobny przypadek: „Nauczyciel-Instruktor” w **Młodzieżowym Domu Kultury
+Fort 49** — pracodawca właściwy, ale opis podaje „Zawód: instruktor
+sportu”. Taka oferta nie jest wykluczana, tylko **degradowana do „może
+pasować”**: instytucja się zgadza, więc decyzję zostawiamy człowiekowi.
+
 ## Diagnostyka — nic nie ginie po cichu
 
 Każde nieudane pobranie, brak oczekiwanego elementu i niedopasowanie rekordu
@@ -485,7 +528,8 @@ bip_krk/
 ├── geo.py                       # odległość od domu, dzielnice Krakowa
 ├── offer_lang.py                # język ogłoszenia (pl/en)
 ├── report_controls.py           # paski sterowania raportu
-├── src_pracujwkulturze.py       # źródło: portal NCK „Pracuj w kulturze"
+├── src_pracujwkulturze.py       # źródło: portal NCK „Pracuj w kulturze”
+├── src_jooble.py                # źródło: jooble przez oficjalne API
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py
 ├── run_all.py               # orchestrator całego potoku (--sample dla próbki)

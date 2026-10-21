@@ -33,7 +33,8 @@ stage_files = [
     ('src_nuzle.py', '.'),                # źródło zewnętrzne: nuzle.pl
     ('src_ofertypracy_edu.py', '.'),      # źródło zewnętrzne: ofertypracy.edu.pl
     ('src_kultura_instytucje.py', '.'),
-    ('src_pracujwkulturze.py', '.'),      # portal NCK: praca w kulturze  # instytucje kultury poza BIP miasta
+    ('src_pracujwkulturze.py', '.'),
+    ('src_jooble.py', '.'),               # jooble przez oficjalne API      # portal NCK: praca w kulturze  # instytucje kultury poza BIP miasta
     ('src_nofluffjobs.py', '.'),          # oferty projektowe/graficzne (Kraków)
     ('src_cbop.py', '.'),                 # CBOP: oficjalna baza urzędów pracy
     ('src_remote_intl.py', '.'),          # zagraniczne oferty zdalne z Polski

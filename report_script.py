@@ -156,7 +156,10 @@ HTML_TRACKING_SCRIPT = """
   var LANG_ON = { pl: true, en: false };
 
   // Geografia: dom (dzielnica) i promień dla ofert POZA Krakowem.
-  var GEO = { home: null, radius: 10, alwaysCity: true };
+  // ``alwaysCity`` domyślnie FALSE — promień obowiązuje też w Krakowie.
+  // Tak zdecydował użytkownik: oferta 18,5 km od domu jest za daleko,
+  // a przełącznik zostaje na wypadek, gdy w pobliżu nic nie ma.
+  var GEO = { home: null, radius: 10, alwaysCity: false };
 
   function haversine(aLat, aLon, bLat, bLon) {
     function rad(x) { return x * Math.PI / 180; }
@@ -177,9 +180,8 @@ HTML_TRACKING_SCRIPT = """
   }
 
   function geoAllows(card) {
-    // Oferta w Krakowie przechodzi zawsze, gdy zaznaczono „Kraków zawsze”.
-    // Powód: 10 km od Bronowic ucięłoby Nową Hutę (18,5 km), a dojazd
-    // w obrębie miasta jest normalny.
+    // Oferta w Krakowie przechodzi bez względu na promień TYLKO wtedy,
+    // gdy użytkownik zaznaczy „Kraków zawsze” (domyślnie wyłączone).
     if (GEO.alwaysCity && card.getAttribute("data-incity") === "1") {
       return true;
     }

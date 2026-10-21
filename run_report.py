@@ -54,7 +54,7 @@ PIPELINE_MODULES = [
     "src_nuzle",
     "src_ofertypracy_edu",
     "src_kultura_instytucje",
-    "src_pracujwkulturze",
+    "src_pracujwkulturze", "src_jooble",
     "src_nofluffjobs",
     "src_cbop",
     "src_remote_intl",
@@ -88,6 +88,7 @@ MODULE_PROFILES = {
     "src_ofertypracy_edu": {"kultura"},
     "src_kultura_instytucje": {"kultura"},
     "src_pracujwkulturze": {"kultura"},
+    "src_jooble": {"kultura", "it"},
     "src_nofluffjobs": {"kultura", "it"},
     "src_cbop": {"kultura", "it"},
     "src_remote_intl": {"kultura", "it"},
@@ -99,6 +100,7 @@ MODULE_PROFILES = {
 
 # Etapy przyjmujące przełącznik ``--profile`` (pozostałe go nie znają).
 PROFILE_AWARE = {"src_nofluffjobs", "src_cbop", "src_remote_intl",
+                 "src_jooble",
                  "src_bulldogjob", "src_arc_dev", "4_fetch_offer_details",
                  "5_generate_report"}
 

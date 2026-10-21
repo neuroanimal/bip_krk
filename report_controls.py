@@ -68,11 +68,16 @@ def build_geo_bar(stats: Dict[str, object]) -> str:
 
     * **dom** — dzielnica Krakowa (domyślnie Bronowice); od niej liczymy
       odległość pokazywaną przy ofertach spoza miasta,
-    * **promień** — suwak w km (domyślnie 10), dotyczy ofert **poza
-      Krakowem**; oferty w samym Krakowie są zawsze w zasięgu, bo dojazd
-      w obrębie miasta jest normalny (gdyby liczyć je promieniem,
-      10 km od Bronowic ucięłoby Nową Hutę — 18,5 km — a tam właśnie
-      była oferta, której adresatce brakowało).
+    * **promień** — suwak w km (domyślnie 10); liczy się od domu i dotyczy
+      **wszystkich** ofert, także krakowskich,
+    * **„Kraków zawsze”** — przełącznik **domyślnie WYŁĄCZONY**, który
+      wyłamuje oferty z Krakowa z promienia.
+
+    Domyślne wyłączenie jest świadomą decyzją użytkownika, nie
+    przypadkiem: promień 10 km od Bronowic ucina Nową Hutę (18,5 km)
+    i tak ma być — „dobrze, że by ukrył, bo to za daleko”. Przełącznik
+    zostaje jako wyjście awaryjne: gdy w bliskich dzielnicach nic nie
+    ma, jedno kliknięcie pokazuje cały Kraków.
 
     Odległość liczy przeglądarka, więc zmiana dzielnicy albo suwaka
     działa natychmiast, bez generowania raportu od nowa.
@@ -102,7 +107,7 @@ def build_geo_bar(stats: Dict[str, object]) -> str:
         f"value='{geo.DEFAULT_RADIUS_KM}' class='gslider'>"
         f"<span class='gval' id='geo-radius-val'>"
         f"{geo.DEFAULT_RADIUS_KM} km</span>"
-        "<label class='gchk'><input type='checkbox' id='geo-city' checked>"
+        "<label class='gchk'><input type='checkbox' id='geo-city'>"
         "<span data-t='always_city'>Kraków zawsze</span></label>"
         f"<span class='fsummary' id='geo-summary'>"
         f"w Krakowie: {in_city} · z lokalizacją: {located}</span>"

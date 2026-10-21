@@ -42,7 +42,7 @@ PIPELINE = [
     "src_nuzle.py",
     "src_ofertypracy_edu.py",
     "src_kultura_instytucje.py",
-    "src_pracujwkulturze.py",
+    "src_pracujwkulturze.py", "src_jooble.py",
     "src_nofluffjobs.py",
     "src_cbop.py",
     "src_remote_intl.py",
@@ -78,6 +78,7 @@ STEP_PROFILES = {
     "src_ofertypracy_edu.py": {"kultura"},
     "src_kultura_instytucje.py": {"kultura"},
     "src_pracujwkulturze.py": {"kultura"},
+    "src_jooble.py": {"kultura", "it"},
     "src_remote_intl.py": {"kultura", "it"},
     "src_nofluffjobs.py": {"kultura", "it"},
     "src_cbop.py": {"kultura", "it"},
@@ -95,6 +96,7 @@ STEP_PROFILES = {
 # Etapy, które przyjmują przełącznik ``--profile``. Etapy wyłącznie
 # „kulturowe” go nie znają (nie mają po co), więc nie wolno im go podać.
 PROFILE_AWARE = {"src_nofluffjobs.py", "src_cbop.py", "src_remote_intl.py",
+                 "src_jooble.py",
                  "src_bulldogjob.py", "src_arc_dev.py", "4_fetch_offer_details.py",
                  "5_generate_report.py"}
 

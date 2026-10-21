@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang='pl'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Raport ofert pracy — BIP Kraków · Kultura i sztuka</title>
+<style>
+:root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --ink: #1f2933;
+    --muted: #647380;
+    --accent: #7b2d8e;
+    --urgent: #d32f2f;
+    --soon: #ef6c00;
+    --ok: #2e7d32;
+    --unknown: #607d8b;
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.55;
+}
+header {
+    background: linear-gradient(135deg, #7b2d8e 0%, #3a1c71 100%);
+    color: #fff;
+    padding: 1.6em 1.2em;
+}
+header h1 { margin: 0 0 .3em; font-size: 1.7em; }
+header .meta { opacity: .9; font-size: .92em; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 1.2em; }
+
+/* Układ trzykolumnowy: statystyki | treść | wykresy.
+   Grid, nie flex — kolumny boczne mają stałą szerokość, a środek bierze
+   resztę, co przy flexie wymagałoby dodatkowych reguł flex-basis. */
+.layout { display: grid; grid-template-columns: 210px minmax(0,1fr) 210px;
+          gap: 0; align-items: start; }
+.main-col { min-width: 0; }  /* bez tego długie linki rozpychają grid */
+.side { padding: 1.2em 0.8em; font-size: 0.82em; color: #24292f; }
+.side h3 { font-size: 0.92em; margin: 1.1em 0 0.4em; color: #57606a;
+           text-transform: uppercase; letter-spacing: 0.04em; }
+.side h3:first-child { margin-top: 0; }
+.side-left { border-right: 1px solid #d0d7de; }
+.side-right { border-left: 1px solid #d0d7de; }
+
+/* Pasek jest „przyklejony” przy przewijaniu, żeby liczby i wykresy były
+   widoczne także po zjechaniu do dalszych kategorii. */
+@media (min-width: 1100px) {
+  .side { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; }
+}
+
+table.stats { width: 100%; border-collapse: collapse; }
+table.stats th { text-align: left; font-weight: 400; color: #57606a;
+                 padding: 0.18em 0; font-size: 0.95em; }
+table.stats td { text-align: right; font-variant-numeric: tabular-nums;
+                 font-weight: 600; padding: 0.18em 0; }
+table.stats td.ok { color: #1a7f37; }
+table.stats td.new { color: #0969da; }
+table.stats td.urgent { color: #cf222e; }
+
+/* Pasek filtrów. Przyciski przełączane (klasa .on = widoczne),
+   zgaszone = odfiltrowane. */
+.filters { background: #fff; border: 1px solid #d0d7de; border-radius: 6px;
+           padding: 0.6em 0.8em; margin: 0 0 1em; }
+.frow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35em;
+        margin: 0.25em 0; }
+.flabel { font-size: 0.82em; color: #57606a; min-width: 7.5em; }
+.fbtn { font: inherit; font-size: 0.82em; cursor: pointer; padding: 0.2em 0.6em;
+        border: 1px solid #d0d7de; border-radius: 999px; background: #f6f8fa;
+        color: #8c959f; text-decoration: line-through; }
+.fbtn.on { background: #ddf4ff; border-color: #54aeff; color: #0a3069;
+           text-decoration: none; }
+.fbtn.act { background: #f6f8fa; color: #24292f; text-decoration: none;
+            border-radius: 6px; }
+.fbtn:hover { border-color: #0969da; }
+.fcount { margin-left: 0.4em; font-size: 0.86em; opacity: 0.75; }
+.fsummary { font-size: 0.82em; color: #57606a; margin-left: 0.6em; }
+
+/* Odznaki rodzaju umowy na karcie oferty. UoP wyróżniony zielenią, bo to
+   forma dająca stabilność, o którą w tym projekcie chodzi. */
+.contract { font-size: 0.68em; font-weight: 700; padding: 0.16em 0.5em;
+            border-radius: 999px; margin-left: 0.4em; vertical-align: middle;
+            background: #eaeef2; color: #57606a; white-space: nowrap; }
+.contract.c-uop { background: #dafbe1; color: #116329; }
+.contract.c-uz { background: #fff8c5; color: #7d4e00; }
+.contract.c-b2b { background: #ddf4ff; color: #0a3069; }
+.contract.c-dzielo { background: #fbefff; color: #6639ba; }
+.pay { font-size: 0.72em; font-weight: 600; color: #116329; margin-left: 0.4em;
+       white-space: nowrap; }
+/* Przyciski SORTOWANIA wyglądają inaczej niż filtry: filtr zgaszony
+   znaczy „ukryte”, a sortowanie niewybrane jest nadal klikalne — więc
+   bez przekreślenia i bez wyblakłego szarego. */
+.fbtn.sbtn { border-radius: 6px; text-decoration: none; background: #fff;
+             color: #24292f; }
+.fbtn.sbtn.on { background: #0969da; border-color: #0969da; color: #fff; }
+.fbtn.sbtn.on .fcount { opacity: 0.9; }
+
+/* Pasek języków w narożniku nagłówka — mały, żeby nie zajmował ekranu
+   (wprost o to prosiła adresatka). */
+.locale { position: absolute; top: 0.6em; right: 0.9em; display: flex;
+          align-items: center; gap: 0.5em; }
+.loc-lang { display: inline-flex; gap: 0.15em; align-items: center; }
+.loc-ui { display: inline-flex; gap: 0.1em; align-items: center; }
+/* Ikonki rozróżniające obie grupy: ✎ = język OGŁOSZEŃ, 🌐 = język
+   INTERFEJSU. Bez nich oba zestawy „PL/EN” wyglądały identycznie. */
+.loc-ico { font-size: 0.62em; opacity: 0.6; margin-right: 0.15em; }
+.lbtn { font: inherit; font-size: 0.66em; font-weight: 700; cursor: pointer;
+        padding: 0.1em 0.38em; border-radius: 4px; border: 1px solid #ffffff55;
+        background: transparent; color: #ffffff88; }
+.lbtn.on { background: #ffffff2e; color: #fff; border-color: #ffffffaa; }
+.flag { font-size: 1em; line-height: 1; cursor: pointer; border: 0;
+        background: transparent; padding: 0 0.1em; opacity: 0.45;
+        filter: grayscale(1); }
+.flag.on { opacity: 1; filter: none; }
+header { position: relative; }
+
+/* Pasek geografii: dzielnica domu i promień. */
+.frow.geo { gap: 0.5em; }
+.gsel { font: inherit; font-size: 0.82em; padding: 0.15em 0.3em;
+        border: 1px solid #d0d7de; border-radius: 6px; background: #fff; }
+.geo-rad { min-width: auto; margin-left: 0.5em; }
+.gslider { width: 130px; vertical-align: middle; }
+.gval { font-size: 0.82em; font-weight: 600; min-width: 3.6em;
+        font-variant-numeric: tabular-nums; }
+.gchk { font-size: 0.82em; color: #57606a; display: inline-flex;
+        align-items: center; gap: 0.25em; cursor: pointer; }
+
+.chart { margin-bottom: 1.1em; }
+.chart h4 { font-size: 0.82em; font-weight: 600; color: #57606a;
+            margin: 0 0 0.3em; }
+.chart svg { width: 100%; height: auto; }
+.chart text.cl { font-size: 9px; fill: #57606a; }
+.chart text.cv { font-size: 9px; fill: #6e7781;
+                 font-variant-numeric: tabular-nums; }
+.chart text.cd { font-size: 15px; font-weight: 700; fill: #24292f; }
+
+/* Wąski ekran i druk: paski schodzą pod treść i tracą obramowania,
+   żeby nie ciąć kolumny na kartce. */
+@media (max-width: 1099px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { border: 0; border-top: 1px solid #d0d7de; max-width: 960px;
+          margin: 0 auto; }
+  .side-right { display: grid; grid-template-columns: repeat(2, 1fr);
+                gap: 0 1.5em; }
+  .side-right h3 { grid-column: 1 / -1; }
+}
+@media print {
+  .layout { grid-template-columns: 1fr; }
+  .side { border: 0; page-break-inside: avoid; }
+}
+.legend { margin: 1em 0; font-size: .88em; color: var(--muted); }
+.legend span { display: inline-block; margin-right: 1em; }
+.dot {
+    display: inline-block; width: .8em; height: .8em; border-radius: 50%;
+    margin-right: .35em; vertical-align: middle;
+}
+.dot.urgent { background: var(--urgent); }
+.dot.soon { background: var(--soon); }
+.dot.ok { background: var(--ok); }
+.dot.unknown { background: var(--unknown); }
+h2.category {
+    margin: 1.6em 0 .6em;
+    padding: .45em .7em;
+    border-radius: 8px;
+    background: #ece2f3;
+    color: var(--accent);
+    border-left: 6px solid var(--accent);
+    font-size: 1.25em;
+}
+.count { color: var(--muted); font-weight: normal; font-size: .8em; }
+.offer {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 1em 1.1em;
+    margin: .8em 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    border-left: 6px solid var(--unknown);
+}
+.offer.urgent { border-left-color: var(--urgent); }
+.offer.soon { border-left-color: var(--soon); }
+.offer.ok { border-left-color: var(--ok); }
+.offer h3 { margin: 0 0 .3em; font-size: 1.1em; }
+.badge {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .78em; font-weight: 600; color: #fff; margin-left: .4em;
+}
+.badge.urgent { background: var(--urgent); }
+.badge.soon { background: var(--soon); }
+.badge.ok { background: var(--ok); }
+.badge.unknown { background: var(--unknown); }
+/* Znacznik świeżości oferty (kiedy się pojawiła). */
+.fresh {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .78em; font-weight: 700; margin-left: .4em;
+}
+.fresh-new { background: #16a34a; color: #fff; }        /* NOWE — zielony */
+.fresh-recent { background: #d1fae5; color: #065f46; }  /* ≤7 dni */
+.fresh-old { background: #eceff1; color: #607d8b; }     /* starsze */
+/* Wyróżnienie karty nowej oferty. */
+.offer.is-new {
+    border-left-width: 8px;
+    box-shadow: 0 2px 8px rgba(22,163,74,.18);
+    background: #f6fff9;
+}
+/* Oferta już KLIKNIĘTA (otwarta wcześniej) — wygaszona, by nie rozpraszała.
+   Stan trzymany w localStorage przeglądarki (raport jest plikiem offline). */
+.offer.clicked {
+    opacity: .55;
+    background: #f7f7f8;
+}
+.offer.clicked h3 { text-decoration: line-through; text-decoration-thickness: 1px; }
+.seen-mark {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .75em; font-weight: 600; margin-left: .4em;
+    background: #455a64; color: #fff;
+}
+/* Pasek narzędzi trackingu (licznik + akcje). */
+.toolbar {
+    display: flex; flex-wrap: wrap; gap: .6em; align-items: center;
+    background: #fff; border: 1px solid #dde3e8; border-radius: 8px;
+    padding: .6em .8em; margin: .8em 0; font-size: .9em;
+}
+.toolbar button {
+    font: inherit; cursor: pointer; border: 1px solid #b0bec5;
+    background: #eceff1; border-radius: 6px; padding: .3em .7em;
+}
+.toolbar button:hover { background: #cfd8dc; }
+.toolbar .counter { font-weight: 700; color: var(--accent); }
+.meta { color: var(--muted); font-size: .9em; margin: .2em 0 .5em; }
+.desc {
+    white-space: pre-wrap;
+    background: #fafbfc;
+    border-left: 3px solid #d7dee5;
+    padding: .6em .8em;
+    border-radius: 4px;
+    margin: .5em 0;
+    font-size: .93em;
+}
+a { color: #0645ad; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.links { font-size: .88em; margin-top: .4em; }
+.links ul { margin: .3em 0 0; padding-left: 1.2em; }
+/* Sekcja "dopasowane do profilu" — wyróżniona, na samej górze raportu. */
+.profile-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #fffbeb 100%);
+    border: 2px solid #f59e0b; border-radius: 10px;
+    padding: .9em 1.1em; margin: 1em 0 1.4em;
+}
+.profile-box h2 {
+    margin: 0 0 .2em; font-size: 1.2em; color: #b45309;
+    background: none; border: none; padding: 0;
+}
+.profile-box .hint { color: #78716c; font-size: .88em; margin: 0 0 .6em; }
+.profile-tags { font-size: .8em; color: #92400e; margin-top: .3em; }
+.match {
+    display: inline-block; padding: .12em .6em; border-radius: 999px;
+    font-size: .75em; font-weight: 700; margin-left: .4em;
+    background: #f59e0b; color: #fff;
+}
+.match.weak { background: #fcd34d; color: #78350f; }
+/* Zwijana lista niedawno zamkniętych trafień z profilu. */
+.closed-matches { margin-top: .8em; }
+.closed-matches summary {
+    cursor: pointer; font-weight: 600; color: #92400e; font-size: .92em;
+}
+.closed-matches .offer { opacity: .75; }
+/* Sekcja diagnostyczna (co się nie pobrało) — zwinięta, nie rozprasza. */
+.failures {
+    background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+    padding: .6em .9em; margin: 1.2em 0; font-size: .88em;
+}
+.failures summary { cursor: pointer; font-weight: 600; color: #b26a00; }
+.failures ul { margin: .2em 0 .8em; padding-left: 1.3em; }
+footer { text-align: center; color: var(--muted); font-size: .82em; padding: 2em 0; }
+</style></head><body>
+<header><div class='wrap'>
+<div class='locale'><span class='loc-lang' title='Języki ogłoszeń brane pod uwagę (nie interfejsu)'><span class='loc-ico'>✎</span><button type='button' class='lbtn on' data-offer-lang='pl'>PL</button><button type='button' class='lbtn' data-offer-lang='en'>EN</button></span><span class='loc-ui' title='Język interfejsu / interface language'><span class='loc-ico'>🌐</span><button type='button' class='flag on' data-ui-lang='pl' title='Język interfejsu: polski'>🇵🇱</button><button type='button' class='flag' data-ui-lang='en' title='Interface language: English'>🇬🇧</button></span></div>
+<h1>Raport ofert pracy — BIP Kraków · Kultura i sztuka</h1>
+<div class='meta'>Wygenerowano: 2026-10-21T14:06:26+02:00 · ofert w raporcie: <strong>5</strong></div>
+</div></header>
+<div class='layout'>
+<aside class='side side-left'><h3>Statystyki</h3><table class='stats'><tr><th>Ofert w raporcie</th><td>5</td></tr><tr><th>Dopasowanych</th><td class='ok'>5</td></tr><tr><th>— mocnych trafień</th><td class='ok'>4</td></tr><tr><th>— może pasować</th><td>1</td></tr><tr><th>NOWE od ostatniego raportu</th><td class='new'>5</td></tr><tr><th>Pilne (termin ≤ 7 dni)</th><td class='urgent'>1</td></tr><tr><th>Już oglądane</th><td>0</td></tr><tr><th>Bez podanego terminu</th><td>0</td></tr></table><h3>Źródła</h3><table class='stats'><tr><th>pracujwkulturze</th><td>5</td></tr></table></aside>
+<div class='main-col'><div class='wrap'>
+<div class='legend'><strong>Termin:</strong> <span><i class='dot urgent'></i>≤ 3 dni</span><span><i class='dot soon'></i>≤ 7 dni</span><span><i class='dot ok'></i>&gt; 7 dni</span><span><i class='dot unknown'></i>termin nieznany</span> &nbsp;|&nbsp; <strong>Świeżość:</strong> <span class='fresh fresh-new'>NOWE (nieoglądane)</span> <span class='fresh fresh-recent'>≤ 7 dni</span> <span class='fresh fresh-old'>starsze</span></div>
+<div class='toolbar'><span class='counter' id='counter'>—</span><button type='button' id='mark-all'>Oznacz wszystkie jako przejrzane</button><button type='button' id='export-seen'>Eksportuj stan (clicks.json)</button><button type='button' id='clear-seen'>Wyczyść historię</button><span class='meta'>Kliknięte oferty są wygaszane i pamiętane w tej przeglądarce.</span></div>
+<div class='filters' id='filters'><div class='frow'><span class='flabel'>Rodzaj umowy:</span><button type='button' class='fbtn on' data-filter='contract' data-value='uop' title='Umowa o pracę'>UoP<span class='fcount'>4</span></button><button type='button' class='fbtn on' data-filter='contract' data-value='uz' title='Umowa zlecenie'>UZ<span class='fcount'>1</span></button></div><div class='frow'><span class='flabel' data-t='areas'>Obszary:</span><button type='button' class='fbtn on' data-filter='area' data-value='instytucja kultury / muzeum / galeria'>instytucja kultury / muzeum / galeria<span class='fcount'>5</span></button><button type='button' class='fbtn on' data-filter='area' data-value='sztuka / plastyka'>sztuka / plastyka<span class='fcount'>4</span></button><button type='button' class='fbtn on' data-filter='area' data-value='promocja / media kultury'>promocja / media kultury<span class='fcount'>2</span></button><button type='button' class='fbtn on' data-filter='area' data-value='grafika / design'>grafika / design<span class='fcount'>2</span></button><button type='button' class='fbtn on' data-filter='area' data-value='animacja kultury / warsztaty'>animacja kultury / warsztaty<span class='fcount'>2</span></button><button type='button' class='fbtn on' data-filter='area' data-value='edukacja kulturalna / muzealna'>edukacja kulturalna / muzealna<span class='fcount'>2</span></button><button type='button' class='fbtn on' data-filter='area' data-value='konserwacja / zbiory'>konserwacja / zbiory<span class='fcount'>1</span></button><button type='button' class='fbtn on' data-filter='area' data-value='media społecznościowe / promocja'>media społecznościowe / promocja<span class='fcount'>1</span></button></div><div class='frow geo'><span class='flabel' data-t='home'>Miejsce wyjazdu:</span><select id='geo-home' class='gsel'><option value='Stare Miasto'>Stare Miasto</option><option value='Grzegórzki'>Grzegórzki</option><option value='Prądnik Czerwony'>Prądnik Czerwony</option><option value='Prądnik Biały'>Prądnik Biały</option><option value='Krowodrza'>Krowodrza</option><option value='Bronowice' selected>Bronowice</option><option value='Zwierzyniec'>Zwierzyniec</option><option value='Dębniki'>Dębniki</option><option value='Łagiewniki-Borek Fałęcki'>Łagiewniki-Borek Fałęcki</option><option value='Swoszowice'>Swoszowice</option><option value='Podgórze Duchackie'>Podgórze Duchackie</option><option value='Bieżanów-Prokocim'>Bieżanów-Prokocim</option><option value='Podgórze'>Podgórze</option><option value='Czyżyny'>Czyżyny</option><option value='Mistrzejowice'>Mistrzejowice</option><option value='Bieńczyce'>Bieńczyce</option><option value='Wzgórza Krzesławickie'>Wzgórza Krzesławickie</option><option value='Nowa Huta'>Nowa Huta</option></select><span class='flabel geo-rad' data-t='radius'>Promień poza Krakowem:</span><input type='range' id='geo-radius' min='0' max='120' step='5' value='10' class='gslider'><span class='gval' id='geo-radius-val'>10 km</span><label class='gchk'><input type='checkbox' id='geo-city'><span data-t='always_city'>Kraków zawsze</span></label><span class='fsummary' id='geo-summary'>w Krakowie: 4 · z lokalizacją: 5</span></div><div class='frow'><span class='flabel' data-t='match'>Dopasowanie:</span><button type='button' class='fbtn on' data-filter='level' data-value='strong'>DLA CIEBIE<span class='fcount'>4</span></button><button type='button' class='fbtn on' data-filter='level' data-value='weak'>może pasować<span class='fcount'>1</span></button></div><div class='frow'><span class='flabel'>Sortuj:</span><button type='button' class='fbtn sbtn on' data-sort='urgency' title='Najpierw oferty z najbliższym terminem'>po pilności</button><button type='button' class='fbtn sbtn' data-sort='pay' title='Malejąco, po przeliczeniu na PLN/miesiąc — orientacyjnie, bo B2B podaje się netto, a UoP brutto'>po wynagrodzeniu<span class='fcount'>1</span></button><button type='button' class='fbtn sbtn' data-sort='score' title='Najpierw najlepiej dopasowane'>po dopasowaniu</button></div><div class='frow'><button type='button' class='fbtn act' id='f-all'>Pokaż wszystkie</button><span class='fsummary' id='f-summary'></span></div></div>
+<div class='profile-box'>
+<h2>Dopasowane do profilu — 5 ofert (mocnych trafień: 4)</h2>
+<p class='hint'>Kultura i sztuka, grafika i design, animacja kultury, warsztaty, edukacja muzealna i kulturalna. Pominięte stanowiska jawnie spoza profilu.</p>
+<div class='offer urgent is-new' data-nab='pwk-64491' data-source='pracujwkulturze' data-contract='uop' data-level='strong' data-pay='1450' data-days='2' data-score='28' data-areas="sztuka / plastyka|animacja kultury / warsztaty|media społecznościowe / promocja|edukacja kulturalna / muzealna|instytucja kultury / muzeum / galeria|promocja / media kultury" data-lang='pl' data-lat='50.0469' data-lon='19.9972' data-city='Kraków' data-incity='1'>
+<h3>Instruktor/Instruktorka – organizujący/a działalność w Klubie Dukat (¼ etatu)<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='pay'>1 450–1 650 PLN/mies.</span><span class='badge urgent'>za 2 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Ośrodek Kultury Kraków-Nowa Huta (Kraków) · 
+Termin: <strong>2026-10-23 (za 2 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/instruktor-instruktorka-organizujacy-a-dzialalnosc-w-klubie-dukat-%c2%bc-etatu/' target='_blank'>https://pracujwkulturze.nck.pl/praca/instruktor-instruktorka-organizujacy-a-dzialalnosc-w-klubie-dukat-%c2%bc-etatu/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka, animacja kultury / warsztaty, media społecznościowe / promocja, edukacja kulturalna / muzealna, instytucja kultury / muzeum / galeria, promocja / media kultury</div>
+</div>
+<div class='offer ok is-new' data-nab='pwk-64262' data-source='pracujwkulturze' data-contract='uz' data-level='strong' data-pay='-1' data-days='10' data-score='26' data-areas="grafika / design|sztuka / plastyka|animacja kultury / warsztaty|edukacja kulturalna / muzealna|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='50.0469' data-lon='19.9972' data-city='Kraków' data-incity='1'>
+<h3>Edukator / Edukatorka<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uz' title='Umowa zlecenie'>UZ</span><span class='badge ok'>za 10 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Zamek Królewski na Wawelu – Państwowe Zbiory Sztuki (Kraków) · 
+Termin: <strong>2026-10-31 (za 10 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/edukator-edukatorka_64262/' target='_blank'>https://pracujwkulturze.nck.pl/praca/edukator-edukatorka_64262/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, sztuka / plastyka, animacja kultury / warsztaty, edukacja kulturalna / muzealna, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer ok is-new' data-nab='pwk-62500' data-source='pracujwkulturze' data-contract='uop' data-level='strong' data-pay='-1' data-days='9' data-score='21' data-areas="grafika / design|sztuka / plastyka|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='50.0469' data-lon='19.9972' data-city='Kraków' data-incity='1'>
+<h3>Dyrektor Muzeum Sztuki Współczesnej w Krakowie MOCAK<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='badge ok'>za 9 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Wydział Kultury Urzędu Miasta Krakowa (Kraków) · 
+Termin: <strong>2026-10-30 (za 9 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/dyrektor-muzeum-sztuki-wspolczesnej-w-krakowie-mocak/' target='_blank'>https://pracujwkulturze.nck.pl/praca/dyrektor-muzeum-sztuki-wspolczesnej-w-krakowie-mocak/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, sztuka / plastyka, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer ok is-new' data-nab='pwk-64377' data-source='pracujwkulturze' data-contract='uop' data-level='strong' data-pay='-1' data-days='11' data-score='8' data-areas="instytucja kultury / muzeum / galeria|konserwacja / zbiory|promocja / media kultury" data-lang='pl' data-lat='50.0469' data-lon='19.9972' data-city='Kraków' data-incity='1'>
+<h3>Asystent/-ka / Adiunkt/-ka w Bibliotece Czartoryskich<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='badge ok'>za 11 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Muzeum Narodowe w Krakowie (Kraków) · 
+Termin: <strong>2026-11-01 (za 11 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/' target='_blank'>https://pracujwkulturze.nck.pl/praca/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: instytucja kultury / muzeum / galeria, konserwacja / zbiory, promocja / media kultury</div>
+</div>
+<div class='offer ok is-new' data-nab='pwk-63092' data-source='pracujwkulturze' data-contract='uop' data-level='weak' data-pay='-1' data-days='9' data-score='11' data-areas="sztuka / plastyka|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='50.0133' data-lon='22.0162' data-city='Rzeszów' data-incity='0'>
+<h3>Dyrektor Muzeum Okręgowego w Rzeszowie<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='badge ok'>za 9 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Urząd Marszałkowski Województwa Podkarpackiego w Rzeszowie (Rzeszów) · 
+Termin: <strong>2026-10-30 (za 9 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/dyrektor-muzeum-okregowego-w-rzeszowie/' target='_blank'>https://pracujwkulturze.nck.pl/praca/dyrektor-muzeum-okregowego-w-rzeszowie/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka, instytucja kultury / muzeum / galeria</div>
+</div>
+<details class='closed-matches'>
+<summary>Niedawno zamknięte oferty z profilu — 7 (podpowiedź, gdzie warto pilnować ogłoszeń)</summary>
+<div class='offer urgent' data-nab='16442' data-source='bip_global' data-contract='nieznana' data-level='strong' data-pay='-1' data-days='-6' data-score='14' data-areas="edukacja kulturalna / muzealna|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='' data-lon='' data-city='' data-incity='0'>
+<h3>Asystent/Asystentka muzealna w Fabryce Emalia Oskara Schindlera<span class='fresh fresh-old'>9 dni temu</span><span class='contract c-nieznana' title='Rodzaj umowy nie podany w ogłoszeniu'>umowa nieznana</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Muzeum Historyczne Miasta Krakowa · 
+Termin: <strong>2026-10-15 (termin minął)</strong> · 
+Nr ref.: MHK-01/11/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16442&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=27&amp;sub_dok_id=104362&amp;nab_id=16442&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: edukacja kulturalna / muzealna, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16400' data-source='bip_global' data-contract='nieznana' data-level='weak' data-pay='-1' data-days='-26' data-score='6' data-areas="konserwacja / zbiory" data-lang='pl' data-lat='' data-lon='' data-city='' data-incity='0'>
+<h3>Stanowisko urzędnicze - Archiwista<span class='fresh fresh-old'>9 dni temu</span><span class='contract c-nieznana' title='Rodzaj umowy nie podany w ogłoszeniu'>umowa nieznana</span><span class='badge urgent'>po terminie</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Centrum Kształcenia Zawodowego i Ustawicznego · 
+Termin: <strong>2026-09-25 (termin minął)</strong> · 
+Nr ref.: CKZIU
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=625&amp;sub_dok_id=104362&amp;nab_id=16400&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=625&amp;sub_dok_id=104362&amp;nab_id=16400&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: konserwacja / zbiory</div>
+</div>
+<div class='offer urgent' data-nab='16394' data-source='bip_global' data-contract='nieznana' data-level='strong' data-pay='-1' data-days='-30' data-score='10' data-areas="animacja kultury / warsztaty" data-lang='pl' data-lat='' data-lon='' data-city='' data-incity='0'>
+<h3>Specjalista w Dziale Marketingu i Organizacji Imprez Sportowych<span class='fresh fresh-old'>29 dni temu</span><span class='contract c-nieznana' title='Rodzaj umowy nie podany w ogłoszeniu'>umowa nieznana</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+ZIS - Zarząd Infrastruktury Sportowej w Krakowie · 
+Termin: <strong>2026-09-21 (termin minął)</strong> · 
+Nr ref.: 20/2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16394&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=512&amp;sub_dok_id=104362&amp;nab_id=16394&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty</div>
+</div>
+<div class='offer urgent' data-nab='16277' data-source='bip_global' data-contract='uop' data-level='strong' data-pay='-1' data-days='-37' data-score='21' data-areas="animacja kultury / warsztaty|media społecznościowe / promocja|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='' data-lon='' data-city='' data-incity='0'>
+<h3>Specjalista ds. organizacji imprez i mediów społecznościowych 3/4 etatu<span class='fresh fresh-old'>9 dni temu</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Młodzieżowy Dom Kultury im. K.I.Gałczyńskiego · 
+Termin: <strong>2026-09-14 (termin minął)</strong> · 
+Nr ref.: 2026/02
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=228&amp;sub_dok_id=104362&amp;nab_id=16277&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=228&amp;sub_dok_id=104362&amp;nab_id=16277&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, media społecznościowe / promocja, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16142' data-source='bip_global' data-contract='nieznana' data-level='strong' data-pay='-1' data-days='-40' data-score='13' data-areas="animacja kultury / warsztaty|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='' data-lon='' data-city='' data-incity='0'>
+<h3>Instruktor/Instruktorka organizujący/a działalność w Klubie Mirage<span class='fresh fresh-old'>9 dni temu</span><span class='contract c-nieznana' title='Rodzaj umowy nie podany w ogłoszeniu'>umowa nieznana</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Ośrodek Kultury Kraków - Nowa Huta · 
+Termin: <strong>2026-09-11 (termin minął)</strong> · 
+Nr ref.: DKP.1100.6.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=466&amp;sub_dok_id=104362&amp;nab_id=16142&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=466&amp;sub_dok_id=104362&amp;nab_id=16142&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: animacja kultury / warsztaty, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent' data-nab='16133' data-source='bip_global' data-contract='nieznana' data-level='weak' data-pay='-1' data-days='-57' data-score='6' data-areas="konserwacja / zbiory" data-lang='pl' data-lat='' data-lon='' data-city='' data-incity='0'>
+<h3>Osoba do prowadzenia szkolnej składnicy akt (archiwistka/archiwista)<span class='fresh fresh-old'>9 dni temu</span><span class='contract c-nieznana' title='Rodzaj umowy nie podany w ogłoszeniu'>umowa nieznana</span><span class='badge urgent'>po terminie</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Zespół Szkół Chemicznych · 
+Termin: <strong>2026-08-25 (termin minął)</strong> · 
+Nr ref.: ZSCh.110.4.2026
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=271&amp;sub_dok_id=104362&amp;nab_id=16133&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=271&amp;sub_dok_id=104362&amp;nab_id=16133&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: konserwacja / zbiory</div>
+</div>
+<div class='offer urgent' data-nab='16078' data-source='bip_global' data-contract='nieznana' data-level='strong' data-pay='-1' data-days='-58' data-score='8' data-areas="sztuka / plastyka|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='' data-lon='' data-city='' data-incity='0'>
+<h3>specjalista/ka ds. obsługi zwiedzających<span class='fresh fresh-old'>9 dni temu</span><span class='contract c-nieznana' title='Rodzaj umowy nie podany w ogłoszeniu'>umowa nieznana</span><span class='badge urgent'>po terminie</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Galeria Sztuki Współczesnej „Bunkier Sztuki” · 
+Termin: <strong>2026-08-24 (termin minął)</strong> · 
+Nr ref.: 2026/08/1
+ · Źródło: BIP (lista globalna)
+</div>
+<div class='meta'>Szczegóły: <a href='https://www.bip.krakow.pl/?bip_id=318&amp;sub_dok_id=104362&amp;nab_id=16078&amp;MODE=nab&amp;ACT=info' target='_blank'>https://www.bip.krakow.pl/?bip_id=318&amp;sub_dok_id=104362&amp;nab_id=16078&amp;MODE=nab&amp;ACT=info</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka, instytucja kultury / muzeum / galeria</div>
+</div>
+</details>
+</div>
+<section class='cat'>
+<h2 class='category'>Kultura i Sztuka <span class='count'>(5)</span></h2>
+<div class='offer ok is-new' data-nab='pwk-64377' data-source='pracujwkulturze' data-contract='uop' data-level='strong' data-pay='-1' data-days='11' data-score='8' data-areas="instytucja kultury / muzeum / galeria|konserwacja / zbiory|promocja / media kultury" data-lang='pl' data-lat='50.0469' data-lon='19.9972' data-city='Kraków' data-incity='1'>
+<h3>Asystent/-ka / Adiunkt/-ka w Bibliotece Czartoryskich<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='badge ok'>za 11 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Muzeum Narodowe w Krakowie (Kraków) · 
+Termin: <strong>2026-11-01 (za 11 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/' target='_blank'>https://pracujwkulturze.nck.pl/praca/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: instytucja kultury / muzeum / galeria, konserwacja / zbiory, promocja / media kultury</div>
+</div>
+<div class='offer ok is-new' data-nab='pwk-63092' data-source='pracujwkulturze' data-contract='uop' data-level='weak' data-pay='-1' data-days='9' data-score='11' data-areas="sztuka / plastyka|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='50.0133' data-lon='22.0162' data-city='Rzeszów' data-incity='0'>
+<h3>Dyrektor Muzeum Okręgowego w Rzeszowie<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='badge ok'>za 9 dni</span><span class='match weak'>może pasować</span></h3>
+<div class='meta'>
+Urząd Marszałkowski Województwa Podkarpackiego w Rzeszowie (Rzeszów) · 
+Termin: <strong>2026-10-30 (za 9 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/dyrektor-muzeum-okregowego-w-rzeszowie/' target='_blank'>https://pracujwkulturze.nck.pl/praca/dyrektor-muzeum-okregowego-w-rzeszowie/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer ok is-new' data-nab='pwk-62500' data-source='pracujwkulturze' data-contract='uop' data-level='strong' data-pay='-1' data-days='9' data-score='21' data-areas="grafika / design|sztuka / plastyka|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='50.0469' data-lon='19.9972' data-city='Kraków' data-incity='1'>
+<h3>Dyrektor Muzeum Sztuki Współczesnej w Krakowie MOCAK<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='badge ok'>za 9 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Wydział Kultury Urzędu Miasta Krakowa (Kraków) · 
+Termin: <strong>2026-10-30 (za 9 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/dyrektor-muzeum-sztuki-wspolczesnej-w-krakowie-mocak/' target='_blank'>https://pracujwkulturze.nck.pl/praca/dyrektor-muzeum-sztuki-wspolczesnej-w-krakowie-mocak/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, sztuka / plastyka, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer ok is-new' data-nab='pwk-64262' data-source='pracujwkulturze' data-contract='uz' data-level='strong' data-pay='-1' data-days='10' data-score='26' data-areas="grafika / design|sztuka / plastyka|animacja kultury / warsztaty|edukacja kulturalna / muzealna|instytucja kultury / muzeum / galeria" data-lang='pl' data-lat='50.0469' data-lon='19.9972' data-city='Kraków' data-incity='1'>
+<h3>Edukator / Edukatorka<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uz' title='Umowa zlecenie'>UZ</span><span class='badge ok'>za 10 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Zamek Królewski na Wawelu – Państwowe Zbiory Sztuki (Kraków) · 
+Termin: <strong>2026-10-31 (za 10 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/edukator-edukatorka_64262/' target='_blank'>https://pracujwkulturze.nck.pl/praca/edukator-edukatorka_64262/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: grafika / design, sztuka / plastyka, animacja kultury / warsztaty, edukacja kulturalna / muzealna, instytucja kultury / muzeum / galeria</div>
+</div>
+<div class='offer urgent is-new' data-nab='pwk-64491' data-source='pracujwkulturze' data-contract='uop' data-level='strong' data-pay='1450' data-days='2' data-score='28' data-areas="sztuka / plastyka|animacja kultury / warsztaty|media społecznościowe / promocja|edukacja kulturalna / muzealna|instytucja kultury / muzeum / galeria|promocja / media kultury" data-lang='pl' data-lat='50.0469' data-lon='19.9972' data-city='Kraków' data-incity='1'>
+<h3>Instruktor/Instruktorka – organizujący/a działalność w Klubie Dukat (¼ etatu)<span class='fresh fresh-new'>NOWE: dzisiaj</span><span class='contract c-uop' title='Umowa o pracę'>UoP</span><span class='pay'>1 450–1 650 PLN/mies.</span><span class='badge urgent'>za 2 dni</span><span class='match'>DLA CIEBIE</span></h3>
+<div class='meta'>
+Ośrodek Kultury Kraków-Nowa Huta (Kraków) · 
+Termin: <strong>2026-10-23 (za 2 dni)</strong> · 
+Nr ref.: brak
+ · Źródło: pracujwkulturze
+</div>
+<div class='meta'>Szczegóły: <a href='https://pracujwkulturze.nck.pl/praca/instruktor-instruktorka-organizujacy-a-dzialalnosc-w-klubie-dukat-%c2%bc-etatu/' target='_blank'>https://pracujwkulturze.nck.pl/praca/instruktor-instruktorka-organizujacy-a-dzialalnosc-w-klubie-dukat-%c2%bc-etatu/</a></div>
+<div class='desc'>(brak pobranych szczegółów — uruchom skrypt 4)</div>
+<div class='profile-tags'>Pasuje do: sztuka / plastyka, animacja kultury / warsztaty, media społecznościowe / promocja, edukacja kulturalna / muzealna, instytucja kultury / muzeum / galeria, promocja / media kultury</div>
+</div>
+</section>
+</div>
+<div class='wrap'>
+<details class='failures'>
+<summary>Diagnostyka pobierania — 10 zgłoszeń (kliknij, aby rozwinąć)</summary>
+<p class='meta'><strong>dead_link_fixed_from_archive</strong> (2)</p><ul>
+<li>slug:PK133 — <a href='https://www.bip.krakow.pl/PK133' target='_blank'>link</a> <span class='meta'>jednostka: Przedszkole nr 133; link z listy aktualnej nie działa (http_404), użyto archiwalnego: https://www.bip.krakow.pl/?bip_id=371</span></li>
+<li>slug:SP137 — <a href='https://www.bip.krakow.pl/SP137' target='_blank'>link</a> <span class='meta'>jednostka: Szkoła Podstawowa nr 137; link z listy aktualnej nie działa (http_404), użyto archiwalnego: https://www.bip.krakow.pl/?bip_id=54</span></li>
+</ul>
+<p class='meta'><strong>no_offers_parsed</strong> (1)</p><ul>
+<li>cricoteka — <a href='https://cricoteka.pl/praca' target='_blank'>link</a> <span class='meta'>Ośrodek Dokumentacji Sztuki Tadeusza Kantora Cricoteka — zero trafień parsera</span></li>
+</ul>
+<p class='meta'><strong>possible_stale_link</strong> (7)</p><ul>
+<li>slug:PK133 — <a href='https://www.bip.krakow.pl/PK133' target='_blank'>link</a> <span class='meta'>nazwa &#x27;przedszkole nr 133&#x27; występuje też w archiwum jako bip_id:371 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:SPD10 — <a href='https://www.bip.krakow.pl/SPD10' target='_blank'>link</a> <span class='meta'>nazwa &#x27;szkoła podstawowa nr 10&#x27; występuje też w archiwum jako bip_id:145, bip_id:598 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:SP137 — <a href='https://www.bip.krakow.pl/SP137' target='_blank'>link</a> <span class='meta'>nazwa &#x27;szkoła podstawowa nr 137&#x27; występuje też w archiwum jako bip_id:54 — stary link na liście aktualnej może być martwy</span></li>
+<li>bip_id:642 — <a href='https://www.bip.krakow.pl/?bip_id=642' target='_blank'>link</a> <span class='meta'>nazwa &#x27;zespół szkół ogólnokształcących nr 1&#x27; występuje też w archiwum jako bip_id:537 — stary link na liście aktualnej może być martwy</span></li>
+<li>bip_id:548 — <a href='https://www.bip.krakow.pl/?bip_id=548' target='_blank'>link</a> <span class='meta'>nazwa &#x27;zespół szkół ogólnokształcących nr 2&#x27; występuje też w archiwum jako bip_id:212 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:KFK — <a href='https://www.bip.krakow.pl/KFK' target='_blank'>link</a> <span class='meta'>nazwa &#x27;krakowskie forum kultury&#x27; występuje też w archiwum jako bip_id:465 — stary link na liście aktualnej może być martwy</span></li>
+<li>slug:CKPD — <a href='https://www.bip.krakow.pl/CKPD' target='_blank'>link</a> <span class='meta'>nazwa &#x27;centrum kultury podgórza&#x27; występuje też w archiwum jako bip_id:470 — stary link na liście aktualnej może być martwy</span></li>
+</ul>
+</details>
+</div>
+</div>
+<aside class='side side-right'><h3>Wykresy</h3><div class='chart'><h4>Dopasowanie do profilu</h4><svg viewBox='0 0 190 96' role='img' aria-label='Dopasowanie do profilu'><g transform='translate(48,48)'><circle r='38' fill='none' stroke='#1a7f37' stroke-width='16' stroke-dasharray='191.01 47.75' stroke-dashoffset='-0.00' transform='rotate(-90)'></circle><circle r='38' fill='none' stroke='#9a6700' stroke-width='16' stroke-dasharray='47.75 191.01' stroke-dashoffset='-191.01' transform='rotate(-90)'></circle><text x='0' y='5' text-anchor='middle' class='cd'>5</text></g><rect x='98' y='10' width='9' height='9' rx='2' fill='#1a7f37'></rect><text x='112' y='18' class='cl'>mocne: 4</text><rect x='98' y='28' width='9' height='9' rx='2' fill='#9a6700'></rect><text x='112' y='36' class='cl'>może pasować: 1</text></svg></div><div class='chart'><h4>Oferty po źródle</h4><svg viewBox='0 0 258 28' role='img' aria-label='Oferty po źródle'><text x='0' y='15' class='cl'>pracujwkulturze</text><rect x='104' y='6' width='120' height='12' rx='2' fill='#0969da'></rect><text x='228' y='16' class='cv'>5</text></svg></div><div class='chart'><h4>Terminy</h4><svg viewBox='0 0 190 96' role='img' aria-label='Terminy'><g transform='translate(48,48)'><circle r='38' fill='none' stroke='#cf222e' stroke-width='16' stroke-dasharray='47.75 191.01' stroke-dashoffset='-0.00' transform='rotate(-90)'></circle><circle r='38' fill='none' stroke='#0969da' stroke-width='16' stroke-dasharray='191.01 47.75' stroke-dashoffset='-47.75' transform='rotate(-90)'></circle><text x='0' y='5' text-anchor='middle' class='cd'>5</text></g><rect x='98' y='10' width='9' height='9' rx='2' fill='#cf222e'></rect><text x='112' y='18' class='cl'>pilne (≤7 dni): 1</text><rect x='98' y='28' width='9' height='9' rx='2' fill='#0969da'></rect><text x='112' y='36' class='cl'>z terminem: 4</text></svg></div><div class='chart'><h4>Napływ ofert (14 dni)</h4><svg viewBox='0 0 170 68' role='img' aria-label='Napływ ofert (14 dni)'><line x1='0' y1='54' x2='170' y2='54' stroke='#d0d7de'></line><rect x='1.0' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='13.1' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='25.3' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='37.4' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='49.6' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='61.7' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='73.9' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='86.0' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='98.1' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='110.3' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='122.4' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='134.6' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='146.7' y='54' width='10.1' height='0' rx='1' fill='#0969da'></rect><rect x='158.9' y='4' width='10.1' height='50' rx='1' fill='#0969da'></rect><text x='0' y='66' class='cv'>08.10</text><text x='170' y='66' text-anchor='end' class='cv'>21.10</text></svg></div></aside>
+</div>
+<footer>Źródło danych: Biuletyn Informacji Publicznej Miasta Krakowa · raport wygenerowany automatycznie</footer>
+<script>window.KRK_DISTRICTS = {"Stare Miasto": [50.0614, 19.9357], "Grzegórzki": [50.065, 19.9688], "Prądnik Czerwony": [50.0859, 19.9666], "Prądnik Biały": [50.1036, 19.9536], "Krowodrza": [50.0709, 19.9166], "Bronowice": [50.0833, 19.8698], "Zwierzyniec": [50.0602, 19.8642], "Dębniki": [50.0129, 19.8507], "Łagiewniki-Borek Fałęcki": [50.02, 19.9294], "Swoszowice": [49.9886, 19.9541], "Podgórze Duchackie": [50.0162, 19.9594], "Bieżanów-Prokocim": [50.0171, 20.023], "Podgórze": [50.0431, 19.953], "Czyżyny": [50.0665, 20.0088], "Mistrzejowice": [50.0974, 20.0096], "Bieńczyce": [50.0861, 20.0292], "Wzgórza Krzesławickie": [50.0984, 20.092], "Nowa Huta": [50.0806, 20.1293]};</script>
+
+<script>
+(function () {
+  "use strict";
+  var STORE_KEY = "BIP_KRK_CLICKED";
+
+  function loadClicked() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); }
+    catch (e) { return {}; }
+  }
+  function saveClicked(map) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(map)); }
+    catch (e) { /* brak localStorage (tryb prywatny) — tracking nieaktywny */ }
+  }
+
+  var clicked = loadClicked();
+
+  function markCard(card, when) {
+    if (card.classList.contains("clicked")) { return; }
+    card.classList.add("clicked");
+    var head = card.querySelector("h3");
+    if (head && !head.querySelector(".seen-mark")) {
+      var mark = document.createElement("span");
+      mark.className = "seen-mark";
+      mark.textContent = "oglądane" + (when ? " " + when.slice(0, 10) : "");
+      head.appendChild(mark);
+    }
+  }
+
+  function refreshCounter() {
+    // Liczymy UNIKALNE oferty, nie karty w dokumencie. Oferta dopasowana
+    // do profilu występuje w DOM dwukrotnie — raz w sekcji „Dopasowane do
+    // profilu” na górze, raz w swojej kategorii. Zliczanie kart dawało
+    // liczbę zawyżoną (w raporcie IT: 388 kart przy 229 ofertach), co
+    // kłóciło się ze statystyką w pasku bocznym.
+    // Pomijamy karty w sekcji „niedawno zamknięte oferty z profilu” —
+    // tam terminy już minęły, więc nie są niczym „do przejrzenia”.
+    // Bez tego licznik pokazywał 104 przy 98 ofertach w raporcie.
+    var all = {}, clicked = {};
+    document.querySelectorAll(
+      ".offer[data-nab]:not(.closed-matches .offer)"
+    ).forEach(function (card) {
+      var id = card.getAttribute("data-nab");
+      all[id] = true;
+      if (card.classList.contains("clicked")) { clicked[id] = true; }
+    });
+    var total = Object.keys(all).length;
+    var seen = Object.keys(clicked).length;
+    var el = document.getElementById("counter");
+    if (el) {
+      el.textContent = (total - seen) + " / " + total + " nieprzejrzanych";
+    }
+  }
+
+  // Oznacz karty już klikniętych ofert (stan z poprzednich sesji).
+  document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+    var id = card.getAttribute("data-nab");
+    if (clicked[id]) { markCard(card, clicked[id]); }
+  });
+
+  // Rejestruj kliknięcie w link szczegółów oferty.
+  document.querySelectorAll(".offer[data-nab] a[href]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var card = a.closest(".offer[data-nab]");
+      if (!card) { return; }
+      var id = card.getAttribute("data-nab");
+      if (!clicked[id]) {
+        clicked[id] = new Date().toISOString();
+        saveClicked(clicked);
+      }
+      markCard(card, clicked[id]);
+      refreshCounter();
+    });
+  });
+
+  // Przycisk: oznacz wszystkie jako przejrzane.
+  var markAll = document.getElementById("mark-all");
+  if (markAll) {
+    markAll.addEventListener("click", function () {
+      document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+        var id = card.getAttribute("data-nab");
+        if (!clicked[id]) { clicked[id] = new Date().toISOString(); }
+        markCard(card, clicked[id]);
+      });
+      saveClicked(clicked);
+      refreshCounter();
+    });
+  }
+
+  // Przycisk: wyczyść historię klikania.
+  var clearBtn = document.getElementById("clear-seen");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function () {
+      if (!confirm("Wyczyścić historię oglądanych ofert?")) { return; }
+      clicked = {};
+      saveClicked(clicked);
+      document.querySelectorAll(".offer.clicked").forEach(function (card) {
+        card.classList.remove("clicked");
+        var m = card.querySelector(".seen-mark");
+        if (m) { m.remove(); }
+      });
+      refreshCounter();
+    });
+  }
+
+  // Przycisk: eksport stanu do pliku clicks.json (do wczytania w datasecie).
+  var exportBtn = document.getElementById("export-seen");
+  if (exportBtn) {
+    exportBtn.addEventListener("click", function () {
+      var payload = JSON.stringify({ clicked: clicked }, null, 2);
+      var blob = new Blob([payload], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "clicks.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  refreshCounter();
+
+  // ----- FILTROWANIE (rodzaj umowy / dopasowanie / źródło) -----
+  //
+  // Raport jest plikiem statycznym, więc nie ma serwera, który mógłby
+  // przefiltrować dane. Wszystkie oferty są w HTML, a filtr ukrywa karty.
+  //
+  // Zasada: w obrębie JEDNEJ grupy (np. rodzaju umowy) działa suma —
+  // wyłączenie B2B zostawia UoP i UZ. Między grupami działa iloczyn —
+  // „UoP” i „DLA CIEBIE” pokazuje oferty spełniające oba warunki. To
+  // zachowanie, którego ludzie oczekują od filtrów sklepowych.
+  var OFF = { contract: {}, level: {}, source: {}, area: {} };
+
+  // Język ogłoszeń brany pod uwagę. Domyślnie TYLKO polski — tak prosiła
+  // adresatka; angielski włącza przycisk „EN”.
+  var LANG_ON = { pl: true, en: false };
+
+  // Geografia: dom (dzielnica) i promień dla ofert POZA Krakowem.
+  // ``alwaysCity`` domyślnie FALSE — promień obowiązuje też w Krakowie.
+  // Tak zdecydował użytkownik: oferta 18,5 km od domu jest za daleko,
+  // a przełącznik zostaje na wypadek, gdy w pobliżu nic nie ma.
+  var GEO = { home: null, radius: 10, alwaysCity: false };
+
+  function haversine(aLat, aLon, bLat, bLon) {
+    function rad(x) { return x * Math.PI / 180; }
+    var dLat = rad(bLat - aLat), dLon = rad(bLon - aLon);
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(rad(aLat)) * Math.cos(rad(bLat)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * 6371 * Math.asin(Math.sqrt(h));
+  }
+
+  function cardDistance(card) {
+    // Zwraca odległość w km albo null, gdy nie da się policzyć.
+    if (!GEO.home) { return null; }
+    var lat = parseFloat(card.getAttribute("data-lat"));
+    var lon = parseFloat(card.getAttribute("data-lon"));
+    if (isNaN(lat) || isNaN(lon)) { return null; }
+    return haversine(GEO.home[0], GEO.home[1], lat, lon);
+  }
+
+  function geoAllows(card) {
+    // Oferta w Krakowie przechodzi bez względu na promień TYLKO wtedy,
+    // gdy użytkownik zaznaczy „Kraków zawsze” (domyślnie wyłączone).
+    if (GEO.alwaysCity && card.getAttribute("data-incity") === "1") {
+      return true;
+    }
+    var dist = cardDistance(card);
+    // Brak lokalizacji NIE ukrywa oferty — brak danych to nie „odrzuć”.
+    if (dist === null) { return true; }
+    return dist <= GEO.radius;
+  }
+
+  function cardMatches(card) {
+    var kinds = (card.getAttribute("data-contract") || "nieznana").split(" ");
+    // Karta przechodzi, gdy CHOĆ JEDEN jej rodzaj umowy jest włączony —
+    // oferta „UoP albo B2B” ma pozostać widoczna przy filtrze „tylko UoP”.
+    var anyContract = kinds.some(function (k) { return !OFF.contract[k]; });
+    if (!anyContract) { return false; }
+    // Język ogłoszenia.
+    if (!LANG_ON[card.getAttribute("data-lang") || "pl"]) { return false; }
+    // Obszary: karta przechodzi, gdy choć jeden jej obszar jest włączony.
+    // Oferta bez obszarów (poza profilem) nie jest filtrowana tym kryterium.
+    var areas = (card.getAttribute("data-areas") || "").split("|")
+      .filter(function (x) { return x; });
+    if (areas.length && !areas.some(function (a) { return !OFF.area[a]; })) {
+      return false;
+    }
+    if (!geoAllows(card)) { return false; }
+    if (OFF.level[card.getAttribute("data-level") || "none"]) { return false; }
+    if (OFF.source[card.getAttribute("data-source") || "?"]) { return false; }
+    return true;
+  }
+
+  function applyFilters() {
+    var shown = {}, hidden = 0;
+    document.querySelectorAll(
+      ".offer[data-nab]:not(.closed-matches .offer)"
+    ).forEach(function (card) {
+      if (cardMatches(card)) {
+        card.style.display = "";
+        shown[card.getAttribute("data-nab")] = true;
+      } else {
+        card.style.display = "none";
+        hidden++;
+      }
+    });
+    // Nagłówek kategorii bez widocznych ofert tylko zaśmieca — ukrywamy
+    // całą sekcję, gdy nic w niej nie zostało.
+    document.querySelectorAll("section").forEach(function (sec) {
+      var visible = sec.querySelectorAll(
+        ".offer[data-nab]:not([style*='none'])").length;
+      sec.style.display = visible ? "" : "none";
+    });
+    var el = document.getElementById("f-summary");
+    if (el) {
+      var total = Object.keys(shown).length;
+      el.textContent = hidden
+        ? ("widocznych ofert: " + total)
+        : "bez filtrów — widoczne wszystkie";
+    }
+  }
+
+  document.querySelectorAll(".fbtn[data-filter]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var group = btn.getAttribute("data-filter");
+      var value = btn.getAttribute("data-value");
+      OFF[group][value] = !OFF[group][value];
+      btn.classList.toggle("on", !OFF[group][value]);
+      applyFilters();
+    });
+  });
+
+  // ----- GEOGRAFIA: dom i promień -----
+  function refreshGeoLabel() {
+    var el = document.getElementById("geo-radius-val");
+    if (el) { el.textContent = GEO.radius + " km"; }
+    var sum = document.getElementById("geo-summary");
+    if (sum) {
+      var hidden = 0, far = [];
+      document.querySelectorAll(".offer[data-nab]:not(.closed-matches .offer)")
+        .forEach(function (card) {
+          if (!geoAllows(card)) {
+            hidden++;
+            var d = cardDistance(card);
+            if (d !== null) { far.push(Math.round(d)); }
+          }
+        });
+      sum.textContent = hidden
+        ? ("odfiltrowanych odległością: " + hidden)
+        : "wszystkie w zasięgu";
+    }
+  }
+
+  var homeSel = document.getElementById("geo-home");
+  if (homeSel && window.KRK_DISTRICTS) {
+    GEO.home = window.KRK_DISTRICTS[homeSel.value] || null;
+    homeSel.addEventListener("change", function () {
+      GEO.home = window.KRK_DISTRICTS[homeSel.value] || null;
+      applyFilters();
+      refreshGeoLabel();
+    });
+  }
+  var radius = document.getElementById("geo-radius");
+  if (radius) {
+    GEO.radius = parseInt(radius.value, 10) || 10;
+    radius.addEventListener("input", function () {
+      GEO.radius = parseInt(radius.value, 10) || 0;
+      applyFilters();
+      refreshGeoLabel();
+    });
+  }
+  var cityChk = document.getElementById("geo-city");
+  if (cityChk) {
+    cityChk.addEventListener("change", function () {
+      GEO.alwaysCity = cityChk.checked;
+      applyFilters();
+      refreshGeoLabel();
+    });
+  }
+
+  // ----- JĘZYK OGŁOSZEŃ -----
+  document.querySelectorAll(".lbtn[data-offer-lang]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var code = btn.getAttribute("data-offer-lang");
+      LANG_ON[code] = !LANG_ON[code];
+      btn.classList.toggle("on", LANG_ON[code]);
+      applyFilters();
+    });
+  });
+
+  // ----- JĘZYK INTERFEJSU -----
+  // Napisy trzymamy w jednej mapie zamiast duplikować cały HTML. Tłumaczymy
+  // tylko etykiety sterowania — treść ogłoszeń zostaje w oryginale, bo to
+  // dane, nie interfejs.
+  var UI_TEXT = {
+    pl: { home: "Miejsce wyjazdu:", radius: "Promień poza Krakowem:",
+          always_city: "Kraków zawsze", areas: "Obszary:",
+          match: "Dopasowanie:", contract: "Rodzaj umowy:",
+          source: "Źródło:", sort: "Sortuj:", all: "Pokaż wszystkie" },
+    en: { home: "Commute from:", radius: "Radius outside Kraków:",
+          always_city: "Kraków always", areas: "Areas:",
+          match: "Profile match:", contract: "Contract type:",
+          source: "Source:", sort: "Sort by:", all: "Show all" }
+  };
+
+  function setUiLang(code) {
+    var dict = UI_TEXT[code] || UI_TEXT.pl;
+    document.querySelectorAll("[data-t]").forEach(function (el) {
+      var key = el.getAttribute("data-t");
+      if (dict[key]) { el.textContent = dict[key]; }
+    });
+    document.querySelectorAll(".flag[data-ui-lang]").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-ui-lang") === code);
+    });
+    document.documentElement.setAttribute("lang", code);
+  }
+
+  document.querySelectorAll(".flag[data-ui-lang]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      setUiLang(btn.getAttribute("data-ui-lang"));
+    });
+  });
+
+  refreshGeoLabel();
+
+  var allBtn = document.getElementById("f-all");
+  if (allBtn) {
+    allBtn.addEventListener("click", function () {
+      OFF = { contract: {}, level: {}, source: {}, area: {} };
+      document.querySelectorAll(".fbtn[data-filter]").forEach(function (b) {
+        b.classList.add("on");
+      });
+      applyFilters();
+    });
+  }
+
+  applyFilters();
+
+  // ----- SORTOWANIE (pilność / wynagrodzenie / dopasowanie) -----
+  //
+  // Sortujemy karty W OBRĘBIE każdej sekcji, nie globalnie — grupowanie
+  // po kategoriach (i sekcja „Dopasowane do profilu”) ma zostać, bo to
+  // ona daje raportowi strukturę. Zmiana kolejności to przestawienie
+  // węzłów DOM; przy kilkuset kartach jest to niezauważalne.
+  //
+  // Oferty bez podanej kwoty mają data-pay="-1" i lądują NA KOŃCU przy
+  // sortowaniu po wynagrodzeniu — inaczej „brak danych” wyglądałby jak
+  // „zarobki zerowe” i wypychałby realne oferty poza ekran.
+  function sortCards(mode) {
+    document.querySelectorAll("section, .profile-box").forEach(function (box) {
+      var cards = Array.prototype.slice.call(
+        box.querySelectorAll(":scope > .offer[data-nab]")
+      );
+      if (cards.length < 2) { return; }
+      cards.sort(function (a, b) {
+        function num(card, attr, fallback) {
+          var raw = parseInt(card.getAttribute(attr), 10);
+          return isNaN(raw) ? fallback : raw;
+        }
+        if (mode === "pay") {
+          var pa = num(a, "data-pay", -1), pb = num(b, "data-pay", -1);
+          if (pa !== pb) {
+            if (pa < 0) { return 1; }
+            if (pb < 0) { return -1; }
+            return pb - pa;  // malejąco
+          }
+        } else if (mode === "score") {
+          var sa = num(a, "data-score", 0), sb = num(b, "data-score", 0);
+          if (sa !== sb) { return sb - sa; }
+        }
+        // Domyślnie i jako rozstrzygnięcie remisu: po pilności terminu.
+        return num(a, "data-days", 9999) - num(b, "data-days", 9999);
+      });
+      cards.forEach(function (card) { box.appendChild(card); });
+    });
+  }
+
+  document.querySelectorAll(".sbtn[data-sort]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".sbtn[data-sort]").forEach(function (b) {
+        b.classList.remove("on");
+      });
+      btn.classList.add("on");
+      sortCards(btn.getAttribute("data-sort"));
+    });
+  });
+})();
+</script>
+
+</body></html>
