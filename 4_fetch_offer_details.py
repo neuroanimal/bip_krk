@@ -71,6 +71,53 @@ def parse_deadline_to_date(deadline: Optional[str]) -> Optional[date]:
         return None
 
 
+# Źródła, dla których pobranie strony oferty daje treść. Lista BIAŁA, nie
+# czarna: nowe źródło domyślnie NIE jest pobierane, dopóki ktoś nie sprawdzi,
+# że to ma sens. Zmierzone na danych z 21.10 (oferty z treścią > 200 znaków):
+#
+#   bip_global 66/66, nuzle 31/31, kultura_instytucje 14/19,
+#   remote_intl 10/15                                  -> pobieramy
+#   pracujwkulturze 0/37, cbop 0/17                    -> treść jest już z API
+#   nofluffjobs 0/16, bulldogjob, arc_dev              -> aplikacje JavaScript
+#   jooble                                             -> 403 dla każdej oferty
+#
+# jooble jest przypadkiem szczególnym: strona oferty to ``/desc/…``, a
+# ``robots.txt`` jooble zawiera ``Disallow: /desc/``. Źródło wolno nam czytać
+# wyłącznie przez oficjalne API — wcześniej ten etap wysyłał ~80 zablokowanych
+# żądań na przebieg, z których żadne nie miało prawa się udać.
+#
+# ``None`` to rekordy BIP sprzed wprowadzenia pola ``source``.
+DETAIL_SOURCES = frozenset({"bip_global", "bip_unit", "nuzle",
+                            "kultura_instytucje", "remote_intl", None})
+
+
+def resolve_skipped_failures(offers: Dict[str, dict]) -> int:
+    """Zamyka zgłoszenia błędów etapu 4 dla źródeł, których nie pobieramy.
+
+    Args:
+        offers: rekordy ofert (do ustalenia źródła po kluczu).
+
+    Returns:
+        Liczbę zamkniętych zgłoszeń.
+    """
+    data = bc.load_dataset(bc.FAILURES_DATASET)
+    closed = 0
+    for record in data["records"].values():
+        if record.get("stage") != "4_offer_details" or record.get("resolved"):
+            continue
+        offer = offers.get(str(record.get("key")))
+        if offer is not None and offer.get("source") not in DETAIL_SOURCES:
+            record["resolved"] = True
+            record["resolved_at"] = bc.now_iso()
+            record["resolution"] = "źródło wyłączone z pobierania szczegółów"
+            closed += 1
+    if closed:
+        bc.save_dataset(bc.FAILURES_DATASET, data)
+        logging.info("Zamknięto %d zgłoszeń błędów dla źródeł bez stron "
+                     "ofert.", closed)
+    return closed
+
+
 def is_still_open(offer: Dict[str, object]) -> bool:
     """Ocenia, czy nabór jest wciąż aktualny (do pobrania szczegółów).
 
@@ -195,17 +242,27 @@ def main() -> int:
         )
         return 1
 
+    # Zgłoszenia o błędach dla źródeł, których już nie pobieramy, oznaczamy
+    # jako rozwiązane — inaczej sekcja diagnostyczna pokazywałaby dziesiątki
+    # „403” z jooble, które przestały być problemem.
+    resolve_skipped_failures(offers_ds["records"])
+
     # Wybór ofert do pobrania szczegółów.
     targets = []
+    skipped = 0
     for key, offer in offers_ds["records"].items():
         if not offer.get("detail_url"):
             continue  # bez linku szczegółów nie ma czego pobierać
+        if offer.get("source") not in DETAIL_SOURCES:
+            skipped += 1
+            continue  # źródło bez czytelnej strony oferty — patrz DETAIL_SOURCES
         if args.include_all or is_still_open(offer):
             targets.append((key, offer))
     if args.limit is not None:
         targets = targets[: args.limit]
 
-    logging.info("Do pobrania szczegółów: %d ofert.", len(targets))
+    logging.info("Do pobrania szczegółów: %d ofert (pominięto %d ze źródeł "
+                 "bez czytelnej strony oferty).", len(targets), skipped)
 
     dataset = bc.load_dataset(bc.OFFER_DETAILS_DATASET)
     records = dataset["records"]
