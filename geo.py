@@ -77,6 +77,10 @@ KRAKOW_DISTRICTS: Dict[str, Tuple[float, float]] = {
     "Nowa Huta": (50.0806, 20.1293),
 }
 
+# Rozpoznanie samego „Krakowa” w każdej pisowni (patrz geocode_places).
+KRAKOW_NAME = re.compile(r"^\s*(krak[oó]w|krakow|cracow|cracovia)\s*$",
+                         re.IGNORECASE)
+
 # Dzielnica domyślna — wskazana przez adresatkę.
 DEFAULT_DISTRICT = "Bronowice"
 
@@ -208,8 +212,16 @@ def geocode_places(places: set, session=None) -> Dict[str, Tuple[float,
         if name in KRAKOW_DISTRICTS:
             result[name] = KRAKOW_DISTRICTS[name]
             continue
-        if name in cache:
-            value = cache[name]
+        # Kraków bez dzielnicy = Rynek, a NIE wynik Nominatim. Usługa
+        # zwraca dla „Kraków” centroid obszaru administracyjnego
+        # (50.047, 19.997) — 10,0 km od Bronowic, podczas gdy Rynek jest
+        # 5,3 km. Kilka ofert stało przez to dokładnie na granicy promienia.
+        if KRAKOW_NAME.search(name):
+            result[name] = KRAKOW_DISTRICTS["Stare Miasto"]
+            continue
+        # Klucz z wersją metody — patrz :data:`CACHE_PREFIX`.
+        if f"{CACHE_PREFIX}city|{name}" in cache:
+            value = cache[f"{CACHE_PREFIX}city|{name}"]
             if value:
                 result[name] = (float(value[0]), float(value[1]))
             continue
@@ -220,7 +232,8 @@ def geocode_places(places: set, session=None) -> Dict[str, Tuple[float,
                      len(pending))
         for name in pending:
             coords = _geocode_one(session, name)
-            cache[name] = list(coords) if coords else None
+            cache[f"{CACHE_PREFIX}city|{name}"] = (list(coords) if coords
+                                                   else None)
             if coords:
                 result[name] = coords
             time.sleep(GEOCODE_DELAY)
@@ -242,13 +255,13 @@ def _geocode_one(session, name: str) -> Optional[Tuple[float, float]]:
     try:
         response = session.get(
             NOMINATIM_URL,
-            # ``countrycodes=pl`` zamyka wyszukiwanie w Polsce. Bez tego
-            # „Berlin” z oferty zagranicznej trafiał do polskiej wsi o tej
-            # nazwie (49.87, 22.19) i udawał lokalizację w zasięgu.
-            # Zagraniczne miasta po prostu się nie zgeokodują — i dobrze,
-            # bo oferty zdalne nie powinny podlegać filtrowi odległości.
-            params={"q": name, "format": "json", "limit": 1,
-                    "countrycodes": "pl"},
+            # BEZ ograniczenia do Polski — i to jest poprawka wcześniejszej
+            # decyzji. ``countrycodes=pl`` miało zapobiec pomyłkom, a
+            # wywołało odwrotną: „Berlin” z oferty niemieckiej trafiał do
+            # polskiej WSI Berlin (49.87, 22.19), czyli udawał miejsce pod
+            # Rzeszowem. Bez ograniczenia Berlin to Berlin (52.52, 13.40),
+            # a polskie miasta i tak wychodzą w Polsce.
+            params={"q": name, "format": "json", "limit": 1},
             timeout=bc.HTTP_TIMEOUT,
             headers={"User-Agent": "bip-krk-job-tracker/1.0 "
                                    "(osobisty projekt)"},
@@ -275,3 +288,182 @@ def districts_json() -> str:
     """
     return json.dumps({k: list(v) for k, v in KRAKOW_DISTRICTS.items()},
                       ensure_ascii=False)
+
+
+# ---------------------------------------------------------------------------
+# PRECYZYJNA LOKALIZACJA OFERTY (adres → instytucja → dzielnica → miasto)
+# ---------------------------------------------------------------------------
+#
+# Wcześniej oferta z samym „Kraków” dostawała współrzędne CENTRUM miasta.
+# Skutek: ogłoszenie z Klubu Dukat (os. Zgody, Nowa Huta) wychodziło jako
+# 5,5 km od Bronowic zamiast 11,6 km, a promień 10 km go przepuszczał.
+# Ręczny słownik „klub → dzielnica” trzeba by utrzymywać w nieskończoność,
+# więc pytamy o konkretny punkt, w tej kolejności:
+#
+# 1. ``api``       — współrzędne podane przez źródło (CBOP),
+# 2. ``address``   — adres ulicy z treści ogłoszenia („os. Zgody 1”),
+# 3. ``employer``  — nazwa instytucji + miasto („Teatr Groteska, Kraków”),
+# 4. ``district``  — nazwa dzielnicy Krakowa w tekście („Bronowice, Kraków”
+#                    — tak podaje lokalizację jooble),
+# 5. ``city``      — samo miasto (dotychczasowe zachowanie, najmniej
+#                    dokładne — oznaczane w raporcie jako przybliżone).
+#
+# Każdy wynik z punktów 2–3 jest WALIDOWANY: musi leżeć najwyżej
+# :data:`VALIDATE_KM` od miasta oferty. Bez tego „Teatr Ludowy” czy
+# „Dom Kultury” mógłby trafić do imiennika w innym województwie.
+
+# Adres w treści ogłoszenia: osiedle, ulica, aleja, plac z numerem.
+ADDRESS_RE = re.compile(
+    r"\b(?:os\.|osiedle|ul\.|ulica|al\.|aleja|pl\.|plac)\s*"
+    r"[A-ZŁŚŻŹĆĄĘÓŃ][\w\.\-ąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]{1,40}?\s\d+[a-zA-Z]?\b")
+
+# Maksymalna odległość wyniku od miasta oferty, żeby uznać go za wiarygodny.
+VALIDATE_KM = 30.0
+
+# Pracodawcy, których nazwa NIE nadaje się do geokodowania (portale,
+# pośrednicy, zastępcze opisy) — pytanie o nie dałoby losowy punkt.
+NOT_GEOCODABLE_EMPLOYERS = re.compile(
+    r"kontakt przez pup|jooble|nuzle|nofluffjobs|bulldogjob|arc\.dev"
+    r"|agencja pracy|recruitment|rekrutac|klient nieujawniony|cbop",
+    re.IGNORECASE)
+
+# Wersja kluczy w pamięci podręcznej. Zmieniona, gdy zmieniła się metoda:
+# stare wpisy (pytane z ``countrycodes=pl`` bez regionu) zamieniały
+# „Berlin” w polską wieś, a „Lipinki” w imiennika w Wielkopolsce.
+CACHE_PREFIX = "v2|"
+
+
+def _cached_lookup(session, cache: Dict[str, Optional[list]], query: str,
+                   restrict_pl: bool) -> Optional[Tuple[float, float]]:
+    """Geokoduje zapytanie z pamięcią podręczną (nieudane też zapamiętujemy).
+
+    Args:
+        session: sesja HTTP albo None (wtedy tylko pamięć).
+        cache: słownik pamięci podręcznej (modyfikowany w miejscu).
+        query: pełne zapytanie dla Nominatim.
+        restrict_pl: czy zawęzić wyniki do Polski.
+
+    Returns:
+        Para (lat, lon) albo None.
+    """
+    key = f"{CACHE_PREFIX}{'pl' if restrict_pl else 'any'}|{query}"
+    if key in cache:
+        value = cache[key]
+        return (float(value[0]), float(value[1])) if value else None
+    if session is None:
+        return None
+    params = {"q": query, "format": "json", "limit": 1}
+    if restrict_pl:
+        params["countrycodes"] = "pl"
+    coords = None
+    try:
+        response = session.get(
+            NOMINATIM_URL, params=params, timeout=bc.HTTP_TIMEOUT,
+            headers={"User-Agent": "bip-krk-job-tracker/1.0 "
+                                   "(osobisty projekt)"})
+        payload = response.json() if response.status_code == 200 else []
+        if payload:
+            coords = (round(float(payload[0]["lat"]), 4),
+                      round(float(payload[0]["lon"]), 4))
+    except Exception:  # pylint: disable=broad-exception-caught
+        # Sieć, zły JSON, nietypowa odpowiedź — wszystko kończy się tak samo:
+        # brak punktu. Geokodowanie jest dodatkiem i nie może przerwać raportu.
+        coords = None
+    time.sleep(GEOCODE_DELAY)
+    cache[key] = list(coords) if coords else None
+    return coords
+
+
+def _district_in(text: str) -> Optional[Tuple[str, Tuple[float, float]]]:
+    """Szuka nazwy dzielnicy Krakowa w tekście.
+
+    Args:
+        text: tytuł, nazwa pracodawcy albo pole lokalizacji.
+
+    Returns:
+        Para (nazwa dzielnicy, współrzędne) albo None.
+    """
+    lowered = str(text or "").lower()
+    # Dłuższe nazwy najpierw — „Podgórze Duchackie” przed „Podgórze”.
+    for name in sorted(KRAKOW_DISTRICTS, key=len, reverse=True):
+        if name.lower() in lowered:
+            return name, KRAKOW_DISTRICTS[name]
+    return None
+
+
+def locate_offer(offer: Dict[str, object], city: str,
+                 city_point: Optional[Tuple[float, float]],
+                 session=None,
+                 cache: Optional[Dict[str, Optional[list]]] = None
+                 ) -> Tuple[Optional[Tuple[float, float]], str]:
+    """Ustala jak najdokładniejszy punkt oferty.
+
+    Args:
+        offer: rekord oferty (tytuł, opis, pracodawca, ewentualnie lat/lon).
+        city: rozpoznane miasto oferty.
+        city_point: współrzędne miasta (do walidacji i jako ostatnia deska).
+        session: sesja HTTP (None = tylko pamięć podręczna).
+        cache: pamięć podręczna geokodowania.
+
+    Returns:
+        Para (współrzędne albo None, poziom dokładności: ``api``,
+        ``address``, ``employer``, ``district``, ``city`` albo ``""``).
+    """
+    cache = {} if cache is None else cache
+    lat, lon = offer.get("lat"), offer.get("lon")
+    if lat not in (None, "") and lon not in (None, ""):
+        try:
+            return (float(lat), float(lon)), "api"
+        except (TypeError, ValueError):
+            pass
+
+    def plausible(point: Optional[Tuple[float, float]]) -> bool:
+        """Czy wynik leży w rozsądnej odległości od miasta oferty."""
+        if point is None:
+            return False
+        return city_point is None or distance_km(point, city_point) <= VALIDATE_KM
+
+    text = f"{offer.get('raw_text') or ''}"
+    employer = re.split(r"\s*[\(\[]|\s+[—–]\s+",
+                        str(offer.get("unit_name") or ""), maxsplit=1)[0]
+
+    if city:
+        found = ADDRESS_RE.search(text)
+        if found:
+            point = _cached_lookup(session, cache,
+                                   f"{found.group(0).strip()}, {city}", True)
+            if plausible(point):
+                return point, "address"
+        if employer and not NOT_GEOCODABLE_EMPLOYERS.search(employer) \
+                and len(employer) >= 6:
+            point = _cached_lookup(session, cache, f"{employer}, {city}", True)
+            if plausible(point):
+                return point, "employer"
+
+    for source_text in (offer.get("offer_city"), offer.get("title"),
+                        offer.get("unit_name")):
+        hit = _district_in(str(source_text or ""))
+        if hit:
+            return hit[1], "district"
+
+    if city_point is not None:
+        return city_point, "city"
+    return None, ""
+
+
+def load_cache() -> Dict[str, Optional[list]]:
+    """Publiczny dostęp do pamięci podręcznej geokodowania.
+
+    Returns:
+        Słownik pamięci (modyfikowalny; zapisz przez :func:`save_cache`).
+    """
+    return _load_cache()
+
+
+def save_cache(cache: Dict[str, Optional[list]]) -> None:
+    """Zapisuje pamięć podręczną geokodowania.
+
+    Args:
+        cache: słownik pamięci.
+    """
+    _save_cache(cache)

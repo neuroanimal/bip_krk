@@ -1,0 +1,109 @@
+{
+  "fetched_at": "2026-10-21T15:24:44+02:00",
+  "institutions": [
+    {
+      "institution": "Muzeum Narodowe w Krakowie",
+      "url": "https://mnk.pl/o-muzeum/praca/oferty-pracy/",
+      "offers": [
+        {
+          "title": "Asystent/-ka / Adiunkt/-ka w Bibliotece Czartoryskich",
+          "detail_url": "https://mnk.pl/asystent-ka-adiunkt-ka-w-bibliotece-czartoryskich/",
+          "published": "2026-10-14"
+        },
+        {
+          "title": "Specjalista/ka w Sekcji ds. Księgowości",
+          "detail_url": "https://mnk.pl/specjalista-ka-w-sekcji-ds-ksiegowosci/",
+          "published": "2026-09-09"
+        },
+        {
+          "title": "Specjalista/ka ds. Nadzoru Budowlanego",
+          "detail_url": "https://mnk.pl/specjalista-ka-ds-nadzoru-budowlanego/",
+          "published": "2026-08-17"
+        }
+      ]
+    },
+    {
+      "institution": "Zamek Królewski na Wawelu",
+      "url": "https://wawel.krakow.pl/kariera",
+      "offers": [
+        {
+          "title": "Edukator / Edukatorka",
+          "detail_url": "https://wawel.krakow.pl/oferta/edukator-edukatorka",
+          "published": null
+        },
+        {
+          "title": "Konserwator - Kierownik Zespołu w Pracowni konserwacji zabytków archeologicznych",
+          "detail_url": "https://wawel.krakow.pl/oferta/konserwator-kierownik-zespolu-w-pracowni-konserwacji-zabytkow-archeologicznych",
+          "published": null
+        }
+      ]
+    },
+    {
+      "institution": "Teatr im. Juliusza Słowackiego w Krakowie",
+      "url": "https://teatrwkrakowie.pl/praca",
+      "offers": [
+        {
+          "title": "Specjalista ds. księgowości i finansów",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2026_2027/specjalista_ds_ksiegowosci_i_finansow.docx",
+          "published": null
+        },
+        {
+          "title": "Specjalista ds. montażu dekoracji teatralnych",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/PDF_rozne/ogloszenie_montazysta_2026.docx",
+          "published": null
+        },
+        {
+          "title": "Specjalista ds. bezpieczeństwa",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/MOS/Specjalista%20ds.%20bezpiecze%C5%84stwa%20Teatr%20S%C5%82owackiego.docx",
+          "published": null
+        },
+        {
+          "title": "Specjalista/Specjalistka ds. administrowania majątkiem Teatru",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/ogloszenie_administracja.docx",
+          "published": null
+        },
+        {
+          "title": "specjalista ds. montażu dekoracji teatralnych",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/2026ogloszenie_montazysta.docx",
+          "published": null
+        },
+        {
+          "title": "Pracownik gospodarczy",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/ogloszenie_pracownik_gospodarczy.docx",
+          "published": null
+        },
+        {
+          "title": "Koordynator/ka Dostępności",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/2025_2026/koordynator_ds_dostepnosci.docx",
+          "published": null
+        },
+        {
+          "title": "Specjalista ds. księgowości / samodzielny księgowy",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/aktualnosci/Pliki/ksiegowosc_oferta_pracy.docx",
+          "published": null
+        },
+        {
+          "title": "Pracownik działu IT",
+          "detail_url": "https://teatrwkrakowie.pl/images/upload/PDF_rozne/2025/praca_informatyk.docx",
+          "published": null
+        }
+      ]
+    },
+    {
+      "institution": "Ośrodek Dokumentacji Sztuki Tadeusza Kantora Cricoteka",
+      "url": "https://cricoteka.pl/praca",
+      "offers": []
+    },
+    {
+      "institution": "Wojewódzka Biblioteka Publiczna w Krakowie",
+      "url": "https://rajska.info/oferty-pracy",
+      "offers": [
+        {
+          "title": "Dział Administracji - pracownik gospodarczy",
+          "detail_url": "https://rajska.info/system/files/8795/dzial-administracji-pracownik-gospodarczy.pdf",
+          "published": null
+        }
+      ]
+    }
+  ]
+}

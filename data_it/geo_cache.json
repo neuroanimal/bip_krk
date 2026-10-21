@@ -1,0 +1,162 @@
+{
+  "records": {
+    "v2|city|Andrychów": [
+      49.8556,
+      19.3437
+    ],
+    "v2|city|Bochnia": [
+      49.9747,
+      20.4253
+    ],
+    "v2|city|Brończyce": [
+      50.2324,
+      20.1216
+    ],
+    "v2|city|Gdansk": [
+      54.3483,
+      18.654
+    ],
+    "v2|city|Mikołajowice": [
+      51.1285,
+      16.2836
+    ],
+    "v2|city|Nowy Sącz": [
+      49.6249,
+      20.6913
+    ],
+    "v2|city|Skała": [
+      50.2304,
+      19.8535
+    ],
+    "v2|city|Wadowice": [
+      49.8834,
+      19.4925
+    ],
+    "v2|city|Warsaw": [
+      52.232,
+      21.0067
+    ],
+    "v2|city|Wielka Wieś": [
+      54.5677,
+      17.3599
+    ],
+    "v2|city|Wola Rzędzińska": [
+      50.0372,
+      21.0644
+    ],
+    "v2|city|klient nieujawniony": null,
+    "v2|city|krajów": [
+      51.3874,
+      20.7034
+    ],
+    "v2|city|nie podano lokalizacji": null,
+    "v2|pl|Addepto, Kraków": null,
+    "v2|pl|Verita HR, Kraków": null,
+    "v2|pl|Tesco Technology, Kraków": null,
+    "v2|pl|Mindbox Sp. z o.o., Kraków": null,
+    "v2|pl|hubQuest, Kraków": null,
+    "v2|pl|Fresenius Digital Technology, Kraków": null,
+    "v2|pl|deepsense.ai Sp. z o.o., Kraków": null,
+    "v2|pl|GFT Poland, Kraków": null,
+    "v2|pl|Sii Polska, Kraków": null,
+    "v2|pl|ASTEK Polska, Kraków": null,
+    "v2|pl|Ray Allen Inc, Kraków": null,
+    "v2|pl|OneRail Poland Sp. z o.o., Kraków": null,
+    "v2|pl|Ringier Axel Springer Tech, Kraków": null,
+    "v2|pl|CKSource, Kraków": null,
+    "v2|pl|DS STREAM, Kraków": null,
+    "v2|pl|Spyrosoft, Kraków": null,
+    "v2|pl|ITFS Sp. z o.o., Kraków": null,
+    "v2|pl|Manufacturo, Kraków": null,
+    "v2|pl|Motorola Solutions Systems Polska, Kraków": null,
+    "v2|pl|Diverse CG Sp. z o.o. Sp.k., Kraków": null,
+    "v2|pl|HSBC Technology Poland, Kraków": null,
+    "v2|pl|Upvanta, Kraków": null,
+    "v2|pl|j-labs software specialist, Kraków": null,
+    "v2|pl|AVENGA, Kraków": null,
+    "v2|pl|Branchspace sp. z o.o., Kraków": null,
+    "v2|pl|Software Mansion, Kraków": [
+      50.0486,
+      19.9655
+    ],
+    "v2|pl|VERITA HR POLSKA SP. Z O.O., Kraków": null,
+    "v2|pl|Luxoft DXC, Krakow": null,
+    "v2|pl|Luxoft DXC, Gdansk": null,
+    "v2|pl|I Liceum Ogólnokształcące im .Króla Kazimierza Wielkiego w Bochni, Bochnia": [
+      49.9688,
+      20.4239
+    ],
+    "v2|pl|Lemon.io, nie podano lokalizacji": null,
+    "v2|pl|Benzinga, nie podano lokalizacji": null,
+    "v2|pl|Salesforge, nie podano lokalizacji": null,
+    "v2|pl|Kruger NearShore LLC - Rekluti, nie podano lokalizacji": null,
+    "v2|pl|Idego Group Sp. z o.o., Kraków": null,
+    "v2|pl|Blackline, Kraków": null,
+    "v2|pl|Askable, nie podano lokalizacji": null,
+    "v2|pl|Kodland, nie podano lokalizacji": null,
+    "v2|pl|Wrapbook, nie podano lokalizacji": null,
+    "v2|pl|Accenture Polska, Warsaw": null,
+    "v2|pl|Tripadvisor, Krakow": null,
+    "v2|pl|Alfa Laval, Krakow": null,
+    "v2|pl|Autodesk, Krakow": null,
+    "v2|pl|Ocado Group, Krakow": null,
+    "v2|pl|dmTECH Polska, Kraków": null,
+    "v2|pl|Infinite Services, Kraków": null,
+    "v2|pl|MDPI Poland, Kraków": null,
+    "v2|pl|iTeamly, Kraków": null,
+    "v2|pl|Michael Page, Kraków": null,
+    "v2|pl|Sii Sp. z o.o., Kraków": [
+      50.0619,
+      19.9369
+    ],
+    "v2|pl|GGS IT Consulting, Kraków": null,
+    "v2|pl|ALTEN Polska, Kraków": null,
+    "v2|pl|Forte Digital Sp. z o.o., Kraków": null,
+    "v2|pl|Capgemini Polska, Kraków": null,
+    "v2|pl|EPAM Systems, Kraków": [
+      50.0606,
+      19.9714
+    ],
+    "v2|pl|ITDS Polska Sp. z o.o., Kraków": null,
+    "v2|pl|dotLinkers Sp. z o.o., Kraków": null,
+    "v2|pl|cloudatus, Kraków": null,
+    "v2|pl|Accenture, Kraków": null,
+    "v2|pl|Cytiva Poland, Kraków": null,
+    "v2|pl|in4ge sp. z o.o., Kraków": null,
+    "v2|pl|Proxi.cloud Sp.z.o.o, Kraków": null,
+    "v2|pl|Upvanta sp. z o.o., Kraków": null,
+    "v2|pl|Grape Up Sp. z o.o., Kraków": null,
+    "v2|pl|Diagnostyka S.A., Kraków": null,
+    "v2|pl|B3 Consulting Poland, Kraków": null,
+    "v2|pl|Edge One Solutions Sp. z o.o., Kraków": null,
+    "v2|pl|Quickchannel Sp. z o.o., Kraków": null,
+    "v2|pl|Clurgo, Kraków": null,
+    "v2|pl|DCV Technologies, Kraków": null,
+    "v2|pl|Payabl, Kraków": null,
+    "v2|pl|CLOUDFIDE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ, Kraków": null,
+    "v2|pl|Link Group, Kraków": null,
+    "v2|pl|Netguru, Kraków": null,
+    "v2|pl|Kyotu Technology, Kraków": null,
+    "v2|pl|The Codest, Kraków": null,
+    "v2|pl|emagine Polska, Kraków": null,
+    "v2|pl|Green Hive Technology, Kraków": null,
+    "v2|pl|Cyrantos, Kraków": null,
+    "v2|pl|Vasco Electronics S.A., Kraków": null,
+    "v2|pl|Entrada AI, Kraków": null,
+    "v2|pl|DataArt, Kraków": null,
+    "v2|pl|Appliscale, Kraków": [
+      50.0783,
+      19.9949
+    ],
+    "v2|pl|Vistulo, Kraków": null,
+    "v2|pl|Braver IT S.A., Kraków": null,
+    "v2|pl|VirtusLab, Kraków": null,
+    "v2|pl|teems.it sp. z o.o., Kraków": null,
+    "v2|pl|MasterBorn, Kraków": null,
+    "v2|pl|KPMG Poland, krajów": null,
+    "v2|pl|DevGrid, krajów": null
+  },
+  "meta": {
+    "updated": "2026-10-21T15:27:40+02:00"
+  }
+}

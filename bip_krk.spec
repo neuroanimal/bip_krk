@@ -23,6 +23,7 @@ stage_files = [
     ('report_script.py', '.'),            # skrypt przeglądarki (tracking+filtry)
     ('contract_type.py', '.'),
     ('salary.py', '.'),
+    ('dedupe.py', '.'),                   # duplikaty i podobne oferty
     ('geo.py', '.'),                      # odległość od domu, dzielnice
     ('offer_lang.py', '.'),               # język ogłoszenia (pl/en)
     ('report_controls.py', '.'),          # paski sterowania raportu                   # normalizacja wynagrodzeń (kurs NBP)            # rozpoznawanie rodzaju umowy             # statystyki + wykresy SVG          # moduł prezentacji HTML (wymagany przez etap 5)
@@ -63,6 +64,7 @@ a = Analysis(
         'report_script',
         'contract_type',
         'salary',
+        'dedupe',
         'geo',
         'offer_lang',
         'report_controls',

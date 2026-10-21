@@ -124,6 +124,26 @@ EXCLUDE_KEYWORDS: Tuple[str, ...] = (
     "silowni", "personalny", "instruktor sportu", "instruktor tańca",
     "zajęć tanecznych", "zajec tanecznych", "instruktor jazdy",
     "instruktor nauki jazdy", "ratownik", "trener personaln",
+    # Krótsze rdzenie, bo pełne frazy przegrywały z odmianą:
+    # „zatrudnię instruktorA nauki jazdy” nie pasowało do „instruktor nauki
+    # jazdy”, a „Instruktor Sportów Walki” do żadnej frazy z listy.
+    "nauki jazdy", "sport", "robotyk", "serwis", "inzynier", "maszyn",
+    # Śpiew i występy — inna dziedzina sztuki niż plastyka i edukacja
+    # („Przesłuchania: Głos tenorowy | Chór Polskiego Radia”).
+    "przesluchani", "tenor", "sopran", "chorzyst", "spiewak",
+    # Technika sceniczna — teatr jako pracodawca się zgadza, ale to praca
+    # elektryka i akustyka, nie plastyka („Realizatorka oświetlenia”).
+    "realizator", "oswietleni", "akustyk", "dzwiekowc", "elektryk",
+    # UX w krótkiej postaci („Education Designer: UX, UI, and AI”,
+    # „Principal Experience Designer”) — pełne frazy jej nie łapały.
+    " ux", "ux,", "ux/", "experience designer",
+    # Obsługa klienta i moderacja treści w centrach usług — w jooble
+    # wchodziły przez „media społecznościowe” w opisie. Do tego wymóg
+    # obcego języka w tytule („…with Czech”, „German speaking”) — to
+    # zawsze rola dla native speakera, nie dla tego profilu.
+    "customer success", "reviewer", "moderator", "client partner",
+    "call center", "with czech", "with german", "german speaking",
+    "with dutch", "with french", "with italian", "with spanish",
     # Zawody budowlane/produkcyjne — wchodziły przez słowo „warsztat”
     # („Zbrojarz WARSZTATOWY”, „Zbrojarz-warsztat”), które w profilu
     # oznacza warsztaty twórcze, a nie warsztat produkcyjny.
@@ -151,6 +171,48 @@ DEMOTE_KEYWORDS: Tuple[str, ...] = (
     "zawód: instruktor sportu", "zawod: instruktor sportu",
     "instruktor sportu", "zajęcia sportow", "zajecia sportow",
 )
+
+# Degradacje liczone WYŁĄCZNIE z tytułu.
+#
+# Formy, które nie dają stabilnego zatrudnienia albo wymagają innego
+# doświadczenia, a o stabilność tu chodzi: staż, praktyki, wolontariat
+# (bez pensji), konkurs na dyrektora (lata zarządzania instytucją),
+# sprzedaż biletów i wydarzeń.
+#
+# Dlaczego tylko tytuł — błąd, który to wymusił: w opisie „staż” to
+# najczęściej „STAŻ PRACY” (wymagane doświadczenie), a „praktyk” to
+# „doświadczenie PRAKTYCZNE”. Liczone z opisu degradowały ofertę ASP
+# i Klub Dukat — dwie najlepsze w raporcie — do „może pasować”.
+DEMOTE_TITLE_KEYWORDS: Tuple[str, ...] = (
+    "staż", "praktyki", "wolontari", "dyrektor", "sprzedaż",
+    "kandydat na stanowisko",
+)
+
+# Rdzenie OGÓLNE — liczą się jako rdzeń profilu TYLKO w kontekście
+# kulturalnym (w tytule albo w nazwie pracodawcy).
+#
+# Powód, zmierzony na danych z jooble: samo słowo „instruktor” dawało
+# odznakę „DLA CIEBIE” instruktorowi sportów walki, nauki jazdy, robotyki
+# i „Inżynierowi Serwisu / Instruktorowi Maszyn”. Lista wykluczeń łatała
+# to przypadek po przypadku i zawsze była o krok z tyłu — bo pytała „czy
+# to sport?”, zamiast „czy to kultura?”. Teraz odwracamy pytanie: ogólny
+# rdzeń bez kontekstu kulturalnego jest tylko sygnałem wspierającym.
+#
+# ``words``      — kontekst, który kwalifikuje w pełni,
+# ``weak_words`` — kontekst, który kwalifikuje, ale najwyżej do „może
+#                  pasować” (zajęcia dla dzieci bywają plastyczne, bywają
+#                  sportowe; terapia zajęciowa wymaga kursu).
+CONTEXT_REQUIRED = {
+    "stems": ("instruktor", "animator", "warsztat", "event", "trener"),
+    "words": (
+        "kultur", "plastyczn", "artystyczn", "sztuk", "rysun", "malars",
+        "ceramik", "grafik", "teatr", "muze", "galeri", "bibliote",
+        "świetlic", "klub", "dom kultury", "ośrodek kultury", "fotograf",
+        "rękodzieł", "wystaw", "edukacj",
+    ),
+    "weak_words": ("dla dzieci", "dzieci i młodzież", "zajęć",
+                   "terapii zajęciow", "terapia zajęciow"),
+}
 
 # Obszary RDZENIOWE — tylko one mogą samodzielnie zakwalifikować ofertę.
 # Obszary pozostałe ("instytucja kultury", "promocja / media kultury") są

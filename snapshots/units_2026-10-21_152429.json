@@ -1,0 +1,5459 @@
+{
+  "fetched_at": "2026-10-21T15:24:29+02:00",
+  "current_url": "https://www.bip.krakow.pl/?bip_id=1&mmi=9584",
+  "archive_url": "https://www.bip.krakow.pl/?dok_id=134424",
+  "current": [
+    {
+      "key": "slug:ZBK",
+      "bip_id": null,
+      "slug": "ZBK",
+      "name": "ZBK - Zarząd Budynków Komunalnych w Krakowie",
+      "url": "https://www.bip.krakow.pl/ZBK",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZCK",
+      "bip_id": null,
+      "slug": "ZCK",
+      "name": "ZCK - Zarząd Cmentarzy Komunalnych w Krakowie",
+      "url": "https://www.bip.krakow.pl/ZCK",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZDMK",
+      "bip_id": null,
+      "slug": "ZDMK",
+      "name": "ZDMK - Zarząd Dróg Miasta Krakowa",
+      "url": "https://www.bip.krakow.pl/ZDMK",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:512",
+      "bip_id": "512",
+      "slug": null,
+      "name": "ZIS - Zarząd Infrastruktury Sportowej w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=512",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:582",
+      "bip_id": "582",
+      "slug": null,
+      "name": "ZIM - Zarząd Inwestycji Miejskich w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=582",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:627",
+      "bip_id": "627",
+      "slug": null,
+      "name": "ZIW - Zarząd Infrastruktury Wodnej",
+      "url": "https://www.bip.krakow.pl/?bip_id=627",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:616",
+      "bip_id": "616",
+      "slug": null,
+      "name": "ZTP - Zarząd Transportu Publicznego w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=616",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:567",
+      "bip_id": "567",
+      "slug": null,
+      "name": "ZZM - Zarząd Zieleni Miejskiej w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=567",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MOPS",
+      "bip_id": null,
+      "slug": "MOPS",
+      "name": "MOPS - Miejski Ośrodek Pomocy Społecznej w Krakowie",
+      "url": "https://www.bip.krakow.pl/MOPS",
+      "source": "current",
+      "category": "Pomoc społeczna",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MCPU",
+      "bip_id": null,
+      "slug": "MCPU",
+      "name": "Miejskie Centrum Profilaktyki Uzależnień w Krakowie",
+      "url": "https://www.bip.krakow.pl/MCPU",
+      "source": "current",
+      "category": "Porządek publiczny i bezpieczeństwo",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ST",
+      "bip_id": null,
+      "slug": "ST",
+      "name": "Straż Miejska Miasta Krakowa",
+      "url": "https://www.bip.krakow.pl/ST",
+      "source": "current",
+      "category": "Porządek publiczny i bezpieczeństwo",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK1",
+      "bip_id": null,
+      "slug": "PK1",
+      "name": "Przedszkole nr 1",
+      "url": "https://www.bip.krakow.pl/PK1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK2",
+      "bip_id": null,
+      "slug": "PK2",
+      "name": "Przedszkole nr 2",
+      "url": "https://www.bip.krakow.pl/PK2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK4",
+      "bip_id": null,
+      "slug": "PK4",
+      "name": "Przedszkole nr 4",
+      "url": "https://www.bip.krakow.pl/PK4",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK5",
+      "bip_id": null,
+      "slug": "PK5",
+      "name": "Przedszkole nr 5",
+      "url": "https://www.bip.krakow.pl/PK5",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK6",
+      "bip_id": null,
+      "slug": "PK6",
+      "name": "Przedszkole nr 6",
+      "url": "https://www.bip.krakow.pl/PK6",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK9",
+      "bip_id": null,
+      "slug": "PK9",
+      "name": "Przedszkole nr 9",
+      "url": "https://www.bip.krakow.pl/PK9",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK10",
+      "bip_id": null,
+      "slug": "PK10",
+      "name": "Przedszkole nr 10",
+      "url": "https://www.bip.krakow.pl/PK10",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK11",
+      "bip_id": null,
+      "slug": "PK11",
+      "name": "Przedszkole nr 11",
+      "url": "https://www.bip.krakow.pl/PK11",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK12",
+      "bip_id": null,
+      "slug": "PK12",
+      "name": "Przedszkole nr 12",
+      "url": "https://www.bip.krakow.pl/PK12",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK13",
+      "bip_id": null,
+      "slug": "PK13",
+      "name": "Przedszkole nr 13",
+      "url": "https://www.bip.krakow.pl/PK13",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK14",
+      "bip_id": null,
+      "slug": "PK14",
+      "name": "Przedszkole nr 14",
+      "url": "https://www.bip.krakow.pl/PK14",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK20",
+      "bip_id": null,
+      "slug": "PK20",
+      "name": "Przedszkole nr 20",
+      "url": "https://www.bip.krakow.pl/PK20",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK22",
+      "bip_id": null,
+      "slug": "PK22",
+      "name": "Przedszkole nr 22",
+      "url": "https://www.bip.krakow.pl/PK22",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK28",
+      "bip_id": null,
+      "slug": "PK28",
+      "name": "Przedszkole nr 28",
+      "url": "https://www.bip.krakow.pl/PK28",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK29",
+      "bip_id": null,
+      "slug": "PK29",
+      "name": "Przedszkole nr 29",
+      "url": "https://www.bip.krakow.pl/PK29",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK33",
+      "bip_id": null,
+      "slug": "PK33",
+      "name": "Przedszkole nr 33",
+      "url": "https://www.bip.krakow.pl/PK33",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK35",
+      "bip_id": null,
+      "slug": "PK35",
+      "name": "Przedszkole nr 35",
+      "url": "https://www.bip.krakow.pl/PK35",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK36",
+      "bip_id": null,
+      "slug": "PK36",
+      "name": "Przedszkole nr 36",
+      "url": "https://www.bip.krakow.pl/PK36",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK38",
+      "bip_id": null,
+      "slug": "PK38",
+      "name": "Przedszkole nr 38",
+      "url": "https://www.bip.krakow.pl/PK38",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK41",
+      "bip_id": null,
+      "slug": "PK41",
+      "name": "Przedszkole nr 41",
+      "url": "https://www.bip.krakow.pl/PK41",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK43",
+      "bip_id": null,
+      "slug": "PK43",
+      "name": "Przedszkole nr 43",
+      "url": "https://www.bip.krakow.pl/PK43",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK44",
+      "bip_id": null,
+      "slug": "PK44",
+      "name": "Przedszkole nr 44",
+      "url": "https://www.bip.krakow.pl/PK44",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK45",
+      "bip_id": null,
+      "slug": "PK45",
+      "name": "Przedszkole nr 45",
+      "url": "https://www.bip.krakow.pl/PK45",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK46",
+      "bip_id": null,
+      "slug": "PK46",
+      "name": "Przedszkole nr 46",
+      "url": "https://www.bip.krakow.pl/PK46",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK49",
+      "bip_id": null,
+      "slug": "PK49",
+      "name": "Przedszkole nr 49",
+      "url": "https://www.bip.krakow.pl/PK49",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK51",
+      "bip_id": null,
+      "slug": "PK51",
+      "name": "Przedszkole nr 51",
+      "url": "https://www.bip.krakow.pl/PK51",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK57",
+      "bip_id": null,
+      "slug": "PK57",
+      "name": "Przedszkole nr 57",
+      "url": "https://www.bip.krakow.pl/PK57",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK58",
+      "bip_id": null,
+      "slug": "PK58",
+      "name": "Przedszkole nr 58",
+      "url": "https://www.bip.krakow.pl/PK58",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK61",
+      "bip_id": null,
+      "slug": "PK61",
+      "name": "Przedszkole nr 61",
+      "url": "https://www.bip.krakow.pl/PK61",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK62",
+      "bip_id": null,
+      "slug": "PK62",
+      "name": "Przedszkole nr 62",
+      "url": "https://www.bip.krakow.pl/PK62",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK63",
+      "bip_id": null,
+      "slug": "PK63",
+      "name": "Przedszkole nr 63",
+      "url": "https://www.bip.krakow.pl/PK63",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK65",
+      "bip_id": null,
+      "slug": "PK65",
+      "name": "Przedszkole nr 65",
+      "url": "https://www.bip.krakow.pl/PK65",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK66",
+      "bip_id": null,
+      "slug": "PK66",
+      "name": "Przedszkole nr 66",
+      "url": "https://www.bip.krakow.pl/PK66",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK67",
+      "bip_id": null,
+      "slug": "PK67",
+      "name": "Przedszkole nr 67",
+      "url": "https://www.bip.krakow.pl/PK67",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK71",
+      "bip_id": null,
+      "slug": "PK71",
+      "name": "Przedszkole nr 71",
+      "url": "https://www.bip.krakow.pl/PK71",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK75",
+      "bip_id": null,
+      "slug": "PK75",
+      "name": "Przedszkole nr 75",
+      "url": "https://www.bip.krakow.pl/PK75",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK76",
+      "bip_id": null,
+      "slug": "PK76",
+      "name": "Przedszkole nr 76",
+      "url": "https://www.bip.krakow.pl/PK76",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK77",
+      "bip_id": null,
+      "slug": "PK77",
+      "name": "Przedszkole nr 77",
+      "url": "https://www.bip.krakow.pl/PK77",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK78",
+      "bip_id": null,
+      "slug": "PK78",
+      "name": "Przedszkole nr 78",
+      "url": "https://www.bip.krakow.pl/PK78",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK79",
+      "bip_id": null,
+      "slug": "PK79",
+      "name": "Przedszkole nr 79",
+      "url": "https://www.bip.krakow.pl/PK79",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK80",
+      "bip_id": null,
+      "slug": "PK80",
+      "name": "Przedszkole nr 80",
+      "url": "https://www.bip.krakow.pl/PK80",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK82",
+      "bip_id": null,
+      "slug": "PK82",
+      "name": "Przedszkole nr 82",
+      "url": "https://www.bip.krakow.pl/PK82",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK83",
+      "bip_id": null,
+      "slug": "PK83",
+      "name": "Przedszkole nr 83",
+      "url": "https://www.bip.krakow.pl/PK83",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK87",
+      "bip_id": null,
+      "slug": "PK87",
+      "name": "Przedszkole nr 87",
+      "url": "https://www.bip.krakow.pl/PK87",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK88",
+      "bip_id": null,
+      "slug": "PK88",
+      "name": "Przedszkole nr 88",
+      "url": "https://www.bip.krakow.pl/PK88",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK90",
+      "bip_id": null,
+      "slug": "PK90",
+      "name": "Przedszkole nr 90",
+      "url": "https://www.bip.krakow.pl/PK90",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK91",
+      "bip_id": null,
+      "slug": "PK91",
+      "name": "Przedszkole nr 91",
+      "url": "https://www.bip.krakow.pl/PK91",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK92",
+      "bip_id": null,
+      "slug": "PK92",
+      "name": "Przedszkole nr 92",
+      "url": "https://www.bip.krakow.pl/PK92",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK93",
+      "bip_id": null,
+      "slug": "PK93",
+      "name": "Przedszkole nr 93",
+      "url": "https://www.bip.krakow.pl/PK93",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK94",
+      "bip_id": null,
+      "slug": "PK94",
+      "name": "Przedszkole nr 94",
+      "url": "https://www.bip.krakow.pl/PK94",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK95",
+      "bip_id": null,
+      "slug": "PK95",
+      "name": "Przedszkole nr 95",
+      "url": "https://www.bip.krakow.pl/PK95",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK96",
+      "bip_id": null,
+      "slug": "PK96",
+      "name": "Przedszkole nr 96",
+      "url": "https://www.bip.krakow.pl/PK96",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK97",
+      "bip_id": null,
+      "slug": "PK97",
+      "name": "Przedszkole nr 97",
+      "url": "https://www.bip.krakow.pl/PK97",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK98",
+      "bip_id": null,
+      "slug": "PK98",
+      "name": "Przedszkole nr 98",
+      "url": "https://www.bip.krakow.pl/PK98",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK99",
+      "bip_id": null,
+      "slug": "PK99",
+      "name": "Przedszkole nr 99",
+      "url": "https://www.bip.krakow.pl/PK99",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK100",
+      "bip_id": null,
+      "slug": "PK100",
+      "name": "Przedszkole nr 100",
+      "url": "https://www.bip.krakow.pl/PK100",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK102",
+      "bip_id": null,
+      "slug": "PK102",
+      "name": "Przedszkole nr 102",
+      "url": "https://www.bip.krakow.pl/PK102",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK104",
+      "bip_id": null,
+      "slug": "PK104",
+      "name": "Przedszkole nr 104",
+      "url": "https://www.bip.krakow.pl/PK104",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK105",
+      "bip_id": null,
+      "slug": "PK105",
+      "name": "Przedszkole nr 105",
+      "url": "https://www.bip.krakow.pl/PK105",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK107",
+      "bip_id": null,
+      "slug": "PK107",
+      "name": "Przedszkole nr 107",
+      "url": "https://www.bip.krakow.pl/PK107",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK108",
+      "bip_id": null,
+      "slug": "PK108",
+      "name": "Przedszkole nr 108",
+      "url": "https://www.bip.krakow.pl/PK108",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK109",
+      "bip_id": null,
+      "slug": "PK109",
+      "name": "Przedszkole nr 109",
+      "url": "https://www.bip.krakow.pl/PK109",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK110",
+      "bip_id": null,
+      "slug": "PK110",
+      "name": "Przedszkole nr 110",
+      "url": "https://www.bip.krakow.pl/PK110",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK111",
+      "bip_id": null,
+      "slug": "PK111",
+      "name": "Przedszkole nr 111",
+      "url": "https://www.bip.krakow.pl/PK111",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK112",
+      "bip_id": null,
+      "slug": "PK112",
+      "name": "Przedszkole nr 112",
+      "url": "https://www.bip.krakow.pl/PK112",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK113",
+      "bip_id": null,
+      "slug": "PK113",
+      "name": "Przedszkole nr 113",
+      "url": "https://www.bip.krakow.pl/PK113",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK115",
+      "bip_id": null,
+      "slug": "PK115",
+      "name": "Przedszkole nr 115",
+      "url": "https://www.bip.krakow.pl/PK115",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK116",
+      "bip_id": null,
+      "slug": "PK116",
+      "name": "Przedszkole nr 116",
+      "url": "https://www.bip.krakow.pl/PK116",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK117",
+      "bip_id": null,
+      "slug": "PK117",
+      "name": "Przedszkole nr 117",
+      "url": "https://www.bip.krakow.pl/PK117",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK118",
+      "bip_id": null,
+      "slug": "PK118",
+      "name": "Przedszkole nr 118",
+      "url": "https://www.bip.krakow.pl/PK118",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK119",
+      "bip_id": null,
+      "slug": "PK119",
+      "name": "Przedszkole nr 119",
+      "url": "https://www.bip.krakow.pl/PK119",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK120",
+      "bip_id": null,
+      "slug": "PK120",
+      "name": "Przedszkole nr 120",
+      "url": "https://www.bip.krakow.pl/PK120",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK121",
+      "bip_id": null,
+      "slug": "PK121",
+      "name": "Przedszkole nr 121",
+      "url": "https://www.bip.krakow.pl/PK121",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK122",
+      "bip_id": null,
+      "slug": "PK122",
+      "name": "Przedszkole nr 122",
+      "url": "https://www.bip.krakow.pl/PK122",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK123",
+      "bip_id": null,
+      "slug": "PK123",
+      "name": "Przedszkole nr 123",
+      "url": "https://www.bip.krakow.pl/PK123",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK124",
+      "bip_id": null,
+      "slug": "PK124",
+      "name": "Przedszkole nr 124",
+      "url": "https://www.bip.krakow.pl/PK124",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK125",
+      "bip_id": null,
+      "slug": "PK125",
+      "name": "Przedszkole nr 125",
+      "url": "https://www.bip.krakow.pl/PK125",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK127",
+      "bip_id": null,
+      "slug": "PK127",
+      "name": "Przedszkole nr 127",
+      "url": "https://www.bip.krakow.pl/PK127",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK129",
+      "bip_id": null,
+      "slug": "PK129",
+      "name": "Przedszkole nr 129",
+      "url": "https://www.bip.krakow.pl/PK129",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK130",
+      "bip_id": null,
+      "slug": "PK130",
+      "name": "Przedszkole nr 130",
+      "url": "https://www.bip.krakow.pl/PK130",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK131",
+      "bip_id": null,
+      "slug": "PK131",
+      "name": "Przedszkole nr 131",
+      "url": "https://www.bip.krakow.pl/PK131",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK132",
+      "bip_id": null,
+      "slug": "PK132",
+      "name": "Przedszkole nr 132",
+      "url": "https://www.bip.krakow.pl/PK132",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK133",
+      "bip_id": null,
+      "slug": "PK133",
+      "name": "Przedszkole nr 133",
+      "url": "https://www.bip.krakow.pl/PK133",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK135",
+      "bip_id": null,
+      "slug": "PK135",
+      "name": "Przedszkole nr 135",
+      "url": "https://www.bip.krakow.pl/PK135",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK137",
+      "bip_id": null,
+      "slug": "PK137",
+      "name": "Przedszkole nr 137",
+      "url": "https://www.bip.krakow.pl/PK137",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK138",
+      "bip_id": null,
+      "slug": "PK138",
+      "name": "Przedszkole nr 138",
+      "url": "https://www.bip.krakow.pl/PK138",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK139",
+      "bip_id": null,
+      "slug": "PK139",
+      "name": "Przedszkole nr 139",
+      "url": "https://www.bip.krakow.pl/PK139",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK140",
+      "bip_id": null,
+      "slug": "PK140",
+      "name": "Przedszkole nr 140",
+      "url": "https://www.bip.krakow.pl/PK140",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK142",
+      "bip_id": null,
+      "slug": "PK142",
+      "name": "Przedszkole nr 142",
+      "url": "https://www.bip.krakow.pl/PK142",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK143",
+      "bip_id": null,
+      "slug": "PK143",
+      "name": "Przedszkole nr 143",
+      "url": "https://www.bip.krakow.pl/PK143",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK144",
+      "bip_id": null,
+      "slug": "PK144",
+      "name": "Przedszkole nr 144",
+      "url": "https://www.bip.krakow.pl/PK144",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK145",
+      "bip_id": null,
+      "slug": "PK145",
+      "name": "Przedszkole nr 145",
+      "url": "https://www.bip.krakow.pl/PK145",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK148",
+      "bip_id": null,
+      "slug": "PK148",
+      "name": "Przedszkole nr 148",
+      "url": "https://www.bip.krakow.pl/PK148",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK150",
+      "bip_id": null,
+      "slug": "PK150",
+      "name": "Przedszkole nr 150",
+      "url": "https://www.bip.krakow.pl/PK150",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK151",
+      "bip_id": null,
+      "slug": "PK151",
+      "name": "Przedszkole nr 151",
+      "url": "https://www.bip.krakow.pl/PK151",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK152",
+      "bip_id": null,
+      "slug": "PK152",
+      "name": "Przedszkole nr 152",
+      "url": "https://www.bip.krakow.pl/PK152",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK162",
+      "bip_id": null,
+      "slug": "PK162",
+      "name": "Przedszkole nr 162",
+      "url": "https://www.bip.krakow.pl/PK162",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK163",
+      "bip_id": null,
+      "slug": "PK163",
+      "name": "Przedszkole nr 163",
+      "url": "https://www.bip.krakow.pl/PK163",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK165",
+      "bip_id": null,
+      "slug": "PK165",
+      "name": "Przedszkole nr 165",
+      "url": "https://www.bip.krakow.pl/PK165",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK175",
+      "bip_id": null,
+      "slug": "PK175",
+      "name": "Przedszkole nr 175",
+      "url": "https://www.bip.krakow.pl/PK175",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK176",
+      "bip_id": null,
+      "slug": "PK176",
+      "name": "Przedszkole nr 176",
+      "url": "https://www.bip.krakow.pl/PK176",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK177",
+      "bip_id": null,
+      "slug": "PK177",
+      "name": "Przedszkole nr 177",
+      "url": "https://www.bip.krakow.pl/PK177",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK178",
+      "bip_id": null,
+      "slug": "PK178",
+      "name": "Przedszkole nr 178",
+      "url": "https://www.bip.krakow.pl/PK178",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK179",
+      "bip_id": null,
+      "slug": "PK179",
+      "name": "Przedszkole nr 179",
+      "url": "https://www.bip.krakow.pl/PK179",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK180",
+      "bip_id": null,
+      "slug": "PK180",
+      "name": "Przedszkole nr 180",
+      "url": "https://www.bip.krakow.pl/PK180",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK182",
+      "bip_id": null,
+      "slug": "PK182",
+      "name": "Przedszkole nr 182",
+      "url": "https://www.bip.krakow.pl/PK182",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK185",
+      "bip_id": null,
+      "slug": "PK185",
+      "name": "Przedszkole nr 185",
+      "url": "https://www.bip.krakow.pl/PK185",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PK187",
+      "bip_id": null,
+      "slug": "PK187",
+      "name": "Przedszkole nr 187",
+      "url": "https://www.bip.krakow.pl/PK187",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP1",
+      "bip_id": null,
+      "slug": "SP1",
+      "name": "Szkoła Podstawowa nr 1",
+      "url": "https://www.bip.krakow.pl/SP1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP2",
+      "bip_id": null,
+      "slug": "SP2",
+      "name": "Szkoła Podstawowa nr 2",
+      "url": "https://www.bip.krakow.pl/SP2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP3",
+      "bip_id": null,
+      "slug": "SP3",
+      "name": "Szkoła Podstawowa nr 3",
+      "url": "https://www.bip.krakow.pl/SP3",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP4",
+      "bip_id": null,
+      "slug": "SP4",
+      "name": "Szkoła Podstawowa nr 4",
+      "url": "https://www.bip.krakow.pl/SP4",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP5",
+      "bip_id": null,
+      "slug": "SP5",
+      "name": "Szkoła Podstawowa nr 5",
+      "url": "https://www.bip.krakow.pl/SP5",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP7",
+      "bip_id": null,
+      "slug": "SP7",
+      "name": "Szkoła Podstawowa nr 7",
+      "url": "https://www.bip.krakow.pl/SP7",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SPD10",
+      "bip_id": null,
+      "slug": "SPD10",
+      "name": "Szkoła Podstawowa nr 10",
+      "url": "https://www.bip.krakow.pl/SPD10",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP12",
+      "bip_id": null,
+      "slug": "SP12",
+      "name": "Szkoła Podstawowa nr 12",
+      "url": "https://www.bip.krakow.pl/SP12",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP14",
+      "bip_id": null,
+      "slug": "SP14",
+      "name": "Szkoła Podstawowa nr 14",
+      "url": "https://www.bip.krakow.pl/SP14",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP15",
+      "bip_id": null,
+      "slug": "SP15",
+      "name": "Szkoła Podstawowa nr 15",
+      "url": "https://www.bip.krakow.pl/SP15",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP18",
+      "bip_id": null,
+      "slug": "SP18",
+      "name": "Szkoła Podstawowa nr 18",
+      "url": "https://www.bip.krakow.pl/SP18",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:645",
+      "bip_id": "645",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 20",
+      "url": "https://www.bip.krakow.pl/?bip_id=645",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP21",
+      "bip_id": null,
+      "slug": "SP21",
+      "name": "Szkoła Podstawowa nr 21",
+      "url": "https://www.bip.krakow.pl/SP21",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP22",
+      "bip_id": null,
+      "slug": "SP22",
+      "name": "Szkoła Podstawowa nr 22",
+      "url": "https://www.bip.krakow.pl/SP22",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP25",
+      "bip_id": null,
+      "slug": "SP25",
+      "name": "Szkoła Podstawowa nr 25",
+      "url": "https://www.bip.krakow.pl/SP25",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP26",
+      "bip_id": null,
+      "slug": "SP26",
+      "name": "Szkoła Podstawowa nr 26",
+      "url": "https://www.bip.krakow.pl/SP26",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP27",
+      "bip_id": null,
+      "slug": "SP27",
+      "name": "Szkoła Podstawowa nr 27",
+      "url": "https://www.bip.krakow.pl/SP27",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP29",
+      "bip_id": null,
+      "slug": "SP29",
+      "name": "Szkoła Podstawowa nr 29",
+      "url": "https://www.bip.krakow.pl/SP29",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP30",
+      "bip_id": null,
+      "slug": "SP30",
+      "name": "Szkoła Podstawowa nr 30",
+      "url": "https://www.bip.krakow.pl/SP30",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP31",
+      "bip_id": null,
+      "slug": "SP31",
+      "name": "Szkoła Podstawowa nr 31",
+      "url": "https://www.bip.krakow.pl/SP31",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP32",
+      "bip_id": null,
+      "slug": "SP32",
+      "name": "Szkoła Podstawowa nr 32",
+      "url": "https://www.bip.krakow.pl/SP32",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP33",
+      "bip_id": null,
+      "slug": "SP33",
+      "name": "Szkoła Podstawowa nr 33",
+      "url": "https://www.bip.krakow.pl/SP33",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP36",
+      "bip_id": null,
+      "slug": "SP36",
+      "name": "Szkoła Podstawowa nr 36",
+      "url": "https://www.bip.krakow.pl/SP36",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP37",
+      "bip_id": null,
+      "slug": "SP37",
+      "name": "Szkoła Podstawowa nr 37",
+      "url": "https://www.bip.krakow.pl/SP37",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP38",
+      "bip_id": null,
+      "slug": "SP38",
+      "name": "Szkoła Podstawowa nr 38",
+      "url": "https://www.bip.krakow.pl/SP38",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP39",
+      "bip_id": null,
+      "slug": "SP39",
+      "name": "Szkoła Podstawowa nr 39",
+      "url": "https://www.bip.krakow.pl/SP39",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP40",
+      "bip_id": null,
+      "slug": "SP40",
+      "name": "Szkoła Podstawowa nr 40",
+      "url": "https://www.bip.krakow.pl/SP40",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP41",
+      "bip_id": null,
+      "slug": "SP41",
+      "name": "Szkoła Podstawowa nr 41",
+      "url": "https://www.bip.krakow.pl/SP41",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP43",
+      "bip_id": null,
+      "slug": "SP43",
+      "name": "Szkoła Podstawowa nr 43",
+      "url": "https://www.bip.krakow.pl/SP43",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP48",
+      "bip_id": null,
+      "slug": "SP48",
+      "name": "Szkoła Podstawowa nr 48",
+      "url": "https://www.bip.krakow.pl/SP48",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP49",
+      "bip_id": null,
+      "slug": "SP49",
+      "name": "Szkoła Podstawowa nr 49",
+      "url": "https://www.bip.krakow.pl/SP49",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP50",
+      "bip_id": null,
+      "slug": "SP50",
+      "name": "Szkoła Podstawowa nr 50",
+      "url": "https://www.bip.krakow.pl/SP50",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP52",
+      "bip_id": null,
+      "slug": "SP52",
+      "name": "Szkoła Podstawowa nr 52",
+      "url": "https://www.bip.krakow.pl/SP52",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP53",
+      "bip_id": null,
+      "slug": "SP53",
+      "name": "Szkoła Podstawowa nr 53",
+      "url": "https://www.bip.krakow.pl/SP53",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP54",
+      "bip_id": null,
+      "slug": "SP54",
+      "name": "Szkoła Podstawowa nr 54",
+      "url": "https://www.bip.krakow.pl/SP54",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP55",
+      "bip_id": null,
+      "slug": "SP55",
+      "name": "Szkoła Podstawowa nr 55",
+      "url": "https://www.bip.krakow.pl/SP55",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP56",
+      "bip_id": null,
+      "slug": "SP56",
+      "name": "Szkoła Podstawowa nr 56",
+      "url": "https://www.bip.krakow.pl/SP56",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP58",
+      "bip_id": null,
+      "slug": "SP58",
+      "name": "Szkoła Podstawowa nr 58",
+      "url": "https://www.bip.krakow.pl/SP58",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP61",
+      "bip_id": null,
+      "slug": "SP61",
+      "name": "Szkoła Podstawowa nr 61",
+      "url": "https://www.bip.krakow.pl/SP61",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP62",
+      "bip_id": null,
+      "slug": "SP62",
+      "name": "Szkoła Podstawowa nr 62",
+      "url": "https://www.bip.krakow.pl/SP62",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP64",
+      "bip_id": null,
+      "slug": "SP64",
+      "name": "Szkoła Podstawowa nr 64",
+      "url": "https://www.bip.krakow.pl/SP64",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP67",
+      "bip_id": null,
+      "slug": "SP67",
+      "name": "Szkoła Podstawowa nr 67",
+      "url": "https://www.bip.krakow.pl/SP67",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP72",
+      "bip_id": null,
+      "slug": "SP72",
+      "name": "Szkoła Podstawowa nr 72",
+      "url": "https://www.bip.krakow.pl/SP72",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP74",
+      "bip_id": null,
+      "slug": "SP74",
+      "name": "Szkoła Podstawowa nr 74",
+      "url": "https://www.bip.krakow.pl/SP74",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP77",
+      "bip_id": null,
+      "slug": "SP77",
+      "name": "Szkoła Podstawowa nr 77",
+      "url": "https://www.bip.krakow.pl/SP77",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP78",
+      "bip_id": null,
+      "slug": "SP78",
+      "name": "Szkoła Podstawowa nr 78",
+      "url": "https://www.bip.krakow.pl/SP78",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP80",
+      "bip_id": null,
+      "slug": "SP80",
+      "name": "Szkoła Podstawowa nr 80",
+      "url": "https://www.bip.krakow.pl/SP80",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP82",
+      "bip_id": null,
+      "slug": "SP82",
+      "name": "Szkoła Podstawowa nr 82",
+      "url": "https://www.bip.krakow.pl/SP82",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP85",
+      "bip_id": null,
+      "slug": "SP85",
+      "name": "Szkoła Podstawowa nr 85",
+      "url": "https://www.bip.krakow.pl/SP85",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP86",
+      "bip_id": null,
+      "slug": "SP86",
+      "name": "Szkoła Podstawowa nr 86",
+      "url": "https://www.bip.krakow.pl/SP86",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP88",
+      "bip_id": null,
+      "slug": "SP88",
+      "name": "Szkoła Podstawowa nr 88",
+      "url": "https://www.bip.krakow.pl/SP88",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP89",
+      "bip_id": null,
+      "slug": "SP89",
+      "name": "Szkoła Podstawowa nr 89",
+      "url": "https://www.bip.krakow.pl/SP89",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP91",
+      "bip_id": null,
+      "slug": "SP91",
+      "name": "Szkoła Podstawowa nr 91",
+      "url": "https://www.bip.krakow.pl/SP91",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP92",
+      "bip_id": null,
+      "slug": "SP92",
+      "name": "Szkoła Podstawowa nr 92",
+      "url": "https://www.bip.krakow.pl/SP92",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP93",
+      "bip_id": null,
+      "slug": "SP93",
+      "name": "Szkoła Podstawowa nr 93",
+      "url": "https://www.bip.krakow.pl/SP93",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP95",
+      "bip_id": null,
+      "slug": "SP95",
+      "name": "Szkoła Podstawowa nr 95",
+      "url": "https://www.bip.krakow.pl/SP95",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP97",
+      "bip_id": null,
+      "slug": "SP97",
+      "name": "Szkoła Podstawowa nr 97",
+      "url": "https://www.bip.krakow.pl/SP97",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP98",
+      "bip_id": null,
+      "slug": "SP98",
+      "name": "Szkoła Podstawowa nr 98",
+      "url": "https://www.bip.krakow.pl/SP98",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP100",
+      "bip_id": null,
+      "slug": "SP100",
+      "name": "Szkoła Podstawowa nr 100",
+      "url": "https://www.bip.krakow.pl/SP100",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP101",
+      "bip_id": null,
+      "slug": "SP101",
+      "name": "Szkoła Podstawowa nr 101",
+      "url": "https://www.bip.krakow.pl/SP101",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP103",
+      "bip_id": null,
+      "slug": "SP103",
+      "name": "Szkoła Podstawowa nr 103",
+      "url": "https://www.bip.krakow.pl/SP103",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP105",
+      "bip_id": null,
+      "slug": "SP105",
+      "name": "Szkoła Podstawowa nr 105",
+      "url": "https://www.bip.krakow.pl/SP105",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP107",
+      "bip_id": null,
+      "slug": "SP107",
+      "name": "Szkoła Podstawowa nr 107",
+      "url": "https://www.bip.krakow.pl/SP107",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP110",
+      "bip_id": null,
+      "slug": "SP110",
+      "name": "Szkoła Podstawowa nr 110",
+      "url": "https://www.bip.krakow.pl/SP110",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP111",
+      "bip_id": null,
+      "slug": "SP111",
+      "name": "Szkoła Podstawowa nr 111",
+      "url": "https://www.bip.krakow.pl/SP111",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP113",
+      "bip_id": null,
+      "slug": "SP113",
+      "name": "Szkoła Podstawowa nr 113",
+      "url": "https://www.bip.krakow.pl/SP113",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP114",
+      "bip_id": null,
+      "slug": "SP114",
+      "name": "Szkoła Podstawowa nr 114",
+      "url": "https://www.bip.krakow.pl/SP114",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP119",
+      "bip_id": null,
+      "slug": "SP119",
+      "name": "Szkoła Podstawowa nr 119",
+      "url": "https://www.bip.krakow.pl/SP119",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP123",
+      "bip_id": null,
+      "slug": "SP123",
+      "name": "Szkoła Podstawowa nr 123",
+      "url": "https://www.bip.krakow.pl/SP123",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP124",
+      "bip_id": null,
+      "slug": "SP124",
+      "name": "Szkoła Podstawowa nr 124",
+      "url": "https://www.bip.krakow.pl/SP124",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP126",
+      "bip_id": null,
+      "slug": "SP126",
+      "name": "Szkoła Podstawowa nr 126",
+      "url": "https://www.bip.krakow.pl/SP126",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP129",
+      "bip_id": null,
+      "slug": "SP129",
+      "name": "Szkoła Podstawowa nr 129",
+      "url": "https://www.bip.krakow.pl/SP129",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP134",
+      "bip_id": null,
+      "slug": "SP134",
+      "name": "Szkoła Podstawowa nr 134",
+      "url": "https://www.bip.krakow.pl/SP134",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP137",
+      "bip_id": null,
+      "slug": "SP137",
+      "name": "Szkoła Podstawowa nr 137",
+      "url": "https://www.bip.krakow.pl/SP137",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP138",
+      "bip_id": null,
+      "slug": "SP138",
+      "name": "Szkoła Podstawowa nr 138",
+      "url": "https://www.bip.krakow.pl/SP138",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP141",
+      "bip_id": null,
+      "slug": "SP141",
+      "name": "Szkoła Podstawowa nr 141",
+      "url": "https://www.bip.krakow.pl/SP141",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP142",
+      "bip_id": null,
+      "slug": "SP142",
+      "name": "Szkoła Podstawowa nr 142",
+      "url": "https://www.bip.krakow.pl/SP142",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP144",
+      "bip_id": null,
+      "slug": "SP144",
+      "name": "Szkoła Podstawowa nr 144",
+      "url": "https://www.bip.krakow.pl/SP144",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP148",
+      "bip_id": null,
+      "slug": "SP148",
+      "name": "Szkoła Podstawowa nr 148",
+      "url": "https://www.bip.krakow.pl/SP148",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP149",
+      "bip_id": null,
+      "slug": "SP149",
+      "name": "Szkoła Podstawowa nr 149",
+      "url": "https://www.bip.krakow.pl/SP149",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP151",
+      "bip_id": null,
+      "slug": "SP151",
+      "name": "Szkoła Podstawowa nr 151",
+      "url": "https://www.bip.krakow.pl/SP151",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP155",
+      "bip_id": null,
+      "slug": "SP155",
+      "name": "Szkoła Podstawowa nr 155",
+      "url": "https://www.bip.krakow.pl/SP155",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP156",
+      "bip_id": null,
+      "slug": "SP156",
+      "name": "Szkoła Podstawowa nr 156",
+      "url": "https://www.bip.krakow.pl/SP156",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP158",
+      "bip_id": null,
+      "slug": "SP158",
+      "name": "Szkoła podstawowa nr 158",
+      "url": "https://www.bip.krakow.pl/SP158",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SP162",
+      "bip_id": null,
+      "slug": "SP162",
+      "name": "Szkoła Podstawowa nr 162",
+      "url": "https://www.bip.krakow.pl/SP162",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:539",
+      "bip_id": "539",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=539",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:543",
+      "bip_id": "543",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=543",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:545",
+      "bip_id": "545",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 3",
+      "url": "https://www.bip.krakow.pl/?bip_id=545",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:544",
+      "bip_id": "544",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 4",
+      "url": "https://www.bip.krakow.pl/?bip_id=544",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:551",
+      "bip_id": "551",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 5",
+      "url": "https://www.bip.krakow.pl/?bip_id=551",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:550",
+      "bip_id": "550",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 7",
+      "url": "https://www.bip.krakow.pl/?bip_id=550",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:547",
+      "bip_id": "547",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 8",
+      "url": "https://www.bip.krakow.pl/?bip_id=547",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:549",
+      "bip_id": "549",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 9",
+      "url": "https://www.bip.krakow.pl/?bip_id=549",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:615",
+      "bip_id": "615",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 10",
+      "url": "https://www.bip.krakow.pl/?bip_id=615",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:572",
+      "bip_id": "572",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 11",
+      "url": "https://www.bip.krakow.pl/?bip_id=572",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:631",
+      "bip_id": "631",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 12",
+      "url": "https://www.bip.krakow.pl/?bip_id=631",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:81",
+      "bip_id": "81",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 13",
+      "url": "https://www.bip.krakow.pl/?bip_id=81",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:532",
+      "bip_id": "532",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 14",
+      "url": "https://www.bip.krakow.pl/?bip_id=532",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:287",
+      "bip_id": "287",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 15",
+      "url": "https://www.bip.krakow.pl/?bip_id=287",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:569",
+      "bip_id": "569",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 16",
+      "url": "https://www.bip.krakow.pl/?bip_id=569",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:79",
+      "bip_id": "79",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 17",
+      "url": "https://www.bip.krakow.pl/?bip_id=79",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:632",
+      "bip_id": "632",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 18",
+      "url": "https://www.bip.krakow.pl/?bip_id=632",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:633",
+      "bip_id": "633",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 19",
+      "url": "https://www.bip.krakow.pl/?bip_id=633",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:649",
+      "bip_id": "649",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 20",
+      "url": "https://www.bip.krakow.pl/?bip_id=649",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:636",
+      "bip_id": "636",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 21",
+      "url": "https://www.bip.krakow.pl/?bip_id=636",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:646",
+      "bip_id": "646",
+      "slug": null,
+      "name": "Zespół Szkolno-Przedszkolny nr 22",
+      "url": "https://www.bip.krakow.pl/?bip_id=646",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:642",
+      "bip_id": "642",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=642",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:548",
+      "bip_id": "548",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=548",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:216",
+      "bip_id": "216",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących nr 7",
+      "url": "https://www.bip.krakow.pl/?bip_id=216",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:188",
+      "bip_id": "188",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących nr 8",
+      "url": "https://www.bip.krakow.pl/?bip_id=188",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSO9",
+      "bip_id": null,
+      "slug": "ZSO9",
+      "name": "Zespół Szkół Ogólnokształcących nr 9",
+      "url": "https://www.bip.krakow.pl/ZSO9",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSO13",
+      "bip_id": null,
+      "slug": "ZSO13",
+      "name": "Zespół Szkół Ogólnokształcących nr 13",
+      "url": "https://www.bip.krakow.pl/ZSO13",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSO18",
+      "bip_id": null,
+      "slug": "ZSO18",
+      "name": "Zespół Szkół Ogólnokształcących nr 18",
+      "url": "https://www.bip.krakow.pl/ZSO18",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSOS2",
+      "bip_id": null,
+      "slug": "ZSOS2",
+      "name": "Zespół Szkół Ogólnokształcących Sportowych nr 2",
+      "url": "https://www.bip.krakow.pl/ZSOS2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSOMS",
+      "bip_id": null,
+      "slug": "ZSOMS",
+      "name": "Zespół Szkół Ogólnokształcących Mistrzostwa Sportowego",
+      "url": "https://www.bip.krakow.pl/ZSOMS",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO1",
+      "bip_id": null,
+      "slug": "LO1",
+      "name": "Liceum Ogólnokształcące nr 1",
+      "url": "https://www.bip.krakow.pl/LO1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO2",
+      "bip_id": null,
+      "slug": "LO2",
+      "name": "Liceum Ogólnokształcące nr 2",
+      "url": "https://www.bip.krakow.pl/LO2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO3",
+      "bip_id": null,
+      "slug": "LO3",
+      "name": "Liceum Ogólnokształcące nr 3",
+      "url": "https://www.bip.krakow.pl/LO3",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO4",
+      "bip_id": null,
+      "slug": "LO4",
+      "name": "Liceum Ogólnokształcące nr 4",
+      "url": "https://www.bip.krakow.pl/LO4",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO5",
+      "bip_id": null,
+      "slug": "LO5",
+      "name": "Liceum Ogólnokształcące nr 5",
+      "url": "https://www.bip.krakow.pl/LO5",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO6",
+      "bip_id": null,
+      "slug": "LO6",
+      "name": "Liceum Ogólnokształcące nr 6",
+      "url": "https://www.bip.krakow.pl/LO6",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO7",
+      "bip_id": null,
+      "slug": "LO7",
+      "name": "Liceum Ogólnokształcące nr 7",
+      "url": "https://www.bip.krakow.pl/LO7",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO8",
+      "bip_id": null,
+      "slug": "LO8",
+      "name": "Liceum Ogólnokształcące nr 8",
+      "url": "https://www.bip.krakow.pl/LO8",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO9",
+      "bip_id": null,
+      "slug": "LO9",
+      "name": "Liceum Ogólnokształcące nr 9",
+      "url": "https://www.bip.krakow.pl/LO9",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO10",
+      "bip_id": null,
+      "slug": "LO10",
+      "name": "Liceum Ogólnokształcące nr 10",
+      "url": "https://www.bip.krakow.pl/LO10",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO11",
+      "bip_id": null,
+      "slug": "LO11",
+      "name": "Liceum Ogólnokształcące nr 11",
+      "url": "https://www.bip.krakow.pl/LO11",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO12",
+      "bip_id": null,
+      "slug": "LO12",
+      "name": "Liceum Ogólnokształcące nr 12",
+      "url": "https://www.bip.krakow.pl/LO12",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO13",
+      "bip_id": null,
+      "slug": "LO13",
+      "name": "Liceum Ogólnokształcące nr 13",
+      "url": "https://www.bip.krakow.pl/LO13",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:623",
+      "bip_id": "623",
+      "slug": null,
+      "name": "Liceum Ogólnokształcące nr 14",
+      "url": "https://www.bip.krakow.pl/?bip_id=623",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:570",
+      "bip_id": "570",
+      "slug": null,
+      "name": "Liceum Ogólnokształcące nr 15",
+      "url": "https://www.bip.krakow.pl/?bip_id=570",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:622",
+      "bip_id": "622",
+      "slug": null,
+      "name": "Liceum Ogólnokształcące nr 16",
+      "url": "https://www.bip.krakow.pl/?bip_id=622",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO20",
+      "bip_id": null,
+      "slug": "LO20",
+      "name": "Liceum Ogólnokształcące nr 20",
+      "url": "https://www.bip.krakow.pl/LO20",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:621",
+      "bip_id": "621",
+      "slug": null,
+      "name": "Liceum Ogólnokształcące nr 24",
+      "url": "https://www.bip.krakow.pl/?bip_id=621",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:626",
+      "bip_id": "626",
+      "slug": null,
+      "name": "Liceum Ogólnokształcące nr 25",
+      "url": "https://www.bip.krakow.pl/?bip_id=626",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO28",
+      "bip_id": null,
+      "slug": "LO28",
+      "name": "Liceum Ogólnokształcące nr 28",
+      "url": "https://www.bip.krakow.pl/LO28",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:628",
+      "bip_id": "628",
+      "slug": null,
+      "name": "Liceum Ogólnokształcące nr 30",
+      "url": "https://www.bip.krakow.pl/?bip_id=628",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO41",
+      "bip_id": null,
+      "slug": "LO41",
+      "name": "Liceum Ogólnokształcące nr 41",
+      "url": "https://www.bip.krakow.pl/LO41",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO42",
+      "bip_id": null,
+      "slug": "LO42",
+      "name": "Liceum Ogólnokształcące nr 42",
+      "url": "https://www.bip.krakow.pl/LO42",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO43",
+      "bip_id": null,
+      "slug": "LO43",
+      "name": "Liceum Ogólnokształcące nr 43",
+      "url": "https://www.bip.krakow.pl/LO43",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LO44",
+      "bip_id": null,
+      "slug": "LO44",
+      "name": "Liceum Ogólnokształcące nr 44",
+      "url": "https://www.bip.krakow.pl/LO44",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSAB",
+      "bip_id": null,
+      "slug": "ZSAB",
+      "name": "Zespół Szkół Architektoniczno-Budowlanych",
+      "url": "https://www.bip.krakow.pl/ZSAB",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSC",
+      "bip_id": null,
+      "slug": "ZSC",
+      "name": "Zespół Szkół Chemicznych",
+      "url": "https://www.bip.krakow.pl/ZSC",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSE1",
+      "bip_id": null,
+      "slug": "ZSE1",
+      "name": "Zespół Szkół Ekonomicznych nr 1",
+      "url": "https://www.bip.krakow.pl/ZSE1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSE2",
+      "bip_id": null,
+      "slug": "ZSE2",
+      "name": "Zespół Szkół Ekonomicznych nr 2",
+      "url": "https://www.bip.krakow.pl/ZSE2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSET1",
+      "bip_id": null,
+      "slug": "ZSET1",
+      "name": "Zespół Szkół Elektrycznych nr 1",
+      "url": "https://www.bip.krakow.pl/ZSET1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSET2",
+      "bip_id": null,
+      "slug": "ZSET2",
+      "name": "Zespół Szkół Elektrycznych nr 2",
+      "url": "https://www.bip.krakow.pl/ZSET2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSEN",
+      "bip_id": null,
+      "slug": "ZSEN",
+      "name": "Zespół Szkół Energetycznych",
+      "url": "https://www.bip.krakow.pl/ZSEN",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSG1",
+      "bip_id": null,
+      "slug": "ZSG1",
+      "name": "Zespół Szkół Gastronomicznych nr 1",
+      "url": "https://www.bip.krakow.pl/ZSG1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSG2",
+      "bip_id": null,
+      "slug": "ZSG2",
+      "name": "Zespół Szkół Gastronomicznych nr 2",
+      "url": "https://www.bip.krakow.pl/ZSG2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSGD",
+      "bip_id": null,
+      "slug": "ZSGD",
+      "name": "Zespół Szkół Geodezyjno-Drogowych i Gospodarki Wodnej",
+      "url": "https://www.bip.krakow.pl/ZSGD",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSTK",
+      "bip_id": null,
+      "slug": "ZSTK",
+      "name": "Zespół Szkół Techniczno-Kreatywnych",
+      "url": "https://www.bip.krakow.pl/ZSTK",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSL",
+      "bip_id": null,
+      "slug": "ZSL",
+      "name": "Zespół Szkół Łączności",
+      "url": "https://www.bip.krakow.pl/ZSL",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSM1",
+      "bip_id": null,
+      "slug": "ZSM1",
+      "name": "Zespół Szkół Mechanicznych nr 1",
+      "url": "https://www.bip.krakow.pl/ZSM1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSM2",
+      "bip_id": null,
+      "slug": "ZSM2",
+      "name": "Zespół Szkół Mechanicznych nr 2",
+      "url": "https://www.bip.krakow.pl/ZSM2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSM3",
+      "bip_id": null,
+      "slug": "ZSM3",
+      "name": "Zespół Szkół Mechanicznych nr 3",
+      "url": "https://www.bip.krakow.pl/ZSM3",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSM4",
+      "bip_id": null,
+      "slug": "ZSM4",
+      "name": "Zespół Szkół Mechanicznych nr 4",
+      "url": "https://www.bip.krakow.pl/ZSM4",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZS1",
+      "bip_id": null,
+      "slug": "ZS1",
+      "name": "Zespół Szkół nr 1",
+      "url": "https://www.bip.krakow.pl/ZS1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSO1",
+      "bip_id": null,
+      "slug": "ZSO1",
+      "name": "Zespół Szkół Odzieżowych nr 1",
+      "url": "https://www.bip.krakow.pl/ZSO1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSPM",
+      "bip_id": null,
+      "slug": "ZSPM",
+      "name": "Zespół Szkół Poligraficzno-Medialnych",
+      "url": "https://www.bip.krakow.pl/ZSPM",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSPS",
+      "bip_id": null,
+      "slug": "ZSPS",
+      "name": "Zespół Szkół Przemysłu Spożywczego",
+      "url": "https://www.bip.krakow.pl/ZSPS",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSZ2",
+      "bip_id": null,
+      "slug": "ZSZ2",
+      "name": "Zespół Szkół Zawodowych nr 2",
+      "url": "https://www.bip.krakow.pl/ZSZ2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSNT",
+      "bip_id": null,
+      "slug": "ZSNT",
+      "name": "Zespół Szkół Nowoczesnych Technologii im. Profesora Walerego Goetla",
+      "url": "https://www.bip.krakow.pl/ZSNT",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:293",
+      "bip_id": "293",
+      "slug": null,
+      "name": "Centrum Kształcenia Zawodowego nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=293",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:625",
+      "bip_id": "625",
+      "slug": null,
+      "name": "Centrum Kształcenia Zawodowego i Ustawicznego",
+      "url": "https://www.bip.krakow.pl/?bip_id=625",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:OSM",
+      "bip_id": null,
+      "slug": "OSM",
+      "name": "Ogólnokształcąca Szkoła Muzyczna I stopnia ul. Basztowa 8",
+      "url": "https://www.bip.krakow.pl/OSM",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SMJ",
+      "bip_id": null,
+      "slug": "SMJ",
+      "name": "Szkoła Muzyczna I i II stopnia ul. Józefińska 10",
+      "url": "https://www.bip.krakow.pl/SMJ",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SMP",
+      "bip_id": null,
+      "slug": "SMP",
+      "name": "Szkoła Muzyczna I st. Nr 1 ul. Pilotów 51",
+      "url": "https://www.bip.krakow.pl/SMP",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:KSOS",
+      "bip_id": null,
+      "slug": "KSOS",
+      "name": "Krakowski Szkolny Ośrodek Sportowy",
+      "url": "https://www.bip.krakow.pl/KSOS",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MOSKW",
+      "bip_id": null,
+      "slug": "MOSKW",
+      "name": "Międzyszkolny Ośrodek Sportowy Kraków „Wschód”",
+      "url": "https://www.bip.krakow.pl/MOSKW",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MOSKZ",
+      "bip_id": null,
+      "slug": "MOSKZ",
+      "name": "Międzyszkolny Ośrodek Sportowy Kraków „Zachód”",
+      "url": "https://www.bip.krakow.pl/MOSKZ",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:BSP1",
+      "bip_id": null,
+      "slug": "BSP1",
+      "name": "Bursa Szkolnictwa Ponadpodstawowego nr 1",
+      "url": "https://www.bip.krakow.pl/BSP1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:BSP2",
+      "bip_id": null,
+      "slug": "BSP2",
+      "name": "Bursa Szkolnictwa Ponadpodstawowego nr 2",
+      "url": "https://www.bip.krakow.pl/BSP2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:BSP3",
+      "bip_id": null,
+      "slug": "BSP3",
+      "name": "Bursa Szkolnictwa Ponadpodstawowego nr 3",
+      "url": "https://www.bip.krakow.pl/BSP3",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SSM",
+      "bip_id": null,
+      "slug": "SSM",
+      "name": "Szkolne Schronisko Młodzieżowe",
+      "url": "https://www.bip.krakow.pl/SSM",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:624",
+      "bip_id": "624",
+      "slug": null,
+      "name": "Zespół Szkół i Placówek pn. „Centrum dla Niewidomych i Słabowidzących” w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=624",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:241",
+      "bip_id": "241",
+      "slug": null,
+      "name": "Zespół Szkół i Placówek Specjalnych",
+      "url": "https://www.bip.krakow.pl/?bip_id=241",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:191",
+      "bip_id": "191",
+      "slug": null,
+      "name": "Zespół Szkół Specjalnych nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=191",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSS3",
+      "bip_id": null,
+      "slug": "ZSS3",
+      "name": "Zespół Szkół Specjalnych nr 3",
+      "url": "https://www.bip.krakow.pl/ZSS3",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSS4",
+      "bip_id": null,
+      "slug": "ZSS4",
+      "name": "Zespół Szkół Specjalnych nr 4",
+      "url": "https://www.bip.krakow.pl/ZSS4",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSS6",
+      "bip_id": null,
+      "slug": "ZSS6",
+      "name": "Zespół Szkół Specjalnych nr 6",
+      "url": "https://www.bip.krakow.pl/ZSS6",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSS11",
+      "bip_id": null,
+      "slug": "ZSS11",
+      "name": "Zespół Szkół Specjalnych nr 11",
+      "url": "https://www.bip.krakow.pl/ZSS11",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:ZSS14",
+      "bip_id": null,
+      "slug": "ZSS14",
+      "name": "Zespół Szkół Specjalnych nr 14",
+      "url": "https://www.bip.krakow.pl/ZSS14",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SOSW1",
+      "bip_id": null,
+      "slug": "SOSW1",
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 1",
+      "url": "https://www.bip.krakow.pl/SOSW1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SOSW2",
+      "bip_id": null,
+      "slug": "SOSW2",
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 2",
+      "url": "https://www.bip.krakow.pl/SOSW2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SOSW3",
+      "bip_id": null,
+      "slug": "SOSW3",
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 3",
+      "url": "https://www.bip.krakow.pl/SOSW3",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SOSW4",
+      "bip_id": null,
+      "slug": "SOSW4",
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 4",
+      "url": "https://www.bip.krakow.pl/SOSW4",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SOSW6",
+      "bip_id": null,
+      "slug": "SOSW6",
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy nr 6",
+      "url": "https://www.bip.krakow.pl/SOSW6",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:249",
+      "bip_id": "249",
+      "slug": null,
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy dla Niesłyszących im. Janusza Korczaka",
+      "url": "https://www.bip.krakow.pl/?bip_id=249",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:553",
+      "bip_id": "553",
+      "slug": null,
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy „Centrum Autyzmu i Całościowych Zaburzeń Rozwojowych”",
+      "url": "https://www.bip.krakow.pl/?bip_id=553",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:323",
+      "bip_id": "323",
+      "slug": null,
+      "name": "Zespół Placówek Resocjalizacyjno-Socjoterapeutycznych",
+      "url": "https://www.bip.krakow.pl/?bip_id=323",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PPP1",
+      "bip_id": null,
+      "slug": "PPP1",
+      "name": "Poradnia Psychologiczno-Pedagogiczna nr 1",
+      "url": "https://www.bip.krakow.pl/PPP1",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PPP2",
+      "bip_id": null,
+      "slug": "PPP2",
+      "name": "Poradnia Psychologiczno-Pedagogiczna nr 2",
+      "url": "https://www.bip.krakow.pl/PPP2",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:PPP3",
+      "bip_id": null,
+      "slug": "PPP3",
+      "name": "Poradnia Psychologiczno-Pedagogiczna nr 3",
+      "url": "https://www.bip.krakow.pl/PPP3",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:255",
+      "bip_id": "255",
+      "slug": null,
+      "name": "Poradnia Psychologiczno-Pedagogiczna nr 4",
+      "url": "https://www.bip.krakow.pl/?bip_id=255",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:251",
+      "bip_id": "251",
+      "slug": null,
+      "name": "Specjalistyczna Poradnia Psychologiczno-Pedagogiczna dla Dzieci z Niepowodzeniami Edukacyjnymi",
+      "url": "https://www.bip.krakow.pl/?bip_id=251",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SPPP",
+      "bip_id": null,
+      "slug": "SPPP",
+      "name": "Specjalistyczna Poradnia Psychologiczno-Pedagogiczna pn. „Krakowski Ośrodek Kariery”",
+      "url": "https://www.bip.krakow.pl/SPPP",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:257",
+      "bip_id": "257",
+      "slug": null,
+      "name": "Specjalistyczna Poradnia Psychologiczno-Pedagogiczna „Krakowski Ośrodek Terapii”",
+      "url": "https://www.bip.krakow.pl/?bip_id=257",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SPWPPP",
+      "bip_id": null,
+      "slug": "SPWPPP",
+      "name": "Specjalistyczna Poradnia Wczesnej Pomocy Psychologiczno-Pedagogicznej",
+      "url": "https://www.bip.krakow.pl/SPWPPP",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:540",
+      "bip_id": "540",
+      "slug": null,
+      "name": "Centrum Młodzieży",
+      "url": "https://www.bip.krakow.pl/?bip_id=540",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:221",
+      "bip_id": "221",
+      "slug": null,
+      "name": "Staromiejskie Centrum Kultury Młodzieży",
+      "url": "https://www.bip.krakow.pl/?bip_id=221",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:LZP",
+      "bip_id": null,
+      "slug": "LZP",
+      "name": "Międzyszkolny Ludowy Zespół Pieśni i Tańca „Krakowiak”",
+      "url": "https://www.bip.krakow.pl/LZP",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MDKI",
+      "bip_id": null,
+      "slug": "MDKI",
+      "name": "Młodzieżowy Dom Kultury al. 29 Listopada 102",
+      "url": "https://www.bip.krakow.pl/MDKI",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MDKG",
+      "bip_id": null,
+      "slug": "MDKG",
+      "name": "Młodzieżowy Dom Kultury ul. Grunwaldzka 5",
+      "url": "https://www.bip.krakow.pl/MDKG",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MDKB",
+      "bip_id": null,
+      "slug": "MDKB",
+      "name": "Młodzieżowy Dom Kultury im. K.I.Gałczyńskiego",
+      "url": "https://www.bip.krakow.pl/MDKB",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MDKK",
+      "bip_id": null,
+      "slug": "MDKK",
+      "name": "Młodzieżowy Dom Kultury im. J.Korczaka",
+      "url": "https://www.bip.krakow.pl/MDKK",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MDKT",
+      "bip_id": null,
+      "slug": "MDKT",
+      "name": "Młodzieżowy Dom Kultury im. A.Bursy",
+      "url": "https://www.bip.krakow.pl/MDKT",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MDKN",
+      "bip_id": null,
+      "slug": "MDKN",
+      "name": "Młodzieżowy Dom Kultury Fort 49 „Krzesławice”",
+      "url": "https://www.bip.krakow.pl/MDKN",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MDKO",
+      "bip_id": null,
+      "slug": "MDKO",
+      "name": "Młodzieżowy Dom Kultury „Dom Harcerza” im. A.Kamińskiego",
+      "url": "https://www.bip.krakow.pl/MDKO",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MDKR",
+      "bip_id": null,
+      "slug": "MDKR",
+      "name": "Młodzieżowy Dom Kultury Dom Harcerza ul. Reymonta",
+      "url": "https://www.bip.krakow.pl/MDKR",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:139",
+      "bip_id": "139",
+      "slug": null,
+      "name": "Miejskie Centrum Obsługi Oświaty w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=139",
+      "source": "current",
+      "category": "Edukacja",
+      "subcategory": null
+    },
+    {
+      "key": "slug:BKR",
+      "bip_id": null,
+      "slug": "BKR",
+      "name": "Biblioteka Kraków",
+      "url": "https://www.bip.krakow.pl/BKR",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:468",
+      "bip_id": "468",
+      "slug": null,
+      "name": "Nowohuckie Centrum Kultury",
+      "url": "https://www.bip.krakow.pl/?bip_id=468",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:KFK",
+      "bip_id": null,
+      "slug": "KFK",
+      "name": "Krakowskie Forum Kultury",
+      "url": "https://www.bip.krakow.pl/KFK",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:CKDB",
+      "bip_id": null,
+      "slug": "CKDB",
+      "name": "Centrum Kultury „Dworek Białoprądnicki”",
+      "url": "https://www.bip.krakow.pl/CKDB",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:CKPD",
+      "bip_id": null,
+      "slug": "CKPD",
+      "name": "Centrum Kultury Podgórza",
+      "url": "https://www.bip.krakow.pl/CKPD",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:OKN",
+      "bip_id": null,
+      "slug": "OKN",
+      "name": "Ośrodek Kultury im. Cypriana Kamila Norwida",
+      "url": "https://www.bip.krakow.pl/OKN",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:OKNH",
+      "bip_id": null,
+      "slug": "OKNH",
+      "name": "Ośrodek Kultury Kraków - Nowa Huta",
+      "url": "https://www.bip.krakow.pl/OKNH",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:GSWBS",
+      "bip_id": null,
+      "slug": "GSWBS",
+      "name": "Galeria Sztuki Współczesnej „Bunkier Sztuki”",
+      "url": "https://www.bip.krakow.pl/GSWBS",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:317",
+      "bip_id": "317",
+      "slug": null,
+      "name": "Muzeum Historii Fotografii im. Walerego Rzewuskiego",
+      "url": "https://www.bip.krakow.pl/?bip_id=317",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MHK",
+      "bip_id": null,
+      "slug": "MHK",
+      "name": "Muzeum Historyczne Miasta Krakowa",
+      "url": "https://www.bip.krakow.pl/MHK",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:MIT",
+      "bip_id": null,
+      "slug": "MIT",
+      "name": "Muzeum Inżynierii i Techniki",
+      "url": "https://www.bip.krakow.pl/MIT",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:530",
+      "bip_id": "530",
+      "slug": null,
+      "name": "Muzeum Sztuki Współczesnej",
+      "url": "https://www.bip.krakow.pl/?bip_id=530",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:TG",
+      "bip_id": null,
+      "slug": "TG",
+      "name": "Teatr „Groteska”",
+      "url": "https://www.bip.krakow.pl/TG",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:TN",
+      "bip_id": null,
+      "slug": "TN",
+      "name": "Teatr Łaźnia Nowa",
+      "url": "https://www.bip.krakow.pl/TN",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:KTO",
+      "bip_id": null,
+      "slug": "KTO",
+      "name": "Teatr KTO",
+      "url": "https://www.bip.krakow.pl/KTO",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:TB",
+      "bip_id": null,
+      "slug": "TB",
+      "name": "Teatr „Bagatela” im. Tadeusza Boya-Żeleńskiego",
+      "url": "https://www.bip.krakow.pl/TB",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:TL",
+      "bip_id": null,
+      "slug": "TL",
+      "name": "Teatr Ludowy",
+      "url": "https://www.bip.krakow.pl/TL",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:STU",
+      "bip_id": null,
+      "slug": "STU",
+      "name": "Krakowski Teatr Scena STU",
+      "url": "https://www.bip.krakow.pl/STU",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:VARIETE",
+      "bip_id": null,
+      "slug": "VARIETE",
+      "name": "Krakowski Teatr VARIETE",
+      "url": "https://www.bip.krakow.pl/VARIETE",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SCVIA",
+      "bip_id": null,
+      "slug": "SCVIA",
+      "name": "Orkiestra Sinfonietta Cracovia",
+      "url": "https://www.bip.krakow.pl/SCVIA",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:CC",
+      "bip_id": null,
+      "slug": "CC",
+      "name": "Capella Cracoviensis",
+      "url": "https://www.bip.krakow.pl/CC",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:492",
+      "bip_id": "492",
+      "slug": null,
+      "name": "Balet Dworski „Cracovia Danza”",
+      "url": "https://www.bip.krakow.pl/?bip_id=492",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:617",
+      "bip_id": "617",
+      "slug": null,
+      "name": "Instytut Kultury Willa Decjusza",
+      "url": "https://www.bip.krakow.pl/?bip_id=617",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "slug:KBF",
+      "bip_id": null,
+      "slug": "KBF",
+      "name": "Krakowskie Biuro Festiwalowe",
+      "url": "https://www.bip.krakow.pl/KBF",
+      "source": "current",
+      "category": "Instytucje kultury",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:32",
+      "bip_id": "32",
+      "slug": null,
+      "name": "ZBK - Zarząd Budynków Komunalnych w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=32",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:489",
+      "bip_id": "489",
+      "slug": null,
+      "name": "ZCK - Zarząd Cmentarzy Komunalnych w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=489",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:511",
+      "bip_id": "511",
+      "slug": null,
+      "name": "ZDMK - Zarząd Dróg Miasta Krakowa",
+      "url": "https://www.bip.krakow.pl/?bip_id=511",
+      "source": "current",
+      "category": "Komunalne",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:307",
+      "bip_id": "307",
+      "slug": null,
+      "name": "Centrum Administracyjne nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=307",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "bip_id:310",
+      "bip_id": "310",
+      "slug": null,
+      "name": "Centrum Administracyjne nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=310",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "bip_id:312",
+      "bip_id": "312",
+      "slug": null,
+      "name": "Centrum Placówek Opiekuńczo-Wychowawczych „Parkowa”",
+      "url": "https://www.bip.krakow.pl/?bip_id=312",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPSB",
+      "bip_id": null,
+      "slug": "DPSB",
+      "name": "Dom Pomocy Społecznej ul.Babińskiego 25",
+      "url": "https://www.bip.krakow.pl/DPSB",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPSH",
+      "bip_id": null,
+      "slug": "DPSH",
+      "name": "Dom Pomocy Społecznej ul.Helclów 2",
+      "url": "https://www.bip.krakow.pl/DPSH",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPSK",
+      "bip_id": null,
+      "slug": "DPSK",
+      "name": "Dom Pomocy Społecznej ul.Kluzeka 6",
+      "url": "https://www.bip.krakow.pl/DPSK",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPSKR",
+      "bip_id": null,
+      "slug": "DPSKR",
+      "name": "Dom Pomocy Społecznej ul.Krakowska 55",
+      "url": "https://www.bip.krakow.pl/DPSKR",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPS39",
+      "bip_id": null,
+      "slug": "DPS39",
+      "name": "Dom Pomocy Społecznej ul.Łanowa 39",
+      "url": "https://www.bip.krakow.pl/DPS39",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPS1",
+      "bip_id": null,
+      "slug": "DPS1",
+      "name": "Dom Pomocy Społecznej ul.Łanowa 41",
+      "url": "https://www.bip.krakow.pl/DPS1",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPS2",
+      "bip_id": null,
+      "slug": "DPS2",
+      "name": "Dom Pomocy Społecznej ul.Łanowa 43",
+      "url": "https://www.bip.krakow.pl/DPS2",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPSN",
+      "bip_id": null,
+      "slug": "DPSN",
+      "name": "Dom Pomocy Społecznej ul.A.Nowaczyńskiego 1",
+      "url": "https://www.bip.krakow.pl/DPSN",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPSP",
+      "bip_id": null,
+      "slug": "DPSP",
+      "name": "Dom Pomocy Społecznej ul.Praska 25",
+      "url": "https://www.bip.krakow.pl/DPSP",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:DPSR",
+      "bip_id": null,
+      "slug": "DPSR",
+      "name": "Dom Pomocy Społecznej ul. Praska 27",
+      "url": "https://www.bip.krakow.pl/DPSR",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "bip_id:301",
+      "bip_id": "301",
+      "slug": null,
+      "name": "Dom Pomocy Społecznej Nowa Huta os. Hutnicze 5",
+      "url": "https://www.bip.krakow.pl/?bip_id=301",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "bip_id:557",
+      "bip_id": "557",
+      "slug": null,
+      "name": "Dom Pomocy Społecznej ul. Rozrywka 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=557",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "bip_id:304",
+      "bip_id": "304",
+      "slug": null,
+      "name": "Krakowskie Centrum Seniora",
+      "url": "https://www.bip.krakow.pl/?bip_id=304",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "bip_id:306",
+      "bip_id": "306",
+      "slug": null,
+      "name": "Ośrodek Interwencji Kryzysowej",
+      "url": "https://www.bip.krakow.pl/?bip_id=306",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "slug:SDS",
+      "bip_id": null,
+      "slug": "SDS",
+      "name": "Środowiskowy Dom Samopomocy „Vita”",
+      "url": "https://www.bip.krakow.pl/SDS",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Placówki opiekuńczo - wychowawcze (Domy Dziecka)"
+    },
+    {
+      "key": "bip_id:664",
+      "bip_id": "664",
+      "slug": null,
+      "name": "Zespół Żłobków Miasta Krakowa",
+      "url": "https://www.bip.krakow.pl/?bip_id=664",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "bip_id:497",
+      "bip_id": "497",
+      "slug": null,
+      "name": "Żłobek Samorządowy nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=497",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "bip_id:498",
+      "bip_id": "498",
+      "slug": null,
+      "name": "Żłobek Samorządowy nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=498",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK5",
+      "bip_id": null,
+      "slug": "ZK5",
+      "name": "Żłobek Samorządowy nr 5",
+      "url": "https://www.bip.krakow.pl/ZK5",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK6",
+      "bip_id": null,
+      "slug": "ZK6",
+      "name": "Żłobek Samorządowy nr 6",
+      "url": "https://www.bip.krakow.pl/ZK6",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK7",
+      "bip_id": null,
+      "slug": "ZK7",
+      "name": "Żłobek Samorządowy nr 7",
+      "url": "https://www.bip.krakow.pl/ZK7",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK12",
+      "bip_id": null,
+      "slug": "ZK12",
+      "name": "Żłobek Samorządowy nr 12",
+      "url": "https://www.bip.krakow.pl/ZK12",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK13",
+      "bip_id": null,
+      "slug": "ZK13",
+      "name": "Żłobek Samorządowy nr 13",
+      "url": "https://www.bip.krakow.pl/ZK13",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK14",
+      "bip_id": null,
+      "slug": "ZK14",
+      "name": "Żłobek Samorządowy nr 14",
+      "url": "https://www.bip.krakow.pl/ZK14",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK18",
+      "bip_id": null,
+      "slug": "ZK18",
+      "name": "Żłobek Samorządowy nr 18",
+      "url": "https://www.bip.krakow.pl/ZK18",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK19",
+      "bip_id": null,
+      "slug": "ZK19",
+      "name": "Żłobek Samorządowy nr 19",
+      "url": "https://www.bip.krakow.pl/ZK19",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK20",
+      "bip_id": null,
+      "slug": "ZK20",
+      "name": "Integracyjny Żłobek Samorządowy nr 20",
+      "url": "https://www.bip.krakow.pl/ZK20",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK22",
+      "bip_id": null,
+      "slug": "ZK22",
+      "name": "Żłobek Samorządowy nr 22",
+      "url": "https://www.bip.krakow.pl/ZK22",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK23",
+      "bip_id": null,
+      "slug": "ZK23",
+      "name": "Żłobek Samorządowy nr 23",
+      "url": "https://www.bip.krakow.pl/ZK23",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK24",
+      "bip_id": null,
+      "slug": "ZK24",
+      "name": "Żłobek Samorządowy nr 24",
+      "url": "https://www.bip.krakow.pl/ZK24",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK25",
+      "bip_id": null,
+      "slug": "ZK25",
+      "name": "Żłobek Samorządowy nr 25",
+      "url": "https://www.bip.krakow.pl/ZK25",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK27",
+      "bip_id": null,
+      "slug": "ZK27",
+      "name": "Żłobek Samorządowy nr 27",
+      "url": "https://www.bip.krakow.pl/ZK27",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK28",
+      "bip_id": null,
+      "slug": "ZK28",
+      "name": "Żłobek Samorządowy nr 28",
+      "url": "https://www.bip.krakow.pl/ZK28",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK30",
+      "bip_id": null,
+      "slug": "ZK30",
+      "name": "Żłobek Samorządowy nr 30",
+      "url": "https://www.bip.krakow.pl/ZK30",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK31",
+      "bip_id": null,
+      "slug": "ZK31",
+      "name": "Żłobek Samorządowy nr 31",
+      "url": "https://www.bip.krakow.pl/ZK31",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "slug:ZK33",
+      "bip_id": null,
+      "slug": "ZK33",
+      "name": "Żłobek Samorządowy nr 33",
+      "url": "https://www.bip.krakow.pl/ZK33",
+      "source": "current",
+      "category": "Pomoc społeczna i zdrowie",
+      "subcategory": "Żłobki"
+    },
+    {
+      "key": "bip_id:315",
+      "bip_id": "315",
+      "slug": null,
+      "name": "Muzeum Armii Krajowej im. gen. Emila Fieldorfa „Nila”",
+      "url": "https://www.bip.krakow.pl/?bip_id=315",
+      "source": "current",
+      "category": "Kultura",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:630",
+      "bip_id": "630",
+      "slug": null,
+      "name": "Muzeum – Miejsce Pamięci KL Plaszow w Krakowie. Niemiecki nazistowski obóz pracy i obóz koncentracyjny (1942 – 1945) (w organizacji)",
+      "url": "https://www.bip.krakow.pl/?bip_id=630",
+      "source": "current",
+      "category": "Kultura",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SSSZ",
+      "bip_id": null,
+      "slug": "SSSZ",
+      "name": "Szpital Specjalistyczny im. S. Żeromskiego w Krakowie",
+      "url": "https://www.bip.krakow.pl/SSSZ",
+      "source": "current",
+      "category": "Zdrowie",
+      "subcategory": null
+    },
+    {
+      "key": "slug:SMSGN",
+      "bip_id": null,
+      "slug": "SMSGN",
+      "name": "Szpital Miejski Specjalistyczny im. G.Narutowicza w Krakowie",
+      "url": "https://www.bip.krakow.pl/SMSGN",
+      "source": "current",
+      "category": "Zdrowie",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:39",
+      "bip_id": "39",
+      "slug": null,
+      "name": "Miejskie Centrum Opieki dla Osób Starszych, Przewlekle Niepełnosprawnych oraz Niesamodzielnych w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=39",
+      "source": "current",
+      "category": "Zdrowie",
+      "subcategory": null
+    },
+    {
+      "key": "slug:GUP",
+      "bip_id": null,
+      "slug": "GUP",
+      "name": "Grodzki Urząd Pracy w Krakowie",
+      "url": "https://www.bip.krakow.pl/GUP",
+      "source": "current",
+      "category": "Inne podmioty",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:44",
+      "bip_id": "44",
+      "slug": null,
+      "name": "Powiatowy Inspektorat Nadzoru Budowlanego",
+      "url": "https://www.bip.krakow.pl/?bip_id=44",
+      "source": "current",
+      "category": "Inne podmioty",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:613",
+      "bip_id": "613",
+      "slug": null,
+      "name": "Arena Kraków S.A.",
+      "url": "https://www.bip.krakow.pl/?bip_id=613",
+      "source": "current",
+      "category": "Spółki miejskie -zobacz więcej",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:614",
+      "bip_id": "614",
+      "slug": null,
+      "name": "Trasa Łagiewnicka S.A.",
+      "url": "https://www.bip.krakow.pl/?bip_id=614",
+      "source": "current",
+      "category": "Spółki miejskie -zobacz więcej",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:620",
+      "bip_id": "620",
+      "slug": null,
+      "name": "Agencja Rozwoju Miasta Krakowa Sp. z o.o.",
+      "url": "https://www.bip.krakow.pl/?bip_id=620",
+      "source": "current",
+      "category": "Spółki miejskie -zobacz więcej",
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:635",
+      "bip_id": "635",
+      "slug": null,
+      "name": "KRAKÓW5020 Sp. z o.o. w likwidacji",
+      "url": "https://www.bip.krakow.pl/?bip_id=635",
+      "source": "current",
+      "category": "Spółki miejskie -zobacz więcej",
+      "subcategory": null
+    }
+  ],
+  "archive": [
+    {
+      "key": "slug:uslugi",
+      "bip_id": null,
+      "slug": "uslugi",
+      "name": "Usługi - Załatw sprawę",
+      "url": "https://www.bip.krakow.pl/uslugi",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:295",
+      "bip_id": "295",
+      "slug": null,
+      "name": "Centrum Edukacyjne",
+      "url": "https://www.bip.krakow.pl/?bip_id=295",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:294",
+      "bip_id": "294",
+      "slug": null,
+      "name": "Centrum Kształcenia Ustawicznego",
+      "url": "https://www.bip.krakow.pl/?bip_id=294",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:470",
+      "bip_id": "470",
+      "slug": null,
+      "name": "Centrum Kultury Podgórza",
+      "url": "https://www.bip.krakow.pl/?bip_id=470",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:308",
+      "bip_id": "308",
+      "slug": null,
+      "name": "Dom Dziecka Nr 7",
+      "url": "https://www.bip.krakow.pl/?bip_id=308",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:327",
+      "bip_id": "327",
+      "slug": null,
+      "name": "Dom Pomocy Społecznej    ul. Łanowa 43 b",
+      "url": "https://www.bip.krakow.pl/?bip_id=327",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:326",
+      "bip_id": "326",
+      "slug": null,
+      "name": "Dom Pomocy Społecznej im. Antoniego Żychowskiego",
+      "url": "https://www.bip.krakow.pl/?bip_id=326",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:302",
+      "bip_id": "302",
+      "slug": null,
+      "name": "Dom Pomocy Społecznej os. Hutnicze 5",
+      "url": "https://www.bip.krakow.pl/?bip_id=302",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:230",
+      "bip_id": "230",
+      "slug": null,
+      "name": "Dom Pomocy Społecznej os. Sportowe 9",
+      "url": "https://www.bip.krakow.pl/?bip_id=230",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:174",
+      "bip_id": "174",
+      "slug": null,
+      "name": "Gimnazjum Nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=174",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:181",
+      "bip_id": "181",
+      "slug": null,
+      "name": "Gimnazjum Nr 10",
+      "url": "https://www.bip.krakow.pl/?bip_id=181",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:182",
+      "bip_id": "182",
+      "slug": null,
+      "name": "Gimnazjum nr 12 z Oddziałami Integracyjnymi  im. Księdza Kardynała Karola Wojtyły",
+      "url": "https://www.bip.krakow.pl/?bip_id=182",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:183",
+      "bip_id": "183",
+      "slug": null,
+      "name": "Gimnazjum Nr 13",
+      "url": "https://www.bip.krakow.pl/?bip_id=183",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:184",
+      "bip_id": "184",
+      "slug": null,
+      "name": "Gimnazjum Nr 14",
+      "url": "https://www.bip.krakow.pl/?bip_id=184",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:185",
+      "bip_id": "185",
+      "slug": null,
+      "name": "Gimnazjum Nr 16",
+      "url": "https://www.bip.krakow.pl/?bip_id=185",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:186",
+      "bip_id": "186",
+      "slug": null,
+      "name": "Gimnazjum Nr 17",
+      "url": "https://www.bip.krakow.pl/?bip_id=186",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:175",
+      "bip_id": "175",
+      "slug": null,
+      "name": "Gimnazjum nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=175",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:187",
+      "bip_id": "187",
+      "slug": null,
+      "name": "Gimnazjum Nr 20",
+      "url": "https://www.bip.krakow.pl/?bip_id=187",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:85",
+      "bip_id": "85",
+      "slug": null,
+      "name": "Gimnazjum Nr 21 im. Tadeusza Boya-Żeleńskiego",
+      "url": "https://www.bip.krakow.pl/?bip_id=85",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:86",
+      "bip_id": "86",
+      "slug": null,
+      "name": "Gimnazjum Nr 22",
+      "url": "https://www.bip.krakow.pl/?bip_id=86",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:88",
+      "bip_id": "88",
+      "slug": null,
+      "name": "Gimnazjum Nr 24",
+      "url": "https://www.bip.krakow.pl/?bip_id=88",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:89",
+      "bip_id": "89",
+      "slug": null,
+      "name": "Gimnazjum Nr 27 im. płka H. Dobrzańskiego",
+      "url": "https://www.bip.krakow.pl/?bip_id=89",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:90",
+      "bip_id": "90",
+      "slug": null,
+      "name": "Gimnazjum Nr 28 im. Marszałka Józefa Piłsudskiego",
+      "url": "https://www.bip.krakow.pl/?bip_id=90",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:91",
+      "bip_id": "91",
+      "slug": null,
+      "name": "Gimnazjum Nr 29",
+      "url": "https://www.bip.krakow.pl/?bip_id=91",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:176",
+      "bip_id": "176",
+      "slug": null,
+      "name": "Gimnazjum Nr 3",
+      "url": "https://www.bip.krakow.pl/?bip_id=176",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:92",
+      "bip_id": "92",
+      "slug": null,
+      "name": "Gimnazjum Nr 31",
+      "url": "https://www.bip.krakow.pl/?bip_id=92",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:93",
+      "bip_id": "93",
+      "slug": null,
+      "name": "Gimnazjum Nr 34",
+      "url": "https://www.bip.krakow.pl/?bip_id=93",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:94",
+      "bip_id": "94",
+      "slug": null,
+      "name": "Gimnazjum Nr 35",
+      "url": "https://www.bip.krakow.pl/?bip_id=94",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:130",
+      "bip_id": "130",
+      "slug": null,
+      "name": "Gimnazjum Nr 37 z Oddziałami Integracyjnymi im. św.M.M.Kolbe",
+      "url": "https://www.bip.krakow.pl/?bip_id=130",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:131",
+      "bip_id": "131",
+      "slug": null,
+      "name": "Gimnazjum Nr 39",
+      "url": "https://www.bip.krakow.pl/?bip_id=131",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:177",
+      "bip_id": "177",
+      "slug": null,
+      "name": "Gimnazjum Nr 4",
+      "url": "https://www.bip.krakow.pl/?bip_id=177",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:132",
+      "bip_id": "132",
+      "slug": null,
+      "name": "Gimnazjum Nr 41",
+      "url": "https://www.bip.krakow.pl/?bip_id=132",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:133",
+      "bip_id": "133",
+      "slug": null,
+      "name": "Gimnazjum nr 42",
+      "url": "https://www.bip.krakow.pl/?bip_id=133",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:105",
+      "bip_id": "105",
+      "slug": null,
+      "name": "Gimnazjum Nr 43 im. Batalionów Chłopskich",
+      "url": "https://www.bip.krakow.pl/?bip_id=105",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:138",
+      "bip_id": "138",
+      "slug": null,
+      "name": "Gimnazjum Nr 44",
+      "url": "https://www.bip.krakow.pl/?bip_id=138",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:135",
+      "bip_id": "135",
+      "slug": null,
+      "name": "Gimnazjum Nr 45",
+      "url": "https://www.bip.krakow.pl/?bip_id=135",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:136",
+      "bip_id": "136",
+      "slug": null,
+      "name": "Gimnazjum Nr 48",
+      "url": "https://www.bip.krakow.pl/?bip_id=136",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:482",
+      "bip_id": "482",
+      "slug": null,
+      "name": "Gimnazjum Nr 50",
+      "url": "https://www.bip.krakow.pl/?bip_id=482",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:178",
+      "bip_id": "178",
+      "slug": null,
+      "name": "Gimnazjum Nr 6",
+      "url": "https://www.bip.krakow.pl/?bip_id=178",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:179",
+      "bip_id": "179",
+      "slug": null,
+      "name": "Gimnazjum Nr 7",
+      "url": "https://www.bip.krakow.pl/?bip_id=179",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:180",
+      "bip_id": "180",
+      "slug": null,
+      "name": "Gimnazjum nr 9",
+      "url": "https://www.bip.krakow.pl/?bip_id=180",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:314",
+      "bip_id": "314",
+      "slug": null,
+      "name": "Interwencyjna Placówka Opiekuńczo-Wychowawcza dla Chłopców w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=314",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:43",
+      "bip_id": "43",
+      "slug": null,
+      "name": "Komenda Miejska Państwowej Straży Pożarnej",
+      "url": "https://www.bip.krakow.pl/?bip_id=43",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:29",
+      "bip_id": "29",
+      "slug": null,
+      "name": "Krakowski Zarząd Dróg",
+      "url": "https://www.bip.krakow.pl/?bip_id=29",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:36",
+      "bip_id": "36",
+      "slug": null,
+      "name": "Krakowski Zarząd Komunalny",
+      "url": "https://www.bip.krakow.pl/?bip_id=36",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:465",
+      "bip_id": "465",
+      "slug": null,
+      "name": "Krakowskie Forum Kultury",
+      "url": "https://www.bip.krakow.pl/?bip_id=465",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:474",
+      "bip_id": "474",
+      "slug": null,
+      "name": "Krowoderska Biblioteka Publiczna",
+      "url": "https://www.bip.krakow.pl/?bip_id=474",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:38",
+      "bip_id": "38",
+      "slug": null,
+      "name": "Miejski Zarząd Baz Danych",
+      "url": "https://www.bip.krakow.pl/?bip_id=38",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:291",
+      "bip_id": "291",
+      "slug": null,
+      "name": "Międzyszkolny Basen Pływacki os. Kolorowe",
+      "url": "https://www.bip.krakow.pl/?bip_id=291",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:290",
+      "bip_id": "290",
+      "slug": null,
+      "name": "Międzyszkolny Basen Pływacki ul. F.Nullo",
+      "url": "https://www.bip.krakow.pl/?bip_id=290",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:478",
+      "bip_id": "478",
+      "slug": null,
+      "name": "Międzyszkolny Ośrodek Sportowy Krowodrza",
+      "url": "https://www.bip.krakow.pl/?bip_id=478",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:480",
+      "bip_id": "480",
+      "slug": null,
+      "name": "Międzyszkolny Ośrodek Sportowy Podgórze",
+      "url": "https://www.bip.krakow.pl/?bip_id=480",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:558",
+      "bip_id": "558",
+      "slug": null,
+      "name": "Muzeum PRL-u (w organizacji)",
+      "url": "https://www.bip.krakow.pl/?bip_id=558",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:473",
+      "bip_id": "473",
+      "slug": null,
+      "name": "Nowohucka Biblioteka Publiczna",
+      "url": "https://www.bip.krakow.pl/?bip_id=473",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:509",
+      "bip_id": "509",
+      "slug": null,
+      "name": "Ośrodek Kultury 'Biblioteka Polskiej Piosenki'",
+      "url": "https://www.bip.krakow.pl/?bip_id=509",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:42",
+      "bip_id": "42",
+      "slug": null,
+      "name": "Ośrodek Sportu i Rekreacji - Krakowianka",
+      "url": "https://www.bip.krakow.pl/?bip_id=42",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:319",
+      "bip_id": "319",
+      "slug": null,
+      "name": "Placówka Opiekuńczo-Wychowawcza Przyjazny Dom",
+      "url": "https://www.bip.krakow.pl/?bip_id=319",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:472",
+      "bip_id": "472",
+      "slug": null,
+      "name": "Podgórska Biblioteka Publiczna",
+      "url": "https://www.bip.krakow.pl/?bip_id=472",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:444",
+      "bip_id": "444",
+      "slug": null,
+      "name": "Przedszkole Nr 114",
+      "url": "https://www.bip.krakow.pl/?bip_id=444",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:371",
+      "bip_id": "371",
+      "slug": null,
+      "name": "Przedszkole Nr 133",
+      "url": "https://www.bip.krakow.pl/?bip_id=371",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:354",
+      "bip_id": "354",
+      "slug": null,
+      "name": "Przedszkole Nr 32",
+      "url": "https://www.bip.krakow.pl/?bip_id=354",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:430",
+      "bip_id": "430",
+      "slug": null,
+      "name": "Przedszkole Nr 55",
+      "url": "https://www.bip.krakow.pl/?bip_id=430",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:383",
+      "bip_id": "383",
+      "slug": null,
+      "name": "Przedszkole Nr 64",
+      "url": "https://www.bip.krakow.pl/?bip_id=383",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:313",
+      "bip_id": "313",
+      "slug": null,
+      "name": "Publiczny Ośrodek Adopcyjno-Opiekuńczy CZOR",
+      "url": "https://www.bip.krakow.pl/?bip_id=313",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:376",
+      "bip_id": "376",
+      "slug": null,
+      "name": "Samorządowe Przedszkole Nr 154",
+      "url": "https://www.bip.krakow.pl/?bip_id=376",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:352",
+      "bip_id": "352",
+      "slug": null,
+      "name": "Samorządowe Przedszkole nr 23",
+      "url": "https://www.bip.krakow.pl/?bip_id=352",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:309",
+      "bip_id": "309",
+      "slug": null,
+      "name": "Specjalistyczna Placówka Opiekuńczo-Wychowawcza im. Jana Brzechwy",
+      "url": "https://www.bip.krakow.pl/?bip_id=309",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:320",
+      "bip_id": "320",
+      "slug": null,
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy dla Dzieci Niesłyszących",
+      "url": "https://www.bip.krakow.pl/?bip_id=320",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:250",
+      "bip_id": "250",
+      "slug": null,
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy dla Dzieci Niewidomych i Słabowidzących",
+      "url": "https://www.bip.krakow.pl/?bip_id=250",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:247",
+      "bip_id": "247",
+      "slug": null,
+      "name": "Specjalny Ośrodek Szkolno-Wychowawczy Nr 5",
+      "url": "https://www.bip.krakow.pl/?bip_id=247",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:594",
+      "bip_id": "594",
+      "slug": null,
+      "name": "Szkoła Podstawowa 157",
+      "url": "https://www.bip.krakow.pl/?bip_id=594",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:145",
+      "bip_id": "145",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 10",
+      "url": "https://www.bip.krakow.pl/?bip_id=145",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:598",
+      "bip_id": "598",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 10",
+      "url": "https://www.bip.krakow.pl/?bip_id=598",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:113",
+      "bip_id": "113",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 104",
+      "url": "https://www.bip.krakow.pl/?bip_id=113",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:586",
+      "bip_id": "586",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 106",
+      "url": "https://www.bip.krakow.pl/?bip_id=586",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:168",
+      "bip_id": "168",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 109 im. Kornela Makuszyńskiego w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=168",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:146",
+      "bip_id": "146",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 11",
+      "url": "https://www.bip.krakow.pl/?bip_id=146",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:65",
+      "bip_id": "65",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 117",
+      "url": "https://www.bip.krakow.pl/?bip_id=65",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:116",
+      "bip_id": "116",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 130",
+      "url": "https://www.bip.krakow.pl/?bip_id=116",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:68",
+      "bip_id": "68",
+      "slug": null,
+      "name": "Szkoła Podstawowa Nr 132 im. św Benedykta z Nursji",
+      "url": "https://www.bip.krakow.pl/?bip_id=68",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:70",
+      "bip_id": "70",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 133",
+      "url": "https://www.bip.krakow.pl/?bip_id=70",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:54",
+      "bip_id": "54",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 137",
+      "url": "https://www.bip.krakow.pl/?bip_id=54",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:117",
+      "bip_id": "117",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 140",
+      "url": "https://www.bip.krakow.pl/?bip_id=117",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:73",
+      "bip_id": "73",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 147",
+      "url": "https://www.bip.krakow.pl/?bip_id=73",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:173",
+      "bip_id": "173",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 153 im. ks. prof. Józefa Tischnera",
+      "url": "https://www.bip.krakow.pl/?bip_id=173",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:147",
+      "bip_id": "147",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 16",
+      "url": "https://www.bip.krakow.pl/?bip_id=147",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:46",
+      "bip_id": "46",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 24 im. Krakowskiej Straży Pożarnej",
+      "url": "https://www.bip.krakow.pl/?bip_id=46",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:153",
+      "bip_id": "153",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 34 w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=153",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:57",
+      "bip_id": "57",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 47 im. Stefana Czarnieckiego",
+      "url": "https://www.bip.krakow.pl/?bip_id=57",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:158",
+      "bip_id": "158",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 51",
+      "url": "https://www.bip.krakow.pl/?bip_id=158",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:62",
+      "bip_id": "62",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 65 im. Czesława Janczarskiego",
+      "url": "https://www.bip.krakow.pl/?bip_id=62",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:63",
+      "bip_id": "63",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 66 im. Edwarda Dembowskiego",
+      "url": "https://www.bip.krakow.pl/?bip_id=63",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:163",
+      "bip_id": "163",
+      "slug": null,
+      "name": "Szkoła Podstawowa nr 68",
+      "url": "https://www.bip.krakow.pl/?bip_id=163",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:471",
+      "bip_id": "471",
+      "slug": null,
+      "name": "Śródmiejska Biblioteka Publiczna",
+      "url": "https://www.bip.krakow.pl/?bip_id=471",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:581",
+      "bip_id": "581",
+      "slug": null,
+      "name": "Towarzystwo Budownictwa Społecznego „Krak-System”SA",
+      "url": "https://www.bip.krakow.pl/?bip_id=581",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:206",
+      "bip_id": "206",
+      "slug": null,
+      "name": "XIV Liceum Ogólnokształcące w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=206",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:207",
+      "bip_id": "207",
+      "slug": null,
+      "name": "XVI Liceum Ogólnokształcące",
+      "url": "https://www.bip.krakow.pl/?bip_id=207",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:209",
+      "bip_id": "209",
+      "slug": null,
+      "name": "XXI Liceum Ogólnokształcące im. St.I. Witkiewicza - Witkacego w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=209",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:95",
+      "bip_id": "95",
+      "slug": null,
+      "name": "XXIX Liceum Ogólnokształcące",
+      "url": "https://www.bip.krakow.pl/?bip_id=95",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:542",
+      "bip_id": "542",
+      "slug": null,
+      "name": "XXVII Liceum Ogólnokształcące im. dr H. Jordana",
+      "url": "https://www.bip.krakow.pl/?bip_id=542",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:211",
+      "bip_id": "211",
+      "slug": null,
+      "name": "XXXI Liceum Ogólnokształcące",
+      "url": "https://www.bip.krakow.pl/?bip_id=211",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:499",
+      "bip_id": "499",
+      "slug": null,
+      "name": "Zarząd Dróg i Transportu",
+      "url": "https://www.bip.krakow.pl/?bip_id=499",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:490",
+      "bip_id": "490",
+      "slug": null,
+      "name": "Zarząd Transportu Publicznego",
+      "url": "https://www.bip.krakow.pl/?bip_id=490",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:99",
+      "bip_id": "99",
+      "slug": null,
+      "name": "Zespół Ekonomiki Oświaty Kraków-Wschód",
+      "url": "https://www.bip.krakow.pl/?bip_id=99",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:45",
+      "bip_id": "45",
+      "slug": null,
+      "name": "Zespół Ekonomiki Oświaty Południe",
+      "url": "https://www.bip.krakow.pl/?bip_id=45",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:467",
+      "bip_id": "467",
+      "slug": null,
+      "name": "Zespół Pieśni i Tańca Krakowiacy",
+      "url": "https://www.bip.krakow.pl/?bip_id=467",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:311",
+      "bip_id": "311",
+      "slug": null,
+      "name": "Zespół Placówek Opiekuńczo-Wychowawczych Nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=311",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:263",
+      "bip_id": "263",
+      "slug": null,
+      "name": "Zespół Szkół Ekonomicznych Nr 3",
+      "url": "https://www.bip.krakow.pl/?bip_id=263",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:321",
+      "bip_id": "321",
+      "slug": null,
+      "name": "Zespół Szkół Nr 3 w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=321",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:276",
+      "bip_id": "276",
+      "slug": null,
+      "name": "Zespół Szkół Odzieżowych i Ekonomicznych",
+      "url": "https://www.bip.krakow.pl/?bip_id=276",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:190",
+      "bip_id": "190",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Integracyjnych nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=190",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:76",
+      "bip_id": "76",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=76",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:77",
+      "bip_id": "77",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 3",
+      "url": "https://www.bip.krakow.pl/?bip_id=77",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:78",
+      "bip_id": "78",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 4",
+      "url": "https://www.bip.krakow.pl/?bip_id=78",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:126",
+      "bip_id": "126",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 5",
+      "url": "https://www.bip.krakow.pl/?bip_id=126",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:127",
+      "bip_id": "127",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Integracyjnych Nr 6",
+      "url": "https://www.bip.krakow.pl/?bip_id=127",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:537",
+      "bip_id": "537",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=537",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:218",
+      "bip_id": "218",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 10",
+      "url": "https://www.bip.krakow.pl/?bip_id=218",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:219",
+      "bip_id": "219",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 11",
+      "url": "https://www.bip.krakow.pl/?bip_id=219",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:240",
+      "bip_id": "240",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 12",
+      "url": "https://www.bip.krakow.pl/?bip_id=240",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:123",
+      "bip_id": "123",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących nr 14",
+      "url": "https://www.bip.krakow.pl/?bip_id=123",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:80",
+      "bip_id": "80",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 15",
+      "url": "https://www.bip.krakow.pl/?bip_id=80",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:124",
+      "bip_id": "124",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 16",
+      "url": "https://www.bip.krakow.pl/?bip_id=124",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:477",
+      "bip_id": "477",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 17",
+      "url": "https://www.bip.krakow.pl/?bip_id=477",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:612",
+      "bip_id": "612",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących nr 19",
+      "url": "https://www.bip.krakow.pl/?bip_id=612",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:212",
+      "bip_id": "212",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 2",
+      "url": "https://www.bip.krakow.pl/?bip_id=212",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:213",
+      "bip_id": "213",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 3",
+      "url": "https://www.bip.krakow.pl/?bip_id=213",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:214",
+      "bip_id": "214",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 4",
+      "url": "https://www.bip.krakow.pl/?bip_id=214",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:546",
+      "bip_id": "546",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 5",
+      "url": "https://www.bip.krakow.pl/?bip_id=546",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:189",
+      "bip_id": "189",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących nr 51",
+      "url": "https://www.bip.krakow.pl/?bip_id=189",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:125",
+      "bip_id": "125",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 52",
+      "url": "https://www.bip.krakow.pl/?bip_id=125",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:215",
+      "bip_id": "215",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Nr 6",
+      "url": "https://www.bip.krakow.pl/?bip_id=215",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:128",
+      "bip_id": "128",
+      "slug": null,
+      "name": "Zespół Szkół Ogólnokształcących Sportowych Nr 1",
+      "url": "https://www.bip.krakow.pl/?bip_id=128",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:195",
+      "bip_id": "195",
+      "slug": null,
+      "name": "Zespół Szkół Specjalnych Nr 13",
+      "url": "https://www.bip.krakow.pl/?bip_id=195",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:194",
+      "bip_id": "194",
+      "slug": null,
+      "name": "Zespół Szkół Specjalnych Nr 7",
+      "url": "https://www.bip.krakow.pl/?bip_id=194",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:83",
+      "bip_id": "83",
+      "slug": null,
+      "name": "Zespół Szkół Specjalnych Nr 9",
+      "url": "https://www.bip.krakow.pl/?bip_id=83",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:286",
+      "bip_id": "286",
+      "slug": null,
+      "name": "Zespół Szkół Zawodowych Nr 1 im. ks. kard. Adama Stefana Sapiehy",
+      "url": "https://www.bip.krakow.pl/?bip_id=286",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:332",
+      "bip_id": "332",
+      "slug": null,
+      "name": "Żłobek Nr 32",
+      "url": "https://www.bip.krakow.pl/?bip_id=332",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "key": "bip_id:344",
+      "bip_id": "344",
+      "slug": null,
+      "name": "Żłobek Samorządowy Nr 21 w Krakowie",
+      "url": "https://www.bip.krakow.pl/?bip_id=344",
+      "source": "archive",
+      "category": null,
+      "subcategory": null
+    }
+  ]
+}

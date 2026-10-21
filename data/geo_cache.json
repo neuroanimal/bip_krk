@@ -1,101 +1,270 @@
 {
   "records": {
-    "Berlin": [
-      49.865,
-      22.1921
+    "v2|city|Berlin": [
+      52.5174,
+      13.3951
     ],
-    "Biecz": [
+    "v2|city|Biecz": [
       49.7305,
       21.2494
     ],
-    "Bochnia": [
-      49.9694,
-      20.4305
+    "v2|city|Bochnia": [
+      49.9747,
+      20.4253
     ],
-    "Gdansk": [
-      54.3483,
-      18.654
-    ],
-    "Gliwice": [
+    "v2|city|Gliwice": [
       50.3011,
       18.6623
     ],
-    "KRAKÓW": [
-      50.0469,
-      19.9972
-    ],
-    "Katowice": [
-      50.2137,
-      19.0059
-    ],
-    "Kielce": [
-      50.854,
-      20.6099
-    ],
-    "Konary": [
-      52.5953,
-      20.7227
-    ],
-    "Krakow": [
+    "v2|city|KRAKÓW": [
       50.0619,
       19.9369
     ],
-    "Kraków": [
+    "v2|city|Katowice": [
+      50.2137,
+      19.0059
+    ],
+    "v2|city|Kielce": [
+      50.872,
+      20.631
+    ],
+    "v2|city|Konary": [
+      52.5953,
+      20.7227
+    ],
+    "v2|city|Kraków": [
       50.0469,
       19.9972
     ],
-    "Krosno": [
-      49.6938,
-      21.7651
+    "v2|city|Krosno": [
+      49.689,
+      21.7535
     ],
-    "Lipinki": [
-      51.8422,
-      16.0567
-    ],
-    "Nowy Sącz": [
-      49.6103,
-      20.7149
-    ],
-    "Olkusz": [
-      50.2788,
-      19.5596
-    ],
-    "Pogórska Wola": [
-      50.0178,
-      21.1578
-    ],
-    "Rzeszów": [
-      50.0133,
-      22.0162
-    ],
-    "Warsaw": [
-      52.232,
-      21.0067
-    ],
-    "Wola Filipowska": [
-      50.1329,
-      19.5876
-    ],
-    "Woźniki": [
-      50.5871,
-      19.0595
-    ],
-    "Zabrze": [
-      50.3086,
-      18.7864
-    ],
-    "Zakopane": [
-      49.2758,
-      19.9693
-    ],
-    "nie podano lokalizacji": null,
-    "Kłokoczyn": [
+    "v2|city|Kłokoczyn": [
       49.9952,
       19.6385
     ],
-    "gm. Tomice": null
+    "v2|city|Lipinki": [
+      51.8422,
+      16.0567
+    ],
+    "v2|city|Nowy Sącz": [
+      49.6249,
+      20.6913
+    ],
+    "v2|city|Olkusz": [
+      50.2788,
+      19.5596
+    ],
+    "v2|city|Pogórska Wola": [
+      50.0178,
+      21.1578
+    ],
+    "v2|city|Rzeszów": [
+      50.0375,
+      22.0047
+    ],
+    "v2|city|Wola Filipowska": [
+      50.1329,
+      19.5876
+    ],
+    "v2|city|Woźniki": [
+      50.5871,
+      19.0595
+    ],
+    "v2|city|Zabrze": [
+      50.3143,
+      18.7816
+    ],
+    "v2|city|Zakopane": [
+      49.2758,
+      19.9693
+    ],
+    "v2|city|gm. Tomice": null,
+    "v2|city|nie podano lokalizacji": null,
+    "v2|pl|BLUEBINARY, Kraków": null,
+    "v2|pl|BlueTuskr, nie podano lokalizacji": null,
+    "v2|pl|Fuel50, nie podano lokalizacji": null,
+    "v2|pl|Ośrodek Kultury Kraków-Nowa Huta, Kraków": [
+      50.0767,
+      20.0326
+    ],
+    "v2|pl|Żydowskie Muzeum Galicja, Kraków": [
+      50.0509,
+      19.9497
+    ],
+    "v2|pl|Teatr Groteska, Kraków": [
+      50.0632,
+      19.9266
+    ],
+    "v2|pl|Dom Kultury „Białogon”, Kielce": null,
+    "v2|pl|Muzeum w Gliwcach, Gliwice": [
+      50.2954,
+      18.6673
+    ],
+    "v2|pl|Europejskie Centrum Muzyki Krzysztofa Pendereckiego w Lusławicach, Kraków": null,
+    "v2|pl|Teatr im. St. I. Witkiewicza w Zakopanem, Zakopane": null,
+    "v2|pl|Muzeum Narodowe w Krakowie, Kraków": [
+      50.0604,
+      19.9236
+    ],
+    "v2|pl|Instytut Kultury Willa Decjusza, Kraków": [
+      50.0637,
+      19.8716
+    ],
+    "v2|pl|Agencja Art-Rekl. Bede Productions, Katowice": null,
+    "v2|pl|Agencja Art-Rekl. Bede Productions, Rzeszów": null,
+    "v2|pl|Agencja Art-Rekl. Bede Productions, Kielce": null,
+    "v2|pl|Fundacja inCanto, Kraków": null,
+    "v2|pl|Fundacja My Polish Heart, Kraków": null,
+    "v2|pl|Agencja Art-Rekl. Bede Productions, Kraków": null,
+    "v2|pl|Muzeum Miejskie w Zabrzu, Zabrze": [
+      50.308,
+      18.7853
+    ],
+    "v2|pl|Muzeum Historii Katowic, Katowice": [
+      50.2553,
+      19.0286
+    ],
+    "v2|pl|Świat Małych Techników, Kraków": [
+      50.0531,
+      19.9204
+    ],
+    "v2|pl|Zamek Królewski na Wawelu, Kraków": [
+      50.0544,
+      19.936
+    ],
+    "v2|pl|Wojewódzka Biblioteka Publiczna w Krakowie, Kraków": [
+      50.065,
+      19.9294
+    ],
+    "v2|pl|Muzeum Lotnictwa Polskiego, KRAKÓW": [
+      50.0788,
+      19.9917
+    ],
+    "v2|pl|Muzeum Ziemi Bieckiej, Biecz": null,
+    "v2|pl|Teatr Żelazny, Katowice": [
+      50.2663,
+      18.9883
+    ],
+    "v2|pl|ul. Lubelska 4, Rzeszów": null,
+    "v2|pl|Urząd Marszałkowski Województwa Podkarpackiego w Rzeszowie, Rzeszów": [
+      50.0409,
+      21.9977
+    ],
+    "v2|pl|Teatr Łaźnia Nowa, Kraków": [
+      50.0782,
+      20.048
+    ],
+    "v2|pl|Wydział Kultury Urzędu Miasta Krakowa, Kraków": null,
+    "v2|pl|Sprachenatelier Berlin, Berlin": null,
+    "v2|pl|Fundacja Wielkie Serce dla Dzieci, Krosno": null,
+    "v2|pl|Mend.io, Kraków": null,
+    "v2|pl|iTeamly, Kraków": null,
+    "v2|pl|Hyland, Kraków": null,
+    "v2|pl|Sii Sp. z o.o., Kraków": [
+      50.0619,
+      19.9369
+    ],
+    "v2|pl|ITDS Polska Sp. z o.o., Kraków": null,
+    "v2|pl|B2B.NET S.A., Kraków": [
+      50.0469,
+      19.9972
+    ],
+    "v2|pl|Mindbox Sp. z o.o., Kraków": null,
+    "v2|pl|NATEK POLAND, Kraków": null,
+    "v2|pl|Britenet, Kraków": null,
+    "v2|pl|Bluebinary.io, Kraków": null,
+    "v2|pl|Efigence S.A., Kraków": null,
+    "v2|pl|EPAM Systems, Kraków": [
+      50.0606,
+      19.9714
+    ],
+    "v2|pl|B2Bnetwork, Kraków": null,
+    "v2|pl|Antal Sp. z o.o., Kraków": null,
+    "v2|pl|emagine Polska, Kraków": null,
+    "v2|pl|FarmaProm, Kraków": null,
+    "v2|pl|Spyrosoft, Kraków": null,
+    "v2|pl|Sperasoft, Kraków": null,
+    "v2|pl|Edubite, Kraków": null,
+    "v2|pl|Medicover, Kraków": [
+      50.0881,
+      19.8911
+    ],
+    "v2|pl|Well Fitness, Kraków": [
+      50.0861,
+      20.0192
+    ],
+    "v2|pl|Well Fitness sp. z o.o., Kraków": null,
+    "v2|pl|Młodzieżowy Dom Kultury Fort 49 Krzesławice, Kraków": [
+      50.0987,
+      20.0558
+    ],
+    "v2|pl|ul. Kurczaba 29, Kraków": null,
+    "v2|pl|Stowarzyszenie SIEMACHA, Kraków": null,
+    "v2|pl|STACH KRAKÓW, Kraków": [
+      50.0064,
+      19.987
+    ],
+    "v2|pl|Level Work, Kraków": null,
+    "v2|pl|G&G LIMITED SP. Z O. O., Kraków": null,
+    "v2|pl|Cosinus, Kraków": [
+      50.0678,
+      19.9289
+    ],
+    "v2|pl|Gminny Ośrodek Pomocy Społecznej w Tomicach, gm. Tomice": null,
+    "v2|pl|KODANO OPTYK SP Z O O, Kraków": null,
+    "v2|pl|Roeslein & Associates, Kraków": null,
+    "v2|pl|ABB Business Services, Kraków": null,
+    "v2|pl|Herbalife GBSC Krakow, Kraków": null,
+    "v2|pl|Asseco Poland S.A., Kraków": null,
+    "v2|pl|Axians IT Poland Sp. z o.o., Kraków": null,
+    "v2|pl|Akademia Górniczo-Hutnicza ACK Cyfronet AGH, Kraków": null,
+    "v2|pl|Morele.net, Kraków": null,
+    "v2|pl|Comarch SA, Kraków": null,
+    "v2|pl|Reply Polska Sp. z o.o., Kraków": null,
+    "v2|pl|BMM Sp. z o.o., Kraków": [
+      50.0469,
+      19.9972
+    ],
+    "v2|pl|Benefit Systems SA, Kraków": null,
+    "v2|pl|Hitachi Energy Services Sp. z o.o., Kraków": null,
+    "v2|pl|Marta Topolewska, Kraków": null,
+    "v2|pl|Sollers Consulting, Kraków": null,
+    "v2|pl|Link Group, Kraków": null,
+    "v2|pl|dentsu Polska, Kraków": null,
+    "v2|pl|Cube GROUP, Kraków": null,
+    "v2|pl|Adtrip, Kraków": null,
+    "v2|pl|Polskie Radio - Regionalna Rozgłośnia w Krakowie Radio Krakó..., Kraków": null,
+    "v2|pl|FarmaProm Spółka z ograniczoną odpowiedzialnością, Kraków": null,
+    "v2|pl|Interia.pl Sp. z o.o., Kraków": null,
+    "v2|pl|Centrum leczenia, Kraków": [
+      50.0925,
+      19.9567
+    ],
+    "v2|pl|Capco Poland, Kraków": null,
+    "v2|pl|Nomadify, Kraków": null,
+    "v2|pl|Answear.com, Kraków": null,
+    "v2|pl|Upvanta sp. z o.o., Kraków": null,
+    "v2|pl|TP Polska, Kraków": [
+      50.0699,
+      20.0233
+    ],
+    "v2|pl|Rise360, Kraków": null,
+    "v2|pl|ASISTWORK Sp. z o.o., Kraków": null,
+    "v2|pl|HEINEKEN Business Services Poland, Kraków": null,
+    "v2|city|Tomice": [
+      49.6388,
+      15.1565
+    ],
+    "v2|city|Zielonki": [
+      54.1945,
+      22.2156
+    ],
+    "v2|pl|SIGMA - GLASS PRODUCENT SZKŁA OZDOBNEGO I ARTYSTYCZNEGO Piotr SAJDAK, Pogórska Wola": null,
+    "v2|pl|Gminny ośrodek pomocy społecznej w tomicach, Tomice": null
   },
   "meta": {
-    "updated": "2026-10-21T14:03:43+02:00"
+    "updated": "2026-10-21T15:29:02+02:00"
   }
 }

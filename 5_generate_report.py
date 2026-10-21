@@ -40,6 +40,7 @@ from typing import Dict, List, NamedTuple, Optional, Tuple
 
 import bip_common as bc
 import contract_type as ct
+import dedupe
 import geo
 import offer_lang
 import profile_match
@@ -81,6 +82,12 @@ DEFAULT_LABEL = "Pozostałe"
 # i ile takich pozycji maksymalnie wypisać, żeby nie zalać raportu.
 CLOSED_MATCH_MAX_DAYS = 60
 CLOSED_MATCH_LIMIT = 12
+
+# Ile dni oferta może nie być widziana przez żadne źródło, zanim przestanie
+# trafiać do raportu (patrz ``is_current``). Tydzień wystarcza, żeby
+# chwilowa awaria portalu nie wygasiła ofert, a zarazem żeby stare rekordy
+# nie wisiały miesiącami.
+MAX_STALE_DAYS = 7
 
 
 def parse_deadline_to_date(deadline: Optional[str]) -> Optional[date]:
@@ -245,6 +252,20 @@ def is_current(offer: Dict[str, object]) -> bool:
     deadline = parse_deadline_to_date(offer.get("deadline"))
     if deadline is not None and deadline < date.today():
         return False
+    # Bezpiecznik świeżości: oferta, której żadne źródło nie widziało od
+    # MAX_STALE_DAYS dni, nie trafia do raportu, nawet jeśli wciąż ma
+    # ``active=True``.
+    #
+    # Powód, znaleziony w danych: 16 rekordów z 22.09 (bez pola
+    # ``source``, z czasów przed rozdzieleniem źródeł) nigdy nie zostało
+    # wygaszonych, bo każde źródło wygasza WYŁĄCZNIE swoje rekordy,
+    # a tych nie posiadało żadne. Wśród nich była „Sprzątaczka —
+    # zastępstwo”, którą adresatka słusznie wytknęła. Flaga ``active``
+    # zależy od poprawności każdego źródła z osobna; data ostatniego
+    # zobaczenia jest niezależna od nich wszystkich.
+    last_seen = parse_deadline_to_date(str(offer.get("last_seen") or "")[:10])
+    if last_seen is not None and (date.today() - last_seen).days > MAX_STALE_DAYS:
+        return False
     return True
 
 
@@ -262,12 +283,17 @@ class EnrichContext(NamedTuple):
         clicked_ids: identyfikatory ofert już oglądanych.
         rates: kursy walut do przeliczenia wynagrodzeń.
         coords: mapa ``miejscowość -> (lat, lon)`` do liczenia odległości.
+        session: sesja HTTP do dokładnego geokodowania (None = tylko
+            pamięć podręczna, bez zapytań).
+        geo_cache: pamięć podręczna geokodowania (modyfikowana w miejscu).
     """
 
     last_report_at: Optional[date] = None
     clicked_ids: Optional[set] = None
     rates: Optional[Dict[str, float]] = None
     coords: Optional[Dict[str, tuple]] = None
+    session: Optional[object] = None
+    geo_cache: Optional[Dict[str, object]] = None
 
 
 def enrich_offers(
@@ -375,21 +401,20 @@ def enrich_offers(
             str(offer.get("salary_currency") or "PLN"),
             str(offer.get("salary_period") or "month"),
         )
-        # Geografia: miasto i współrzędne. CBOP podaje je wprost, resztę
-        # geokodujemy po nazwie (mapa ``coords`` przygotowana w main).
+        # Geografia: najdokładniejszy dostępny punkt oferty — współrzędne
+        # z API, adres z treści, siedziba instytucji, dzielnica, a dopiero
+        # na końcu samo miasto (patrz ``geo.locate_offer``). Poziom
+        # dokładności trafia do raportu, żeby było widać, co jest pewne.
         city = (geo.clean_place(offer.get("offer_city") or "")
                 or geo.city_from_unit_name(offer.get("unit_name") or ""))
         item["offer_city"] = city
-        lat, lon = offer.get("lat"), offer.get("lon")
-        if lat is None or lon is None:
-            point = (coords or {}).get(city)
-            if point:
-                lat, lon = point
-        item["lat"] = lat
-        item["lon"] = lon
-        # „Kraków” traktujemy jako miasto docelowe — w raporcie oferty
-        # krakowskie są zawsze w zasięgu, niezależnie od dzielnicy domu
-        # (adresatka prosiła o „Kraków + 10 km za granicę miasta”).
+        point, precision = geo.locate_offer(
+            offer, city, (coords or {}).get(city),
+            context.session, context.geo_cache)
+        item["lat"], item["lon"] = point if point else (None, None)
+        item["geo_precision"] = precision
+        # Flaga „w Krakowie” zasila przełącznik „Kraków zawsze”
+        # (domyślnie wyłączony — promień obowiązuje też w mieście).
         item["in_city"] = bool(re.search(r"krak[oó]w|cracow", city,
                                          re.IGNORECASE))
 
@@ -681,10 +706,21 @@ def main() -> int:
               for r in selected}
     coords = geo.geocode_places(places, session)
 
+    geo_cache = geo.load_cache()
     enriched = enrich_offers(selected, units_ds["records"], EnrichContext(
         last_report_at=last_report_at, clicked_ids=clicked_ids,
-        rates=rates, coords=coords))
+        rates=rates, coords=coords, session=session, geo_cache=geo_cache))
+    geo.save_cache(geo_cache)
     enriched.sort(key=sort_key)
+
+    # Duplikaty i podobne oferty: jedna karta zamiast kilku. Robimy to PO
+    # sortowaniu, żeby kolejność kart głównych pozostała po pilności,
+    # i PRZED grupowaniem po kategoriach, żeby duplikat z innej kategorii
+    # nie wracał drugą drogą. Szczegóły i pomiary w docstringu ``dedupe``.
+    before = len(enriched)
+    enriched = dedupe.deduplicate(enriched)
+    logging.info("Duplikaty i podobne: %d ofert -> %d kart głównych.",
+                 before, len(enriched))
 
     # Tryb próbny: ograniczamy liczbę ofert do szybkiej weryfikacji wyglądu.
     if args.sample is not None:
@@ -723,7 +759,11 @@ def main() -> int:
                    recent_closed=recent_closed,
                    profile_label=profile.LABEL,
                    profile_description=profile.DESCRIPTION,
-                   stats=report_stats.collect_stats(enriched)),
+                   # Statystyki liczą OFERTY, nie karty: karta główna plus
+                   # schowane pod nią podobne (duplikaty są już jedną ofertą).
+                   stats=report_stats.collect_stats(
+                       [o for head in enriched
+                        for o in [head, *(head.get("similar") or [])]])),
     )
 
     stamp = bc.timestamp_str()

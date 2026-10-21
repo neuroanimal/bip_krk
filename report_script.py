@@ -56,9 +56,13 @@ HTML_TRACKING_SCRIPT = """
     // Pomijamy karty w sekcji „niedawno zamknięte oferty z profilu” —
     // tam terminy już minęły, więc nie są niczym „do przejrzenia”.
     // Bez tego licznik pokazywał 104 przy 98 ofertach w raporcie.
+    // Liczymy wyłącznie oferty DOPASOWANE (sekcja profilu, łącznie
+    // z podobnymi schowanymi pod „+ N podobnych”). Oferty spoza profilu są
+    // zwinięte na dole — liczenie ich jako „do przejrzenia” dawało 211 przy
+    // kilkudziesięciu ofertach, które naprawdę są do przejrzenia.
     var all = {}, clicked = {};
     document.querySelectorAll(
-      ".offer[data-nab]:not(.closed-matches .offer)"
+      ".profile-box .offer[data-nab]:not(.closed-matches .offer)"
     ).forEach(function (card) {
       var id = card.getAttribute("data-nab");
       all[id] = true;
@@ -68,7 +72,8 @@ HTML_TRACKING_SCRIPT = """
     var seen = Object.keys(clicked).length;
     var el = document.getElementById("counter");
     if (el) {
-      el.textContent = (total - seen) + " / " + total + " nieprzejrzanych";
+      el.textContent = (total - seen) + " / " + total +
+        " dopasowanych do przejrzenia";
     }
   }
 
@@ -252,6 +257,22 @@ HTML_TRACKING_SCRIPT = """
   });
 
   // ----- GEOGRAFIA: dom i promień -----
+  function refreshDistances() {
+    // Odległość na karcie — liczona od aktualnie wybranej dzielnicy.
+    document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+      var el = card.querySelector(":scope > .meta > .dist");
+      if (!el) { return; }
+      var d = cardDistance(card);
+      if (d === null) { el.textContent = ""; return; }
+      var prec = card.getAttribute("data-geoprec") || "";
+      var approx = (prec === "city" || prec === "district") ? "≈ " : "";
+      el.textContent = approx + d.toFixed(1).replace(".", ",") + " km ·";
+      el.title = approx
+        ? "Odległość przybliżona: źródło podało tylko miasto lub dzielnicę"
+        : "Odległość w linii prostej od wybranego miejsca wyjazdu";
+    });
+  }
+
   function refreshGeoLabel() {
     var el = document.getElementById("geo-radius-val");
     if (el) { el.textContent = GEO.radius + " km"; }
@@ -270,6 +291,7 @@ HTML_TRACKING_SCRIPT = """
         ? ("odfiltrowanych odległością: " + hidden)
         : "wszystkie w zasięgu";
     }
+    refreshDistances();
   }
 
   var homeSel = document.getElementById("geo-home");
@@ -368,12 +390,20 @@ HTML_TRACKING_SCRIPT = """
   // sortowaniu po wynagrodzeniu — inaczej „brak danych” wyglądałby jak
   // „zarobki zerowe” i wypychałby realne oferty poza ekran.
   function sortCards(mode) {
+    // Sekcja profilu ma śródtytuł „Może pasować” — przestawianie wszystkich
+    // jej kart wymieszałoby obie grupy, więc tam sortujemy w obrębie
+    // poziomu dopasowania (patrz porównanie poniżej).
     document.querySelectorAll("section, .profile-box").forEach(function (box) {
       var cards = Array.prototype.slice.call(
         box.querySelectorAll(":scope > .offer[data-nab]")
       );
       if (cards.length < 2) { return; }
       cards.sort(function (a, b) {
+        var la = a.getAttribute("data-level") === "strong" ? 0 : 1;
+        var lb = b.getAttribute("data-level") === "strong" ? 0 : 1;
+        if (box.classList.contains("profile-box") && la !== lb) {
+          return la - lb;
+        }
         function num(card, attr, fallback) {
           var raw = parseInt(card.getAttribute(attr), 10);
           return isNaN(raw) ? fallback : raw;
@@ -392,7 +422,16 @@ HTML_TRACKING_SCRIPT = """
         // Domyślnie i jako rozstrzygnięcie remisu: po pilności terminu.
         return num(a, "data-days", 9999) - num(b, "data-days", 9999);
       });
-      cards.forEach(function (card) { box.appendChild(card); });
+      // Karty wstawiamy z powrotem PRZED śródtytułem / blokiem zamkniętych,
+      // a nie na koniec pudełka — inaczej trafiłyby za nie.
+      var head = box.querySelector(":scope > .weak-head");
+      var closed = box.querySelector(":scope > details.closed-matches");
+      cards.forEach(function (card) {
+        var isWeak = card.getAttribute("data-level") !== "strong";
+        var anchor = (!isWeak && head) ? head : closed;
+        if (anchor) { box.insertBefore(card, anchor); }
+        else { box.appendChild(card); }
+      });
     });
   }
 

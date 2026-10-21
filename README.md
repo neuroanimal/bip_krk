@@ -108,6 +108,7 @@ obsługiwane.
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
 | `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
 | `report_html.py` | Moduł prezentacji HTML (styl, skrypt trackingu, budowa dokumentu) | — | — |
+| `dedupe.py` | **Duplikaty i podobne oferty**: ta sama oferta z kilku źródeł → jedna karta („także na: …”), podobne → „+ N podobnych” do rozwinięcia | — | — |
 | `geo.py` | **Odległość od domu**: dzielnice Krakowa, geokodowanie miejscowości (Nominatim), haversine | — | `data*/geo_cache.json` |
 | `offer_lang.py` | Rozpoznawanie **języka ogłoszenia** (polski / angielski) | — | — |
 | `report_controls.py` | Paski sterowania raportu (język, geografia, filtry, sortowanie) | — | — |
@@ -255,6 +256,128 @@ biblioteka z CDN dawałaby puste prostokąty, a dołączona lokalnie dokładała
 kilkaset kilobajtów do każdego raportu. Statyczne SVG działa offline, bez
 JavaScriptu i skaluje się przy druku. Cena: brak interaktywności, co jest
 tu akceptowalne — wykres ma odpowiedzieć „czego jest dużo i skąd to jest”.
+
+## Każda oferta raz — duplikaty, podobne i oferty spoza profilu
+
+Zarzut adresatki: „skrypt powiela po 3 razy dużo ogłoszeń i wrzuca też
+sprzątaczki”. Pomiar raportu potwierdził go i wskazał **cztery** przyczyny:
+
+| Przyczyna | Skala | Naprawa |
+|-----------|-------|---------|
+| oferta z sekcji „Dla Ciebie” powtórzona w swojej kategorii | 65 kart podwójnie | kategorie zawierają już **tylko oferty spoza profilu** i są **zwinięte** |
+| ta sama oferta w kilku źródłach (CBOP + jooble, Wawel + pracujwkulturze) | 18 kopii | `dedupe.py`: jedna karta, pod nią „Ta sama oferta także na: …” z linkami |
+| jedno ogłoszenie w wariantach regionalnych („…woj. Śląskie / Małopolskie / Cała Polska”) | do 12 kart | grupa: jedna karta + „+ N podobnych” do rozwinięcia |
+| stare rekordy, których nikt nie wygasił (m.in. „Sprzątaczka — zastępstwo” z 22.09) | 16 | bezpiecznik świeżości: oferta niewidziana przez żadne źródło od 7 dni nie trafia do raportu |
+
+**Duplikat a podobna oferta** — to różnica, którą łatwo zepsuć:
+
+- **duplikat** = ta sama oferta (prawie identyczny tytuł i ten sam
+  pracodawca) z różnych źródeł → łączymy w jedną kartę;
+- dwa ogłoszenia **z tego samego portalu** to zwykle dwa etaty
+  („Młodszy bibliotekarz” i „Młodszy bibliotekarz na zastępstwo”) — nie
+  łączymy ich, tylko grupujemy jako podobne. Wyjątek: agregatory
+  (jooble, nuzle) potrafią opublikować ten sam wpis kilka razy;
+- **podobne u różnych pracodawców** wymagają tytułu identycznego po
+  normalizacji. Przy luźniejszym progu „Senior Python Developer (Django)”
+  i „(AWS)” lądowały pod jedną kartą, choć to osobne propozycje pracy.
+
+**Pułapka, która kosztowała jedną wersję:** łączenie przechodnie (A~B,
+B~C ⇒ A+C) sprawiło, że „Senior Python Developer” wchłonął **92 oferty od
+31 firm**. Grupy są teraz „gwiazdami”: członkiem zostaje tylko oferta
+podobna bezpośrednio do karty głównej.
+
+Na wierzchu grupy zawsze stoi najlepsze dopasowanie do profilu, a dopiero
+potem lepsze źródło (z terminem i pełnym opisem przed agregatorem) — mocne
+trafienie nie może się schować pod „+ N podobnych”.
+
+## Mocniejsze profilowanie (wersja z 21.10)
+
+Ocena ogłoszeń zebranych przez nowe źródła pokazała, że dawna lista
+wykluczeń zawsze była o krok z tyłu — pytała „czy to sport?”, zamiast
+„czy to kultura?”. Zmiany:
+
+- **ogólne rdzenie wymagają kontekstu**: „instruktor”, „animator”,
+  „warsztat”, „event”, „trener” liczą się jako rdzeń profilu tylko wtedy,
+  gdy w tytule albo nazwie pracodawcy jest kontekst kulturalny (kultura,
+  plastyka, sztuka, teatr, muzeum, biblioteka, świetlica, klub…). Bez tego
+  „DLA CIEBIE” dostawali instruktorzy sportów walki, nauki jazdy,
+  robotyki i „Instruktor Maszyn”. „Zajęcia dla dzieci” bez kontekstu
+  kultury dają najwyżej „może pasować”;
+- **pracodawca rozpoznawany jako słowo, po samej nazwie**: „teatr”
+  pasowało do „Dziennik **Teatr**alny” i do dopisku lokalizacji „…gdzie
+  znajduje się teatr”, więc gazeta zatrudniająca recenzentów uchodziła
+  za teatr;
+- **staż, praktyki, wolontariat, konkurs na dyrektora, sprzedaż** —
+  degradowane do „może pasować”, ale liczone **tylko z tytułu**: w opisie
+  „staż” to zwykle „staż pracy”, a „praktyk” — „doświadczenie
+  praktyczne”, co degradowało ofertę ASP i Klub Dukat;
+- **wykluczone**: technika sceniczna (realizator, oświetlenie, akustyk),
+  śpiew (przesłuchania, tenor, chór), obsługa klienta i moderacja treści,
+  wymóg obcego języka w tytule („…with Czech”), UX w krótkiej postaci;
+- **składanie znaków** (`ą→a`, `ł→l`) po obu stronach porównania — jeden
+  wzorzec obsługuje pisownię z ogonkami i bez, zamiast dublowania list.
+
+W raporcie sekcja „Dla Ciebie” ma **mocne trafienia na górze**, a „może
+pasować” pod osobnym śródtytułem z wyjaśnieniem, co jest zastrzeżeniem.
+
+Efekt na danych z 21.10: mocnych trafień 45 → 19, i to są te właściwe
+(ASP, Klub Dukat, Wawel, plastyk, grafik, nauczyciel grafiki, social media).
+
+### Testy regresji
+
+```
+python -m unittest discover -s tests -v
+```
+
+`tests/test_profile_match.py` zawiera ~40 **realnych ofert z danych** —
+każdą, która kiedyś była oceniona źle, i każdą, której poprawna ocena jest
+warunkiem sensu raportu — z komentarzem, co poszło nie tak.
+`tests/test_dedupe.py` sprawdza duplikaty, grupowanie i brak łańcuchowania.
+Zmiana w ocenie, która psuje którykolwiek przypadek, jest widoczna od razu.
+
+## Dokładna lokalizacja oferty
+
+Gdy źródło podaje tylko „Kraków”, wcześniej liczyliśmy odległość do
+centrum — Klub Dukat (Nowa Huta) wychodził jako 5,5 km od Bronowic.
+Teraz `geo.locate_offer` szuka punktu w kolejności: współrzędne z API →
+**adres z treści** („os. Zgody 1”) → **siedziba instytucji** („Teatr
+Groteska, Kraków”) → dzielnica w tekście → samo miasto. Wyniki adresowe
+są sprawdzane (≤ 30 km od miasta oferty), żeby imiennik z innego
+województwa nie udawał lokalizacji. Na karcie widać odległość od
+wybranej dzielnicy; „≈” oznacza punkt przybliżony (tylko miasto lub
+dzielnica).
+
+Klub Dukat ma teraz poprawne **11,6 km** — i przy promieniu 10 km jest
+ukryty, zgodnie z decyzją użytkownika („to za daleko”).
+
+Dwie poprawki wcześniejszej metody: „Kraków” bez dzielnicy to **Rynek**,
+a nie centroid obszaru z Nominatim (50.047, 19.997 — 10,0 km od Bronowic,
+przez co kilka ofert stało dokładnie na granicy promienia); a geokodowanie
+miast działa **bez** ograniczenia do Polski — z nim „Berlin” trafiał do
+polskiej wsi Berlin pod Rzeszowem.
+
+## LinkedIn — sprawdzone, nie dodane
+
+Sprawdzone 21.10, bo adresatka słusznie zauważyła, że pracodawcy wystawiają
+tam ogłoszenia:
+
+- **Brak API do wyszukiwania ofert.** Oficjalne Job Posting API służy
+  wyłącznie do **publikowania** ogłoszeń przez systemy ATS, i to tylko
+  partnerom po umowie. Dokumentacja Microsoft Learn: *„We are currently
+  not accepting new partnerships for LinkedIn's Job Posting API”* oraz
+  *„The use of these APIs is restricted to those developers approved by
+  LinkedIn”*. Klucza „na prośbę”, jak w jooble, nie ma.
+- **Brak serwera MCP** dla ofert pracy.
+- Istnieje **nieoficjalny** endpoint gościa, z którego korzysta publiczna
+  strona wyszukiwania (`/jobs-guest/jobs/api/seeMoreJobPostings/search`) —
+  odpowiada bez logowania. Ale `robots.txt` LinkedIn **wprost go zabrania**
+  (`Disallow: /jobs-guest/`), a regulamin zakazuje automatycznego
+  pobierania. Dlatego **nie jest w potoku** — to decyzja o ryzyku konta
+  i zgodności z regulaminem, nie o technice.
+
+**Legalna droga:** alert e-mail z zapisanego wyszukiwania na LinkedIn
+(np. „grafik”, „animator kultury”, Kraków + 10 km). Częściowo LinkedIn
+pokrywa też jooble, który agreguje ogłoszenia z wielu portali.
 
 ## Zasięg geograficzny — Kraków i okolica
 
@@ -525,7 +648,9 @@ bip_krk/
 ├── report_script.py             # skrypt przeglądarki (tracking + filtry)
 ├── contract_type.py             # rozpoznawanie rodzaju umowy
 ├── salary.py                    # normalizacja wynagrodzeń (kurs NBP)
+├── dedupe.py                    # duplikaty i grupowanie podobnych ofert
 ├── geo.py                       # odległość od domu, dzielnice Krakowa
+├── tests/                       # testy regresji (python -m unittest)
 ├── offer_lang.py                # język ogłoszenia (pl/en)
 ├── report_controls.py           # paski sterowania raportu
 ├── src_pracujwkulturze.py       # źródło: portal NCK „Pracuj w kulturze”

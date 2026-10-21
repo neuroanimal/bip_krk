@@ -165,6 +165,24 @@ table.stats td.urgent { color: #cf222e; }
 .fbtn.sbtn.on { background: #0969da; border-color: #0969da; color: #fff; }
 .fbtn.sbtn.on .fcount { opacity: 0.9; }
 
+/* Duplikaty i podobne oferty (moduł ``dedupe``). */
+.also { font-size: 0.8em; color: #57606a; margin-top: 0.4em; }
+.weak-head { font-size: 0.95em; color: #9a6700; margin: 1.4em 0 0.4em;
+             padding-top: 0.8em; border-top: 1px solid #f0d58a; }
+.dist { font-weight: 600; color: #0a3069; margin-right: 0.4em;
+        font-variant-numeric: tabular-nums; }
+details.similar { margin-top: 0.6em; }
+details.similar > summary { cursor: pointer; font-size: 0.85em;
+                            color: #0969da; font-weight: 600; }
+details.similar .offer { margin: 0.5em 0 0.5em 0.6em; opacity: 0.95;
+                         box-shadow: none; border-left-width: 3px; }
+
+/* Oferty spoza profilu — domyślnie zwinięte. */
+details.rest { margin-top: 1.4em; border: 1px dashed #d0d7de;
+               border-radius: 6px; padding: 0.4em 0.9em; background: #fff; }
+details.rest > summary { cursor: pointer; color: #57606a; font-weight: 600;
+                         padding: 0.3em 0; }
+
 /* Pasek języków w narożniku nagłówka — mały, żeby nie zajmował ekranu
    (wprost o to prosiła adresatka). */
 .locale { position: absolute; top: 0.6em; right: 0.9em; display: flex;
@@ -505,7 +523,8 @@ def build_offer_card(offer: Dict[str, object],
         f"data-lat='{offer.get('lat') if offer.get('lat') is not None else ''}' "
         f"data-lon='{offer.get('lon') if offer.get('lon') is not None else ''}' "
         f"data-city='{esc(offer.get('offer_city') or '')}' "
-        f"data-incity='{1 if offer.get('in_city') else 0}'>"
+        f"data-incity='{1 if offer.get('in_city') else 0}' "
+        f"data-geoprec='{esc(offer.get('geo_precision') or '')}'>"
     )
     pay_badge = (
         f"<span class='pay'>{esc(offer.get('salary_text'))}</span>"
@@ -521,6 +540,10 @@ def build_offer_card(offer: Dict[str, object],
         "</h3>"
     )
     parts.append("<div class='meta'>")
+    # Odległość od domu wypełnia przeglądarka (zależy od wybranej
+    # dzielnicy). Znak „≈” oznacza punkt przybliżony — samo miasto albo
+    # dzielnica, bez adresu ani siedziby instytucji.
+    parts.append("<span class='dist'></span>")
     parts.append(f"{esc(offer.get('unit_name') or '')} · ")
     parts.append(
         f"Termin: <strong>{esc(deadline_label(offer))}</strong> · "
@@ -545,9 +568,14 @@ def build_offer_card(offer: Dict[str, object],
             f"<a href='{esc(detail_url)}' target='_blank'>"
             f"{esc(detail_url)}</a></div>"
         )
-    parts.append(
-        f"<div class='desc'>{esc(summarize_body(body))}</div>"
-    )
+    # Pudełko opisu tylko wtedy, gdy JEST treść. Komunikat „brak pobranych
+    # szczegółów — uruchom skrypt 4” był instrukcją dla programisty, a
+    # trafiał na każdą kartę oferty z portali (nie mają osobnej strony
+    # do pobrania) — czytelniczka raportu widziała go dziesiątki razy.
+    if body:
+        parts.append(
+            f"<div class='desc'>{esc(summarize_body(body))}</div>"
+        )
     # Obszary dopasowania do profilu (dlaczego ta oferta pasuje).
     tags = offer.get("profile_tags") or []
     if tags and level != "none":
@@ -569,6 +597,30 @@ def build_offer_card(offer: Dict[str, object],
                     f"{esc(lnk['text'])}</a></li>"
                 )
             parts.append("</ul></div>")
+
+    # Ta sama oferta w innych źródłach — zamiast osobnych kart. Linki
+    # zostają, bo portale różnie szczegółowo opisują to samo ogłoszenie.
+    also = offer.get("also_on") or []
+    if also:
+        links = " · ".join(
+            f"<a href='{esc(item.get('url'))}' target='_blank' "
+            f"rel='noopener'>{esc(item.get('source'))}</a>"
+            for item in also if item.get("url"))
+        parts.append(f"<div class='also'>Ta sama oferta także na: "
+                     f"{links}</div>")
+
+    # Podobne oferty (ten sam rodzaj stanowiska u innego pracodawcy albo
+    # warianty jednego ogłoszenia) — schowane pod rozwijanym elementem,
+    # żeby nie zalewały listy, ale żeby dało się je sprawdzić dokładniej.
+    similar = offer.get("similar") or []
+    if similar:
+        parts.append(
+            f"<details class='similar'><summary>+ {len(similar)} "
+            f"{'podobna oferta' if len(similar) == 1 else 'podobne oferty'}"
+            "</summary>")
+        for other in similar:
+            parts.append(build_offer_card(other, details))
+        parts.append("</details>")
     parts.append("</div>")
     return "\n".join(parts)
 
@@ -636,7 +688,20 @@ def build_profile_section(
         f"<p class='hint'>{html_lib.escape(profile_description)} "
         "Pominięte stanowiska jawnie spoza profilu.</p>"
     )
+    # Mocne trafienia na wierzchu, „może pasować” pod wyraźnym
+    # śródtytułem. Wcześniej obie grupy szły jedną listą, więc słabsze
+    # oferty (staże, administracja w instytucji kultury) mieszały się z
+    # trafieniami wprost z profilu i rozmywały wrażenie dopasowania.
+    weak_started = False
     for offer in matched:
+        if offer.get("profile_level") != "strong" and not weak_started:
+            weak_started = True
+            weak_total = sum(1 for o in matched
+                             if o.get("profile_level") != "strong")
+            parts.append(
+                f"<h3 class='weak-head'>Może pasować — {weak_total} "
+                "(z zastrzeżeniem: staż, wolontariat, wymagany kurs, "
+                "dopasowanie tylko z opisu)</h3>")
         parts.append(build_offer_card(offer, details))
 
     # Niedawno zamknięte trafienia — wartość orientacyjna (jakie stanowiska
@@ -781,7 +846,24 @@ def build_html(
     if profile_section:
         parts.append(profile_section)
 
-    for label, offers in grouped:
+    # Oferty SPOZA profilu: każda oferta pojawia się w raporcie DOKŁADNIE
+    # RAZ. Wcześniej dopasowana oferta stała w sekcji „Dla Ciebie” i jeszcze
+    # raz w swojej kategorii (65 kart podwójnie) — adresatka odebrała to
+    # jako „powielanie po 3 razy”. Teraz kategorie zawierają wyłącznie
+    # oferty, których w sekcji profilu nie ma, i są ZWINIĘTE: raport ma
+    # odpowiadać na pytanie „co jest dla mnie”, a reszta jest dostępna na
+    # żądanie, nie wylewa się na ekran („sprzątaczki itp.”).
+    rest = [(label, [o for o in offers
+                     if str(o.get("profile_level") or "none") == "none"])
+            for label, offers in grouped]
+    rest = [(label, offers) for label, offers in rest if offers]
+    rest_total = sum(len(offers) for _label, offers in rest)
+    if rest_total:
+        parts.append(
+            "<details class='rest'><summary>Pozostałe oferty spoza "
+            f"profilu <span class='count'>({rest_total})</span> — "
+            "zwinięte, bo nie pasują do profilu</summary>")
+    for label, offers in rest:
         # Każda kategoria dostaje własny <section>. To nie kosmetyka:
         # bez kontenera nie da się ani posortować kart w obrębie
         # kategorii, ani ukryć nagłówka kategorii, z której filtr usunął
@@ -794,6 +876,8 @@ def build_html(
         for offer in offers:
             parts.append(build_offer_card(offer, details))
         parts.append("</section>")
+    if rest_total:
+        parts.append("</details>")
 
     parts.append("</div>")  # .wrap
 
