@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-10-12T11:37:33+02:00",
-    "updated": "2026-10-16T15:02:59+02:00"
+    "updated": "2026-10-21T11:10:43+02:00"
   },
   "records": {
     "1_units|bip_id:1|unit_in_current_and_archive": {
@@ -47,8 +47,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'przedszkole nr 133' występuje też w archiwum jako bip_id:371 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-16T14:50:34+02:00",
-      "count": 10,
+      "last_seen": "2026-10-21T11:10:17+02:00",
+      "count": 11,
       "resolved": false
     },
     "1_units|slug:SPD10|possible_stale_link": {
@@ -58,9 +58,9 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'szkoła podstawowa nr 10' występuje też w archiwum jako bip_id:145, bip_id:598 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-16T14:50:34+02:00",
-      "count": 10,
-      "resolved": true,
+      "last_seen": "2026-10-21T11:10:17+02:00",
+      "count": 11,
+      "resolved": false,
       "resolved_at": "2026-10-16T14:53:46+02:00"
     },
     "1_units|slug:SP137|possible_stale_link": {
@@ -70,8 +70,8 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'szkoła podstawowa nr 137' występuje też w archiwum jako bip_id:54 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-16T14:50:34+02:00",
-      "count": 10,
+      "last_seen": "2026-10-21T11:10:17+02:00",
+      "count": 11,
       "resolved": false
     },
     "1_units|bip_id:642|possible_stale_link": {
@@ -81,9 +81,9 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'zespół szkół ogólnokształcących nr 1' występuje też w archiwum jako bip_id:537 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-16T14:50:34+02:00",
-      "count": 10,
-      "resolved": true,
+      "last_seen": "2026-10-21T11:10:17+02:00",
+      "count": 11,
+      "resolved": false,
       "resolved_at": "2026-10-16T14:55:06+02:00"
     },
     "1_units|bip_id:548|possible_stale_link": {
@@ -93,9 +93,9 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'zespół szkół ogólnokształcących nr 2' występuje też w archiwum jako bip_id:212 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-16T14:50:34+02:00",
-      "count": 10,
-      "resolved": true,
+      "last_seen": "2026-10-21T11:10:17+02:00",
+      "count": 11,
+      "resolved": false,
       "resolved_at": "2026-10-16T14:55:07+02:00"
     },
     "1_units|slug:KFK|possible_stale_link": {
@@ -105,9 +105,9 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'krakowskie forum kultury' występuje też w archiwum jako bip_id:465 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-16T14:50:34+02:00",
-      "count": 10,
-      "resolved": true,
+      "last_seen": "2026-10-21T11:10:17+02:00",
+      "count": 11,
+      "resolved": false,
       "resolved_at": "2026-10-16T14:51:56+02:00"
     },
     "1_units|slug:CKPD|possible_stale_link": {
@@ -117,9 +117,9 @@
       "reason": "possible_stale_link",
       "detail": "nazwa 'centrum kultury podgórza' występuje też w archiwum jako bip_id:470 — stary link na liście aktualnej może być martwy",
       "first_seen": "2026-10-12T11:37:33+02:00",
-      "last_seen": "2026-10-16T14:50:34+02:00",
-      "count": 10,
-      "resolved": true,
+      "last_seen": "2026-10-21T11:10:17+02:00",
+      "count": 11,
+      "resolved": false,
       "resolved_at": "2026-10-16T14:51:56+02:00"
     },
     "2_praca_links|bip_id:1|no_praca_link": {
@@ -129,8 +129,8 @@
       "reason": "no_praca_link",
       "detail": "jednostka: Miasto Kraków",
       "first_seen": "2026-10-12T12:12:50+02:00",
-      "last_seen": "2026-10-16T14:52:12+02:00",
-      "count": 9,
+      "last_seen": "2026-10-21T11:10:19+02:00",
+      "count": 10,
       "resolved": false
     },
     "src_kultura|mnk|no_offers_parsed": {
@@ -152,8 +152,8 @@
       "reason": "no_offers_parsed",
       "detail": "Ośrodek Dokumentacji Sztuki Tadeusza Kantora Cricoteka — zero trafień parsera",
       "first_seen": "2026-10-12T18:34:07+02:00",
-      "last_seen": "2026-10-16T15:00:10+02:00",
-      "count": 10,
+      "last_seen": "2026-10-21T11:10:43+02:00",
+      "count": 11,
       "resolved": false
     },
     "src_nuzle|cat_plastyk|http_404": {

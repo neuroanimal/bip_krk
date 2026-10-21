@@ -49,6 +49,21 @@ PROFILE_KEYWORDS: List[Tuple[str, int, Tuple[str, ...]]] = [
         "animator kultury", "animacj kultury", "animator", "warsztat",
         "instruktor", "organizator kultur", "organizator/organizatorka",
         "upowszechniani kultury", "działalnoś kulturaln",
+        # Dodane na prośbę adresatki: świetlice i organizacja wydarzeń to
+        # praca, którą realnie wykonuje (zajęcia dla grup, imprezy).
+        "świetlic", "swietlic", "wychowawc w świetlic",
+        # Uwaga na odmianę: „organizacj**i** imprez” nie pasuje do wzorca
+        # „organizacj imprez”, więc rdzeń „imprez” stoi osobno.
+        "imprez", "wydarzeń kulturaln", "wydarzen kulturaln",
+        "koordynator wydarze", "event",
+    )),
+    ("media społecznościowe / promocja", 4, (
+        # Dodane na prośbę adresatki — prowadzenie social mediów
+        # instytucji kultury jest w jej zasięgu (grafika + treści).
+        "media społecznościow", "mediów społecznościow", "social media",
+        "specjalist ds. mediów", "specjalist ds. social",
+        "content creator", "twórc treści", "prowadzeni fanpage",
+        "komunikacj w mediach", "promocj w mediach",
     )),
     ("edukacja kulturalna / muzealna", 4, (
         "edukator", "edukacj muzealn", "edukacj kulturaln",
@@ -87,10 +102,20 @@ EXCLUDE_KEYWORDS: Tuple[str, ...] = (
     "informatyk", "programist", "administrator sieci", "serwisant",
     "hydraulik", "elektryk", "konserwator techniczn", "ślusarz",
     "robotnik", "pracownik fizyczn", "magazynier", "kasjer",
-    "nauczyciel", "wychowawca",
+    # „wychowawca” NIE jest już wykluczony: adresatka poprosiła o oferty
+    # typu „wychowawca w świetlicy”, a to praca z grupą, którą wykonuje.
+    # Zostaje „nauczyciel”, bo nauczanie przedmiotu wymaga uprawnień.
+    "nauczyciel przedmiotu", "nauczyciel matematyki", "nauczyciel jęz",
     # Zawody medyczne — bywały łapane przez nazwę placówki (poradnie).
     "lekarz", "lekarka", "psychiatra", "psycholog kliniczn", "logopeda",
     "terapeut", "rehabilitant", "fizjoterapeut",
+    # (4) UI/UX na wyraźną prośbę adresatki: „usuń z wyszukiwań ui/ux,
+    # bo w tym nie siedzę i nie mam wiedzy”. To pokrewna, ale inna
+    # specjalizacja (projektowanie produktów cyfrowych), wymagająca
+    # narzędzi i portfolio, których nie ma.
+    "ux design", "ui design", "ux/ui", "ui/ux", "ux researcher",
+    "product designer", "game designer", "interaction designer",
+    "solution designer", "design engineer",
     # Zawody budowlane/produkcyjne — wchodziły przez słowo „warsztat”
     # („Zbrojarz WARSZTATOWY”, „Zbrojarz-warsztat”), które w profilu
     # oznacza warsztaty twórcze, a nie warsztat produkcyjny.
@@ -120,6 +145,7 @@ DEMOTE_KEYWORDS: Tuple[str, ...] = (
 # (Montażysta Rusztowań)" (słowo "instruktor" bez związku z kulturą).
 CORE_AREAS: Tuple[str, ...] = (
     "grafika / design",
+    "media społecznościowe / promocja",
     "sztuka / plastyka",
     "animacja kultury / warsztaty",
     "edukacja kulturalna / muzealna",

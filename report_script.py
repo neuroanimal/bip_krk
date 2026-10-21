@@ -149,7 +149,45 @@ HTML_TRACKING_SCRIPT = """
   // wyłączenie B2B zostawia UoP i UZ. Między grupami działa iloczyn —
   // „UoP” i „DLA CIEBIE” pokazuje oferty spełniające oba warunki. To
   // zachowanie, którego ludzie oczekują od filtrów sklepowych.
-  var OFF = { contract: {}, level: {}, source: {} };
+  var OFF = { contract: {}, level: {}, source: {}, area: {} };
+
+  // Język ogłoszeń brany pod uwagę. Domyślnie TYLKO polski — tak prosiła
+  // adresatka; angielski włącza przycisk „EN”.
+  var LANG_ON = { pl: true, en: false };
+
+  // Geografia: dom (dzielnica) i promień dla ofert POZA Krakowem.
+  var GEO = { home: null, radius: 10, alwaysCity: true };
+
+  function haversine(aLat, aLon, bLat, bLon) {
+    function rad(x) { return x * Math.PI / 180; }
+    var dLat = rad(bLat - aLat), dLon = rad(bLon - aLon);
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(rad(aLat)) * Math.cos(rad(bLat)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * 6371 * Math.asin(Math.sqrt(h));
+  }
+
+  function cardDistance(card) {
+    // Zwraca odległość w km albo null, gdy nie da się policzyć.
+    if (!GEO.home) { return null; }
+    var lat = parseFloat(card.getAttribute("data-lat"));
+    var lon = parseFloat(card.getAttribute("data-lon"));
+    if (isNaN(lat) || isNaN(lon)) { return null; }
+    return haversine(GEO.home[0], GEO.home[1], lat, lon);
+  }
+
+  function geoAllows(card) {
+    // Oferta w Krakowie przechodzi zawsze, gdy zaznaczono „Kraków zawsze”.
+    // Powód: 10 km od Bronowic ucięłoby Nową Hutę (18,5 km), a dojazd
+    // w obrębie miasta jest normalny.
+    if (GEO.alwaysCity && card.getAttribute("data-incity") === "1") {
+      return true;
+    }
+    var dist = cardDistance(card);
+    // Brak lokalizacji NIE ukrywa oferty — brak danych to nie „odrzuć”.
+    if (dist === null) { return true; }
+    return dist <= GEO.radius;
+  }
 
   function cardMatches(card) {
     var kinds = (card.getAttribute("data-contract") || "nieznana").split(" ");
@@ -157,6 +195,16 @@ HTML_TRACKING_SCRIPT = """
     // oferta „UoP albo B2B” ma pozostać widoczna przy filtrze „tylko UoP”.
     var anyContract = kinds.some(function (k) { return !OFF.contract[k]; });
     if (!anyContract) { return false; }
+    // Język ogłoszenia.
+    if (!LANG_ON[card.getAttribute("data-lang") || "pl"]) { return false; }
+    // Obszary: karta przechodzi, gdy choć jeden jej obszar jest włączony.
+    // Oferta bez obszarów (poza profilem) nie jest filtrowana tym kryterium.
+    var areas = (card.getAttribute("data-areas") || "").split("|")
+      .filter(function (x) { return x; });
+    if (areas.length && !areas.some(function (a) { return !OFF.area[a]; })) {
+      return false;
+    }
+    if (!geoAllows(card)) { return false; }
     if (OFF.level[card.getAttribute("data-level") || "none"]) { return false; }
     if (OFF.source[card.getAttribute("data-source") || "?"]) { return false; }
     return true;
@@ -201,10 +249,103 @@ HTML_TRACKING_SCRIPT = """
     });
   });
 
+  // ----- GEOGRAFIA: dom i promień -----
+  function refreshGeoLabel() {
+    var el = document.getElementById("geo-radius-val");
+    if (el) { el.textContent = GEO.radius + " km"; }
+    var sum = document.getElementById("geo-summary");
+    if (sum) {
+      var hidden = 0, far = [];
+      document.querySelectorAll(".offer[data-nab]:not(.closed-matches .offer)")
+        .forEach(function (card) {
+          if (!geoAllows(card)) {
+            hidden++;
+            var d = cardDistance(card);
+            if (d !== null) { far.push(Math.round(d)); }
+          }
+        });
+      sum.textContent = hidden
+        ? ("odfiltrowanych odległością: " + hidden)
+        : "wszystkie w zasięgu";
+    }
+  }
+
+  var homeSel = document.getElementById("geo-home");
+  if (homeSel && window.KRK_DISTRICTS) {
+    GEO.home = window.KRK_DISTRICTS[homeSel.value] || null;
+    homeSel.addEventListener("change", function () {
+      GEO.home = window.KRK_DISTRICTS[homeSel.value] || null;
+      applyFilters();
+      refreshGeoLabel();
+    });
+  }
+  var radius = document.getElementById("geo-radius");
+  if (radius) {
+    GEO.radius = parseInt(radius.value, 10) || 10;
+    radius.addEventListener("input", function () {
+      GEO.radius = parseInt(radius.value, 10) || 0;
+      applyFilters();
+      refreshGeoLabel();
+    });
+  }
+  var cityChk = document.getElementById("geo-city");
+  if (cityChk) {
+    cityChk.addEventListener("change", function () {
+      GEO.alwaysCity = cityChk.checked;
+      applyFilters();
+      refreshGeoLabel();
+    });
+  }
+
+  // ----- JĘZYK OGŁOSZEŃ -----
+  document.querySelectorAll(".lbtn[data-offer-lang]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var code = btn.getAttribute("data-offer-lang");
+      LANG_ON[code] = !LANG_ON[code];
+      btn.classList.toggle("on", LANG_ON[code]);
+      applyFilters();
+    });
+  });
+
+  // ----- JĘZYK INTERFEJSU -----
+  // Napisy trzymamy w jednej mapie zamiast duplikować cały HTML. Tłumaczymy
+  // tylko etykiety sterowania — treść ogłoszeń zostaje w oryginale, bo to
+  // dane, nie interfejs.
+  var UI_TEXT = {
+    pl: { home: "Miejsce wyjazdu:", radius: "Promień poza Krakowem:",
+          always_city: "Kraków zawsze", areas: "Obszary:",
+          match: "Dopasowanie:", contract: "Rodzaj umowy:",
+          source: "Źródło:", sort: "Sortuj:", all: "Pokaż wszystkie" },
+    en: { home: "Commute from:", radius: "Radius outside Kraków:",
+          always_city: "Kraków always", areas: "Areas:",
+          match: "Profile match:", contract: "Contract type:",
+          source: "Source:", sort: "Sort by:", all: "Show all" }
+  };
+
+  function setUiLang(code) {
+    var dict = UI_TEXT[code] || UI_TEXT.pl;
+    document.querySelectorAll("[data-t]").forEach(function (el) {
+      var key = el.getAttribute("data-t");
+      if (dict[key]) { el.textContent = dict[key]; }
+    });
+    document.querySelectorAll(".flag[data-ui-lang]").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-ui-lang") === code);
+    });
+    document.documentElement.setAttribute("lang", code);
+  }
+
+  document.querySelectorAll(".flag[data-ui-lang]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      setUiLang(btn.getAttribute("data-ui-lang"));
+    });
+  });
+
+  refreshGeoLabel();
+
   var allBtn = document.getElementById("f-all");
   if (allBtn) {
     allBtn.addEventListener("click", function () {
-      OFF = { contract: {}, level: {}, source: {} };
+      OFF = { contract: {}, level: {}, source: {}, area: {} };
       document.querySelectorAll(".fbtn[data-filter]").forEach(function (b) {
         b.classList.add("on");
       });

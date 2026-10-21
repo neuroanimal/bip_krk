@@ -126,9 +126,35 @@ def collect_stats(offers: Sequence[Dict[str, object]]) -> Dict[str, object]:
         # Ile ofert ma w ogóle podaną kwotę — decyduje, czy pokazywać
         # przycisk sortowania po wynagrodzeniu.
         "with_pay": sum(1 for o in offers if o.get("salary_pln")),
+        # Języki ogłoszeń i obszary dopasowania — zasilają etykiety filtra.
+        "langs": Counter(str(o.get("lang") or "pl") for o in offers),
+        "areas": _count_areas(offers),
+        "in_city": sum(1 for o in offers if o.get("in_city")),
+        "located": sum(1 for o in offers if o.get("lat")),
         "statuses": statuses,
         "inflow": inflow,
     }
+
+
+def _count_areas(offers) -> Counter:
+    """Liczy, ile ofert trafia w każdy obszar profilu.
+
+    Obszary pochodzą z ``profile_tags`` wyliczonych przez
+    ``profile_match`` — nie dublujemy słownika, tylko pokazujemy to, co
+    naprawdę zdecydowało o dopasowaniu. Dzięki temu etykiety filtra w
+    raporcie odpowiadają realnej zawartości, a nie liście życzeń.
+
+    Args:
+        offers: wzbogacone oferty.
+
+    Returns:
+        Licznik ``obszar -> liczba ofert``.
+    """
+    counter: Counter = Counter()
+    for offer in offers:
+        for tag in (offer.get("profile_tags") or []):
+            counter[str(tag)] += 1
+    return counter
 
 
 def _bar_chart(title: str, pairs: Sequence[Tuple[str, int]],

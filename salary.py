@@ -165,6 +165,30 @@ def parse_from_text(text: str) -> Tuple[Optional[float], Optional[float],
     return low, high, currency
 
 
+def _as_number(value: object) -> Optional[float]:
+    """Zamienia wartość pola na liczbę, tolerując łańcuchy.
+
+    Źródła nie są spójne: nofluffjobs podaje ``20000.0`` (liczba),
+    a pracujwkulturze ``"1450"`` (tekst) — bez tej konwersji formatowanie
+    kwoty wywalało się z ``TypeError: type str doesn't define __round__``.
+
+    Args:
+        value: wartość z rekordu oferty.
+
+    Returns:
+        Liczbę albo None, gdy pole jest puste lub nienumeryczne.
+    """
+    if value is None or isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    digits = re.sub(r"[^\d.,]", "", str(value)).replace(",", ".")
+    try:
+        return float(digits) if digits else None
+    except ValueError:
+        return None
+
+
 def to_pln_month(low: Optional[float], high: Optional[float],
                  currency: str, period: str,
                  rates: Dict[str, float]) -> Optional[int]:
@@ -183,6 +207,7 @@ def to_pln_month(low: Optional[float], high: Optional[float],
     Returns:
         Zaokrągloną kwotę w PLN/miesiąc albo None, gdy nie da się policzyć.
     """
+    low, high = _as_number(low), _as_number(high)
     base = low if low is not None else high
     if base is None:
         return None
@@ -218,6 +243,7 @@ def describe(low: Optional[float], high: Optional[float], currency: str,
     Returns:
         Opis typu ``20 000–25 000 PLN/mies.`` albo pusty łańcuch.
     """
+    low, high = _as_number(low), _as_number(high)
     if low is None and high is None:
         return ""
     unit = {"month": "mies.", "hour": "h", "year": "rok", "day": "dzień"}

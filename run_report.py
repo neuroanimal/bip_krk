@@ -54,6 +54,7 @@ PIPELINE_MODULES = [
     "src_nuzle",
     "src_ofertypracy_edu",
     "src_kultura_instytucje",
+    "src_pracujwkulturze",
     "src_nofluffjobs",
     "src_cbop",
     "src_remote_intl",
@@ -67,6 +68,7 @@ PIPELINE_MODULES = [
 # być chwilowo niedostępny, a raport ma powstać na danych z BIP.
 OPTIONAL_MODULES = {"src_nuzle", "src_ofertypracy_edu",
                     "src_kultura_instytucje", "src_nofluffjobs",
+                    "src_pracujwkulturze",
                     "src_cbop", "src_remote_intl",
                     "src_bulldogjob", "src_arc_dev"}
 
@@ -85,6 +87,7 @@ MODULE_PROFILES = {
     "src_nuzle": {"kultura"},
     "src_ofertypracy_edu": {"kultura"},
     "src_kultura_instytucje": {"kultura"},
+    "src_pracujwkulturze": {"kultura"},
     "src_nofluffjobs": {"kultura", "it"},
     "src_cbop": {"kultura", "it"},
     "src_remote_intl": {"kultura", "it"},

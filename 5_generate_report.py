@@ -34,11 +34,14 @@ from __future__ import annotations
 
 import argparse
 import logging
+import re
 from datetime import date
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, NamedTuple, Optional, Tuple
 
 import bip_common as bc
 import contract_type as ct
+import geo
+import offer_lang
 import profile_match
 import report_stats
 import salary as sal
@@ -247,12 +250,30 @@ def is_current(offer: Dict[str, object]) -> bool:
 
 
 
+class EnrichContext(NamedTuple):
+    """Dane pomocnicze do wzbogacania ofert.
+
+    Zgrupowane w jedną strukturę, bo podróżują razem i bez tego
+    ``enrich_offers`` miało sześć argumentów pozycyjnych — łatwo pomylić
+    kolejność przy wywołaniu.
+
+    Attributes:
+        last_report_at: data poprzedniego raportu (do znaczników NOWE).
+        clicked_ids: identyfikatory ofert już oglądanych.
+        rates: kursy walut do przeliczenia wynagrodzeń.
+        coords: mapa ``miejscowość -> (lat, lon)`` do liczenia odległości.
+    """
+
+    last_report_at: Optional[date] = None
+    clicked_ids: Optional[set] = None
+    rates: Optional[Dict[str, float]] = None
+    coords: Optional[Dict[str, tuple]] = None
+
+
 def enrich_offers(
     offers: List[Dict[str, object]],
     units: Dict[str, dict],
-    last_report_at: Optional[date] = None,
-    clicked_ids: Optional[set] = None,
-    rates: Optional[Dict[str, float]] = None,
+    context: Optional[EnrichContext] = None,
 ) -> List[Dict[str, object]]:
     """Wzbogaca oferty o kategorię jednostki, pilność i świeżość.
 
@@ -272,8 +293,11 @@ def enrich_offers(
         deadline_date, days_left, urgency, first_seen_date, days_ago,
         is_new, clicked, freshness, freshness_cls.
     """
-    clicked_ids = clicked_ids or set()
-    rates = rates or {"PLN": 1.0}
+    context = context or EnrichContext()
+    last_report_at = context.last_report_at
+    clicked_ids = context.clicked_ids or set()
+    rates = context.rates or {"PLN": 1.0}
+    coords = context.coords or {}
     enriched: List[Dict[str, object]] = []
     for offer in offers:
         unit = units.get(offer.get("unit_key") or "", {})
@@ -351,6 +375,30 @@ def enrich_offers(
             str(offer.get("salary_currency") or "PLN"),
             str(offer.get("salary_period") or "month"),
         )
+        # Geografia: miasto i współrzędne. CBOP podaje je wprost, resztę
+        # geokodujemy po nazwie (mapa ``coords`` przygotowana w main).
+        city = (geo.clean_place(offer.get("offer_city") or "")
+                or geo.city_from_unit_name(offer.get("unit_name") or ""))
+        item["offer_city"] = city
+        lat, lon = offer.get("lat"), offer.get("lon")
+        if lat is None or lon is None:
+            point = (coords or {}).get(city)
+            if point:
+                lat, lon = point
+        item["lat"] = lat
+        item["lon"] = lon
+        # „Kraków” traktujemy jako miasto docelowe — w raporcie oferty
+        # krakowskie są zawsze w zasięgu, niezależnie od dzielnicy domu
+        # (adresatka prosiła o „Kraków + 10 km za granicę miasta”).
+        item["in_city"] = bool(re.search(r"krak[oó]w|cracow", city,
+                                         re.IGNORECASE))
+
+        # Język ogłoszenia (domyślnie raport pokazuje tylko polskie).
+        item["lang"] = offer_lang.detect(
+            f"{offer.get('title') or ''} {offer.get('raw_text') or ''}",
+            str(offer.get("source") or ""),
+        )
+
         item["salary_pln"] = sal.to_pln_month(
             offer.get("salary_min"), offer.get("salary_max"),
             str(offer.get("salary_currency") or "PLN"),
@@ -544,7 +592,8 @@ def collect_recent_closed_matches(
     candidates.sort(key=lambda pair: pair[0])
     selected = [record for _days, record in candidates[:CLOSED_MATCH_LIMIT]]
     # Wzbogacamy tak samo jak oferty raportu, aby karty wyglądały spójnie.
-    return enrich_offers(selected, units, None, clicked_ids, rates)
+    return enrich_offers(selected, units, EnrichContext(
+        clicked_ids=clicked_ids, rates=rates))
 
 
 def main() -> int:
@@ -590,7 +639,8 @@ def main() -> int:
     # Kursy walut do SORTOWANIA po wynagrodzeniu. Pobieramy raz na raport;
     # gdy nie ma sieci, moduł użyje zapisanych albo zapasowych (patrz
     # docstring ``salary.fetch_rates``), więc raport zawsze się wygeneruje.
-    rates = sal.fetch_rates(bc.build_session())
+    session = bc.build_session()
+    rates = sal.fetch_rates(session)
 
     offers_ds = bc.load_dataset(bc.OFFERS_DATASET)
     if not offers_ds["records"]:
@@ -624,8 +674,16 @@ def main() -> int:
             selected.append(offer)
 
     # Wzbogacamy o kategorię, pilność i świeżość, sortujemy, grupujemy.
-    enriched = enrich_offers(selected, units_ds["records"], last_report_at,
-                             clicked_ids, rates)
+    # Geokodujemy miejscowości ofert (raz na miejscowość w życiu —
+    # wynik ląduje w data*/geo_cache.json).
+    places = {geo.clean_place(r.get("offer_city") or "")
+              or geo.city_from_unit_name(r.get("unit_name") or "")
+              for r in selected}
+    coords = geo.geocode_places(places, session)
+
+    enriched = enrich_offers(selected, units_ds["records"], EnrichContext(
+        last_report_at=last_report_at, clicked_ids=clicked_ids,
+        rates=rates, coords=coords))
     enriched.sort(key=sort_key)
 
     # Tryb próbny: ograniczamy liczbę ofert do szybkiej weryfikacji wyglądu.

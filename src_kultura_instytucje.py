@@ -51,6 +51,13 @@ from bs4 import BeautifulSoup
 
 import bip_common as bc
 
+# Profile, dla których to źródło ma sens. Uruchomienie go z innym
+# profilem jest POMYŁKĄ, nie konfiguracją — zdarzyło się w pracy nad
+# projektem i wsypało 50 ofert IT do datasetu profilu kultury,
+# bo skrypt odpalono ręcznie bez --profile. Dlatego źródło samo
+# odmawia zapisu, a nie polega na orchestratorze.
+SERVES = {"kultura"}
+
 # Lista instytucji: (klucz, nazwa, adres strony z ofertami).
 # Dodanie nowej instytucji = jedna linia tutaj. Zalecenie: najpierw sprawdzić
 # kandydata narzędziem ``check_institution.py`` — ono próbuje typowych

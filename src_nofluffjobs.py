@@ -97,8 +97,12 @@ OFFER_URL_BASE = "https://nofluffjobs.com/job/"
 # AI Engineer, MLOps, Power BI; Tesco, GFT, deepsense.ai, XTB).
 SEARCH_QUERIES: Dict[str, Tuple[Tuple[str, str], ...]] = {
     "kultura": (
-        ("ux/design", "category=ux city=krakow"),
+        # Kategoria „ux” USUNIĘTA na wyraźną prośbę adresatki („usuń
+        # z wyszukiwań ui/ux, bo w tym nie siedzę”) — wnosiła głównie
+        # UX/Product Designerów, czyli inną specjalizację.
         ("graphic designer", "graphic designer"),
+        ("social media", "social media"),
+        ("grafika/marketing", "category=marketing city=krakow"),
     ),
     "it": (
         ("data", "category=data city=krakow"),
@@ -204,6 +208,27 @@ def fetch_query(session, label: str, raw_search: str) -> List[Dict[str, Any]]:
     return postings
 
 
+def _first_city(posting: Dict[str, Any]) -> str:
+    """Zwraca pierwsze miasto z listy lokalizacji oferty.
+
+    Portal podaje wiele miast dla jednego ogłoszenia; do liczenia
+    odległości bierzemy to, które pasuje do Krakowa, a gdy nie ma —
+    pierwsze z listy.
+
+    Args:
+        posting: rekord oferty z API.
+
+    Returns:
+        Nazwę miasta albo pusty łańcuch.
+    """
+    places = (posting.get("location") or {}).get("places") or []
+    cities = [str((p or {}).get("city") or "").strip() for p in places]
+    for city in cities:
+        if "rak" in city.lower():
+            return city
+    return next((c for c in cities if c), "")
+
+
 def build_record(posting: Dict[str, Any]) -> Dict[str, Any]:
     """Przekształca rekord API na format datasetu ofert.
 
@@ -241,6 +266,7 @@ def build_record(posting: Dict[str, Any]) -> Dict[str, Any]:
         "ref_number": "",
         "deadline": "",  # nofluffjobs nie podaje terminu składania
         "raw_text": " ".join(x for x in (title, employer, category) if x),
+        "offer_city": _first_city(posting),
         "source": "nofluffjobs",
         "published": _published_iso(posting),
         "category_hint": "",

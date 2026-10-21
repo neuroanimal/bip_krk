@@ -45,6 +45,13 @@ from urllib.parse import urlencode
 
 import bip_common as bc
 
+# Profile, dla których to źródło ma sens. Uruchomienie go z innym
+# profilem jest POMYŁKĄ, nie konfiguracją — zdarzyło się w pracy nad
+# projektem i wsypało 50 ofert IT do datasetu profilu kultury,
+# bo skrypt odpalono ręcznie bez --profile. Dlatego źródło samo
+# odmawia zapisu, a nie polega na orchestratorze.
+SERVES = {"kultura"}
+
 # Adres portalu (strona główna = wyszukiwarka ofert).
 EDU_BASE_URL = "https://ofertypracy.edu.pl/"
 

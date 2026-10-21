@@ -291,6 +291,10 @@ def build_record(offer: Dict[str, Any], number: str) -> Dict[str, Any]:
         "salary_period": "month",
         "contract_types": ct.classify(contract_raw),
         "contract_raw": contract_raw,
+        # Współrzędne podaje samo API — nie trzeba geokodować.
+        "lat": offer.get("miejscePracyLatitude"),
+        "lon": offer.get("miejscePracyLongitude"),
+        "offer_city": str(offer.get("miejscowoscNazwa") or "").strip(),
         "source": "cbop",
         "published": _to_iso(offer.get("dataDodaniaCbop")),
         "category_hint": "",

@@ -42,6 +42,7 @@ PIPELINE = [
     "src_nuzle.py",
     "src_ofertypracy_edu.py",
     "src_kultura_instytucje.py",
+    "src_pracujwkulturze.py",
     "src_nofluffjobs.py",
     "src_cbop.py",
     "src_remote_intl.py",
@@ -55,6 +56,7 @@ PIPELINE = [
 # (zewnętrzny portal może być chwilowo niedostępny).
 OPTIONAL_STEPS = {"src_nuzle.py", "src_ofertypracy_edu.py",
                   "src_kultura_instytucje.py", "src_nofluffjobs.py",
+                  "src_pracujwkulturze.py",
                   "src_cbop.py", "src_remote_intl.py",
                   "src_bulldogjob.py", "src_arc_dev.py"}
 
@@ -75,6 +77,7 @@ STEP_PROFILES = {
     "src_nuzle.py": {"kultura"},
     "src_ofertypracy_edu.py": {"kultura"},
     "src_kultura_instytucje.py": {"kultura"},
+    "src_pracujwkulturze.py": {"kultura"},
     "src_remote_intl.py": {"kultura", "it"},
     "src_nofluffjobs.py": {"kultura", "it"},
     "src_cbop.py": {"kultura", "it"},

@@ -54,6 +54,13 @@ import re
 from typing import Any, Dict, List
 
 import bip_common as bc
+
+# Profile, dla których to źródło ma sens. Uruchomienie go z innym
+# profilem jest POMYŁKĄ, nie konfiguracją — zdarzyło się w pracy nad
+# projektem i wsypało 50 ofert IT do datasetu profilu kultury,
+# bo skrypt odpalono ręcznie bez --profile. Dlatego źródło samo
+# odmawia zapisu, a nie polega na orchestratorze.
+SERVES = {"it"}
 import contract_type as ct
 
 JOBS_URL = "https://bulldogjob.pl/companies/jobs/s/city,Krakow"
@@ -199,6 +206,7 @@ def build_record(job: Dict[str, Any]) -> Dict[str, Any]:
             uop=bool(job.get("contractEmployment")),
             b2b=bool(job.get("contractB2b")),
         ),
+        "offer_city": city,
         "source": "bulldogjob",
         "published": "",
         "category_hint": "",
@@ -224,6 +232,12 @@ def main() -> int:
 
     bc.setup_logging(args.verbose)
     bc.use_profile(args.profile)
+    if args.profile not in SERVES:
+        logging.error(
+            "Źródło obsługuje profile %s, a podano '%s' — przerywam, "
+            "żeby nie zapisać danych do niewłaściwego datasetu.",
+            ", ".join(sorted(SERVES)), args.profile)
+        return 1
     session = bc.build_session()
 
     logging.info("Pobieram %s", JOBS_URL)

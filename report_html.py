@@ -20,11 +20,11 @@ w skrypcie 5 — ten moduł tylko prezentuje przygotowane dane.
 from __future__ import annotations
 
 import html as html_lib
-from collections import Counter
 from typing import Dict, List, NamedTuple, Optional, Tuple
 
 import bip_common as bc
 import contract_type as ct
+import report_controls
 import report_script
 import report_stats
 
@@ -164,6 +164,36 @@ table.stats td.urgent { color: #cf222e; }
              color: #24292f; }
 .fbtn.sbtn.on { background: #0969da; border-color: #0969da; color: #fff; }
 .fbtn.sbtn.on .fcount { opacity: 0.9; }
+
+/* Pasek języków w narożniku nagłówka — mały, żeby nie zajmował ekranu
+   (wprost o to prosiła adresatka). */
+.locale { position: absolute; top: 0.6em; right: 0.9em; display: flex;
+          align-items: center; gap: 0.5em; }
+.loc-lang { display: inline-flex; gap: 0.15em; align-items: center; }
+.loc-ui { display: inline-flex; gap: 0.1em; align-items: center; }
+/* Ikonki rozróżniające obie grupy: ✎ = język OGŁOSZEŃ, 🌐 = język
+   INTERFEJSU. Bez nich oba zestawy „PL/EN” wyglądały identycznie. */
+.loc-ico { font-size: 0.62em; opacity: 0.6; margin-right: 0.15em; }
+.lbtn { font: inherit; font-size: 0.66em; font-weight: 700; cursor: pointer;
+        padding: 0.1em 0.38em; border-radius: 4px; border: 1px solid #ffffff55;
+        background: transparent; color: #ffffff88; }
+.lbtn.on { background: #ffffff2e; color: #fff; border-color: #ffffffaa; }
+.flag { font-size: 1em; line-height: 1; cursor: pointer; border: 0;
+        background: transparent; padding: 0 0.1em; opacity: 0.45;
+        filter: grayscale(1); }
+.flag.on { opacity: 1; filter: none; }
+header { position: relative; }
+
+/* Pasek geografii: dzielnica domu i promień. */
+.frow.geo { gap: 0.5em; }
+.gsel { font: inherit; font-size: 0.82em; padding: 0.15em 0.3em;
+        border: 1px solid #d0d7de; border-radius: 6px; background: #fff; }
+.geo-rad { min-width: auto; margin-left: 0.5em; }
+.gslider { width: 130px; vertical-align: middle; }
+.gval { font-size: 0.82em; font-weight: 600; min-width: 3.6em;
+        font-variant-numeric: tabular-nums; }
+.gchk { font-size: 0.82em; color: #57606a; display: inline-flex;
+        align-items: center; gap: 0.25em; cursor: pointer; }
 
 .chart { margin-bottom: 1.1em; }
 .chart h4 { font-size: 0.82em; font-weight: 600; color: #57606a;
@@ -393,112 +423,6 @@ def build_failures_section(failures: Dict[str, dict]) -> str:
     return "\n".join(parts)
 
 
-def build_filter_bar(stats: Dict[str, object]) -> str:
-    """Buduje pasek filtrów raportu (rodzaj umowy, dopasowanie, źródło).
-
-    DLACZEGO FILTROWANIE PO STRONIE PRZEGLĄDARKI
-    --------------------------------------------
-    Raport jest plikiem statycznym — nie ma serwera, który mógłby
-    przefiltrować dane po kliknięciu. Wszystkie oferty są więc w HTML,
-    a filtr jedynie ukrywa karty (``display:none``). Dzięki temu działa
-    offline i natychmiast, bez przeładowania.
-
-    Rodzaje umowy są **rozdzielone**: UoP, UZ i B2B to trzy różne sytuacje
-    prawne i finansowe (staż pracy, ZUS, urlop, zdolność kredytowa), więc
-    łączenie ich w „inne niż UoP” zacierałoby najważniejszą różnicę.
-    Osobna pozycja „umowa nieznana” jest konieczna, bo BIP podaje rodzaj
-    umowy tylko w części ogłoszeń — ukrycie ich byłoby ukryciem ofert,
-    o których po prostu nie wiemy.
-
-    Args:
-        stats: statystyki raportu (do liczników przy filtrach).
-
-    Returns:
-        Fragment HTML paska filtrów.
-    """
-    contracts: Counter = stats.get("contracts") or Counter()
-    sources: Counter = stats.get("sources") or Counter()
-
-    parts = ["<div class='filters' id='filters'>"]
-
-    parts.append("<div class='frow'><span class='flabel'>Rodzaj umowy:"
-                 "</span>")
-    for code in ct.ORDER:
-        count = contracts.get(code, 0)
-        if not count:
-            continue
-        parts.append(
-            f"<button type='button' class='fbtn on' data-filter='contract' "
-            f"data-value='{html_lib.escape(code)}' "
-            f"title='{html_lib.escape(ct.DESCRIPTIONS.get(code, ''))}'>"
-            f"{html_lib.escape(ct.LABELS.get(code, code))}"
-            f"<span class='fcount'>{count}</span></button>"
-        )
-    parts.append("</div>")
-
-    parts.append("<div class='frow'><span class='flabel'>Dopasowanie:"
-                 "</span>")
-    for value, text in (("strong", "DLA CIEBIE"), ("weak", "może pasować"),
-                        ("none", "poza profilem")):
-        count = int(stats.get({"strong": "strong", "weak": "weak",
-                               "none": "nomatch"}[value], 0) or 0)
-        if not count:
-            continue
-        parts.append(
-            f"<button type='button' class='fbtn on' data-filter='level' "
-            f"data-value='{value}'>{text}"
-            f"<span class='fcount'>{count}</span></button>"
-        )
-    parts.append("</div>")
-
-    if len(sources) > 1:
-        parts.append("<div class='frow'><span class='flabel'>Źródło:"
-                     "</span>")
-        for name, count in sources.most_common():
-            parts.append(
-                f"<button type='button' class='fbtn on' data-filter='source' "
-                f"data-value='{html_lib.escape(name)}'>"
-                f"{html_lib.escape(name)}"
-                f"<span class='fcount'>{count}</span></button>"
-            )
-        parts.append("</div>")
-
-    # Sortowanie. Domyślne „po pilności” zostaje takie jak było — raport
-    # ma przede wszystkim nie przegapić terminu. Sortowanie po płacy jest
-    # ORIENTACYJNE: przelicza B2B netto/h i UoP brutto/mies. na jedną
-    # miarę, co opisuje docstring modułu ``salary``.
-    with_pay = int(stats.get("with_pay", 0) or 0)
-    parts.append("<div class='frow'><span class='flabel'>Sortuj:</span>")
-    for value, text, title in (
-        ("urgency", "po pilności", "Najpierw oferty z najbliższym terminem"),
-        ("pay", "po wynagrodzeniu",
-         "Malejąco, po przeliczeniu na PLN/miesiąc — orientacyjnie, "
-         "bo B2B podaje się netto, a UoP brutto"),
-        ("score", "po dopasowaniu", "Najpierw najlepiej dopasowane"),
-    ):
-        if value == "pay" and not with_pay:
-            continue
-        extra = " on" if value == "urgency" else ""
-        count = (f"<span class='fcount'>{with_pay}</span>"
-                 if value == "pay" else "")
-        parts.append(
-            f"<button type='button' class='fbtn sbtn{extra}' "
-            f"data-sort='{value}' title='{html_lib.escape(title)}'>"
-            f"{text}{count}</button>"
-        )
-    parts.append("</div>")
-
-    parts.append(
-        "<div class='frow'>"
-        "<button type='button' class='fbtn act' id='f-all'>"
-        "Pokaż wszystkie</button>"
-        "<span class='fsummary' id='f-summary'></span>"
-        "</div>"
-    )
-    parts.append("</div>")
-    return "".join(parts)
-
-
 def build_offer_card(offer: Dict[str, object],
                      details: Dict[str, Dict[str, object]]) -> str:
     """Buduje kartę HTML jednej oferty.
@@ -575,7 +499,13 @@ def build_offer_card(offer: Dict[str, object],
         # a nie na początek (co by się stało przy 0).
         f"data-pay='{int(offer.get('salary_pln') or -1)}' "
         f"data-days='{offer.get('days_left') if isinstance(offer.get('days_left'), int) else 9999}' "
-        f"data-score='{int(offer.get('profile_score') or 0)}'>"
+        f"data-score='{int(offer.get('profile_score') or 0)}' "
+        f"data-areas=\"{esc('|'.join(str(t) for t in (offer.get('profile_tags') or [])))}\" "
+        f"data-lang='{esc(offer.get('lang') or 'pl')}' "
+        f"data-lat='{offer.get('lat') if offer.get('lat') is not None else ''}' "
+        f"data-lon='{offer.get('lon') if offer.get('lon') is not None else ''}' "
+        f"data-city='{esc(offer.get('offer_city') or '')}' "
+        f"data-incity='{1 if offer.get('in_city') else 0}'>"
     )
     pay_badge = (
         f"<span class='pay'>{esc(offer.get('salary_text'))}</span>"
@@ -789,6 +719,7 @@ def build_html(
 
     # Nagłówek raportu.
     parts.append("<header><div class='wrap'>")
+    parts.append(report_controls.build_locale_bar())
     parts.append(f"<h1>{html_lib.escape(heading)}</h1>")
     parts.append(
         f"<div class='meta'>Wygenerowano: {esc(bc.now_iso())} · "
@@ -845,7 +776,7 @@ def build_html(
     profile_section = build_profile_section(
         all_offers, details, recent_closed, profile_description)
     if stats:
-        parts.append(build_filter_bar(stats))
+        parts.append(report_controls.build_filter_bar(stats))
 
     if profile_section:
         parts.append(profile_section)
@@ -882,6 +813,10 @@ def build_html(
         "Krakowa · raport wygenerowany automatycznie</footer>"
     )
     # Skrypt trackingu klikania — na końcu, gdy karty są już w dokumencie.
+    # Współrzędne dzielnic wstrzykujemy do dokumentu, żeby przeliczanie
+    # odległości działało w przeglądarce bez internetu.
+    parts.append(f"<script>window.KRK_DISTRICTS = {report_controls.geo.districts_json()};"
+                 f"</script>")
     parts.append(HTML_TRACKING_SCRIPT)
     parts.append("</body></html>")
     return "\n".join(parts)

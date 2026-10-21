@@ -97,6 +97,7 @@ obsługiwane.
 | **`3b_fetch_offers_global.py`** | **Szybka ścieżka**: wszystkie nabory z jednej globalnej strony BIP (`?dok_id=104362`) — ~435 ofert w ~2 s | globalna lista naborów | `data/offers.json` |
 | `src_nuzle.py` | Źródło zewnętrzne: nuzle.pl (Kraków, bez ofert nauczycielskich) | nuzle.pl | `data/offers.json` |
 | `src_ofertypracy_edu.py` | Źródło zewnętrzne: ofertypracy.edu.pl przez Inertia API (Kraków, typ „Pracownik niepedagogiczny”) | API portalu | `data/offers.json` |
+| **`src_pracujwkulturze.py`** | Źródło zewnętrzne: **pracujwkulturze.nck.pl** (Narodowe Centrum Kultury) — instytucje kultury z całej Polski, z taksonomią obszarów (sztuka, edukacja, grafika, muzeum, nowe media…) | API odkryte | `data/offers.json` |
 | `src_kultura_instytucje.py` | Źródło zewnętrzne: **instytucje kultury poza BIP miasta** (Muzeum Narodowe, Zamek Królewski na Wawelu, Teatr Słowackiego, Cricoteka, Wojewódzka Biblioteka Publiczna) — BIP Krakowa obejmuje tylko jednostki miejskie | strony instytucji | `data/offers.json` |
 | `src_nofluffjobs.py` | Źródło zewnętrzne: nofluffjobs.com — **oferty dla grafika/designera** w Krakowie (luka, której nie pokrywa BIP ani nuzle) | API portalu | `data/offers.json` |
 | **`src_cbop.py`** | Źródło zewnętrzne: **CBOP — oficjalna rządowa baza urzędów pracy** (oferty.praca.gov.pl). Obejmuje pracodawców nieobecnych w BIP, m.in. **ASP w Krakowie** | API portalu (odkryte) | `data/offers.json` |
@@ -106,6 +107,9 @@ obsługiwane.
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
 | `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
 | `report_html.py` | Moduł prezentacji HTML (styl, skrypt trackingu, budowa dokumentu) | — | — |
+| `geo.py` | **Odległość od domu**: dzielnice Krakowa, geokodowanie miejscowości (Nominatim), haversine | — | `data*/geo_cache.json` |
+| `offer_lang.py` | Rozpoznawanie **języka ogłoszenia** (polski / angielski) | — | — |
+| `report_controls.py` | Paski sterowania raportu (język, geografia, filtry, sortowanie) | — | — |
 | `salary.py` | Normalizacja **wynagrodzeń** do PLN/mies. (kurs z API NBP) — do sortowania | — | — |
 | `contract_type.py` | Rozpoznawanie **rodzaju umowy** (UoP / UZ / B2B / dzieło) — wspólne dla źródeł | — | — |
 | `report_script.py` | Skrypt przeglądarki raportu: tracking klikania i filtrowanie | — | — |
@@ -249,6 +253,71 @@ biblioteka z CDN dawałaby puste prostokąty, a dołączona lokalnie dokładała
 kilkaset kilobajtów do każdego raportu. Statyczne SVG działa offline, bez
 JavaScriptu i skaluje się przy druku. Cena: brak interaktywności, co jest
 tu akceptowalne — wykres ma odpowiedzieć „czego jest dużo i skąd to jest”.
+
+## Zasięg geograficzny — Kraków i okolica
+
+W raporcie były oferty z Gorlic i Tarnowa — formalnie „małopolskie”, ale
+**103 i 90 km** od Krakowa. Dlatego nad listą są dwa elementy:
+
+- **Miejsce wyjazdu** — lista 18 dzielnic Krakowa, domyślnie **Bronowice**,
+- **Promień poza Krakowem** — suwak w km, domyślnie **10 km**.
+
+Oferty **w samym Krakowie są zawsze w zasięgu** (przełącznik „Kraków
+zawsze”, domyślnie włączony). To nie uproszczenie, a konieczność: 10 km od
+Bronowic to mniej niż odległość do Nowej Huty (18,5 km), więc promień
+liczony od domu ukryłby ofertę z Klubu Dukat — czyli dokładnie tę, której
+w raporcie brakowało.
+
+**Odległość liczy przeglądarka**, więc przesunięcie suwaka albo zmiana
+dzielnicy działa natychmiast, bez generowania raportu od nowa. Jest to
+odległość **w linii prostej**, nie czas dojazdu — 10 km przez centrum
+bywa dłuższe niż 25 km trasą wylotową. Oferty **bez rozpoznanej
+lokalizacji nie są ukrywane**: brak danych nie może znaczyć „odrzuć”.
+
+Współrzędne: CBOP podaje je wprost w API, pozostałe miejscowości
+geokoduje **Nominatim** (OpenStreetMap, 1 zapytanie/s, własny
+`User-Agent`) z zapisem w `data*/geo_cache.json` — każda miejscowość
+pytana jest raz w życiu. Zapytania są ograniczone do Polski
+(`countrycodes=pl`); bez tego „Berlin” z oferty zagranicznej trafiał do
+polskiej wsi o tej nazwie i udawał lokalizację w zasięgu.
+
+## Język ogłoszeń i język interfejsu
+
+W prawym górnym rogu są dwie małe kontrolki (celowo małe — nie mają
+zajmować ekranu):
+
+- **PL / EN po lewej** — które ogłoszenia brać pod uwagę. Domyślnie
+  **tylko polskie**; angielskie włącza przycisk „EN”.
+- **flagi po prawej** — język napisów raportu (polski domyślnie).
+  Tłumaczone są wyłącznie etykiety sterowania; treść ogłoszeń zostaje
+  w oryginale, bo to dane, nie interfejs.
+
+Język ogłoszenia rozpoznaje `offer_lang.py`, bo **żadne źródło go nie
+podaje**: liczy polskie znaki diakrytyczne (dwa i więcej to mocny sygnał —
+jeden może być nazwą „Kraków” w tekście angielskim), polskie i angielskie
+słowa funkcyjne, a przy remisie rozstrzyga pochodzenie ze źródła.
+
+## Etykiety obszarów — co jest brane pod uwagę
+
+Pasek **„Obszary”** pokazuje klikalnymi etykietami, co zdecydowało
+o dopasowaniu (grafika/design, animacja kultury, media społecznościowe,
+edukacja kulturalna…) wraz z liczbą ofert. Wyłączenie etykiety ukrywa
+oferty, które trafiły tylko przez nią.
+
+Etykiety pochodzą z `profile_tags` wyliczonych przy ocenie, a nie
+z osobnej listy — dzięki temu pokazują realną zawartość raportu.
+
+**Zmiany na prośbę adresatki:** dodane „wychowawca w świetlicy”,
+„organizacja imprez” i **media społecznościowe** (osobny obszar);
+usunięte **UI/UX** — zarówno z wyszukiwań w nofluffjobs, jak i z oceny
+(„w tym nie siedzę i nie mam wiedzy”).
+
+### Dwie pułapki odmiany, które trzeba było obsłużyć
+
+- „organizacj**i** imprez” nie pasuje do wzorca „organizacj imprez”, więc
+  rdzeń `imprez` stoi osobno;
+- „wychowawca” był wcześniej **wykluczony** jako zawód nauczycielski —
+  po dodaniu świetlic wykluczenie zawężono do „nauczyciel przedmiotu”.
 
 ## Filtrowanie raportu i rodzaj umowy
 
@@ -413,6 +482,10 @@ bip_krk/
 ├── report_script.py             # skrypt przeglądarki (tracking + filtry)
 ├── contract_type.py             # rozpoznawanie rodzaju umowy
 ├── salary.py                    # normalizacja wynagrodzeń (kurs NBP)
+├── geo.py                       # odległość od domu, dzielnice Krakowa
+├── offer_lang.py                # język ogłoszenia (pl/en)
+├── report_controls.py           # paski sterowania raportu
+├── src_pracujwkulturze.py       # źródło: portal NCK „Pracuj w kulturze"
 ├── 4_fetch_offer_details.py
 ├── 5_generate_report.py
 ├── run_all.py               # orchestrator całego potoku (--sample dla próbki)
