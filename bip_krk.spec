@@ -23,6 +23,8 @@ stage_files = [
     ('report_script.py', '.'),            # skrypt przeglądarki (tracking+filtry)
     ('contract_type.py', '.'),
     ('salary.py', '.'),
+    ('report_map.py', '.'),               # mapa ofert (SVG offline)
+    ('krakow_districts.json', '.'),       # granice dzielnic dla mapy
     ('dedupe.py', '.'),                   # duplikaty i podobne oferty
     ('geo.py', '.'),                      # odległość od domu, dzielnice
     ('offer_lang.py', '.'),               # język ogłoszenia (pl/en)
@@ -65,6 +67,7 @@ a = Analysis(
         'contract_type',
         'salary',
         'dedupe',
+        'report_map',
         'geo',
         'offer_lang',
         'report_controls',

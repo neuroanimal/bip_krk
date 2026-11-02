@@ -430,6 +430,20 @@ def enrich_offers(
             str(offer.get("salary_period") or "month"),
             rates,
         )
+
+        # Wymiar etatu i płaca w przeliczeniu na pełny etat. Przeliczamy
+        # TYLKO kwoty miesięczne — stawka godzinowa jest już niezależna od
+        # wymiaru. Sortowanie po płacy używa wartości przeliczonej, żeby
+        # „¼ etatu za 1500 zł” nie wyglądało na gorszą ofertę od „pełnego
+        # etatu za 4000 zł” (patrz komentarz przy ``salary.fte``).
+        fraction, fte_label = sal.fte(
+            f"{offer.get('title') or ''} {offer.get('raw_text') or ''}")
+        item["fte"] = fraction
+        item["fte_label"] = fte_label
+        item["salary_pln_fte"] = None
+        period = str(offer.get("salary_period") or "month").lower()
+        if fraction and item["salary_pln"] and period.startswith("month"):
+            item["salary_pln_fte"] = int(round(item["salary_pln"] / fraction))
         enriched.append(item)
     return enriched
 
@@ -688,6 +702,11 @@ def main() -> int:
     # pojawiła się po ostatnim raporcie — użytkownik ją widział.
     clicks = bc.load_json(bc.CLICKS_DATASET) or {}
     clicked_ids = set((clicks.get("clicked") or {}).keys())
+    # Oferty, na które użytkownik już aplikował (przycisk „aplikowałam”
+    # w raporcie, eksportowany razem ze stanem klikania). Zapisujemy je
+    # w rekordach jako ``applied_at``, żeby status przetrwał regenerację
+    # raportu i przeniesienie na inną przeglądarkę.
+    applied = clicks.get("applied") or {}
     if clicked_ids:
         logging.info("Wczytano stan klikania: %d ofert już oglądanych.",
                      len(clicked_ids))
@@ -696,6 +715,9 @@ def main() -> int:
     selected = []
     for offer in offers_ds["records"].values():
         if args.all or is_current(offer):
+            when = applied.get(str(offer.get("nab_id") or ""))
+            if when:
+                offer = dict(offer, applied_at=when)
             selected.append(offer)
 
     # Wzbogacamy o kategorię, pilność i świeżość, sortujemy, grupujemy.

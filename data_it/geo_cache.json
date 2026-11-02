@@ -154,9 +154,20 @@
     "v2|pl|teems.it sp. z o.o., Kraków": null,
     "v2|pl|MasterBorn, Kraków": null,
     "v2|pl|KPMG Poland, krajów": null,
-    "v2|pl|DevGrid, krajów": null
+    "v2|pl|DevGrid, krajów": null,
+    "v2|pl|Accenture Polska, Krakow": null,
+    "v2|pl|AgileEngine, Kraków": null,
+    "v2|pl|Edge One Solutions Sp. z o.o, Kraków": null,
+    "v2|pl|Antal Sp. z o.o., Kraków": null,
+    "v2|pl|RemoDevs, Kraków": null,
+    "v2|pl|Allegro, Kraków": [
+      50.0642,
+      19.9516
+    ],
+    "v2|pl|Cyclad, Kraków": null,
+    "v2|pl|PeopleTrust Sp. z o.o., Kraków": null
   },
   "meta": {
-    "updated": "2026-10-21T15:27:40+02:00"
+    "updated": "2026-10-22T01:17:40+02:00"
   }
 }

@@ -1,0 +1,45 @@
+{
+  "fetched_at": "2026-10-22T01:17:45+02:00",
+  "rows": [
+    {
+      "unit_key": "bip_id:1",
+      "unit_name": "Miasto Kraków",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=1",
+      "has_praca_link": false,
+      "praca_url": null,
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZBK",
+      "unit_name": "ZBK - Zarząd Budynków Komunalnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/ZBK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=32&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZCK",
+      "unit_name": "ZCK - Zarząd Cmentarzy Komunalnych w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/ZCK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=489&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "slug:ZDMK",
+      "unit_name": "ZDMK - Zarząd Dróg Miasta Krakowa",
+      "unit_url": "https://www.bip.krakow.pl/ZDMK",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=511&dok_id=104362",
+      "url_from_archive": false
+    },
+    {
+      "unit_key": "bip_id:512",
+      "unit_name": "ZIS - Zarząd Infrastruktury Sportowej w Krakowie",
+      "unit_url": "https://www.bip.krakow.pl/?bip_id=512",
+      "has_praca_link": true,
+      "praca_url": "https://www.bip.krakow.pl/?bip_id=512&dok_id=104362",
+      "url_from_archive": false
+    }
+  ]
+}

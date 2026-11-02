@@ -25,6 +25,7 @@ from typing import Dict, List, NamedTuple, Optional, Tuple
 import bip_common as bc
 import contract_type as ct
 import report_controls
+import report_map
 import report_script
 import report_stats
 
@@ -155,6 +156,17 @@ table.stats td.urgent { color: #cf222e; }
 .contract.c-uz { background: #fff8c5; color: #7d4e00; }
 .contract.c-b2b { background: #ddf4ff; color: #0a3069; }
 .contract.c-dzielo { background: #fbefff; color: #6639ba; }
+.apply-row { margin-top: 0.4em; }
+.apply-btn { font: inherit; font-size: 0.78em; cursor: pointer;
+             border: 1px solid #d0d7de; border-radius: 6px;
+             background: #f6f8fa; color: #57606a; padding: 0.1em 0.6em; }
+.apply-btn:hover { border-color: #1a7f37; color: #1a7f37; }
+.offer.applied { border-left-color: #8250df !important; }
+.offer.applied .apply-btn { background: #8250df; border-color: #8250df;
+                            color: #fff; }
+.fte { font-size: 0.68em; font-weight: 700; padding: 0.16em 0.5em;
+       border-radius: 999px; margin-left: 0.4em; vertical-align: middle;
+       background: #ffebe9; color: #a40e26; white-space: nowrap; }
 .pay { font-size: 0.72em; font-weight: 600; color: #116329; margin-left: 0.4em;
        white-space: nowrap; }
 /* Przyciski SORTOWANIA wyglądają inaczej niż filtry: filtr zgaszony
@@ -515,7 +527,7 @@ def build_offer_card(offer: Dict[str, object],
         # Atrybuty do sortowania w przeglądarce. -1 znaczy „brak kwoty” —
         # takie oferty trafiają na koniec listy przy sortowaniu po płacy,
         # a nie na początek (co by się stało przy 0).
-        f"data-pay='{int(offer.get('salary_pln') or -1)}' "
+        f"data-pay='{int(offer.get('salary_pln_fte') or offer.get('salary_pln') or -1)}' "
         f"data-days='{offer.get('days_left') if isinstance(offer.get('days_left'), int) else 9999}' "
         f"data-score='{int(offer.get('profile_score') or 0)}' "
         f"data-areas=\"{esc('|'.join(str(t) for t in (offer.get('profile_tags') or [])))}\" "
@@ -524,16 +536,24 @@ def build_offer_card(offer: Dict[str, object],
         f"data-lon='{offer.get('lon') if offer.get('lon') is not None else ''}' "
         f"data-city='{esc(offer.get('offer_city') or '')}' "
         f"data-incity='{1 if offer.get('in_city') else 0}' "
-        f"data-geoprec='{esc(offer.get('geo_precision') or '')}'>"
+        f"data-geoprec='{esc(offer.get('geo_precision') or '')}' "
+        f"data-applied='{esc(str(offer.get('applied_at') or '')[:10])}'>"
     )
-    pay_badge = (
-        f"<span class='pay'>{esc(offer.get('salary_text'))}</span>"
-        if offer.get("salary_text") else ""
-    )
+    pay_text = str(offer.get("salary_text") or "")
+    if offer.get("salary_pln_fte"):
+        full = f"{int(offer['salary_pln_fte']):,}".replace(",", " ")
+        pay_text += f" (≈ {full} PLN na pełny etat)"
+    pay_badge = (f"<span class='pay'>{esc(pay_text)}</span>"
+                 if pay_text else "")
+    # Odznaka niepełnego etatu — tylko gdy wymiar jest mniejszy od pełnego.
+    fte_badge = (f"<span class='fte' title='Wymiar etatu'>"
+                 f"{esc(offer.get('fte_label'))}</span>"
+                 if offer.get("fte_label") else "")
     parts.append(
         f"<h3>{esc(offer.get('title') or '(bez tytułu)')}"
         f"<span class='fresh {esc(fresh_cls)}'>{esc(fresh_text)}</span>"
         f"{contract_badges}"
+        f"{fte_badge}"
         f"{pay_badge}"
         f"<span class='badge {esc(urgency)}'>{esc(badge_text)}</span>"
         f"{match_badge}"
@@ -597,6 +617,13 @@ def build_offer_card(offer: Dict[str, object],
                     f"{esc(lnk['text'])}</a></li>"
                 )
             parts.append("</ul></div>")
+
+    # Przycisk „aplikowałam” — osobny status od „oglądane”. Oglądanie to
+    # przejrzenie, a aplikowanie to decyzja, której efekt trwa tygodniami:
+    # oferta, na którą wysłano CV, nie powinna wracać na górę listy jako
+    # coś do zrobienia. Stan zapisuje przeglądarka (jak kliknięcia).
+    parts.append("<div class='apply-row'><button type='button' "
+                 "class='apply-btn'>aplikowałam</button></div>")
 
     # Ta sama oferta w innych źródłach — zamiast osobnych kart. Linki
     # zostają, bo portale różnie szczegółowo opisują to samo ogłoszenie.
@@ -780,7 +807,9 @@ def build_html(
     if profile_label:
         heading = f"{heading} · {profile_label}"
     parts.append(f"<title>{html_lib.escape(heading)}</title>")
-    parts.append(f"<style>{HTML_STYLE}</style></head><body>")
+    parts.append(f"<style>{HTML_STYLE}{report_map.MAP_STYLE}"
+                 f".offer.map-out {{ display: none; }}"
+                 f"</style></head><body>")
 
     # Nagłówek raportu.
     parts.append("<header><div class='wrap'>")
@@ -842,6 +871,9 @@ def build_html(
         all_offers, details, recent_closed, profile_description)
     if stats:
         parts.append(report_controls.build_filter_bar(stats))
+        # Mapa pod filtrami: pokazuje to samo co lista (te same filtry),
+        # a kliknięcie kropki zawęża listę do jednego miejsca.
+        parts.append(report_map.build_map())
 
     if profile_section:
         parts.append(profile_section)
@@ -902,5 +934,7 @@ def build_html(
     parts.append(f"<script>window.KRK_DISTRICTS = {report_controls.geo.districts_json()};"
                  f"</script>")
     parts.append(HTML_TRACKING_SCRIPT)
+    # Skrypt mapy po skrypcie filtrów — korzysta z wyniku filtrowania.
+    parts.append(report_map.MAP_SCRIPT)
     parts.append("</body></html>")
     return "\n".join(parts)

@@ -64,6 +64,13 @@ PROFILE_KEYWORDS: List[Tuple[str, int, Tuple[str, ...]]] = [
         "specjalist ds. mediów", "specjalist ds. social",
         "content creator", "twórc treści", "prowadzeni fanpage",
         "komunikacj w mediach", "promocj w mediach",
+        # Budżetowa nazwa tej samej roli. Instytucje publiczne prawie nie
+        # piszą „social media” — piszą „specjalista ds. promocji /
+        # komunikacji” (wniosek z analizy rynku 21.10). Rdzeń „promocj”
+        # i „komunikacj” jest ogólny, więc kwalifikuje TYLKO z kontekstem
+        # kultury albo instytucji publicznej (patrz CONTEXT_REQUIRED).
+        "ds. promocj", "dzial promocj", "dzialu promocj", "promocji i komunikacj",
+        "komunikacji i promocj", "ds. komunikacj",
     )),
     ("edukacja kulturalna / muzealna", 4, (
         "edukator", "edukacj muzealn", "edukacj kulturaln",
@@ -141,6 +148,9 @@ EXCLUDE_KEYWORDS: Tuple[str, ...] = (
     # wchodziły przez „media społecznościowe” w opisie. Do tego wymóg
     # obcego języka w tytule („…with Czech”, „German speaking”) — to
     # zawsze rola dla native speakera, nie dla tego profilu.
+    # Promocja w znaczeniu handlowym: promocja sprzedaży, promotor/ka
+    # w sklepie, merchandising — to praca w terenie przy produkcie.
+    "promocji sprzedaz", "promotor", "merchandis", "hostess",
     "customer success", "reviewer", "moderator", "client partner",
     "call center", "with czech", "with german", "german speaking",
     "with dutch", "with french", "with italian", "with spanish",
@@ -203,14 +213,18 @@ DEMOTE_TITLE_KEYWORDS: Tuple[str, ...] = (
 #                  pasować” (zajęcia dla dzieci bywają plastyczne, bywają
 #                  sportowe; terapia zajęciowa wymaga kursu).
 CONTEXT_REQUIRED = {
-    "stems": ("instruktor", "animator", "warsztat", "event", "trener"),
+    "stems": ("instruktor", "animator", "warsztat", "event", "trener",
+              "promocj", "komunikacj"),
     "words": (
         "kultur", "plastyczn", "artystyczn", "sztuk", "rysun", "malars",
         "ceramik", "grafik", "teatr", "muze", "galeri", "bibliote",
         "świetlic", "klub", "dom kultury", "ośrodek kultury", "fotograf",
         "rękodzieł", "wystaw", "edukacj",
     ),
-    "weak_words": ("dla dzieci", "dzieci i młodzież", "zajęć",
+    # Urząd gminy czy starostwo to budżetówka, ale nie kultura — promocja
+    # gminy bywa w zasięgu (grafika + social media), więc „może pasować”.
+    "weak_words": ("urząd", "urzad", "gmin", "starostw", "powiat",
+                   "dla dzieci", "dzieci i młodzież", "zajęć",
                    "terapii zajęciow", "terapia zajęciow"),
 }
 

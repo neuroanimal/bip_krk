@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-09-22T15:55:01+02:00",
-    "updated": "2026-10-21T15:24:34+02:00"
+    "updated": "2026-10-22T01:17:49+02:00"
   },
   "records": {
     "bip_id:1": {
@@ -11,7 +11,7 @@
       "has_praca_link": false,
       "praca_url": null,
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-21T15:24:29+02:00",
+      "last_seen": "2026-10-22T01:17:45+02:00",
       "active": true,
       "inactive_since": null,
       "url_from_archive": false
@@ -23,7 +23,7 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=32&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-21T15:24:29+02:00",
+      "last_seen": "2026-10-22T01:17:45+02:00",
       "active": true,
       "inactive_since": null,
       "url_from_archive": false
@@ -35,7 +35,7 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=489&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-21T15:24:29+02:00",
+      "last_seen": "2026-10-22T01:17:45+02:00",
       "active": true,
       "inactive_since": null,
       "url_from_archive": false
@@ -47,7 +47,7 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=511&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-21T15:24:29+02:00",
+      "last_seen": "2026-10-22T01:17:45+02:00",
       "active": true,
       "inactive_since": null,
       "url_from_archive": false
@@ -59,7 +59,7 @@
       "has_praca_link": true,
       "praca_url": "https://www.bip.krakow.pl/?bip_id=512&dok_id=104362",
       "first_seen": "2026-09-22T15:55:01+02:00",
-      "last_seen": "2026-10-21T15:24:29+02:00",
+      "last_seen": "2026-10-22T01:17:45+02:00",
       "active": true,
       "inactive_since": null,
       "url_from_archive": false

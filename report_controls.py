@@ -229,6 +229,15 @@ def build_filter_bar(stats: Dict[str, object]) -> str:
         )
     parts.append("</div>")
 
+    # Status „aplikowałam” — domyślnie WIDOCZNE (zgaszone byłoby mylące,
+    # gdyby ktoś nie wiedział, że ukryło oferty), ale jednym kliknięciem
+    # można je schować, żeby lista zawierała tylko to, co zostało do zrobienia.
+    parts.append("<div class='frow'><span class='flabel'>Status:</span>"
+                 "<button type='button' class='fbtn on' id='f-applied'>"
+                 "pokazuj te, na które aplikowałam"
+                 "<span class='fcount' id='f-applied-n'>0</span></button>"
+                 "</div>")
+
     parts.append(
         "<div class='frow'>"
         "<button type='button' class='fbtn act' id='f-all'>"

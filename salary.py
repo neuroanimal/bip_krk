@@ -258,3 +258,74 @@ def describe(low: Optional[float], high: Optional[float], currency: str,
     else:
         amount = fmt(low if low is not None else high)
     return f"{amount} {currency.upper()}/{suffix}".strip()
+
+
+# ---------------------------------------------------------------------------
+# WYMIAR ETATU
+# ---------------------------------------------------------------------------
+#
+# Po co: oferta z Klubu Dukat to „¼ etatu” za 1450–1650 zł. Bez informacji
+# o wymiarze wyglądała na najgorzej płatną w raporcie, a w przeliczeniu na
+# pełny etat to ~6 tys. — przyzwoita stawka w kulturze. Dlatego rozpoznajemy
+# wymiar, pokazujemy go na karcie, a sortowanie po płacy używa kwoty
+# PRZELICZONEJ na pełny etat.
+#
+# Zapisy spotkane w danych (pomiar 22.10) i jak je czytamy:
+#   „0,5 etatu”, „0,25 etatu”, „0,75 etatu”   -> ułamek
+#   „¼ etatu”, „1/2 etatu”, „pół etatu”        -> ułamek
+#   „etat: 9/18”, „etat: 18/18” (CBOP, pensum) -> godziny / pensum
+#   „niepełny etat”, „part-time”               -> niepełny, ułamek nieznany
+#   „1 etat”, „pełny etat”, „full-time”        -> pełny (bez odznaki)
+#   „3 etaty”, „5 etatów”                      -> LICZBA STANOWISK, nie wymiar!
+# Ostatni przypadek to pułapka: naiwny wzorzec „N etat” uznałby „3 etaty”
+# za trzykrotny wymiar.
+
+_FRACTION_WORDS = {"¼": 0.25, "½": 0.5, "¾": 0.75, "pół": 0.5, "pol": 0.5}
+
+_FTE_FRACTION = re.compile(
+    r"(\d+[,.]\d+|\d+\s*/\s*\d+|[¼½¾]|p[óo]ł)\s*(?:etat|wymiar)",
+    re.IGNORECASE)
+_FTE_PENSUM = re.compile(r"etat\w*\s*:?\s*(\d{1,2})\s*/\s*(\d{1,2})\b",
+                         re.IGNORECASE)
+_FTE_PARTIAL = re.compile(r"niepe[łl]n\w*\s+(?:etat|wymiar)|part[- ]?time",
+                          re.IGNORECASE)
+
+# Etykiety ułamków do odznaki.
+_FTE_LABELS = {0.25: "¼ etatu", 0.5: "½ etatu", 0.75: "¾ etatu"}
+
+
+def fte(text: str) -> Tuple[Optional[float], str]:
+    """Rozpoznaje wymiar etatu w tekście ogłoszenia.
+
+    Args:
+        text: tytuł i treść oferty.
+
+    Returns:
+        Para (ułamek etatu albo None, etykieta odznaki albo ""). Pełny etat
+        i brak informacji dają ``(None, "")`` — odznakę pokazujemy tylko
+        przy etacie niepełnym, bo tylko on zmienia ocenę oferty.
+    """
+    sample = str(text or "")
+    found = _FTE_FRACTION.search(sample)
+    if found:
+        raw = found.group(1).lower().replace(" ", "")
+        if raw in _FRACTION_WORDS:
+            value = _FRACTION_WORDS[raw]
+        elif "/" in raw:
+            num, den = raw.split("/", 1)
+            value = int(num) / int(den) if int(den) else 0.0
+        else:
+            value = float(raw.replace(",", "."))
+        if 0 < value < 1:
+            return value, _FTE_LABELS.get(round(value, 2),
+                                          f"{value:.2f}".replace(".", ",")
+                                          + " etatu")
+    pensum = _FTE_PENSUM.search(sample)
+    if pensum:
+        hours, full = int(pensum.group(1)), int(pensum.group(2))
+        if 0 < hours < full:
+            value = hours / full
+            return value, f"{hours}/{full} etatu"
+    if _FTE_PARTIAL.search(sample):
+        return None, "niepełny etat"
+    return None, ""

@@ -75,8 +75,12 @@ KEY_FILE = "jooble.key"
 # Zapytania domyślne PER PROFIL — krótka lista, bo każde to jedno
 # wyszukiwanie z limitu 500.
 DEFAULT_QUERIES: Dict[str, Tuple[str, ...]] = {
+    # „specjalista ds. promocji” dodane po analizie rynku 21.10: tak
+    # instytucje publiczne nazywają rolę, którą firmy nazywają „social
+    # media” — bez tej frazy ich ogłoszenia nie trafiały do raportu.
+    # Pięć fraz = pięć wyszukiwań na przebieg, czyli ~95 przebiegów z 500.
     "kultura": ("grafik", "instruktor kultury", "animator kultury",
-                "media społecznościowe"),
+                "media społecznościowe", "specjalista ds. promocji"),
     "it": ("data engineer", "data scientist", "python developer",
            "machine learning"),
 }

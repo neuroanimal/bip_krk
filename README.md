@@ -108,6 +108,7 @@ obsługiwane.
 | `4_fetch_offer_details.py` | Szczegóły ofert, w których **nabór jest wciąż aktualny** | `data/offers.json` | `data/offer_details.json` |
 | `5_generate_report.py` | Raport (Markdown + HTML): grupowanie po kategorii (Kultura i Sztuka na górze), **NOWE/nieoglądane na górze kategorii**, sortowanie po pilności, tracking klikania, sekcja diagnostyczna | datasety | `reports/raport_praca_*.md` i `.html` |
 | `report_html.py` | Moduł prezentacji HTML (styl, skrypt trackingu, budowa dokumentu) | — | — |
+| `report_map.py` | **Mapa ofert** offline (SVG, granice dzielnic z OSM) — kropki, dom, okrąg promienia | `krakow_districts.json` | — |
 | `dedupe.py` | **Duplikaty i podobne oferty**: ta sama oferta z kilku źródeł → jedna karta („także na: …”), podobne → „+ N podobnych” do rozwinięcia | — | — |
 | `geo.py` | **Odległość od domu**: dzielnice Krakowa, geokodowanie miejscowości (Nominatim), haversine | — | `data*/geo_cache.json` |
 | `offer_lang.py` | Rozpoznawanie **języka ogłoszenia** (polski / angielski) | — | — |
@@ -355,6 +356,65 @@ a nie centroid obszaru z Nominatim (50.047, 19.997 — 10,0 km od Bronowic,
 przez co kilka ofert stało dokładnie na granicy promienia); a geokodowanie
 miast działa **bez** ograniczenia do Polski — z nim „Berlin” trafiał do
 polskiej wsi Berlin pod Rzeszowem.
+
+## Mapa ofert
+
+Nad listą jest mapa Krakowa z ofertami. **Działa bez internetu**: podkład
+to granice 18 dzielnic wbudowane w raport jako SVG (`krakow_districts.json`,
+~20 kB), a nie kafelki z sieci — zwykła mapa internetowa pokazałaby offline
+szary prostokąt. Granice pobiera raz `tools/build_district_map.py`
+(Overpass → identyfikatory relacji dzielnic, Nominatim → geometria);
+uruchamiać ponownie tylko przy zmianie podziału miasta.
+
+- **kropka** = miejsce oferty, **wielkość** = liczba ofert w tym miejscu,
+- **kolor** = najlepsze dopasowanie (zielony / bursztynowy / szary),
+  a **pusty środek** = punkt przybliżony (tylko dzielnica) — żeby
+  informacja nie zależała wyłącznie od koloru,
+- **pulsuje** = jest tam oferta NOWA (wyłączone przy `prefers-reduced-motion`),
+- **dom** i **okrąg promienia** podążają za wyborem dzielnicy i suwakiem,
+- **kliknięcie** kropki zawęża listę do ofert z tego miejsca.
+
+Mapa pokazuje dokładnie to, co lista — te same filtry. Oferty, dla których
+źródło podało tylko „Kraków”, **nie dostają kropki na Rynku** (przy pomiarze
+69 ofert w jednym punkcie dawało jedną wielką, nic nieznaczącą kropkę) —
+liczy je osobny opis pod mapą.
+
+Pułapka z pierwszej wersji: poziom dopasowania mapowany przez
+`RANK[poziom] || 2` — a `RANK.strong` to `0`, więc `0 || 2` dawało `2`
+i wszystkie mocne trafienia rysowały się jako szare.
+
+## Wymiar etatu
+
+Oferta z Klubu Dukat to **¼ etatu za 1450–1650 zł** — bez tej informacji
+wyglądała na najgorzej płatną w raporcie, a w przeliczeniu na pełny etat to
+~5800 zł. Karta pokazuje odznakę wymiaru i kwotę „≈ … PLN na pełny etat”,
+a **sortowanie po wynagrodzeniu używa wartości przeliczonej** (tylko dla
+kwot miesięcznych — stawka godzinowa nie zależy od wymiaru).
+
+Rozpoznawane zapisy: „0,5 etatu”, „¼ etatu”, „1/2 etatu”, „pół etatu”,
+pensum „etat: 9/18”, „niepełny etat”. **Pułapka:** „3 etaty” i „5 etatów”
+w ogłoszeniach BIP to **liczba stanowisk**, nie wymiar — naiwny wzorzec
+uznałby je za trzykrotny etat.
+
+## Status „aplikowałam”
+
+Przycisk na każdej karcie, osobny od „oglądane”: oglądanie to przejrzenie,
+aplikowanie to decyzja, której efekt trwa tygodniami. Karta zmienia kolor
+obramowania, a filtr **„Status”** pozwala schować oferty, na które już
+wysłano CV. Stan zapisuje przeglądarka (`BIP_KRK_APPLIED`, osobno od
+kliknięć, więc „Wyczyść historię” go nie kasuje) i trafia do eksportu
+`clicks.json` — po wczytaniu przy kolejnym raporcie przechodzi na inny
+komputer.
+
+## „Specjalista ds. promocji” — budżetowa nazwa social mediów
+
+Analiza rynku (21.10) pokazała, że instytucje publiczne prawie nie piszą
+„social media” — piszą **„specjalista ds. promocji / komunikacji”**. Fraza
+jest więc w zapytaniach jooble i CBOP, a w profilu kwalifikuje jako rdzeń
+**tylko z kontekstem kultury** (muzeum, teatr, dom kultury…); w urzędzie
+gminy daje „może pasować”, a „promocja sprzedaży” i promotorzy w sklepach
+są wykluczeni. Od razu wyłowiło „Specjalista ds. promocji” w Teatrze
+Groteska.
 
 ## LinkedIn — sprawdzone, nie dodane
 
@@ -648,6 +708,9 @@ bip_krk/
 ├── report_script.py             # skrypt przeglądarki (tracking + filtry)
 ├── contract_type.py             # rozpoznawanie rodzaju umowy
 ├── salary.py                    # normalizacja wynagrodzeń (kurs NBP)
+├── report_map.py                # mapa ofert (SVG offline)
+├── krakow_districts.json        # granice 18 dzielnic (© OSM, ODbL)
+├── tools/build_district_map.py  # jednorazowe pobranie granic dzielnic
 ├── dedupe.py                    # duplikaty i grupowanie podobnych ofert
 ├── geo.py                       # odległość od domu, dzielnice Krakowa
 ├── tests/                       # testy regresji (python -m unittest)

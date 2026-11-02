@@ -1,0 +1,229 @@
+{
+  "fetched_at": "2026-10-22T01:17:28+02:00",
+  "total_in_feed": 60,
+  "kept": 10,
+  "offers": [
+    {
+      "nab_id": "arc-senior-backend-data-engineer-ww-ft",
+      "unit_key": "src:arc_dev",
+      "unit_name": "arc.dev (klient nieujawniony) — contract · 20-35 USD/h · bez ograniczeń krajowych [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/senior-backend-data-engineer-ww-ft",
+      "status": "trwajacy",
+      "title": "Senior Backend / Data Engineer WW-FT",
+      "detail_url": "https://arc.dev/remote-jobs/senior-backend-data-engineer-ww-ft",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Backend / Data Engineer WW-FT arc.dev (klient nieujawniony) contract 20-35 USD/h PostgreSQL, TypeScript, Apache Kafka, Data Ingestion, API Integration senior",
+      "salary_min": 20,
+      "salary_max": 35,
+      "salary_currency": "USD",
+      "salary_period": "hour",
+      "contract_types": [
+        "b2b"
+      ],
+      "contract_raw": "contract",
+      "source": "arc_dev",
+      "published": "2026-10-19",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-senior-cloud-architect-aws-fulltime-emea-latam",
+      "unit_key": "src:arc_dev",
+      "unit_name": "arc.dev (klient nieujawniony) — contract · 20-45 USD/h · Polska wprost (123 krajów) [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/senior-cloud-architect-aws-fulltime-emea-latam",
+      "status": "trwajacy",
+      "title": "Senior Cloud Architect (AWS) - Fulltime - EMEA/LATAM",
+      "detail_url": "https://arc.dev/remote-jobs/senior-cloud-architect-aws-fulltime-emea-latam",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Cloud Architect (AWS) - Fulltime - EMEA/LATAM arc.dev (klient nieujawniony) contract 20-45 USD/h AWS, Iam role management, Terraform, Infrastructure as Code, Continuous Integration senior",
+      "salary_min": 20,
+      "salary_max": 45,
+      "salary_currency": "USD",
+      "salary_period": "hour",
+      "contract_types": [
+        "b2b"
+      ],
+      "contract_raw": "contract",
+      "source": "arc_dev",
+      "published": "2026-10-19",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-ai-integration-engineer-voice-agent-integration-ww-ft",
+      "unit_key": "src:arc_dev",
+      "unit_name": "arc.dev (klient nieujawniony) — contract · 30-45 USD/h · bez ograniczeń krajowych [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/ai-integration-engineer-voice-agent-integration-ww-ft",
+      "status": "trwajacy",
+      "title": "AI Integration Engineer (voice agent integration) - WW - FT",
+      "detail_url": "https://arc.dev/remote-jobs/ai-integration-engineer-voice-agent-integration-ww-ft",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "AI Integration Engineer (voice agent integration) - WW - FT arc.dev (klient nieujawniony) contract 30-45 USD/h RESTful API, OpenAI, Voice AI mid",
+      "salary_min": 30,
+      "salary_max": 45,
+      "salary_currency": "USD",
+      "salary_period": "hour",
+      "contract_types": [
+        "b2b"
+      ],
+      "contract_raw": "contract",
+      "source": "arc_dev",
+      "published": "2026-10-16",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-experienced-software-engineer-ai-coding-tasks",
+      "unit_key": "src:arc_dev",
+      "unit_name": "arc.dev (klient nieujawniony) — contract · 30-45 USD/h · bez ograniczeń krajowych [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/experienced-software-engineer-ai-coding-tasks",
+      "status": "trwajacy",
+      "title": "Experienced Software Engineer - AI Coding Tasks",
+      "detail_url": "https://arc.dev/remote-jobs/experienced-software-engineer-ai-coding-tasks",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Experienced Software Engineer - AI Coding Tasks arc.dev (klient nieujawniony) contract 30-45 USD/h Software Development mid",
+      "salary_min": 30,
+      "salary_max": 45,
+      "salary_currency": "USD",
+      "salary_period": "hour",
+      "contract_types": [
+        "b2b"
+      ],
+      "contract_raw": "contract",
+      "source": "arc_dev",
+      "published": "2026-10-16",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-senior-mobile-engineer-ios-android-overlap-with-est",
+      "unit_key": "src:arc_dev",
+      "unit_name": "arc.dev (klient nieujawniony) — contract · 40-50 USD/h · Polska wprost (86 krajów) [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/senior-mobile-engineer-ios-android-overlap-with-est",
+      "status": "trwajacy",
+      "title": "Senior Mobile Engineer (iOS, Android) - Overlap with EST",
+      "detail_url": "https://arc.dev/remote-jobs/senior-mobile-engineer-ios-android-overlap-with-est",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Mobile Engineer (iOS, Android) - Overlap with EST arc.dev (klient nieujawniony) contract 40-50 USD/h API Integration, App Store, Flutter senior",
+      "salary_min": 40,
+      "salary_max": 50,
+      "salary_currency": "USD",
+      "salary_period": "hour",
+      "contract_types": [
+        "b2b"
+      ],
+      "contract_raw": "contract",
+      "source": "arc_dev",
+      "published": "2026-10-15",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-lead-engineer-systems-architect-backend-developer-devops-engineer-overlap-with-est",
+      "unit_key": "src:arc_dev",
+      "unit_name": "arc.dev (klient nieujawniony) — contract · 45-55 USD/h · Polska wprost (86 krajów) [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/lead-engineer-systems-architect-backend-developer-devops-engineer-overlap-with-est",
+      "status": "trwajacy",
+      "title": "Lead Engineer: Systems Architect, Backend Developer, DevOps Engineer - Overlap with EST",
+      "detail_url": "https://arc.dev/remote-jobs/lead-engineer-systems-architect-backend-developer-devops-engineer-overlap-with-est",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Lead Engineer: Systems Architect, Backend Developer, DevOps Engineer - Overlap with EST arc.dev (klient nieujawniony) contract 45-55 USD/h Docker, AWS senior",
+      "salary_min": 45,
+      "salary_max": 55,
+      "salary_currency": "USD",
+      "salary_period": "hour",
+      "contract_types": [
+        "b2b"
+      ],
+      "contract_raw": "contract",
+      "source": "arc_dev",
+      "published": "2026-10-15",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-senior-fractional-cto-principal-geospatial-data-architect-pt-emea-apac",
+      "unit_key": "src:arc_dev",
+      "unit_name": "arc.dev (klient nieujawniony) — contract · 45-70 USD/h · Polska wprost (177 krajów) [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/senior-fractional-cto-principal-geospatial-data-architect-pt-emea-apac",
+      "status": "trwajacy",
+      "title": "Senior Fractional CTO (Principal Geospatial & Data Architect) - PT - EMEA/APAC",
+      "detail_url": "https://arc.dev/remote-jobs/senior-fractional-cto-principal-geospatial-data-architect-pt-emea-apac",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Senior Fractional CTO (Principal Geospatial & Data Architect) - PT - EMEA/APAC arc.dev (klient nieujawniony) contract 45-70 USD/h SQL, PostGIS, Python, Data Engineering senior",
+      "salary_min": 45,
+      "salary_max": 70,
+      "salary_currency": "USD",
+      "salary_period": "hour",
+      "contract_types": [
+        "b2b"
+      ],
+      "contract_raw": "contract",
+      "source": "arc_dev",
+      "published": "2026-10-14",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-audit-of-ml-and-econometric-models-on-financial-time-series",
+      "unit_key": "src:arc_dev",
+      "unit_name": "arc.dev (klient nieujawniony) — contract · 30-45 USD/h · bez ograniczeń krajowych [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/audit-of-ml-and-econometric-models-on-financial-time-series",
+      "status": "trwajacy",
+      "title": "Audit of Ml and Econometric Models on Financial Time Series",
+      "detail_url": "https://arc.dev/remote-jobs/audit-of-ml-and-econometric-models-on-financial-time-series",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Audit of Ml and Econometric Models on Financial Time Series arc.dev (klient nieujawniony) contract 30-45 USD/h Python, Machine Learning mid",
+      "salary_min": 30,
+      "salary_max": 45,
+      "salary_currency": "USD",
+      "salary_period": "hour",
+      "contract_types": [
+        "b2b"
+      ],
+      "contract_raw": "contract",
+      "source": "arc_dev",
+      "published": "2026-10-12",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-kpmg-poland-manager-ai-genai-data-science-ai",
+      "unit_key": "src:arc_dev",
+      "unit_name": "KPMG Poland — permanent · Polska wprost (1 krajów) [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/kpmg-poland-manager-ai-genai-data-science-ai",
+      "status": "trwajacy",
+      "title": "Manager AI/GenAI - Data Science & AI",
+      "detail_url": "https://arc.dev/remote-jobs/kpmg-poland-manager-ai-genai-data-science-ai",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Manager AI/GenAI - Data Science & AI KPMG Poland permanent AI, Data Science, Data, Continuous Integration, Microsoft ai, Consulting, Communications, Technical training",
+      "contract_types": [
+        "uop"
+      ],
+      "contract_raw": "permanent",
+      "source": "arc_dev",
+      "published": "2026-10-19",
+      "category_hint": ""
+    },
+    {
+      "nab_id": "arc-devgrid-data-scientist-engineer",
+      "unit_key": "src:arc_dev",
+      "unit_name": "DevGrid — permanent · Polska wprost (54 krajów) [arc.dev]",
+      "praca_url": "https://arc.dev/remote-jobs/devgrid-data-scientist-engineer",
+      "status": "trwajacy",
+      "title": "Data Scientist Engineer",
+      "detail_url": "https://arc.dev/remote-jobs/devgrid-data-scientist-engineer",
+      "ref_number": "",
+      "deadline": "",
+      "raw_text": "Data Scientist Engineer DevGrid permanent Machine Learning, Software Development, Wireframing/prototyping, Data, Research, Testing, Python, Algorithm, Deep Learning, Continuous Integration, Experimentation, Statistics, Operations, Roadmap planning, Support, Innovation, MLOps, Statistical model, Tools, Signal Processing, CI/CD, Containerization, Experimental Design, Deploy, Team collaboration, Data Engineering",
+      "contract_types": [
+        "uop"
+      ],
+      "contract_raw": "permanent",
+      "source": "arc_dev",
+      "published": "2026-10-19",
+      "category_hint": ""
+    }
+  ]
+}

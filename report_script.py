@@ -35,6 +35,56 @@ HTML_TRACKING_SCRIPT = """
 
   var clicked = loadClicked();
 
+  // Status „aplikowałam” — osobny klucz, żeby „Wyczyść historię” (która
+  // dotyczy oglądania) nie kasowała informacji o wysłanych CV.
+  var APPLIED_KEY = "BIP_KRK_APPLIED";
+  var applied = (function () {
+    try { return JSON.parse(localStorage.getItem(APPLIED_KEY) || "{}"); }
+    catch (e) { return {}; }
+  })();
+  function saveApplied() {
+    try { localStorage.setItem(APPLIED_KEY, JSON.stringify(applied)); }
+    catch (e) { /* tryb prywatny — status tylko na czas sesji */ }
+  }
+  // Stan z raportu (data-applied, wczytany z clicks.json) uzupełnia stan
+  // przeglądarki — żeby status przeszedł na inny komputer.
+  document.querySelectorAll(".offer[data-applied]").forEach(function (c) {
+    var when = c.getAttribute("data-applied");
+    var id = c.getAttribute("data-nab");
+    if (when && id && !applied[id]) { applied[id] = when; }
+  });
+  function paintApplied() {
+    var n = {};
+    document.querySelectorAll(".offer[data-nab]").forEach(function (card) {
+      var id = card.getAttribute("data-nab");
+      var on = !!applied[id];
+      card.classList.toggle("applied", on);
+      var btn = card.querySelector(":scope > .apply-row > .apply-btn");
+      if (btn) {
+        btn.textContent = on ? ("✓ aplikowałam " + String(applied[id]).slice(0, 10))
+                             : "aplikowałam";
+        btn.title = on ? "Kliknij, aby cofnąć" : "Oznacz, że wysłano zgłoszenie";
+      }
+      if (on) { n[id] = 1; }
+    });
+    var cnt = document.getElementById("f-applied-n");
+    if (cnt) { cnt.textContent = Object.keys(n).length; }
+  }
+  document.querySelectorAll(".apply-btn").forEach(function (btn) {
+    btn.addEventListener("click", function (ev) {
+      ev.stopPropagation();  // to nie jest „kliknięcie oferty” (oglądanie)
+      var card = btn.closest(".offer[data-nab]");
+      var id = card && card.getAttribute("data-nab");
+      if (!id) { return; }
+      if (applied[id]) { delete applied[id]; }
+      else { applied[id] = new Date().toISOString(); }
+      saveApplied();
+      paintApplied();
+      if (typeof applyFilters === "function") { applyFilters(); }
+    });
+  });
+  var SHOW_APPLIED = true;
+
   function markCard(card, when) {
     if (card.classList.contains("clicked")) { return; }
     card.classList.add("clicked");
@@ -132,7 +182,8 @@ HTML_TRACKING_SCRIPT = """
   var exportBtn = document.getElementById("export-seen");
   if (exportBtn) {
     exportBtn.addEventListener("click", function () {
-      var payload = JSON.stringify({ clicked: clicked }, null, 2);
+      var payload = JSON.stringify({ clicked: clicked, applied: applied },
+                                   null, 2);
       var blob = new Blob([payload], { type: "application/json" });
       var url = URL.createObjectURL(blob);
       var a = document.createElement("a");
@@ -212,6 +263,7 @@ HTML_TRACKING_SCRIPT = """
       return false;
     }
     if (!geoAllows(card)) { return false; }
+    if (!SHOW_APPLIED && card.classList.contains("applied")) { return false; }
     if (OFF.level[card.getAttribute("data-level") || "none"]) { return false; }
     if (OFF.source[card.getAttribute("data-source") || "?"]) { return false; }
     return true;
@@ -237,6 +289,9 @@ HTML_TRACKING_SCRIPT = """
         ".offer[data-nab]:not([style*='none'])").length;
       sec.style.display = visible ? "" : "none";
     });
+    // Mapa pokazuje to samo co lista — przerysowujemy ją po każdej zmianie
+    // filtrów (funkcję rejestruje skrypt mapy, ładowany po tym).
+    if (window.KRK_MAP_RENDER) { window.KRK_MAP_RENDER(); }
     var el = document.getElementById("f-summary");
     if (el) {
       var total = Object.keys(shown).length;
@@ -365,6 +420,16 @@ HTML_TRACKING_SCRIPT = """
   });
 
   refreshGeoLabel();
+
+  var appliedBtn = document.getElementById("f-applied");
+  if (appliedBtn) {
+    appliedBtn.addEventListener("click", function () {
+      SHOW_APPLIED = !SHOW_APPLIED;
+      appliedBtn.classList.toggle("on", SHOW_APPLIED);
+      applyFilters();
+    });
+  }
+  paintApplied();
 
   var allBtn = document.getElementById("f-all");
   if (allBtn) {

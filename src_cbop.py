@@ -81,6 +81,8 @@ SEARCH_PHRASES: Dict[str, Tuple[str, ...]] = {
     "kultura": (
         "grafik", "grafika", "plastyk", "animator", "instruktor",
         "edukator", "muzeum", "kultur", "warsztat", "wystaw",
+        # Budżetowa nazwa roli social media (patrz src_jooble).
+        "promocj",
     ),
     # Dla profilu danych CBOP jest źródłem SŁABYM i trzeba o tym wiedzieć:
     # „programista” daje w Małopolsce głównie automatykę przemysłową

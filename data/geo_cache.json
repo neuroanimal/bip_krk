@@ -262,9 +262,45 @@
       22.2156
     ],
     "v2|pl|SIGMA - GLASS PRODUCENT SZKŁA OZDOBNEGO I ARTYSTYCZNEGO Piotr SAJDAK, Pogórska Wola": null,
-    "v2|pl|Gminny ośrodek pomocy społecznej w tomicach, Tomice": null
+    "v2|pl|Gminny ośrodek pomocy społecznej w tomicach, Tomice": null,
+    "v2|city|Dobczyce": [
+      49.8803,
+      20.0905
+    ],
+    "v2|city|Myślenice": [
+      49.8346,
+      19.9384
+    ],
+    "v2|city|Wadowice": [
+      49.8834,
+      19.4925
+    ],
+    "v2|city|Wieliczka": [
+      49.9824,
+      20.0602
+    ],
+    "v2|pl|DOM POMOCY SPOŁECZNEJ IM.TADEUSZA PIEKARZA W HARBUTOWICACH W..., Dobczyce": null,
+    "v2|pl|goFLUENT, Kraków": null,
+    "v2|pl|Electrolux Group, Kraków": null,
+    "v2|pl|EduGO P.S.A., Kraków": null,
+    "v2|pl|Wapo Sp. z o.o., Kraków": null,
+    "v2|pl|SayFlu, Kraków": null,
+    "v2|pl|DIGITAL PERFORMANCE HUB, Kraków": null,
+    "v2|pl|PRO PARTNERS INVESTMENT, Kraków": null,
+    "v2|pl|PMV sp. z o.o. SPÓŁKA KOMANDYTOWA, Myślenice": null,
+    "v2|pl|Capita, Kraków": null,
+    "v2|pl|Google, Kraków": [
+      50.0868,
+      19.9746
+    ],
+    "v2|pl|Grupa Maspex, Wadowice": null,
+    "v2|pl|\"DR MATERAC\" sp. z o.o., Olkusz": null,
+    "v2|pl|GREMI OPERATOR Sp. z o. o., Kraków": null,
+    "v2|pl|Accenture Technology, Kraków": null,
+    "v2|pl|Tameshi, Kraków": null,
+    "v2|pl|ECO RUN, Wieliczka": null
   },
   "meta": {
-    "updated": "2026-10-21T15:29:02+02:00"
+    "updated": "2026-10-22T01:18:45+02:00"
   }
 }
